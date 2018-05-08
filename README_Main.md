@@ -23,3 +23,5 @@ The Beginning
 Всеки клиент може да има поне по една кола !!! Това е важно
 Всяка кола може/нормално е/ да има поне по един ремонт !!! Това е важно
 Една кола неможе да принадлежи на повече от един клиент. !!! Това е важно
+
+https://stackoverflow.com/questions/32369380/qt-how-to-add-a-groupbox-that-contains-some-widgets-dynamically-with-a-pushbutto
