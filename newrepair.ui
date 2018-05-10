@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="L_RepairMainLabel">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -33,7 +33,7 @@
     <string>Добавяне на текущ ремонт</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QTextEdit" name="Text_ServDescription">
    <property name="geometry">
     <rect>
      <x>11</x>
@@ -43,12 +43,12 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="L_ServDescription">
    <property name="geometry">
     <rect>
      <x>12</x>
      <y>102</y>
-     <width>83</width>
+     <width>111</width>
      <height>16</height>
     </rect>
    </property>
@@ -56,12 +56,12 @@
     <string>Вид да ремонта </string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="L_SinglePrice">
    <property name="geometry">
     <rect>
-     <x>560</x>
+     <x>530</x>
      <y>100</y>
-     <width>78</width>
+     <width>101</width>
      <height>16</height>
     </rect>
    </property>
@@ -69,12 +69,12 @@
     <string>Единична Цена</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="L_ClientPrice">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>102</y>
-     <width>65</width>
+     <x>680</x>
+     <y>100</y>
+     <width>91</width>
      <height>16</height>
     </rect>
    </property>
@@ -82,7 +82,7 @@
     <string>Цена клиент</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit_2">
+  <widget class="QTextEdit" name="Text_SinglePrice">
    <property name="geometry">
     <rect>
      <x>540</x>
@@ -92,7 +92,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit_3">
+  <widget class="QTextEdit" name="Text_ClientPrice">
    <property name="geometry">
     <rect>
      <x>670</x>
@@ -100,6 +100,32 @@
      <width>121</width>
      <height>31</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Button_RepairDone">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>550</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Готово</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Button_NewRepair">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>545</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Добави</string>
    </property>
   </widget>
  </widget>

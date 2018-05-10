@@ -17,6 +17,11 @@ public:
 
 private:
     Ui::NewRepair *ui;
+
+signals:
+    void CloseNewRepairForm();
+private slots:
+    void on_Button_RepairDone_clicked();
 };
 
 #endif // NEWREPAIR_H

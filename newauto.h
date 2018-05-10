@@ -17,6 +17,13 @@ public:
 
 private:
     Ui::NewAuto *ui;
+
+signals:
+    void CloseNewAutoForm();
+
+private slots:
+    void on_Button_CancelNewAuto_clicked();
+//    void ShowNewAutoForm();
 };
 
 #endif // NEWAUTO_H

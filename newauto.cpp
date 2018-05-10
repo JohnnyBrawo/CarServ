@@ -12,3 +12,9 @@ NewAuto::~NewAuto()
 {
     delete ui;
 }
+
+void NewAuto::on_Button_CancelNewAuto_clicked()
+{
+    emit CloseNewAutoForm();
+    this->hide();
+}

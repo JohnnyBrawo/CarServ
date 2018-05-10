@@ -15,8 +15,14 @@ public:
     explicit SearchForm(QWidget *parent = 0);
     ~SearchForm();
 
+private slots:
+    void on_Button_Search_Back_clicked();
+
 private:
     Ui::SearchForm *ui;
+
+signals:
+    void CloseSearchForm();
 };
 
 #endif // SEARCHFORM_H

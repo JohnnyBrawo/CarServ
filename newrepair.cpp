@@ -12,3 +12,9 @@ NewRepair::~NewRepair()
 {
     delete ui;
 }
+
+void NewRepair::on_Button_RepairDone_clicked()
+{
+    emit CloseNewRepairForm();
+    hide();
+}

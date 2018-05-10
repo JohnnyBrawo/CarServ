@@ -12,3 +12,9 @@ SearchForm::~SearchForm()
 {
     delete ui;
 }
+
+void SearchForm::on_Button_Search_Back_clicked()
+{
+    emit CloseSearchForm();
+    hide();
+}

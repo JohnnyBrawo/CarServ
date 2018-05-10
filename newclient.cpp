@@ -12,3 +12,9 @@ NewClient::~NewClient()
 {
     delete ui;
 }
+
+void NewClient::on_Button_CancelAdd_clicked()
+{
+    emit CloseNewClientForm();
+    this->hide();
+}
