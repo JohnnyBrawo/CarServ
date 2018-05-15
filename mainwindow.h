@@ -26,6 +26,7 @@ private slots:
     void on_Button_AddNewRepair_clicked();
 
     void RestoreMainForm();
+    void CenterForm();
 
 private:
     Ui::MainWindow *ui;

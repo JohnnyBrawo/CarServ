@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "qapplication.h"
+#include "qdesktopwidget.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_SearchForm(new SearchForm())
 {
     ui->setupUi(this);
+    CenterForm();
     m_NewAuto = new NewAuto();
     QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreMainForm()));
     QObject::connect(m_NewClient, SIGNAL(CloseNewClientForm()), this, SLOT(RestoreMainForm()));
@@ -20,6 +24,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->Button_AddNewRepair, SIGNAL(clicked()), m_NewRepair, SLOT(show()));
     QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_SearchForm, SLOT(show()));
 
+}
+
+void MainWindow::CenterForm()
+{
+    setFixedSize(geometry().width(), geometry().height());
+    QRect desktopRect = QApplication::desktop()->availableGeometry(this);
+    QPoint center = desktopRect.center();
+    move(center.x()-width()*0.5, center.y()-height()*0.5);
 }
 
 MainWindow::~MainWindow()
@@ -54,4 +66,5 @@ void MainWindow::on_Button_AddNewRepair_clicked()
 void MainWindow::RestoreMainForm()
 {
     this->show();
+//    CenterForm();     uncomment to set the MainForm position in the middle of the screen
 }
