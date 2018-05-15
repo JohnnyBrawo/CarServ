@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     m_NewClient(new NewClient()),
-    m_NewRepair(new NewRepair()),
+    m_NewRepair(new AddRepair()),
     m_SearchForm(new SearchForm())
 {
     ui->setupUi(this);

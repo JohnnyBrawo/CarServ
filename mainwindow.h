@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "newauto.h"
-#include "newrepair.h"
+#include "addrepair.h"
 #include "newclient.h"
 #include "searchform.h"
 
@@ -31,7 +31,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     NewClient   *m_NewClient;
-    NewRepair   *m_NewRepair;
+    AddRepair   *m_NewRepair;
     NewAuto     *m_NewAuto;
     SearchForm  *m_SearchForm;
 };
