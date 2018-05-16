@@ -33,10 +33,12 @@ private slots:
 
     void on_Button_DeleteRepair_clicked();
 
-    void on_pushButton_clicked();
+    void on_Button_RecordRepairs_clicked();
 
 private:
     Ui::AddRepair *ui;
+    void CenterForm();
+    void InsertRepair();
 };
 
 #endif // ADDREPAIR_H

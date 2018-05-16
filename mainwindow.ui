@@ -19,17 +19,20 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/images/Images/asdasd.jpg);</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>80</y>
+      <y>90</y>
       <width>651</width>
       <height>331</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
+    <layout class="QGridLayout" name="gridLayout" columnstretch="0,0">
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
@@ -63,6 +66,9 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-top-color: rgb(69, 37, 255);</string>
+       </property>
        <property name="text">
         <string>Добравяне на 
  ремонт</string>
@@ -83,6 +89,10 @@
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-top-color: rgb(107, 255, 223);
+background-color: rgb(255, 82, 39);</string>
        </property>
        <property name="text">
         <string>Добравяне на 
@@ -125,6 +135,13 @@
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 29, 29);
+background-image: url(:/images/Images/aasss.jpg);
+gridline-color: rgb(255, 255, 92);
+color: rgb(255, 19, 11);
+background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="text">
         <string>Търсене</string>

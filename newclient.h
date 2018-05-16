@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::NewClient *ui;
+    void CenterForm();
 
 signals:
     void CloseNewClientForm();

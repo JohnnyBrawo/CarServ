@@ -24,6 +24,7 @@ signals:
 private slots:
     void on_Button_CancelNewAuto_clicked();
 //    void ShowNewAutoForm();
+    void CenterForm();
 };
 
 #endif // NEWAUTO_H

@@ -1,13 +1,15 @@
 #include "addrepair.h"
 #include "ui_addrepair.h"
+#include "qapplication.h"
+#include "qdesktopwidget.h"
 
 AddRepair::AddRepair(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddRepair)
 {
     ui->setupUi(this);
-    ui->RepairList->setAutoScroll(true);
-    ui->RepairList->setPalette(QColor(255,255,225,255));
+    CenterForm();
+    InsertRepair();
 }
 
 AddRepair::~AddRepair()
@@ -16,13 +18,21 @@ AddRepair::~AddRepair()
 
 }
 
+void AddRepair::CenterForm()
+{
+    setFixedSize(geometry().width(), geometry().height());
+    QRect desktopRect = QApplication::desktop()->availableGeometry(this);
+    QPoint center = desktopRect.center();
+    move(center.x()-width()*0.5, center.y()-height()*0.5);
+}
+
 void AddRepair::on_Button_ExitRepair_clicked()
 {
     emit CloseNewRepairForm();
     this->hide();
 }
 
-void AddRepair::on_Button_InsertRepair_clicked()
+void AddRepair::InsertRepair()
 {
     //Creating a new list widget item whose parent is the listwidget itself
        QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->RepairList);
@@ -40,15 +50,18 @@ void AddRepair::on_Button_InsertRepair_clicked()
        ui->RepairList->setItemWidget (listWidgetItem, m_newRepair);
 }
 
+void AddRepair::on_Button_InsertRepair_clicked()
+{
+   InsertRepair();
+}
+
 void AddRepair::on_Button_DeleteRepair_clicked()
 {
     //Delete selected item from the listWidget
        delete ui->RepairList->currentItem ();
 }
 
-void AddRepair::on_pushButton_clicked()
+void AddRepair::on_Button_RecordRepairs_clicked()
 {
-//  Trqbva da nameri nomera na kolata w bazata. Move da ima "Случаен клиент" отметка, за такива ,които не са редовни в сервиза.
-//  Drugiq variant e da se zarezda forma za tyrsene na weche nalichen klient
-//
+
 }

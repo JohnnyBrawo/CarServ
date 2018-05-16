@@ -25,6 +25,7 @@ private:
     Ui::NewRepairItem *ui;
 
     void ResetAllFields();
+    void CenterForm();
 };
 
 #endif // REPAIRWIDGETITEM_h

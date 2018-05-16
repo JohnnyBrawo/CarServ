@@ -38,9 +38,25 @@
        </font>
       </property>
       <property name="text">
-       <string>Добави</string>
+       <string>Добави ремонт</string>
       </property>
      </widget>
+    </item>
+    <item row="0" column="4">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Preferred</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item row="0" column="3">
      <widget class="QPushButton" name="Button_DeleteRepair">
@@ -52,21 +68,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Изтриване</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="5">
-     <widget class="QPushButton" name="Button_ExitRepair">
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Назад</string>
+       <string>Изтриване ремонт</string>
       </property>
      </widget>
     </item>
@@ -86,8 +88,8 @@
       </property>
      </spacer>
     </item>
-    <item row="0" column="4">
-     <spacer name="horizontalSpacer_2">
+    <item row="0" column="6">
+     <spacer name="horizontalSpacer_3">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -101,6 +103,33 @@
        </size>
       </property>
      </spacer>
+    </item>
+    <item row="0" column="8">
+     <widget class="QPushButton" name="Button_ExitRepair">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Назад</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QPushButton" name="Button_RecordRepairs">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Запис</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -229,39 +258,13 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="Button_Search">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>11</x>
      <y>70</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Търси</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="Check_RandomClient">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>70</y>
-     <width>141</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Случаен клиент</string>
-   </property>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>70</y>
-     <width>381</width>
-     <height>24</height>
+     <width>651</width>
+     <height>28</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -281,18 +284,27 @@
     <item>
      <widget class="QLineEdit" name="lineEdit"/>
     </item>
+    <item>
+     <widget class="QPushButton" name="Button_Search">
+      <property name="text">
+       <string>Търси</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="Check_RandomClient">
+      <property name="text">
+       <string>Случаен клиент</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
+  <zorder>layoutWidget</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>RepairList</zorder>
   <zorder>L_RepairMainLabel</zorder>
   <zorder>horizontalLayoutWidget</zorder>
-  <zorder>label_3</zorder>
-  <zorder>label</zorder>
-  <zorder>L_CarRegNumber</zorder>
-  <zorder>lineEdit</zorder>
-  <zorder>Button_Search</zorder>
-  <zorder>Check_RandomClient</zorder>
  </widget>
  <resources/>
  <connections/>

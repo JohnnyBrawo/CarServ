@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::SearchForm *ui;
+    void CenterForm();
 
 signals:
     void CloseSearchForm();

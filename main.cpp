@@ -10,24 +10,24 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
 
+// Menu - open file
+//        QString test = QDir::currentPath();
+//        QFileInfo exec_fileinfo(argv[0]);
+//        qDebug() << "Executable is in" << exec_fileinfo.absolutePath();
 
-        QString test = QDir::currentPath();
-        QFileInfo exec_fileinfo(argv[0]);
-        qDebug() << "Executable is in" << exec_fileinfo.absolutePath();
+//    const char* Msg= "TESDTTESDTSTSTST";
+//    qDebug() << " Current Path ->   " << test;
+//    QFile some_file("/home/default/Gosheto/CarServ/test.txt");
+//        if(!some_file.open(QIODevice::WriteOnly)){
+//            qDebug() << "Unable to open file";
+//        } else {
+//            qDebug() << "File open successfully";
+//        }
 
-    const char* Msg= "TESDTTESDTSTSTST";
-    qDebug() << " Current Path ->   " << test;
-    QFile some_file("/home/default/Gosheto/CarServ/test.txt");
-        if(!some_file.open(QIODevice::WriteOnly)){
-            qDebug() << "Unable to open file";
-        } else {
-            qDebug() << "File open successfully";
-        }
-
-        QTextStream stream( &some_file );
-        some_file.write(Msg, qstrlen(Msg) );
-        stream << " alal asdl asdlalsda lwsdlaw ";
-        some_file.close();
+//        QTextStream stream( &some_file );
+//        some_file.write(Msg, qstrlen(Msg) );
+//        stream << " alal asdl asdlalsda lwsdlaw ";
+//        some_file.close();
     w.show();
 
     return a.exec();

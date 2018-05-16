@@ -24,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->Button_AddNewRepair, SIGNAL(clicked()), m_NewRepair, SLOT(show()));
     QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_SearchForm, SLOT(show()));
 
+    setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
+
 }
 
 void MainWindow::CenterForm()
