@@ -14,6 +14,7 @@ class NewAuto : public QDialog
 public:
     explicit NewAuto(QWidget *parent = 0);
     ~NewAuto();
+    void ClearAllFields();
 
 private:
     Ui::NewAuto *ui;
@@ -23,8 +24,8 @@ signals:
 
 private slots:
     void on_Button_CancelNewAuto_clicked();
-//    void ShowNewAutoForm();
     void CenterForm();
+    void OpenClearWindow();
 };
 
 #endif // NEWAUTO_H

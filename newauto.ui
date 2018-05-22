@@ -309,7 +309,7 @@
      </widget>
     </item>
     <item row="4" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
+     <widget class="QLineEdit" name="LText_NewAutoRegNumber"/>
     </item>
     <item row="3" column="1">
      <widget class="QComboBox" name="Combo_NewAuto_Fuel">
@@ -420,7 +420,7 @@
      </widget>
     </item>
     <item row="5" column="1">
-     <widget class="QLineEdit" name="lineEdit_2"/>
+     <widget class="QLineEdit" name="LText_NewAutoVIN"/>
     </item>
    </layout>
   </widget>

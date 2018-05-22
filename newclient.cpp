@@ -5,17 +5,37 @@
 
 NewClient::NewClient(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::NewClient)
+    ui(new Ui::NewClient),
+    m_FindAuto(new FindAuto())
 {
     ui->setupUi(this);
+    setWindowTitle("New Client");
     CenterForm();
+    QObject::connect(m_FindAuto, SIGNAL(CloseAddAutoForm()), this, SLOT(RestoreForm()));
+    QObject::connect(ui->Button_AddClientAuto, SIGNAL(clicked()), m_FindAuto, SLOT(show()));
 }
 
 NewClient::~NewClient()
 {
     delete ui;
+    delete m_FindAuto;
 }
 
+void NewClient::ClearAllFields()
+{
+    ui->LText_ClientCity->clear();
+    ui->LText_ClientPhone->clear();
+    ui->LText_ClientFirm->clear();
+    ui->LText_ClientName->clear();
+    ui->Text_KlientAddress->clear();
+}
+
+
+void NewClient::RestoreForm()
+{
+    this->show();
+    CenterForm();
+}
 
 void NewClient::CenterForm()
 {
@@ -29,5 +49,10 @@ void NewClient::CenterForm()
 void NewClient::on_Button_CancelAdd_clicked()
 {
     emit CloseNewClientForm();
-    this->hide();
+    hide();
+}
+
+void NewClient::on_Button_AddClientAuto_clicked()
+{
+    hide();
 }

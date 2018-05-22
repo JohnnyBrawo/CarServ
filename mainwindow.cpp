@@ -9,20 +9,32 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     m_NewClient(new NewClient()),
     m_NewRepair(new AddRepair()),
+    m_NewAuto(new NewAuto()),
     m_SearchForm(new SearchForm())
+
 {
     ui->setupUi(this);
+    setWindowTitle("Euro Kriss Service");
     CenterForm();
-    m_NewAuto = new NewAuto();
+
+    // Connect all new windows
     QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreMainForm()));
     QObject::connect(m_NewClient, SIGNAL(CloseNewClientForm()), this, SLOT(RestoreMainForm()));
     QObject::connect(m_NewRepair, SIGNAL(CloseNewRepairForm()), this, SLOT(RestoreMainForm()));
     QObject::connect(m_SearchForm, SIGNAL(CloseSearchForm()), this, SLOT(RestoreMainForm()));
 
-    QObject::connect(ui->Button_AddNewAuto, SIGNAL(clicked()), m_NewAuto, SLOT(show()));
+    QObject::connect(ui->Button_AddNewAuto, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
     QObject::connect(ui->Button_AddNewClient, SIGNAL(clicked()), m_NewClient, SLOT(show()));
     QObject::connect(ui->Button_AddNewRepair, SIGNAL(clicked()), m_NewRepair, SLOT(show()));
     QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_SearchForm, SLOT(show()));
+
+    // Clear all new windows on load
+//    QObject::connect(ui->Button_AddNewClient, SIGNAL(clicked()), m_NewClient, SLOT(ClearAllFields()));
+//    QObject::connect(ui->Button_AddNewAuto, SIGNAL(clicked()), m_NewClient, SLOT(ClearAllFields()));
+//    QObject::connect(ui->Button_AddNewRepair, SIGNAL(clicked()), m_NewClient, SLOT(ClearAllFields()));
+//    QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_NewClient, SLOT(ClearAllFields()));
+
+
 
     setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
 

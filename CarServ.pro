@@ -28,19 +28,25 @@ SOURCES += \
         mainwindow.cpp \
     newclient.cpp \
     newauto.cpp \
-    newrepair.cpp \
-    searchform.cpp
+    searchform.cpp \
+    repairwigdetitem.cpp \
+    addrepair.cpp \
+    findauto.cpp
 
 HEADERS += \
         mainwindow.h \
     newclient.h \
     newauto.h \
-    newrepair.h \
-    searchform.h
+    searchform.h \
+    repairwigdetitem.h \
+    addrepair.h \
+    findauto.h
 
 FORMS += \
         mainwindow.ui \
     newclient.ui \
     newauto.ui \
-    newrepair.ui \
-    searchform.ui
+    searchform.ui \
+    addrepair.ui \
+    repairwigdetitem.ui \
+    findauto.ui

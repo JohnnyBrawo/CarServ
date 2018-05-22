@@ -9,6 +9,7 @@ NewAuto::NewAuto(QWidget *parent) :
 {
     ui->setupUi(this);
     CenterForm();
+    setWindowTitle("New Auto");
 }
 
 NewAuto::~NewAuto()
@@ -30,4 +31,21 @@ void NewAuto::on_Button_CancelNewAuto_clicked()
 {
     emit CloseNewAutoForm();
     this->hide();
+}
+
+
+void NewAuto::OpenClearWindow()
+{
+     ClearAllFields();
+     this->show();
+}
+
+void NewAuto::ClearAllFields()
+{
+    ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
+    ui->Combo_NewAuto_Marka->setCurrentIndex(0);
+    ui->Combo_NewAuto_Model->setCurrentIndex(0);
+    ui->Combo_NewAuto_Year->setCurrentIndex(0);
+    ui->LText_NewAutoRegNumber->clear();
+    ui->LText_NewAutoVIN->clear();
 }
