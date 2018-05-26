@@ -274,30 +274,27 @@
     </font>
    </property>
    <property name="text">
-    <string>Въведете Региострационен Номер  :   </string>
+    <string>Изберете Региострационен Номер  :   </string>
    </property>
   </widget>
   <widget class="QCheckBox" name="Check_RandomClient">
    <property name="geometry">
     <rect>
-     <x>536</x>
-     <y>72</y>
-     <width>125</width>
-     <height>24</height>
+     <x>870</x>
+     <y>60</y>
+     <width>81</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
-    <string>Случаен клиент</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>275</x>
-     <y>71</y>
-     <width>125</width>
-     <height>26</height>
-    </rect>
+    <string>Случаен 
+ клиент</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Button_Search">
@@ -313,11 +310,46 @@
     <string>Търси</string>
    </property>
   </widget>
-  <zorder>layoutWidget</zorder>
+  <widget class="QComboBox" name="Combo_RepairAutoRegNumber">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>70</y>
+     <width>151</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="LText_RandomClient">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>70</y>
+     <width>151</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="LText_RandClientName">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>70</y>
+     <width>311</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <zorder>L_CarRegNumber</zorder>
+  <zorder>Check_RandomClient</zorder>
+  <zorder>Button_Search</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>RepairList</zorder>
   <zorder>L_RepairMainLabel</zorder>
   <zorder>horizontalLayoutWidget</zorder>
+  <zorder>Combo_RepairAutoRegNumber</zorder>
+  <zorder>LText_RandomClient</zorder>
+  <zorder>LText_RandClientName</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -2,20 +2,42 @@
 #include "ui_addrepair.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
+#include "qdebug.h"
 
 AddRepair::AddRepair(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddRepair)
 {
     ui->setupUi(this);
+    SetInitialDesign();
     CenterForm();
     InsertRepair();
+    m_bChecked = false;
 }
 
 AddRepair::~AddRepair()
 {
     delete ui;
 
+}
+
+void AddRepair::SetRandomDesign()
+{
+    ui->LText_RandomClient->setVisible(true);
+    ui->LText_RandClientName->setVisible(true);
+    ui->Combo_RepairAutoRegNumber->setVisible(false);
+    ui->L_CarRegNumber->setText("Въведете Региострационен Номер  :   ");
+    ui->Button_Search->setText("Добави");
+}
+
+void AddRepair::SetInitialDesign()
+{
+    ui->Check_RandomClient->setChecked(false);
+    ui->LText_RandomClient->setVisible(false);
+    ui->LText_RandClientName->setVisible(false);
+    ui->Combo_RepairAutoRegNumber->setVisible(true);
+    ui->L_CarRegNumber->setText("Изберете Региострационен Номер  :   ");
+    ui->Button_Search->setText("Търси");
 }
 
 void AddRepair::CenterForm()
@@ -64,4 +86,24 @@ void AddRepair::on_Button_DeleteRepair_clicked()
 void AddRepair::on_Button_RecordRepairs_clicked()
 {
 
+}
+
+void AddRepair::on_Check_RandomClient_clicked(bool checked)
+{
+    m_bChecked = checked;
+    if(!checked)
+    {
+        SetInitialDesign();
+    }else
+    {
+        SetRandomDesign();
+    }
+}
+
+void AddRepair::on_Button_Search_clicked()
+{
+    if (m_bChecked)
+    {
+        qDebug() << " Добавяме колата в базата на колите";
+    }
 }

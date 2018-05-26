@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>817</width>
-    <height>560</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,8 +19,12 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="statusTip">
+   <string/>
+  </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/images/Images/asdasd.jpg);</string>
+   <string notr="true">font: 75 italic 14pt &quot;DejaVu Serif&quot;;
+background-image: url(:/images/Images/ideas.jpg);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="layoutWidget">
@@ -61,13 +65,18 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <family>Noto Sans</family>
+         <pointsize>14</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-top-color: rgb(69, 37, 255);</string>
+        <string notr="true">border-top-color: rgb(69, 37, 255);
+font: 75 italic 14pt &quot;Noto Sans&quot;;
+color: rgb(255, 255, 255);
+background-image: url(:/images/Images/MainButton_image.jpg);</string>
        </property>
        <property name="text">
         <string>Добравяне на 
@@ -85,14 +94,18 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <family>Noto Sans</family>
+         <pointsize>14</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-top-color: rgb(107, 255, 223);
-background-color: rgb(255, 82, 39);</string>
+        <string notr="true">border-top-color: rgb(69, 37, 255);
+font: 75 italic 14pt &quot;Noto Sans&quot;;
+color: rgb(255, 255, 255);
+background-image: url(:/images/Images/MainButton_image.jpg);</string>
        </property>
        <property name="text">
         <string>Добравяне на 
@@ -110,10 +123,18 @@ background-color: rgb(255, 82, 39);</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <family>Noto Sans</family>
+         <pointsize>14</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-top-color: rgb(69, 37, 255);
+font: 75 italic 14pt &quot;Noto Sans&quot;;
+color: rgb(255, 255, 255);
+background-image: url(:/images/Images/MainButton_image.jpg);</string>
        </property>
        <property name="text">
         <string>Добравяне на 
@@ -131,17 +152,18 @@ background-color: rgb(255, 82, 39);</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <family>Noto Sans</family>
+         <pointsize>14</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 29, 29);
-background-image: url(:/images/Images/aasss.jpg);
-gridline-color: rgb(255, 255, 92);
-color: rgb(255, 19, 11);
-background-color: rgb(255, 255, 255);</string>
+        <string notr="true">border-top-color: rgb(69, 37, 255);
+font: 75 italic 14pt &quot;Noto Sans&quot;;
+color: rgb(255, 255, 255);
+background-image: url(:/images/Images/MainButton_image.jpg);</string>
        </property>
        <property name="text">
         <string>Търсене</string>
@@ -156,8 +178,8 @@ background-color: rgb(255, 255, 255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>817</width>
-     <height>23</height>
+     <width>800</width>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

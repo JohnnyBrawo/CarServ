@@ -17,6 +17,14 @@ class AddRepair : public QWidget
 {
     Q_OBJECT
 
+private:
+    Ui::AddRepair *ui;
+    void CenterForm();
+    void InsertRepair();
+    void SetInitialDesign();
+    void SetRandomDesign();
+    bool m_bChecked;
+
 public:
     explicit AddRepair(QWidget *parent = 0);
     ~AddRepair();
@@ -28,17 +36,12 @@ signals:
 
 private slots:
     void on_Button_ExitRepair_clicked();
-
     void on_Button_InsertRepair_clicked();
-
     void on_Button_DeleteRepair_clicked();
-
     void on_Button_RecordRepairs_clicked();
+    void on_Check_RandomClient_clicked(bool checked);
 
-private:
-    Ui::AddRepair *ui;
-    void CenterForm();
-    void InsertRepair();
+    void on_Button_Search_clicked();
 };
 
 #endif // ADDREPAIR_H

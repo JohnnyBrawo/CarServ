@@ -50,3 +50,6 @@ FORMS += \
     addrepair.ui \
     repairwigdetitem.ui \
     findauto.ui
+
+RESOURCES += \
+    resources.qrc

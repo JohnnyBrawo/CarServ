@@ -9,14 +9,24 @@ class FindAuto;
 
 class FindAuto : public QDialog
 {
-    Q_OBJECT
+    Q_OBJECT    
+
+private:
+    Ui::FindAuto *ui;
+    void CenterForm();
 
 public:
     explicit FindAuto(QWidget *parent = 0);
     ~FindAuto();
 
-private:
-    Ui::FindAuto *ui;
+private slots:
+    void on_Button_FindAutoDone_clicked();
+
+    void on_Button_FindAutoCancel_clicked();
+
+signals:
+    void CloseAddAutoForm();
+
 };
 
 #endif // FINDAUTO_H
