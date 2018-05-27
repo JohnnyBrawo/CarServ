@@ -64,9 +64,9 @@ void NewAuto::on_Button_AddNewAuto_clicked()
 
     QSqlQuery AddNewAuto(Auto);
     AddNewAuto.prepare("INSERT INTO Automobiles_Table(AutoYear, AutoFuel, Auto_RegNumber) VALUES(:AutoYear, :AutoFuel, :Auto_RegNumber)");
-    AddNewAuto.bindValue(":AutoYear","aaaaaaaa");
-    AddNewAuto.bindValue(":AutoFuel","aaaaaaaa");
-    AddNewAuto.bindValue(":Auto_RegNumber","aaaaaaaa");
+    AddNewAuto.bindValue(":AutoYear",ui->Combo_NewAuto_Year->currentText());
+    AddNewAuto.bindValue(":AutoFuel",ui->Combo_NewAuto_Fuel->currentText());
+    AddNewAuto.bindValue(":Auto_RegNumber",ui->LText_NewAutoRegNumber->text());
 
     qDebug() << AddNewAuto.exec() << endl;
     Auto.close();

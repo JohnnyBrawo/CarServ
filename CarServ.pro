@@ -31,7 +31,8 @@ SOURCES += \
     searchform.cpp \
     repairwigdetitem.cpp \
     addrepair.cpp \
-    findauto.cpp
+    findauto.cpp \
+    carsform.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,16 +41,18 @@ HEADERS += \
     searchform.h \
     repairwigdetitem.h \
     addrepair.h \
-    findauto.h
+    findauto.h \
+    carsform.h
 
 FORMS += \
         mainwindow.ui \
     newclient.ui \
-    newauto.ui \
     searchform.ui \
     addrepair.ui \
     repairwigdetitem.ui \
-    findauto.ui
+    findauto.ui \
+    newauto.ui \
+    carsform.ui
 
 RESOURCES += \
     resources.qrc

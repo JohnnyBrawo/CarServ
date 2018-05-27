@@ -79,8 +79,7 @@ color: rgb(255, 255, 255);
 background-image: url(:/images/Images/MainButton_image.jpg);</string>
        </property>
        <property name="text">
-        <string>Добравяне на 
- ремонт</string>
+        <string>Ремонти</string>
        </property>
       </widget>
      </item>
@@ -108,8 +107,7 @@ color: rgb(255, 255, 255);
 background-image: url(:/images/Images/MainButton_image.jpg);</string>
        </property>
        <property name="text">
-        <string>Добравяне на 
- нов клиент</string>
+        <string>Клиенти</string>
        </property>
       </widget>
      </item>
@@ -137,8 +135,7 @@ color: rgb(255, 255, 255);
 background-image: url(:/images/Images/MainButton_image.jpg);</string>
        </property>
        <property name="text">
-        <string>Добравяне на 
- автомобил</string>
+        <string>Автомобили</string>
        </property>
       </widget>
      </item>
