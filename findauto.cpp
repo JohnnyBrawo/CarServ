@@ -3,6 +3,8 @@
 #include "qapplication.h"
 #include "qdesktopwidget.h"
 
+// Must have Automobile database here
+
 FindAuto::FindAuto(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::FindAuto)
@@ -38,3 +40,12 @@ void FindAuto::CenterForm()
     QPoint center = desktopRect.center();
     move(center.x()-width()*0.5, center.y()-height()*0.5);
 }
+
+
+void FindAuto::OpenClearWindow()
+{
+    ui->Text_AutoInformation->clear();
+    ui->Combo_FindAutoRegNumber->setCurrentIndex(0);
+    this->show();
+}
+

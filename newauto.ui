@@ -22,6 +22,12 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
     <string>Добавяне</string>
    </property>
@@ -34,6 +40,12 @@
      <width>101</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Назад</string>
@@ -65,9 +77,9 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>120</y>
-     <width>391</width>
+     <x>20</x>
+     <y>90</y>
+     <width>461</width>
      <height>402</height>
     </rect>
    </property>

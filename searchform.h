@@ -11,19 +11,22 @@ class SearchForm : public QDialog
 {
     Q_OBJECT
 
-public:
-    explicit SearchForm(QWidget *parent = 0);
-    ~SearchForm();
-
-private slots:
-    void on_Button_Search_Back_clicked();
-
 private:
     Ui::SearchForm *ui;
     void CenterForm();
 
+public:
+    explicit SearchForm(QWidget *parent = 0);
+    ~SearchForm();
+
 signals:
     void CloseSearchForm();
+
+private slots:
+    void on_Button_Search_Back_clicked();
+    void OpenClearWindow();
+
+
 };
 
 #endif // SEARCHFORM_H

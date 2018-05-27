@@ -19,13 +19,14 @@ public:
     explicit FindAuto(QWidget *parent = 0);
     ~FindAuto();
 
-private slots:
-    void on_Button_FindAutoDone_clicked();
-
-    void on_Button_FindAutoCancel_clicked();
-
 signals:
     void CloseAddAutoForm();
+
+private slots:
+    void on_Button_FindAutoDone_clicked();
+    void on_Button_FindAutoCancel_clicked();
+    void OpenClearWindow();
+
 
 };
 

@@ -16,10 +16,10 @@ NewRepairItem::~NewRepairItem()
 
 void NewRepairItem::ResetAllFields()
 {
-    ui->LText_RepairDescr->setText("Въведете текст");
-    ui->LText_Quantity->setText("Въведете текст");
-    ui->LText_SinglePrice->setText("Въведете текст");
-    ui->LText_TotalValue->setText("Въведете текст");
+    ui->LText_RepairDescr->setText("");
+    ui->LText_Quantity->setText("");
+    ui->LText_SinglePrice->setText("");
+    ui->LText_TotalValue->setText("");
 }
 
 void NewRepairItem::on_Button_ClearFields_clicked()

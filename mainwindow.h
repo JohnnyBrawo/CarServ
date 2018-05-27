@@ -15,6 +15,13 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+private:
+    Ui::MainWindow *ui;
+    NewClient   *m_NewClient;
+    AddRepair   *m_NewRepair;
+    NewAuto     *m_NewAuto;
+    SearchForm  *m_SearchForm;
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -28,12 +35,6 @@ private slots:
     void RestoreMainForm();
     void CenterForm();
 
-private:
-    Ui::MainWindow *ui;
-    NewClient   *m_NewClient;
-    AddRepair   *m_NewRepair;
-    NewAuto     *m_NewAuto;
-    SearchForm  *m_SearchForm;
 };
 
 #endif // MAINWINDOW_H

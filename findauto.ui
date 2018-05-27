@@ -110,11 +110,18 @@
   <widget class="QLabel" name="L_FindExistingAuto_Info">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>70</y>
-     <width>211</width>
+     <x>190</x>
+     <y>80</y>
+     <width>261</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Информация за автомобила</string>

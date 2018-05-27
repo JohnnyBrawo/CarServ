@@ -24,9 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_SearchForm, SIGNAL(CloseSearchForm()), this, SLOT(RestoreMainForm()));
 
     QObject::connect(ui->Button_AddNewAuto, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
-    QObject::connect(ui->Button_AddNewClient, SIGNAL(clicked()), m_NewClient, SLOT(show()));
-    QObject::connect(ui->Button_AddNewRepair, SIGNAL(clicked()), m_NewRepair, SLOT(show()));
-    QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_SearchForm, SLOT(show()));
+    QObject::connect(ui->Button_AddNewClient, SIGNAL(clicked()), m_NewClient, SLOT(OpenClearWindow()));
+    QObject::connect(ui->Button_AddNewRepair, SIGNAL(clicked()), m_NewRepair, SLOT(OpenClearWindow()));
+    QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_SearchForm, SLOT(OpenClearWindow()));
 
     // Clear all new windows on load
 //    QObject::connect(ui->Button_AddNewClient, SIGNAL(clicked()), m_NewClient, SLOT(ClearAllFields()));

@@ -2,6 +2,7 @@
 #include "ui_newclient.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
+#include "newauto.h"
 
 NewClient::NewClient(QWidget *parent) :
     QDialog(parent),
@@ -12,7 +13,13 @@ NewClient::NewClient(QWidget *parent) :
     setWindowTitle("New Client");
     CenterForm();
     QObject::connect(m_FindAuto, SIGNAL(CloseAddAutoForm()), this, SLOT(RestoreForm()));
-    QObject::connect(ui->Button_AddClientAuto, SIGNAL(clicked()), m_FindAuto, SLOT(show()));
+    QObject::connect(ui->Button_AddClientAuto, SIGNAL(clicked()), m_FindAuto, SLOT(OpenClearWindow()));
+    if(ui->LText_ClientName->text().isEmpty())
+    {
+        ui->Button_AddClientAuto->setEnabled(false);
+    }
+
+
 }
 
 NewClient::~NewClient()
@@ -28,6 +35,14 @@ void NewClient::ClearAllFields()
     ui->LText_ClientFirm->clear();
     ui->LText_ClientName->clear();
     ui->Text_KlientAddress->clear();
+}
+
+
+
+void NewClient::OpenClearWindow()
+{
+     ClearAllFields();
+     this->show();
 }
 
 
@@ -55,4 +70,12 @@ void NewClient::on_Button_CancelAdd_clicked()
 void NewClient::on_Button_AddClientAuto_clicked()
 {
     hide();
+}
+
+void NewClient::on_Button_AddClientAutoNew_clicked()
+{
+    NewAuto ClientNewAuto;
+    ClientNewAuto.setModal(true);
+    ClientNewAuto.exec();
+
 }

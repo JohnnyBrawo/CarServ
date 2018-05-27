@@ -9,6 +9,7 @@ AddRepair::AddRepair(QWidget *parent) :
     ui(new Ui::AddRepair)
 {
     ui->setupUi(this);
+    setWindowTitle("Repair Dictionary");
     SetInitialDesign();
     CenterForm();
     InsertRepair();
@@ -26,6 +27,7 @@ void AddRepair::SetRandomDesign()
     ui->LText_RandomClient->setVisible(true);
     ui->LText_RandClientName->setVisible(true);
     ui->Combo_RepairAutoRegNumber->setVisible(false);
+    ui->L_RandClientName->setVisible(true);
     ui->L_CarRegNumber->setText("Въведете Региострационен Номер  :   ");
     ui->Button_Search->setText("Добави");
 }
@@ -37,7 +39,8 @@ void AddRepair::SetInitialDesign()
     ui->LText_RandClientName->setVisible(false);
     ui->Combo_RepairAutoRegNumber->setVisible(true);
     ui->L_CarRegNumber->setText("Изберете Региострационен Номер  :   ");
-    ui->Button_Search->setText("Търси");
+    ui->L_RandClientName->setVisible(false);
+    ui->Button_Search->setText("Въведи");
 }
 
 void AddRepair::CenterForm()
@@ -85,8 +88,24 @@ void AddRepair::on_Button_DeleteRepair_clicked()
 
 void AddRepair::on_Button_RecordRepairs_clicked()
 {
+    int count = ui->RepairList->count();
+    // Record to DATABASE
+    // Then clear all fields
+    for(int i=0; i< count; i++)
+    {
+        delete ui->RepairList->item(0);
+    }
 
+    // Return to MainForm
+    on_Button_ExitRepair_clicked();
 }
+
+void AddRepair::OpenClearWindow()
+{
+    SetInitialDesign();
+    this->show();
+}
+
 
 void AddRepair::on_Check_RandomClient_clicked(bool checked)
 {

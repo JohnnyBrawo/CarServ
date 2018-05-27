@@ -40,8 +40,8 @@ private slots:
     void on_Button_DeleteRepair_clicked();
     void on_Button_RecordRepairs_clicked();
     void on_Check_RandomClient_clicked(bool checked);
-
     void on_Button_Search_clicked();
+    void OpenClearWindow();
 };
 
 #endif // ADDREPAIR_H

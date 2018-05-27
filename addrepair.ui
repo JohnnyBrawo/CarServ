@@ -149,7 +149,7 @@
      <x>0</x>
      <y>0</y>
      <width>951</width>
-     <height>61</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -262,7 +262,7 @@
    <property name="geometry">
     <rect>
      <x>12</x>
-     <y>71</y>
+     <y>91</y>
      <width>257</width>
      <height>18</height>
     </rect>
@@ -281,7 +281,7 @@
    <property name="geometry">
     <rect>
      <x>870</x>
-     <y>60</y>
+     <y>80</y>
      <width>81</width>
      <height>41</height>
     </rect>
@@ -301,7 +301,7 @@
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>71</y>
+     <y>91</y>
      <width>80</width>
      <height>26</height>
     </rect>
@@ -314,7 +314,7 @@
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>70</y>
+     <y>90</y>
      <width>151</width>
      <height>26</height>
     </rect>
@@ -324,7 +324,7 @@
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>70</y>
+     <y>90</y>
      <width>151</width>
      <height>26</height>
     </rect>
@@ -334,10 +334,32 @@
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>70</y>
+     <y>90</y>
      <width>311</width>
      <height>26</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_RandClientName">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>60</y>
+     <width>161</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Име на клиента</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <zorder>L_CarRegNumber</zorder>
@@ -350,6 +372,7 @@
   <zorder>Combo_RepairAutoRegNumber</zorder>
   <zorder>LText_RandomClient</zorder>
   <zorder>LText_RandClientName</zorder>
+  <zorder>L_RandClientName</zorder>
  </widget>
  <resources/>
  <connections/>

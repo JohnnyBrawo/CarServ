@@ -2,6 +2,9 @@
 #include "ui_newauto.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
+#include <qdebug.h>
+
+// Must have Automobile database here
 
 NewAuto::NewAuto(QWidget *parent) :
     QDialog(parent),
@@ -29,6 +32,14 @@ void NewAuto::CenterForm()
 
 void NewAuto::on_Button_CancelNewAuto_clicked()
 {
+    QSqlDatabase Auto =  QSqlDatabase::addDatabase("QSQLITE");
+    Auto.setDatabaseName("/home/default/Gosheto/CarServ/DataBase/Automobiles.sqlite");
+    if(Auto.open())
+    {
+        qDebug() << " Data is open";
+    }
+    Auto.close();
+
     emit CloseNewAutoForm();
     this->hide();
 }
