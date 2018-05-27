@@ -23,6 +23,7 @@ private:
     void InsertRepair();
     void SetInitialDesign();
     void SetRandomDesign();
+    void ClearAllinputs();
     bool m_bChecked;
 
 public:

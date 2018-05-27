@@ -27,6 +27,7 @@ private slots:
     void on_Button_CancelNewAuto_clicked();
     void CenterForm();
     void OpenClearWindow();
+    void on_Button_AddNewAuto_clicked();
 };
 
 #endif // NEWAUTO_H

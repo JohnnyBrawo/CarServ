@@ -3,6 +3,7 @@
 #include "qapplication.h"
 #include "qdesktopwidget.h"
 #include "QDate"
+#include "QDateTime"
 
 SearchForm::SearchForm(QWidget *parent) :
     QDialog(parent),
@@ -23,8 +24,13 @@ void SearchForm::OpenClearWindow()
     ui->Combo_SearchAuto->setCurrentIndex(0);
     ui->Combo_Search_Klient->setCurrentIndex(0);
     ui->Combo_Search_RegNumber->setCurrentIndex(0);
-    QDate date = getContentsMargins();
-    ui->Calendar_Search->set
+
+
+    QDate CurrentDate= QDate::currentDate();
+
+    ui->LText_SearchFROMdate->setText(CurrentDate.toString("dd.MM.yyyy"));
+    ui->LText_SearchTOdate->setText(CurrentDate.toString("dd.MM.yyyy"));
+
     this->show();
 }
 
@@ -41,4 +47,9 @@ void SearchForm::on_Button_Search_Back_clicked()
 {
     emit CloseSearchForm();
     hide();
+}
+
+void SearchForm::on_pushButton_clicked()
+{
+
 }

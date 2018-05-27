@@ -10,9 +10,7 @@ AddRepair::AddRepair(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Repair Dictionary");
-    SetInitialDesign();
     CenterForm();
-    InsertRepair();
     m_bChecked = false;
 }
 
@@ -54,6 +52,8 @@ void AddRepair::CenterForm()
 void AddRepair::on_Button_ExitRepair_clicked()
 {
     emit CloseNewRepairForm();
+    ClearAllinputs();
+    SetInitialDesign();
     this->hide();
 }
 
@@ -86,16 +86,23 @@ void AddRepair::on_Button_DeleteRepair_clicked()
        delete ui->RepairList->currentItem ();
 }
 
-void AddRepair::on_Button_RecordRepairs_clicked()
+void AddRepair::ClearAllinputs()
 {
     int count = ui->RepairList->count();
-    // Record to DATABASE
+
     // Then clear all fields
     for(int i=0; i< count; i++)
     {
         delete ui->RepairList->item(0);
     }
 
+}
+
+void AddRepair::on_Button_RecordRepairs_clicked()
+{
+    // Record to DATABASE
+    //..........
+    ClearAllinputs();
     // Return to MainForm
     on_Button_ExitRepair_clicked();
 }
@@ -103,6 +110,7 @@ void AddRepair::on_Button_RecordRepairs_clicked()
 void AddRepair::OpenClearWindow()
 {
     SetInitialDesign();
+    InsertRepair();
     this->show();
 }
 

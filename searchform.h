@@ -27,6 +27,7 @@ private slots:
     void OpenClearWindow();
 
 
+    void on_pushButton_clicked();
 };
 
 #endif // SEARCHFORM_H

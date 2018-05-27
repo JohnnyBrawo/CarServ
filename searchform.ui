@@ -41,7 +41,7 @@
   <widget class="QLabel" name="L_search_Data">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>490</x>
      <y>80</y>
      <width>70</width>
      <height>38</height>
@@ -65,7 +65,7 @@
   <widget class="QPushButton" name="Button_StartSearch">
    <property name="geometry">
     <rect>
-     <x>650</x>
+     <x>700</x>
      <y>80</y>
      <width>111</width>
      <height>61</height>
@@ -80,20 +80,10 @@
     <string>Търсене</string>
    </property>
   </widget>
-  <widget class="QCalendarWidget" name="Calendar_Search">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>130</y>
-     <width>248</width>
-     <height>183</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPushButton" name="Button_Search_Back">
    <property name="geometry">
     <rect>
-     <x>650</x>
+     <x>710</x>
      <y>290</y>
      <width>111</width>
      <height>51</height>
@@ -110,7 +100,7 @@
     <string>Назад</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>9</x>
@@ -202,6 +192,52 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>150</y>
+     <width>80</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>От дата</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>150</y>
+     <width>80</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>До дата</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="LText_SearchFROMdate">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>190</y>
+     <width>131</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="LText_SearchTOdate">
+   <property name="geometry">
+    <rect>
+     <x>532</x>
+     <y>190</y>
+     <width>131</width>
+     <height>26</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>
