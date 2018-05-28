@@ -50,6 +50,7 @@ void NewAuto::ClearAllFields()
     ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
     ui->Combo_NewAuto_Marka->setCurrentIndex(0);
     ui->Combo_NewAuto_Model->setCurrentIndex(0);
+    ui->Combo_NewAuto_Model->setEnabled(false);
     ui->Combo_NewAuto_Year->setCurrentIndex(0);
     ui->LText_NewAutoRegNumber->clear();
     ui->LText_NewAutoVIN->clear();
@@ -62,10 +63,15 @@ void NewAuto::on_Button_AddNewAuto_clicked()
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQuery AddNewAuto(MyData.CarsDB);
-    AddNewAuto.prepare("INSERT INTO Automobiles_Table(AutoYear, AutoFuel, Auto_RegNumber) VALUES(:AutoYear, :AutoFuel, :Auto_RegNumber)");
+    AddNewAuto.prepare("INSERT INTO Automobiles_Table(AutoMarka, AutoModel, AutoYear, AutoFuel, Auto_RegNumber, AutoVIN) "
+                       "VALUES(:AutoMarka, :AutoModel, :AutoYear, :AutoFuel, :Auto_RegNumber, :AutoVIN)");
+
+    AddNewAuto.bindValue(":AutoMarka",ui->Combo_NewAuto_Marka->currentText());
+    AddNewAuto.bindValue(":AutoModel",ui->Combo_NewAuto_Model->currentText());
     AddNewAuto.bindValue(":AutoYear",ui->Combo_NewAuto_Year->currentText());
     AddNewAuto.bindValue(":AutoFuel",ui->Combo_NewAuto_Fuel->currentText());
     AddNewAuto.bindValue(":Auto_RegNumber",ui->LText_NewAutoRegNumber->text());
+    AddNewAuto.bindValue(":Auto_VIN",ui->LText_NewAutoVIN->text());
 
     qDebug() << AddNewAuto.exec() << endl;
     MyData.CloseConnection();
@@ -113,4 +119,15 @@ void NewAuto::FillComboModeli()
 
     MyData.CloseConnection();
 
+}
+
+void NewAuto::on_Combo_NewAuto_Marka_currentIndexChanged(int index)
+{
+    qDebug() << "Selected index is " << index << endl;
+}
+
+void NewAuto::on_Combo_NewAuto_Marka_currentIndexChanged(const QString &arg1)
+{
+    qDebug() << "Selected String index is " << arg1 << endl;
+    qDebug() << "Selected String index is " << arg1.size() << endl;
 }

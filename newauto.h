@@ -31,6 +31,8 @@ private slots:
     void CenterForm();
     void OpenClearWindow();
     void on_Button_AddNewAuto_clicked();
+    void on_Combo_NewAuto_Marka_currentIndexChanged(int index);
+    void on_Combo_NewAuto_Marka_currentIndexChanged(const QString &arg1);
 };
 
 #endif // NEWAUTO_H
