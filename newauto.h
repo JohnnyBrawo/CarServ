@@ -2,7 +2,7 @@
 #define NEWAUTO_H
 
 #include <QDialog>
-#include <QtSql>
+
 
 namespace Ui {
 class NewAuto;
@@ -19,6 +19,9 @@ public:
 
 private:
     Ui::NewAuto *ui;
+    void FillCombos();
+    void FillComboMarki();
+    void FillComboModeli();
 
 signals:
     void CloseNewAutoForm();

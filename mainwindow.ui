@@ -41,24 +41,27 @@ background-image: url(:/images/Images/ideas.jpg);</string>
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <property name="leftMargin">
-      <number>20</number>
+      <number>5</number>
      </property>
      <property name="topMargin">
-      <number>20</number>
+      <number>5</number>
      </property>
      <property name="rightMargin">
-      <number>20</number>
+      <number>5</number>
      </property>
      <property name="bottomMargin">
-      <number>20</number>
+      <number>5</number>
      </property>
-     <property name="spacing">
-      <number>20</number>
+     <property name="horizontalSpacing">
+      <number>5</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>0</number>
      </property>
      <item row="1" column="0">
       <widget class="QPushButton" name="Button_AddNewRepair">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -86,7 +89,7 @@ background-image: url(:/images/Images/MainButton_image.jpg);</string>
      <item row="0" column="1">
       <widget class="QPushButton" name="Button_AddNewClient">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -114,7 +117,7 @@ background-image: url(:/images/Images/MainButton_image.jpg);</string>
      <item row="1" column="1">
       <widget class="QPushButton" name="Button_AddNewAuto">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -142,7 +145,7 @@ background-image: url(:/images/Images/MainButton_image.jpg);</string>
      <item row="0" column="0">
       <widget class="QPushButton" name="Button_Search">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>

@@ -3,6 +3,7 @@
 #include "qapplication.h"
 #include "qdesktopwidget.h"
 #include <qdebug.h>
+#include "carsdatabase.h"
 
 // Must have Automobile database here
 
@@ -40,6 +41,7 @@ void NewAuto::on_Button_CancelNewAuto_clicked()
 void NewAuto::OpenClearWindow()
 {
      ClearAllFields();
+     FillCombos();
      this->show();
 }
 
@@ -55,20 +57,60 @@ void NewAuto::ClearAllFields()
 
 void NewAuto::on_Button_AddNewAuto_clicked()
 {
-    QSqlDatabase Auto =  QSqlDatabase::addDatabase("QSQLITE");
-    Auto.setDatabaseName("/home/default/Gosheto/CarServ/DataBase/Automobiles.sqlite");
-    if(Auto.open())
-    {
-        qDebug() << " Data is open";
-    }
 
-    QSqlQuery AddNewAuto(Auto);
+    CarsDatabase MyData;
+    MyData.OpenConnection("Automobiles.sqlite");
+
+    QSqlQuery AddNewAuto(MyData.CarsDB);
     AddNewAuto.prepare("INSERT INTO Automobiles_Table(AutoYear, AutoFuel, Auto_RegNumber) VALUES(:AutoYear, :AutoFuel, :Auto_RegNumber)");
     AddNewAuto.bindValue(":AutoYear",ui->Combo_NewAuto_Year->currentText());
     AddNewAuto.bindValue(":AutoFuel",ui->Combo_NewAuto_Fuel->currentText());
     AddNewAuto.bindValue(":Auto_RegNumber",ui->LText_NewAutoRegNumber->text());
 
     qDebug() << AddNewAuto.exec() << endl;
-    Auto.close();
-    //Auto.removeDatabase(QSqlDatabase::defaultConnection);
+    MyData.CloseConnection();
+}
+
+
+void NewAuto::FillCombos()
+{
+    FillComboMarki();
+    FillComboModeli();
+}
+
+
+void NewAuto::FillComboMarki()
+{
+    CarsDatabase MyData;
+    MyData.OpenConnection("Marki.sqlite");
+
+    QSqlQueryModel * MyModel = new QSqlQueryModel();
+
+    QSqlQuery ShowMakriQry(MyData.CarsDB);
+    ShowMakriQry.prepare("SELECT Marki FROM AutoMarki_Table");
+
+    qDebug() << ShowMakriQry.exec() << endl;
+    MyModel->setQuery(ShowMakriQry);
+    ui->Combo_NewAuto_Marka->setModel(MyModel);
+
+    MyData.CloseConnection();
+
+}
+
+void NewAuto::FillComboModeli()
+{
+    CarsDatabase MyData;
+    MyData.OpenConnection("All_Models.sqlite");
+
+    QSqlQueryModel * MyModel = new QSqlQueryModel();
+
+    QSqlQuery ShowMakriQry(MyData.CarsDB);
+    ShowMakriQry.prepare("SELECT Model_Name FROM All_Models_Table");
+
+    qDebug() << ShowMakriQry.exec() << endl;
+    MyModel->setQuery(ShowMakriQry);
+    ui->Combo_NewAuto_Model->setModel(MyModel);
+
+    MyData.CloseConnection();
+
 }

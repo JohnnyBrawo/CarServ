@@ -32,7 +32,8 @@ SOURCES += \
     repairwigdetitem.cpp \
     addrepair.cpp \
     findauto.cpp \
-    carsform.cpp
+    carsform.cpp \
+    carsdatabase.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,7 +43,8 @@ HEADERS += \
     repairwigdetitem.h \
     addrepair.h \
     findauto.h \
-    carsform.h
+    carsform.h \
+    carsdatabase.h
 
 FORMS += \
         mainwindow.ui \
