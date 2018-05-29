@@ -11,6 +11,15 @@ class NewAuto;
 class NewAuto : public QDialog
 {
     Q_OBJECT
+enum NewAutoFields
+    {
+        eModel,
+        eYear,
+        eFuel,
+        eRegNumber,
+        eAutoVin,
+        eFieldsNum
+    };
 
 public:
     explicit NewAuto(QWidget *parent = 0);
@@ -22,6 +31,9 @@ private:
     void FillCombos();
     void FillComboMarki();
     void FillComboModeli();
+    bool CheckSelected(QString SelectedString);
+    void ActivateField(NewAuto::NewAutoFields Field);
+    void DeActivateField(NewAuto::NewAutoFields Field);
 
 signals:
     void CloseNewAutoForm();
@@ -31,8 +43,8 @@ private slots:
     void CenterForm();
     void OpenClearWindow();
     void on_Button_AddNewAuto_clicked();
-    void on_Combo_NewAuto_Marka_currentIndexChanged(int index);
-    void on_Combo_NewAuto_Marka_currentIndexChanged(const QString &arg1);
+    void on_Combo_NewAuto_Marka_currentIndexChanged();
+    void on_Combo_NewAuto_Model_activated();
 };
 
 #endif // NEWAUTO_H

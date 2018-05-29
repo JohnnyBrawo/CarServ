@@ -40,20 +40,31 @@ void NewAuto::on_Button_CancelNewAuto_clicked()
 
 void NewAuto::OpenClearWindow()
 {
-     ClearAllFields();
      FillCombos();
+     ClearAllFields();
      this->show();
 }
 
 void NewAuto::ClearAllFields()
 {
-    ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
+    //  Disable all fields except Auto Model.
+    //  Enable fields one after other
     ui->Combo_NewAuto_Marka->setCurrentIndex(0);
+
     ui->Combo_NewAuto_Model->setCurrentIndex(0);
     ui->Combo_NewAuto_Model->setEnabled(false);
+
     ui->Combo_NewAuto_Year->setCurrentIndex(0);
+    ui->Combo_NewAuto_Year->setEnabled(false);
+
+    ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
+    ui->Combo_NewAuto_Fuel->setEnabled(false);
+
     ui->LText_NewAutoRegNumber->clear();
+    ui->LText_NewAutoRegNumber->setEnabled(false);
+
     ui->LText_NewAutoVIN->clear();
+    ui->LText_NewAutoVIN->setEnabled(false);
 }
 
 void NewAuto::on_Button_AddNewAuto_clicked()
@@ -81,7 +92,7 @@ void NewAuto::on_Button_AddNewAuto_clicked()
 void NewAuto::FillCombos()
 {
     FillComboMarki();
-    FillComboModeli();
+//    FillComboModeli();
 }
 
 
@@ -103,6 +114,134 @@ void NewAuto::FillComboMarki()
 
 }
 
+bool NewAuto::CheckSelected(QString SelectedString)
+{
+    if(( (int)SelectedString.size() < 2 ) || (SelectedString == "Select"))
+    {
+        qDebug() << "Back to Select  " << SelectedString << endl;
+        return false;
+    }
+    else
+    {
+         qDebug() << "Selected String  " << SelectedString << endl;
+        return true;
+    }
+}
+
+
+void NewAuto::DeActivateField(NewAuto::NewAutoFields Field)
+{
+    switch (Field)
+    {
+    case NewAuto::eModel :
+    {
+        qDebug() << "DeActivate All Field below MODEL ";
+
+        ui->Combo_NewAuto_Model->setCurrentIndex(0);
+        ui->Combo_NewAuto_Model->setEnabled(false);
+
+        ui->Combo_NewAuto_Year->setCurrentIndex(0);
+        ui->Combo_NewAuto_Year->setEnabled(false);
+
+        ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
+        ui->Combo_NewAuto_Fuel->setEnabled(false);
+
+        ui->LText_NewAutoRegNumber->clear();
+        ui->LText_NewAutoRegNumber->setEnabled(false);
+
+        ui->LText_NewAutoVIN->clear();
+        ui->LText_NewAutoVIN->setEnabled(false);
+        break;
+    }
+    case NewAuto::eYear :
+    {
+        qDebug() << "DeActivate Field YEAR ";
+
+        ui->Combo_NewAuto_Year->setCurrentIndex(0);
+        ui->Combo_NewAuto_Year->setEnabled(false);
+
+        ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
+        ui->Combo_NewAuto_Fuel->setEnabled(false);
+
+        ui->LText_NewAutoRegNumber->clear();
+        ui->LText_NewAutoRegNumber->setEnabled(false);
+
+        ui->LText_NewAutoVIN->clear();
+        ui->LText_NewAutoVIN->setEnabled(false);
+        break;
+    }
+    case NewAuto::eFuel :
+    {
+        qDebug() << "DeActivate Field FUEL ";
+
+        ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
+        ui->Combo_NewAuto_Fuel->setEnabled(false);
+
+        break;
+    }
+    case NewAuto::eRegNumber :
+    {
+        qDebug() << "DeActivate Field REG_NUMBER ";
+        break;
+    }
+    case NewAuto::eAutoVin :
+    {
+        qDebug() << "DeActivate Field VIN ";
+
+        break;
+    }
+    default:
+        qDebug() << "DeActivate UnknownField";
+        break;
+    }
+}
+
+
+void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
+{
+    switch (Field)
+    {
+    case NewAuto::eModel :
+    {
+        qDebug() << "Activate Field MODEL ";
+        ui->Combo_NewAuto_Model->setCurrentIndex(0);
+        ui->Combo_NewAuto_Model->setEnabled(true);
+        break;
+    }
+    case NewAuto::eYear :
+    {
+        qDebug() << "Activate Field YEAR ";
+        ui->Combo_NewAuto_Year->setCurrentIndex(0);
+        ui->Combo_NewAuto_Year->setEnabled(true);
+        break;
+    }
+    case NewAuto::eFuel :
+    {
+        qDebug() << "Activate Field FUEL ";
+        ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
+        ui->Combo_NewAuto_Fuel->setEnabled(true);
+
+        ui->LText_NewAutoRegNumber->clear();
+        ui->LText_NewAutoRegNumber->setEnabled(true);
+
+        ui->LText_NewAutoVIN->clear();
+        ui->LText_NewAutoVIN->setEnabled(true);
+
+        break;
+    }
+    case NewAuto::eRegNumber :
+    case NewAuto::eAutoVin :
+    {
+        qDebug() << "Activate Field REG_NUMBER and VIN";
+        break;
+    }
+
+    default:
+        qDebug() << "Activate UnknownField";
+        break;
+    }
+}
+
 void NewAuto::FillComboModeli()
 {
     CarsDatabase MyData;
@@ -121,13 +260,23 @@ void NewAuto::FillComboModeli()
 
 }
 
-void NewAuto::on_Combo_NewAuto_Marka_currentIndexChanged(int index)
+void NewAuto::on_Combo_NewAuto_Marka_currentIndexChanged()
 {
-    qDebug() << "Selected index is " << index << endl;
+    if(CheckSelected(ui->Combo_NewAuto_Marka->currentText()))  {
+      FillComboModeli();
+      ActivateField(NewAuto::eModel);
+    }
+    else {
+        DeActivateField(NewAuto::eModel);
+    }
 }
 
-void NewAuto::on_Combo_NewAuto_Marka_currentIndexChanged(const QString &arg1)
+void NewAuto::on_Combo_NewAuto_Model_activated()
 {
-    qDebug() << "Selected String index is " << arg1 << endl;
-    qDebug() << "Selected String index is " << arg1.size() << endl;
+    if(CheckSelected(ui->Combo_NewAuto_Model->currentText()))  {
+      ActivateField(NewAuto::eYear);
+    }
+    else {
+        DeActivateField(NewAuto::eYear);
+    }
 }
