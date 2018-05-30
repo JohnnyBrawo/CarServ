@@ -15,6 +15,7 @@ enum NewAutoFields
     {
         eModel,
         eYear,
+        eType,
         eFuel,
         eRegNumber,
         eAutoVin,
@@ -28,13 +29,13 @@ public:
 
 private:
     Ui::NewAuto *ui;
-    void FillCombos();
+
     void FillComboMarki();
-    void FillComboModeli();
+    void FillComboModeli(int MarkaIndex);
     bool CheckSelected(QString SelectedString);
     void ActivateField(NewAuto::NewAutoFields Field);
     void DeActivateField(NewAuto::NewAutoFields Field);
-
+    bool CheckRecordInformation();
 signals:
     void CloseNewAutoForm();
 
@@ -43,8 +44,8 @@ private slots:
     void CenterForm();
     void OpenClearWindow();
     void on_Button_AddNewAuto_clicked();
-    void on_Combo_NewAuto_Marka_currentIndexChanged();
-    void on_Combo_NewAuto_Model_activated();
+    void on_Combo_NewAuto_Marka_currentIndexChanged(int index);
+    void on_Combo_NewAuto_Model_currentIndexChanged(int index);
 };
 
 #endif // NEWAUTO_H

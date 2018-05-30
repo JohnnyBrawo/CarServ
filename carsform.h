@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::CarsForm *ui;
+    void CenterForm();
 };
 
 #endif // CARSFORM_H

@@ -19,21 +19,30 @@
   <property name="windowTitle">
    <string>CARS</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/images/Images/CarFormBackground.jpeg);</string>
+  </property>
   <widget class="QLabel" name="L_MainCarsLabel">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>-1</y>
-     <width>631</width>
-     <height>41</height>
+     <width>641</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <family>DejaVu Sans</family>
+     <pointsize>22</pointsize>
+     <weight>9</weight>
+     <italic>true</italic>
+     <bold>false</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 127);
+font: 75 oblique 22pt &quot;DejaVu Sans&quot;;</string>
    </property>
    <property name="text">
     <string>АВТОМОБИЛИ</string>
@@ -57,11 +66,14 @@
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
    <property name="text">
     <string>Назад</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -91,6 +103,19 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <family>DejaVu Serif Condensed</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/images/Images/asd.jpg);
+color: rgb(255, 255, 255);
+background-color: rgb(255, 255, 127);</string>
+      </property>
       <property name="text">
        <string>Покажи всички</string>
       </property>
@@ -103,6 +128,19 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>DejaVu Serif Condensed</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/images/Images/asd.jpg);
+color: rgb(255, 255, 255);
+background-color: rgb(255, 255, 127);</string>
       </property>
       <property name="text">
        <string>Корекция на 
@@ -118,6 +156,19 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <family>DejaVu Serif Condensed</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/images/Images/asd.jpg);
+color: rgb(255, 255, 255);
+background-color: rgb(255, 255, 127);</string>
+      </property>
       <property name="text">
        <string>Добавяне на 
  нов автомобил</string>
@@ -132,9 +183,22 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <family>DejaVu Serif Condensed</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/images/Images/asd.jpg);
+color: rgb(255, 255, 255);
+background-color: rgb(255, 255, 127);</string>
+      </property>
       <property name="text">
        <string>Премахване на 
- нов автомобил</string>
+ автомобил</string>
       </property>
      </widget>
     </item>

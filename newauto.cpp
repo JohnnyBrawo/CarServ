@@ -4,6 +4,9 @@
 #include "qdesktopwidget.h"
 #include <qdebug.h>
 #include "carsdatabase.h"
+//#include <QtCore>
+//#include <QtGui>
+#include <QtWidgets>
 
 // Must have Automobile database here
 
@@ -34,13 +37,14 @@ void NewAuto::CenterForm()
 void NewAuto::on_Button_CancelNewAuto_clicked()
 {
     emit CloseNewAutoForm();
+    ClearAllFields();
     this->hide();
 }
 
 
 void NewAuto::OpenClearWindow()
 {
-     FillCombos();
+     FillComboMarki();
      ClearAllFields();
      this->show();
 }
@@ -51,7 +55,8 @@ void NewAuto::ClearAllFields()
     //  Enable fields one after other
     ui->Combo_NewAuto_Marka->setCurrentIndex(0);
 
-    ui->Combo_NewAuto_Model->setCurrentIndex(0);
+    ui->Combo_NewAuto_Model->clear();
+     ui->Combo_NewAuto_Model->setCurrentIndex(-1);
     ui->Combo_NewAuto_Model->setEnabled(false);
 
     ui->Combo_NewAuto_Year->setCurrentIndex(0);
@@ -65,17 +70,70 @@ void NewAuto::ClearAllFields()
 
     ui->LText_NewAutoVIN->clear();
     ui->LText_NewAutoVIN->setEnabled(false);
+
+     ui->Button_AddNewAuto->setEnabled(false);
+
+}
+
+bool NewAuto::CheckRecordInformation(){
+
+    QString EmptyFields = "";
+    QMessageBox::StandardButton UserReply;
+
+    if(!CheckSelected(ui->Combo_NewAuto_Type->currentText())){
+        EmptyFields = EmptyFields + " Купе " + "\n";
+    }
+
+    if(!CheckSelected(ui->Combo_NewAuto_Year->currentText())){
+        EmptyFields = EmptyFields + " Година " + "\n";
+    }
+
+    if(!CheckSelected(ui->Combo_NewAuto_Fuel->currentText())){
+        EmptyFields = EmptyFields + " Гориво " + "\n";
+    }
+
+    if(!CheckSelected(ui->LText_NewAutoRegNumber->text())) {
+        EmptyFields =EmptyFields +  " Геристрационен номер " + "\n";
+    }
+
+
+    if(!CheckSelected(ui->LText_NewAutoVIN->text())) {
+        EmptyFields =EmptyFields +  " Рама/Вин " + "\n";
+    }
+
+
+    /**  Ако дразни съобщението може да се направи само да blink-ват полетата и да иска повторно натиска не на
+          ЗАПИШИ бутона
+        for(int i=1;i<15;i+=2){
+            QTimer::singleShot(100*i, this, SLOT(changeBackgroundColor()));
+            QTimer::singleShot(100*(i+1), this, SLOT(retrieveBackgroundColor()));
+    }**/
+
+    if(EmptyFields !="")
+    {
+     UserReply =  QMessageBox::question(this,"Опаа! Спиш нещо!", "Има непопълнени полета!" + EmptyFields + "\n Да продължа ли със записа ?",QMessageBox::Yes | QMessageBox::No);
+     if(UserReply == QMessageBox::No){
+         return false;
+     }
+    }
+
+    return true;
 }
 
 void NewAuto::on_Button_AddNewAuto_clicked()
 {
+    if(!CheckRecordInformation())
+    {
+         qDebug() << "INSERT Rejected because of empty fields ";
+        return;
+    }
 
     CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQuery AddNewAuto(MyData.CarsDB);
-    AddNewAuto.prepare("INSERT INTO Automobiles_Table(AutoMarka, AutoModel, AutoYear, AutoFuel, Auto_RegNumber, AutoVIN) "
-                       "VALUES(:AutoMarka, :AutoModel, :AutoYear, :AutoFuel, :Auto_RegNumber, :AutoVIN)");
+    AddNewAuto.prepare("INSERT INTO Automobiles_Table(AutoMarka, AutoModel, AutoYear, AutoFuel, Auto_RegNumber, AutoVIN, AutoType) "
+                       "VALUES(:AutoMarka, :AutoModel, :AutoYear, :AutoFuel, :Auto_RegNumber, :AutoVIN, :AutoType)");
 
     AddNewAuto.bindValue(":AutoMarka",ui->Combo_NewAuto_Marka->currentText());
     AddNewAuto.bindValue(":AutoModel",ui->Combo_NewAuto_Model->currentText());
@@ -83,16 +141,14 @@ void NewAuto::on_Button_AddNewAuto_clicked()
     AddNewAuto.bindValue(":AutoFuel",ui->Combo_NewAuto_Fuel->currentText());
     AddNewAuto.bindValue(":Auto_RegNumber",ui->LText_NewAutoRegNumber->text());
     AddNewAuto.bindValue(":Auto_VIN",ui->LText_NewAutoVIN->text());
+    AddNewAuto.bindValue(":AutoType",ui->Combo_NewAuto_Type->currentText());
 
-    qDebug() << AddNewAuto.exec() << endl;
+    if(!AddNewAuto.exec()){
+        qDebug() << "INSERT INTO Automobiles_Table fail "<< endl;
+
+    }
+
     MyData.CloseConnection();
-}
-
-
-void NewAuto::FillCombos()
-{
-    FillComboMarki();
-//    FillComboModeli();
 }
 
 
@@ -106,7 +162,10 @@ void NewAuto::FillComboMarki()
     QSqlQuery ShowMakriQry(MyData.CarsDB);
     ShowMakriQry.prepare("SELECT Marki FROM AutoMarki_Table");
 
-    qDebug() << ShowMakriQry.exec() << endl;
+    if(! ShowMakriQry.exec()){
+        qDebug() << "ShowMakriQry.Exec() SELECT Model_Name FROM AutoMarki_Table fail "<< endl;
+    }
+
     MyModel->setQuery(ShowMakriQry);
     ui->Combo_NewAuto_Marka->setModel(MyModel);
 
@@ -116,14 +175,13 @@ void NewAuto::FillComboMarki()
 
 bool NewAuto::CheckSelected(QString SelectedString)
 {
-    if(( (int)SelectedString.size() < 2 ) || (SelectedString == "Select"))
+    if(( (int)SelectedString.size() < 2 ) || (SelectedString == "Select") || SelectedString == "")
     {
         qDebug() << "Back to Select  " << SelectedString << endl;
         return false;
     }
     else
     {
-         qDebug() << "Selected String  " << SelectedString << endl;
         return true;
     }
 }
@@ -135,30 +193,14 @@ void NewAuto::DeActivateField(NewAuto::NewAutoFields Field)
     {
     case NewAuto::eModel :
     {
-        qDebug() << "DeActivate All Field below MODEL ";
-
-        ui->Combo_NewAuto_Model->setCurrentIndex(0);
+        ui->Combo_NewAuto_Model->setCurrentText("");
         ui->Combo_NewAuto_Model->setEnabled(false);
 
         ui->Combo_NewAuto_Year->setCurrentIndex(0);
         ui->Combo_NewAuto_Year->setEnabled(false);
 
-        ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
-        ui->Combo_NewAuto_Fuel->setEnabled(false);
-
-        ui->LText_NewAutoRegNumber->clear();
-        ui->LText_NewAutoRegNumber->setEnabled(false);
-
-        ui->LText_NewAutoVIN->clear();
-        ui->LText_NewAutoVIN->setEnabled(false);
-        break;
-    }
-    case NewAuto::eYear :
-    {
-        qDebug() << "DeActivate Field YEAR ";
-
-        ui->Combo_NewAuto_Year->setCurrentIndex(0);
-        ui->Combo_NewAuto_Year->setEnabled(false);
+        ui->Combo_NewAuto_Type->setCurrentIndex(0);
+        ui->Combo_NewAuto_Type->setEnabled(false);
 
         ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
         ui->Combo_NewAuto_Fuel->setEnabled(false);
@@ -168,28 +210,11 @@ void NewAuto::DeActivateField(NewAuto::NewAutoFields Field)
 
         ui->LText_NewAutoVIN->clear();
         ui->LText_NewAutoVIN->setEnabled(false);
-        break;
-    }
-    case NewAuto::eFuel :
-    {
-        qDebug() << "DeActivate Field FUEL ";
 
-        ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
-        ui->Combo_NewAuto_Fuel->setEnabled(false);
+        ui->Button_AddNewAuto->setEnabled(false);
+        break;
+    }
 
-        break;
-    }
-    case NewAuto::eRegNumber :
-    {
-        qDebug() << "DeActivate Field REG_NUMBER ";
-        break;
-    }
-    case NewAuto::eAutoVin :
-    {
-        qDebug() << "DeActivate Field VIN ";
-
-        break;
-    }
     default:
         qDebug() << "DeActivate UnknownField";
         break;
@@ -203,23 +228,20 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
     {
     case NewAuto::eModel :
     {
-        qDebug() << "Activate Field MODEL ";
-        ui->Combo_NewAuto_Model->setCurrentIndex(0);
         ui->Combo_NewAuto_Model->setEnabled(true);
         break;
     }
+
     case NewAuto::eYear :
     {
-        qDebug() << "Activate Field YEAR ";
         ui->Combo_NewAuto_Year->setCurrentIndex(0);
         ui->Combo_NewAuto_Year->setEnabled(true);
-        break;
-    }
-    case NewAuto::eFuel :
-    {
-        qDebug() << "Activate Field FUEL ";
+
         ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
         ui->Combo_NewAuto_Fuel->setEnabled(true);
+
+        ui->Combo_NewAuto_Type->setCurrentIndex(0);
+        ui->Combo_NewAuto_Type->setEnabled(true);
 
         ui->LText_NewAutoRegNumber->clear();
         ui->LText_NewAutoRegNumber->setEnabled(true);
@@ -227,12 +249,7 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
         ui->LText_NewAutoVIN->clear();
         ui->LText_NewAutoVIN->setEnabled(true);
 
-        break;
-    }
-    case NewAuto::eRegNumber :
-    case NewAuto::eAutoVin :
-    {
-        qDebug() << "Activate Field REG_NUMBER and VIN";
+        ui->Button_AddNewAuto->setEnabled(true);
         break;
     }
 
@@ -242,38 +259,48 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
     }
 }
 
-void NewAuto::FillComboModeli()
+void NewAuto::FillComboModeli(int MarkaIndex)
 {
     CarsDatabase MyData;
     MyData.OpenConnection("All_Models.sqlite");
-
     QSqlQueryModel * MyModel = new QSqlQueryModel();
+    QSqlQuery ShowModelQry(MyData.CarsDB);
 
-    QSqlQuery ShowMakriQry(MyData.CarsDB);
-    ShowMakriQry.prepare("SELECT Model_Name FROM All_Models_Table");
+    ShowModelQry.prepare("SELECT Model_Name FROM All_Models_Table WHERE Model_ID='"+QString::number(MarkaIndex)+"' ");
 
-    qDebug() << ShowMakriQry.exec() << endl;
-    MyModel->setQuery(ShowMakriQry);
+
+    if(! ShowModelQry.exec()){
+        qDebug() << "ShowModelQry.Exec() SELECT Model_Name FROM All_Models_Table fail "<< endl;
+    }
+
+    MyModel->setQuery(ShowModelQry);
     ui->Combo_NewAuto_Model->setModel(MyModel);
-
     MyData.CloseConnection();
+
+    qDebug() << "ui->Combo_NewAuto_Model->count()"<< ui->Combo_NewAuto_Model->count();
+    if(ui->Combo_NewAuto_Model->count() == 1)
+    {
+        ActivateField(NewAuto::eYear);
+    }
 
 }
 
-void NewAuto::on_Combo_NewAuto_Marka_currentIndexChanged()
+void NewAuto::on_Combo_NewAuto_Marka_currentIndexChanged(int index)
 {
     if(CheckSelected(ui->Combo_NewAuto_Marka->currentText()))  {
-      FillComboModeli();
       ActivateField(NewAuto::eModel);
+      FillComboModeli(index);
+
     }
     else {
         DeActivateField(NewAuto::eModel);
     }
 }
 
-void NewAuto::on_Combo_NewAuto_Model_activated()
+void NewAuto::on_Combo_NewAuto_Model_currentIndexChanged(int index)
 {
-    if(CheckSelected(ui->Combo_NewAuto_Model->currentText()))  {
+
+    if(CheckSelected(ui->Combo_NewAuto_Model->currentText()) && index !=0)  {
       ActivateField(NewAuto::eYear);
     }
     else {
