@@ -59,7 +59,7 @@ background-image: url(:/images/Images/ideas.jpg);</string>
       <number>0</number>
      </property>
      <item row="1" column="0">
-      <widget class="QPushButton" name="Button_AddNewRepair">
+      <widget class="QPushButton" name="Button_OpenRepairs">
        <property name="sizePolicy">
         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
          <horstretch>0</horstretch>
@@ -87,7 +87,7 @@ background-image: url(:/images/Images/MainButton_image.jpg);</string>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QPushButton" name="Button_AddNewClient">
+      <widget class="QPushButton" name="Button_OpenClents">
        <property name="sizePolicy">
         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
          <horstretch>0</horstretch>
@@ -115,7 +115,7 @@ background-image: url(:/images/Images/MainButton_image.jpg);</string>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QPushButton" name="Button_AddNewAuto">
+      <widget class="QPushButton" name="Button_OpenAutoForm">
        <property name="sizePolicy">
         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
          <horstretch>0</horstretch>

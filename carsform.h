@@ -2,6 +2,9 @@
 #define CARSFORM_H
 
 #include <QDialog>
+#include "newauto.h"
+#include "showallcars.h"
+#include "removechangeauto.h"
 
 namespace Ui {
 class CarsForm;
@@ -17,7 +20,24 @@ public:
 
 private:
     Ui::CarsForm *ui;
+
+    NewAuto *m_NewAuto;
+    ShowAllcars *m_ShowAllAutos;
+    RemoveChangeAuto *m_DelEdtiAuto;
+
     void CenterForm();
+
+signals:
+    void CloseNewAutoForm();
+
+private slots:
+    void OpenClearWindow();
+    void on_Button_Back_clicked();
+    void RestoreView();
+    void on_Button_AddNewAuto_clicked();
+    void on_Button_ShowAllAutos_clicked();
+    void on_Button_RemoveAuto_clicked();
+    void on_Button_ChangeAuto_clicked();
 };
 
 #endif // CARSFORM_H

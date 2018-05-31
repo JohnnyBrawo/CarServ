@@ -71,8 +71,7 @@ void NewAuto::ClearAllFields()
     ui->LText_NewAutoVIN->clear();
     ui->LText_NewAutoVIN->setEnabled(false);
 
-     ui->Button_AddNewAuto->setEnabled(false);
-
+    ui->Button_AddNewAuto->setEnabled(false);
 }
 
 bool NewAuto::CheckRecordInformation(){
@@ -149,6 +148,7 @@ void NewAuto::on_Button_AddNewAuto_clicked()
     }
 
     MyData.CloseConnection();
+    ClearAllFields();
 }
 
 

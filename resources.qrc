@@ -1,11 +1,12 @@
 <RCC>
     <qresource prefix="/images">
-        <file>Images/asd.jpg</file>
-        <file>Images/aasss.jpg</file>
-        <file>Images/asdasd.jpg</file>
         <file>Images/ideas.jpg</file>
         <file>Images/MainButton_image.jpg</file>
         <file>Images/CarFormBackground.jpeg</file>
         <file>Images/car-search.jpg</file>
+        <file>Images/NextRepair_Active.jpeg</file>
+        <file>Images/NextRepair_Inactive.jpeg</file>
+        <file>Images/PrevRepair_Active.png</file>
+        <file>Images/PrevRepair_Inactive.jpeg</file>
     </qresource>
 </RCC>

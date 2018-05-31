@@ -18,9 +18,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">background-image: url(:/images/Images/asd.jpg);</string>
-  </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
@@ -29,9 +26,6 @@
      <width>941</width>
      <height>41</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
@@ -43,9 +37,6 @@
         <bold>true</bold>
        </font>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
-      </property>
       <property name="text">
        <string>Добави ремонт</string>
       </property>
@@ -53,9 +44,6 @@
     </item>
     <item row="0" column="4">
      <spacer name="horizontalSpacer_2">
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
-      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -79,9 +67,6 @@
         <bold>true</bold>
        </font>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
-      </property>
       <property name="text">
        <string>Изтриване ремонт</string>
       </property>
@@ -89,9 +74,6 @@
     </item>
     <item row="0" column="2">
      <spacer name="horizontalSpacer">
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
-      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -108,9 +90,6 @@
     </item>
     <item row="0" column="6">
      <spacer name="horizontalSpacer_3">
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
-      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -134,9 +113,6 @@
         <bold>true</bold>
        </font>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
-      </property>
       <property name="text">
        <string>Назад</string>
       </property>
@@ -149,9 +125,6 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
       </property>
       <property name="text">
        <string>Запис</string>
@@ -168,9 +141,6 @@
      <width>941</width>
      <height>401</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
    </property>
   </widget>
   <widget class="QLabel" name="L_RepairMainLabel">
@@ -195,9 +165,6 @@
      <bold>true</bold>
     </font>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
-   </property>
    <property name="text">
     <string>Добавяне на текущ ремонт</string>
    </property>
@@ -214,9 +181,6 @@
      <height>31</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
-   </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QLabel" name="L_RepaitDescr">
@@ -232,9 +196,6 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
       </property>
       <property name="text">
        <string>Вид на услугата / ремонт /</string>
@@ -253,9 +214,6 @@
         <bold>true</bold>
        </font>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
-      </property>
       <property name="text">
        <string>Количество</string>
       </property>
@@ -273,9 +231,6 @@
         <bold>true</bold>
        </font>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
-      </property>
       <property name="text">
        <string>Единична Цена</string>
       </property>
@@ -292,9 +247,6 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 255, 0);</string>
       </property>
       <property name="text">
        <string>Стойност</string>
@@ -321,9 +273,6 @@
      <bold>true</bold>
     </font>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
-   </property>
    <property name="text">
     <string>Изберете Региострационен Номер  :   </string>
    </property>
@@ -343,9 +292,6 @@
      <bold>true</bold>
     </font>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
-   </property>
    <property name="text">
     <string>Случаен 
  клиент</string>
@@ -360,9 +306,6 @@
      <height>26</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
-   </property>
    <property name="text">
     <string>Търси</string>
    </property>
@@ -376,9 +319,6 @@
      <height>26</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
-   </property>
   </widget>
   <widget class="QLineEdit" name="LText_RandomClient">
    <property name="geometry">
@@ -389,9 +329,6 @@
      <height>26</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
-   </property>
   </widget>
   <widget class="QLineEdit" name="LText_RandClientName">
    <property name="geometry">
@@ -401,9 +338,6 @@
      <width>311</width>
      <height>26</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
    </property>
   </widget>
   <widget class="QLabel" name="L_RandClientName">
@@ -420,9 +354,6 @@
      <weight>75</weight>
      <bold>true</bold>
     </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 255, 0);</string>
    </property>
    <property name="text">
     <string>Име на клиента</string>

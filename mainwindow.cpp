@@ -7,10 +7,10 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    m_NewClient(new NewClient()),
-    m_NewRepair(new AddRepair()),
-    m_NewAuto(new NewAuto()),
-    m_SearchForm(new SearchForm())
+    m_Clients(new NewClient()),
+    m_Repairs(new AddRepair()),
+    m_Autos(new CarsForm()),
+    m_Search(new SearchForm())
 
 {
     ui->setupUi(this);
@@ -18,23 +18,15 @@ MainWindow::MainWindow(QWidget *parent) :
     CenterForm();
 
     // Connect all new windows
-    QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreMainForm()));
-    QObject::connect(m_NewClient, SIGNAL(CloseNewClientForm()), this, SLOT(RestoreMainForm()));
-    QObject::connect(m_NewRepair, SIGNAL(CloseNewRepairForm()), this, SLOT(RestoreMainForm()));
-    QObject::connect(m_SearchForm, SIGNAL(CloseSearchForm()), this, SLOT(RestoreMainForm()));
+    QObject::connect(m_Autos, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreMainForm()));
+    QObject::connect(m_Clients, SIGNAL(CloseNewClientForm()), this, SLOT(RestoreMainForm()));
+    QObject::connect(m_Repairs, SIGNAL(CloseNewRepairForm()), this, SLOT(RestoreMainForm()));
+    QObject::connect(m_Search, SIGNAL(CloseSearchForm()), this, SLOT(RestoreMainForm()));
 
-    QObject::connect(ui->Button_AddNewAuto, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
-    QObject::connect(ui->Button_AddNewClient, SIGNAL(clicked()), m_NewClient, SLOT(OpenClearWindow()));
-    QObject::connect(ui->Button_AddNewRepair, SIGNAL(clicked()), m_NewRepair, SLOT(OpenClearWindow()));
-    QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_SearchForm, SLOT(OpenClearWindow()));
-
-    // Clear all new windows on load
-//    QObject::connect(ui->Button_AddNewClient, SIGNAL(clicked()), m_NewClient, SLOT(ClearAllFields()));
-//    QObject::connect(ui->Button_AddNewAuto, SIGNAL(clicked()), m_NewClient, SLOT(ClearAllFields()));
-//    QObject::connect(ui->Button_AddNewRepair, SIGNAL(clicked()), m_NewClient, SLOT(ClearAllFields()));
-//    QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_NewClient, SLOT(ClearAllFields()));
-
-
+    QObject::connect(ui->Button_OpenAutoForm, SIGNAL(clicked()), m_Autos, SLOT(OpenClearWindow()));
+    QObject::connect(ui->Button_OpenClents, SIGNAL(clicked()), m_Clients, SLOT(OpenClearWindow()));
+    QObject::connect(ui->Button_OpenRepairs, SIGNAL(clicked()), m_Repairs, SLOT(OpenClearWindow()));
+    QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_Search, SLOT(OpenClearWindow()));
 
     setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
 
@@ -51,10 +43,10 @@ void MainWindow::CenterForm()
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete m_NewClient;
-    delete m_NewRepair;
-    delete m_NewAuto;
-    delete m_SearchForm;
+    delete m_Clients;
+    delete m_Repairs;
+    delete m_Autos;
+    delete m_Search;
 }
 
 void MainWindow::on_Button_Search_clicked()
@@ -62,17 +54,17 @@ void MainWindow::on_Button_Search_clicked()
     hide();
 }
 
-void MainWindow::on_Button_AddNewAuto_clicked()
+void MainWindow::on_Button_OpenAutoForm_clicked()
 {
     hide();
 }
 
-void MainWindow::on_Button_AddNewClient_clicked()
+void MainWindow::on_Button_OpenClents_clicked()
 {
     hide();
 }
 
-void MainWindow::on_Button_AddNewRepair_clicked()
+void MainWindow::on_Button_OpenRepairs_clicked()
 {
     hide();
 }

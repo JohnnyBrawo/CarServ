@@ -74,7 +74,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -138,7 +138,7 @@
      <widget class="QComboBox" name="Combo_NewAuto_Model"/>
     </item>
     <item row="2" column="0">
-     <widget class="QLabel" name="L_NewAuto_Fuel_2">
+     <widget class="QLabel" name="L_NewAuto_Type">
       <property name="font">
        <font>
         <pointsize>12</pointsize>

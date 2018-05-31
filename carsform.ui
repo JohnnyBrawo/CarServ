@@ -51,7 +51,7 @@ font: 75 oblique 22pt &quot;DejaVu Sans&quot;;</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="Button_Back">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -96,7 +96,7 @@ font: 75 oblique 22pt &quot;DejaVu Sans&quot;;</string>
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="Button_ShowAllAutos">
       <property name="sizePolicy">
        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
         <horstretch>0</horstretch>
@@ -114,7 +114,8 @@ font: 75 oblique 22pt &quot;DejaVu Sans&quot;;</string>
       <property name="styleSheet">
        <string notr="true">background-image: url(:/images/Images/asd.jpg);
 color: rgb(255, 255, 255);
-background-color: rgb(255, 255, 127);</string>
+background-color: rgba(170, 170, 127, 0);
+</string>
       </property>
       <property name="text">
        <string>Покажи всички</string>
@@ -122,7 +123,7 @@ background-color: rgb(255, 255, 127);</string>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="Button_ChangeAuto">
       <property name="sizePolicy">
        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
         <horstretch>0</horstretch>
@@ -140,7 +141,8 @@ background-color: rgb(255, 255, 127);</string>
       <property name="styleSheet">
        <string notr="true">background-image: url(:/images/Images/asd.jpg);
 color: rgb(255, 255, 255);
-background-color: rgb(255, 255, 127);</string>
+background-color: rgba(170, 170, 127, 0);
+</string>
       </property>
       <property name="text">
        <string>Корекция на 
@@ -149,7 +151,7 @@ background-color: rgb(255, 255, 127);</string>
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="Button_AddNewAuto">
       <property name="sizePolicy">
        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
         <horstretch>0</horstretch>
@@ -167,7 +169,8 @@ background-color: rgb(255, 255, 127);</string>
       <property name="styleSheet">
        <string notr="true">background-image: url(:/images/Images/asd.jpg);
 color: rgb(255, 255, 255);
-background-color: rgb(255, 255, 127);</string>
+background-color: rgba(170, 170, 127, 0);
+</string>
       </property>
       <property name="text">
        <string>Добавяне на 
@@ -176,7 +179,7 @@ background-color: rgb(255, 255, 127);</string>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="Button_RemoveAuto">
       <property name="sizePolicy">
        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
         <horstretch>0</horstretch>
@@ -194,7 +197,8 @@ background-color: rgb(255, 255, 127);</string>
       <property name="styleSheet">
        <string notr="true">background-image: url(:/images/Images/asd.jpg);
 color: rgb(255, 255, 255);
-background-color: rgb(255, 255, 127);</string>
+background-color: rgba(170, 170, 127, 0);
+</string>
       </property>
       <property name="text">
        <string>Премахване на 
@@ -203,6 +207,18 @@ background-color: rgb(255, 255, 127);</string>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>370</y>
+     <width>120</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="page"/>
+   <widget class="QWidget" name="page_2"/>
   </widget>
  </widget>
  <resources/>
