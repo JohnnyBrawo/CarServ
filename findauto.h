@@ -14,7 +14,7 @@ class FindAuto : public QDialog
 private:
     Ui::FindAuto *ui;
     void CenterForm();
-
+    void FillPage();
 public:
     explicit FindAuto(QWidget *parent = 0);
     ~FindAuto();
@@ -26,8 +26,6 @@ private slots:
     void on_Button_FindAutoDone_clicked();
     void on_Button_FindAutoCancel_clicked();
     void OpenClearWindow();
-
-
 };
 
 #endif // FINDAUTO_H

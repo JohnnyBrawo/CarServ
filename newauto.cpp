@@ -139,7 +139,7 @@ void NewAuto::on_Button_AddNewAuto_clicked()
     AddNewAuto.bindValue(":AutoYear",ui->Combo_NewAuto_Year->currentText());
     AddNewAuto.bindValue(":AutoFuel",ui->Combo_NewAuto_Fuel->currentText());
     AddNewAuto.bindValue(":Auto_RegNumber",ui->LText_NewAutoRegNumber->text());
-    AddNewAuto.bindValue(":Auto_VIN",ui->LText_NewAutoVIN->text());
+    AddNewAuto.bindValue(":AutoVIN",ui->LText_NewAutoVIN->text());
     AddNewAuto.bindValue(":AutoType",ui->Combo_NewAuto_Type->currentText());
 
     if(!AddNewAuto.exec()){

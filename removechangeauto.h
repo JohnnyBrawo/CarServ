@@ -22,6 +22,7 @@ private:
     void SetUnactiveFields();
     void ClearAllFields();
     QString m_SelectedRegNumber;
+    void ShowAllFieldsText();
 
 signals:
     void CloseDeletePage();

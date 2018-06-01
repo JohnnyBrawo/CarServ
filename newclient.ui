@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>990</width>
-    <height>411</height>
+    <height>444</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,7 +40,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>50</y>
+     <y>80</y>
      <width>971</width>
      <height>351</height>
     </rect>
@@ -66,7 +66,7 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="3">
+    <item row="0" column="2">
      <widget class="QPushButton" name="Button_AddClientAuto">
       <property name="font">
        <font>
@@ -81,8 +81,17 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="0" rowspan="4">
-     <widget class="QLabel" name="L_Klient_Address">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="LText_ClientName"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="LText_ClientFirm"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="LText_ClientPhone"/>
+    </item>
+    <item row="6" column="2">
+     <widget class="QPushButton" name="Button_Add_Client">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -90,14 +99,8 @@
         <bold>true</bold>
        </font>
       </property>
-      <property name="autoFillBackground">
-       <bool>true</bool>
-      </property>
       <property name="text">
-       <string>Адрес</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <string>Добавяне</string>
       </property>
      </widget>
     </item>
@@ -121,8 +124,8 @@
       </property>
      </widget>
     </item>
-    <item row="8" column="3">
-     <widget class="QPushButton" name="Button_CancelAdd">
+    <item row="5" column="0" rowspan="3">
+     <widget class="QLabel" name="L_Klient_Address">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -130,8 +133,14 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
       <property name="text">
-       <string>Назад</string>
+       <string>Адрес</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
@@ -155,6 +164,21 @@
       </property>
      </widget>
     </item>
+    <item row="5" column="2">
+     <widget class="QPushButton" name="Button_AddClientAutoNew">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Добавяне на нов 
+автомобил</string>
+      </property>
+     </widget>
+    </item>
     <item row="4" column="0">
      <widget class="QLabel" name="L_Klient_Phone">
       <property name="font">
@@ -175,49 +199,25 @@
       </property>
      </widget>
     </item>
-    <item row="7" column="3">
-     <widget class="QPushButton" name="Button_Add_Klient">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Добавяне</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="3">
-     <widget class="QPushButton" name="Button_AddClientAutoNew">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Добавяне на нов 
-автомобил</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1" rowspan="4" colspan="2">
-     <widget class="QTextEdit" name="Text_KlientAddress"/>
-    </item>
     <item row="1" column="1">
      <widget class="QLineEdit" name="LText_ClientCity"/>
     </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="LText_ClientFirm"/>
+    <item row="7" column="2">
+     <widget class="QPushButton" name="Button_CancelAdd">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Назад</string>
+      </property>
+     </widget>
     </item>
-    <item row="4" column="1">
-     <widget class="QLineEdit" name="LText_ClientPhone"/>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="LText_ClientName"/>
+    <item row="5" column="1" rowspan="3">
+     <widget class="QPlainTextEdit" name="PText_ClientAddress"/>
     </item>
    </layout>
   </widget>

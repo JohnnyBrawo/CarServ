@@ -110,17 +110,20 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
             ui->LText_DelChangeType->setText(ShowModelQry.value(8).toString());
         }
     }
-
-    qDebug() << " ui->LText_DelChangeMarka->text "  << ui->LText_DelChangeMarka->text();
-    qDebug() << " ui->LText_DelChangeModel->text "  << ui->LText_DelChangeModel->text();
-    qDebug() << " ui->LText_DelChangeType->text "  << ui->LText_DelChangeType->text();
-    qDebug() << " ui->LText_DelChangeYear->text "  << ui->LText_DelChangeYear->text();
-    qDebug() << " ui->LText_DelChangeFuel->text "  << ui->LText_DelChangeFuel->text();
-    qDebug() << " ui->LText_DelChangeRegNumber->text "  << ui->LText_DelChangeRegNumber->text();
-    qDebug() << " ui->LText_DelChangeVIN->text "  << ui->LText_DelChangeVIN->text();
-
+//    ShowAllFieldsText();
 
     MyData.CloseConnection();
+}
+
+void RemoveChangeAuto::ShowAllFieldsText()
+{
+        qDebug() << " ui->LText_DelChangeMarka->text "  << ui->LText_DelChangeMarka->text();
+        qDebug() << " ui->LText_DelChangeModel->text "  << ui->LText_DelChangeModel->text();
+        qDebug() << " ui->LText_DelChangeType->text "  << ui->LText_DelChangeType->text();
+        qDebug() << " ui->LText_DelChangeYear->text "  << ui->LText_DelChangeYear->text();
+        qDebug() << " ui->LText_DelChangeFuel->text "  << ui->LText_DelChangeFuel->text();
+        qDebug() << " ui->LText_DelChangeRegNumber->text "  << ui->LText_DelChangeRegNumber->text();
+        qDebug() << " ui->LText_DelChangeVIN->text "  << ui->LText_DelChangeVIN->text();
 }
 
 void RemoveChangeAuto::on_Button_RecordChange_clicked()
