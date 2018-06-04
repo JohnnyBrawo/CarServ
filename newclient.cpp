@@ -8,14 +8,15 @@
 NewClient::NewClient(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewClient),
-    m_FindAuto(new FindAuto()),
+    m_AttachAuto(new RemoveChangeAuto()),
     m_NewAuto(new NewAuto())
 {
     ui->setupUi(this);
     setWindowTitle("New Client");
     CenterForm();
-    QObject::connect(m_FindAuto, SIGNAL(CloseAddAutoForm()), this, SLOT(RestoreForm()));
-    QObject::connect(ui->Button_AddClientAuto, SIGNAL(clicked()), m_FindAuto, SLOT(OpenClearWindow()));
+    QObject::connect(m_AttachAuto, SIGNAL(CloseDeletePage()), this, SLOT(RestoreForm()));
+    QObject::connect(ui->Button_AddClientAuto, SIGNAL(clicked()), m_AttachAuto, SLOT(OpenClearWindow()));
+
 
     QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreForm()));
     QObject::connect(ui->Button_AddClientAutoNew, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
@@ -31,7 +32,8 @@ NewClient::NewClient(QWidget *parent) :
 NewClient::~NewClient()
 {
     delete ui;
-    delete m_FindAuto;
+    delete m_AttachAuto;
+    delete m_NewAuto;
 }
 
 void NewClient::ClearAllFields()
@@ -56,6 +58,7 @@ void NewClient::RestoreForm()
 {
     this->show();
     CenterForm();
+    qDebug() << "Selected Car ID is  : " << m_AttachAuto->GetSelectedCarID();
 }
 
 void NewClient::CenterForm()

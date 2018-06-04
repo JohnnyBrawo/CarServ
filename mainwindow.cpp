@@ -10,12 +10,14 @@ MainWindow::MainWindow(QWidget *parent) :
     m_Clients(new NewClient()),
     m_Repairs(new AddRepair()),
     m_Autos(new CarsForm()),
-    m_Search(new SearchForm())
+    m_Search(new SearchForm()),
+    m_BasePath(new CarsDatabase)
 
 {
     ui->setupUi(this);
     setWindowTitle("Euro Kriss Service");
     CenterForm();
+    LoadDesignView();
 
     // Connect all new windows
     QObject::connect(m_Autos, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreMainForm()));
@@ -27,8 +29,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->Button_OpenClents, SIGNAL(clicked()), m_Clients, SLOT(OpenClearWindow()));
     QObject::connect(ui->Button_OpenRepairs, SIGNAL(clicked()), m_Repairs, SLOT(OpenClearWindow()));
     QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_Search, SLOT(OpenClearWindow()));
-
-    setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
 
 }
 
@@ -47,6 +47,14 @@ MainWindow::~MainWindow()
     delete m_Repairs;
     delete m_Autos;
     delete m_Search;
+    delete m_BasePath;
+}
+
+void MainWindow::LoadDesignView()
+{
+
+//    setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
+//    setStyleSheet("background-image: url(:"+m_BasePath->GetReousrcesPath()+"ideas.jpg);");
 }
 
 void MainWindow::on_Button_Search_clicked()
@@ -72,5 +80,4 @@ void MainWindow::on_Button_OpenRepairs_clicked()
 void MainWindow::RestoreMainForm()
 {
     this->show();
-//    CenterForm();     uncomment to set the MainForm position in the middle of the screen
 }

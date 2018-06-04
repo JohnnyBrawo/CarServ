@@ -4,6 +4,8 @@
 #include <QtSql>
 #include <QString>
 #include <QDebug>
+#include <QApplication>
+#include <QFile>
 
 class CarsDatabase
 {
@@ -13,28 +15,11 @@ public:
     CarsDatabase();
     QSqlDatabase CarsDB;
 
-    bool OpenConnection(QString DataBaseName)
-    {
-        m_CurrDataName = "/home/default/Gosheto/CarServ/DataBase/" + DataBaseName;
-        CarsDB = QSqlDatabase::addDatabase("QSQLITE","CarsConnection");
-        CarsDB.setDatabaseName(m_CurrDataName);
+    bool OpenConnection(QString DataBaseName);
+    QString GetDataBasePath(QString DataBaseName);
+    QString GetReousrcesPath();
+    void CloseConnection();
 
-        if(!CarsDB.open())
-        {
-            qDebug() << " Can not open database : " << m_CurrDataName;
-            return false;
-        }else
-         {
-            qDebug() << " Connected to database : " << m_CurrDataName;
-            return true;
-        }
-    }
-
-    void CloseConnection()
-    {
-        CarsDB.close();
-        CarsDB.removeDatabase(QSqlDatabase::defaultConnection);
-    }
 };
 
 #endif // CARSDATABASE_H

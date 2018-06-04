@@ -216,7 +216,7 @@ void NewAuto::DeActivateField(NewAuto::NewAutoFields Field)
     }
 
     default:
-        qDebug() << "DeActivate UnknownField";
+//        qDebug() << "DeActivate UnknownField";
         break;
     }
 }
@@ -229,11 +229,11 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
     case NewAuto::eModel :
     {
         ui->Combo_NewAuto_Model->setEnabled(true);
-        break;
-    }
+//        break;
+//    }
 
-    case NewAuto::eYear :
-    {
+//    case NewAuto::eYear :
+//    {
         ui->Combo_NewAuto_Year->setCurrentIndex(0);
         ui->Combo_NewAuto_Year->setEnabled(true);
 
@@ -254,7 +254,7 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
     }
 
     default:
-        qDebug() << "Activate UnknownField";
+//        qDebug() << "Activate UnknownField";
         break;
     }
 }
@@ -304,6 +304,6 @@ void NewAuto::on_Combo_NewAuto_Model_currentIndexChanged(int index)
       ActivateField(NewAuto::eYear);
     }
     else {
-        DeActivateField(NewAuto::eYear);
+//        DeActivateField(NewAuto::eYear);
     }
 }

@@ -44,13 +44,13 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="Button_ChangeBack">
+  <widget class="QPushButton" name="Button_Back">
    <property name="geometry">
     <rect>
      <x>550</x>
      <y>490</y>
-     <width>100</width>
-     <height>50</height>
+     <width>111</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="font">
@@ -95,13 +95,13 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="Button_RecordChange">
+  <widget class="QPushButton" name="Button_Record">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>40</x>
      <y>490</y>
-     <width>100</width>
-     <height>50</height>
+     <width>101</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="font">
@@ -305,6 +305,44 @@
      <widget class="QLineEdit" name="LText_DelChangeYear"/>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="Button_DeleteAuto">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>60</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Изтрий</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Button_Add">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>490</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Добави</string>
+   </property>
   </widget>
  </widget>
  <resources/>

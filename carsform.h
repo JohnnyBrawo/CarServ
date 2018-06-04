@@ -36,8 +36,7 @@ private slots:
     void RestoreView();
     void on_Button_AddNewAuto_clicked();
     void on_Button_ShowAllAutos_clicked();
-    void on_Button_RemoveAuto_clicked();
-    void on_Button_ChangeAuto_clicked();
+    void on_Button_EditAuto_clicked();
 };
 
 #endif // CARSFORM_H

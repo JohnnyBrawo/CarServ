@@ -2,8 +2,8 @@
 #define NEWCLIENT_H
 
 #include <QDialog>
-#include "findauto.h"
 #include "newauto.h"
+#include "removechangeauto.h"
 
 namespace Ui {
 class NewClient;
@@ -15,7 +15,7 @@ class NewClient : public QDialog
 
 private:
     Ui::NewClient *ui;
-    FindAuto    *m_FindAuto;
+    RemoveChangeAuto    *m_AttachAuto;
     NewAuto     *m_NewAuto;
     void CenterForm();
      void ClearAllFields();
@@ -30,6 +30,7 @@ signals:
 private slots:
     void on_Button_CancelAdd_clicked();
     void RestoreForm();
+//    void AttachRestoreForm();
     void on_Button_AddClientAuto_clicked();
     void on_Button_AddClientAutoNew_clicked();
     void OpenClearWindow();

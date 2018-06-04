@@ -1,6 +1,7 @@
 #include "removechangeauto.h"
 #include "ui_removechangeauto.h"
 #include "carsdatabase.h"
+#include <QtWidgets>
 
 RemoveChangeAuto::RemoveChangeAuto(QWidget *parent) :
     QDialog(parent),
@@ -28,6 +29,13 @@ void RemoveChangeAuto::SetUnactiveFields()
     ui->LText_DelChangeType->setEnabled(false);
     ui->LText_DelChangeVIN->setEnabled(false);
     ui->LText_DelChangeYear->setEnabled(false);
+
+    ui->Button_Record->setVisible(false);
+    ui->Button_DeleteAuto->setVisible(false);
+    ui->L_ChangeClientName->setVisible(false);
+    ui->Combo_DelChangeClientName->setVisible(false);
+
+    ui->L_ChangeAutoMain->setText("Добавяне на автомобил");
 }
 
 //void RemoveChangeAuto::HandleNewText(const QString &)
@@ -45,19 +53,23 @@ void RemoveChangeAuto::ClearAllFields()
     ui->LText_DelChangeType->setText("");
     ui->LText_DelChangeVIN->setText("");
     ui->LText_DelChangeYear->setText("");
+
 }
 
 void RemoveChangeAuto::OpenClearEditWindow()
 {
     show();
+    ui->Button_Add->setVisible(false);
     FillPage();
 }
 
-void RemoveChangeAuto::OpenClearDeleteWindow()
+void RemoveChangeAuto::OpenClearWindow()
 {
     show();
-    SetUnactiveFields();
+    ClearAllFields();
     FillPage();
+    SetUnactiveFields();
+
 }
 
 
@@ -80,11 +92,6 @@ void RemoveChangeAuto::FillPage()
     MyData.CloseConnection();
 }
 
-void RemoveChangeAuto::on_Button_ChangeBack_clicked()
-{
-    hide();
-    emit CloseDeletePage();
-}
 
 void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QString &arg1)
 {
@@ -108,9 +115,15 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
             ui->LText_DelChangeRegNumber->setText(ShowModelQry.value(6).toString());
             ui->LText_DelChangeVIN->setText(ShowModelQry.value(7).toString());
             ui->LText_DelChangeType->setText(ShowModelQry.value(8).toString());
+
+            /// Record selected AutoID - attach it to the New client
+            m_iAutoID = ShowModelQry.value(0).toInt();
         }
+
+
+
     }
-//    ShowAllFieldsText();
+
 
     MyData.CloseConnection();
 }
@@ -126,7 +139,7 @@ void RemoveChangeAuto::ShowAllFieldsText()
         qDebug() << " ui->LText_DelChangeVIN->text "  << ui->LText_DelChangeVIN->text();
 }
 
-void RemoveChangeAuto::on_Button_RecordChange_clicked()
+void RemoveChangeAuto::on_Button_Record_clicked()
 {
     CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
@@ -142,5 +155,43 @@ void RemoveChangeAuto::on_Button_RecordChange_clicked()
     // Update Current Changes
     m_SelectedRegNumber = ui->LText_DelChangeRegNumber->text();
     MyData.CloseConnection();
-//    ClearAllFields();
+    ClearAllFields();
+    FillPage();
+}
+
+void RemoveChangeAuto::on_Button_DeleteAuto_clicked()
+{
+    CarsDatabase MyData;
+    MyData.OpenConnection("Automobiles.sqlite");
+
+    qDebug() << " m_SelectedRegNumber   " << m_SelectedRegNumber << "Changed " << ui->LText_DelChangeRegNumber->text();
+    QSqlQuery AddNewAuto(MyData.CarsDB);
+    AddNewAuto.prepare("DELETE FROM Automobiles_Table WHERE Auto_RegNumber='"+m_SelectedRegNumber+"' ");
+
+     QMessageBox::StandardButton UserReply;
+     UserReply =  QMessageBox::question(this,"Внимавай ! ", "Автомобил с регистрационен номер : \n " + ui->LText_DelChangeRegNumber->text() + " \n ще бъде изтрит!! \n Да продължа ли ?",QMessageBox::Yes | QMessageBox::No);
+     if(UserReply == QMessageBox::Yes){
+         if(!AddNewAuto.exec()){
+             qDebug() << "DELETE FROM Automobiles_Table WHERE Auto_RegNumber FAIL "<< endl;
+         }
+
+         // Update Current Changes
+         m_SelectedRegNumber = ui->LText_DelChangeRegNumber->text();
+         MyData.CloseConnection();
+         ClearAllFields();
+         FillPage();
+     }
+}
+
+void RemoveChangeAuto::on_Button_Add_clicked()
+{
+    hide();
+    emit CloseDeletePage();
+}
+
+
+void RemoveChangeAuto::on_Button_Back_clicked()
+{
+    hide();
+    emit CloseDeletePage();
 }

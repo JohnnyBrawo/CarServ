@@ -14,6 +14,7 @@ class RemoveChangeAuto : public QDialog
 public:
     explicit RemoveChangeAuto(QWidget *parent = 0);
     ~RemoveChangeAuto();
+    int GetSelectedCarID() { return m_iAutoID;}
 
 private:
     Ui::RemoveChangeAuto *ui;
@@ -23,22 +24,25 @@ private:
     void ClearAllFields();
     QString m_SelectedRegNumber;
     void ShowAllFieldsText();
+    int  m_iAutoID;
 
 signals:
     void CloseDeletePage();
-    void CloseChangePage();
+//    void CloseAttachPage();
 
 private slots:
      void OpenClearEditWindow();
-     void OpenClearDeleteWindow();
-     void on_Button_ChangeBack_clicked();
+     void OpenClearWindow();
+     void on_Button_Back_clicked();
 
      void on_Combo_DelChangeAutoRegs_currentIndexChanged(const QString &arg1);
-     void on_Button_RecordChange_clicked();
+     void on_Button_Record_clicked();
 
      //Edit handler
 //     void HandleNewText(const QString &);
 
+     void on_Button_DeleteAuto_clicked();
+     void on_Button_Add_clicked();
 };
 
 #endif // REMOVECHANGEAUTO_H

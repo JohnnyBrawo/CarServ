@@ -18,13 +18,13 @@ CarsForm::CarsForm(QWidget *parent) :
     // Connect all new windows
     QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreView()));
     QObject::connect(m_ShowAllAutos, SIGNAL(CloseShowAllAutoForm()), this, SLOT(RestoreView()));
-    QObject::connect(m_DelEdtiAuto, SIGNAL(CloseChangePage()), this, SLOT(RestoreView()));
+//    QObject::connect(m_DelEdtiAuto, SIGNAL(CloseChangePage()), this, SLOT(RestoreView()));
     QObject::connect(m_DelEdtiAuto, SIGNAL(CloseDeletePage()), this, SLOT(RestoreView()));
 
     QObject::connect(ui->Button_AddNewAuto, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
     QObject::connect(ui->Button_ShowAllAutos, SIGNAL(clicked()), m_ShowAllAutos, SLOT(OpenClearWindow()));
-    QObject::connect(ui->Button_RemoveAuto, SIGNAL(clicked()), m_DelEdtiAuto, SLOT(OpenClearDeleteWindow()));
-    QObject::connect(ui->Button_ChangeAuto, SIGNAL(clicked()), m_DelEdtiAuto, SLOT(OpenClearEditWindow()));
+    QObject::connect(ui->Button_EditAuto, SIGNAL(clicked()), m_DelEdtiAuto, SLOT(OpenClearEditWindow()));
+    //QObject::connect(ui->Button_ChangeAuto, SIGNAL(clicked()), m_DelEdtiAuto, SLOT(OpenClearEditWindow())); - > Not Used
 
 //    setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
 }
@@ -75,12 +75,7 @@ void CarsForm::on_Button_ShowAllAutos_clicked()
     hide();
 }
 
-void CarsForm::on_Button_RemoveAuto_clicked()
+void CarsForm::on_Button_EditAuto_clicked()
 {
     hide();
-}
-
-void CarsForm::on_Button_ChangeAuto_clicked()
-{
-   hide();
 }

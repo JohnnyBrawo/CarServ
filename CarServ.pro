@@ -31,7 +31,6 @@ SOURCES += \
     searchform.cpp \
     repairwigdetitem.cpp \
     addrepair.cpp \
-    findauto.cpp \
     carsform.cpp \
     carsdatabase.cpp \
     showallcars.cpp \
@@ -44,7 +43,6 @@ HEADERS += \
     searchform.h \
     repairwigdetitem.h \
     addrepair.h \
-    findauto.h \
     carsform.h \
     carsdatabase.h \
     showallcars.h \
@@ -56,11 +54,16 @@ FORMS += \
     searchform.ui \
     addrepair.ui \
     repairwigdetitem.ui \
-    findauto.ui \
     newauto.ui \
     carsform.ui \
     showallcars.ui \
     removechangeauto.ui
 
 RESOURCES += \
-    resources.qrc
+    ../Images/images.qrc
+
+DISTFILES += \
+    DataBase/All_Models.sqlite \
+    DataBase/Automobiles.sqlite \
+    DataBase/Clients.sqlite \
+    DataBase/Marki.sqlite

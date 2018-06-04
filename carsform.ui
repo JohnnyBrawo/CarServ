@@ -20,7 +20,7 @@
    <string>CARS</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/images/Images/CarFormBackground.jpeg);</string>
+   <string notr="true">background-image: url(:/images/CarFormBackground.jpeg);</string>
   </property>
   <widget class="QLabel" name="L_MainCarsLabel">
    <property name="geometry">
@@ -55,9 +55,9 @@ font: 75 oblique 22pt &quot;DejaVu Sans&quot;;</string>
    <property name="geometry">
     <rect>
      <x>510</x>
-     <y>440</y>
+     <y>425</y>
      <width>80</width>
-     <height>26</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -78,7 +78,7 @@ font: 75 oblique 22pt &quot;DejaVu Sans&quot;;</string>
     <rect>
      <x>80</x>
      <y>90</y>
-     <width>461</width>
+     <width>541</width>
      <height>271</height>
     </rect>
    </property>
@@ -95,62 +95,7 @@ font: 75 oblique 22pt &quot;DejaVu Sans&quot;;</string>
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="Button_ShowAllAutos">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <family>DejaVu Serif Condensed</family>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-image: url(:/images/Images/asd.jpg);
-color: rgb(255, 255, 255);
-background-color: rgba(170, 170, 127, 0);
-</string>
-      </property>
-      <property name="text">
-       <string>Покажи всички</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="Button_ChangeAuto">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <family>DejaVu Serif Condensed</family>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-image: url(:/images/Images/asd.jpg);
-color: rgb(255, 255, 255);
-background-color: rgba(170, 170, 127, 0);
-</string>
-      </property>
-      <property name="text">
-       <string>Корекция на 
- автомобил</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <widget class="QPushButton" name="Button_AddNewAuto">
       <property name="sizePolicy">
        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
@@ -178,8 +123,8 @@ background-color: rgba(170, 170, 127, 0);
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="Button_RemoveAuto">
+    <item row="1" column="0">
+     <widget class="QPushButton" name="Button_ShowAllAutos">
       <property name="sizePolicy">
        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
         <horstretch>0</horstretch>
@@ -201,24 +146,39 @@ background-color: rgba(170, 170, 127, 0);
 </string>
       </property>
       <property name="text">
-       <string>Премахване на 
- автомобил</string>
+       <string>Покажи всички</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="Button_EditAuto">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>DejaVu Serif Condensed</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/images/Images/asd.jpg);
+color: rgb(255, 255, 255);
+background-color: rgba(170, 170, 127, 0);
+</string>
+      </property>
+      <property name="text">
+       <string>Премахване / Корекция 
+ на автомобил</string>
       </property>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QStackedWidget" name="stackedWidget">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>370</y>
-     <width>120</width>
-     <height>80</height>
-    </rect>
-   </property>
-   <widget class="QWidget" name="page"/>
-   <widget class="QWidget" name="page_2"/>
   </widget>
  </widget>
  <resources/>

@@ -6,6 +6,7 @@
 #include "newclient.h"
 #include "searchform.h"
 #include "carsform.h"
+#include "carsdatabase.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,8 +20,11 @@ private:
     Ui::MainWindow *ui;
     NewClient   *m_Clients;
     AddRepair   *m_Repairs;
-    CarsForm     *m_Autos;
+    CarsForm    *m_Autos;
     SearchForm  *m_Search;
+    CarsDatabase   *m_BasePath;
+    void LoadDesignView();
+
 
 public:
     explicit MainWindow(QWidget *parent = 0);

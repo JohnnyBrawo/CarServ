@@ -59,7 +59,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/images/Images/NextRepair_Inactive.jpeg);</string>
+    <string notr="true">background-image: url(:/images/NextRepair_Inactive.jpeg);</string>
    </property>
    <property name="text">
     <string/>
@@ -75,7 +75,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/images/Images/PrevRepair_Inactive.jpeg);</string>
+    <string notr="true">background-image: url(:/images/PrevRepair_Inactive.jpeg);</string>
    </property>
    <property name="text">
     <string/>
@@ -365,7 +365,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/images/Images/PrevRepair_Inactive.jpeg);</string>
+    <string notr="true">background-image: url(:/images/PrevRepair_Inactive.jpeg);</string>
    </property>
    <property name="text">
     <string/>
@@ -405,7 +405,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/images/Images/NextRepair_Inactive.jpeg);</string>
+    <string notr="true">background-image: url(:/images/NextRepair_Inactive.jpeg);</string>
    </property>
    <property name="text">
     <string/>

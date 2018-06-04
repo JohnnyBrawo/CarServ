@@ -23,8 +23,8 @@
    <string/>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 75 italic 14pt &quot;DejaVu Serif&quot;;
-background-image: url(:/images/Images/ideas.jpg);</string>
+   <string notr="true">font: 75 italic 16pt &quot;Noto Sans&quot;;
+background-image: url(:/images/ideas.jpg);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="layoutWidget">
@@ -58,6 +58,33 @@ background-image: url(:/images/Images/ideas.jpg);</string>
      <property name="verticalSpacing">
       <number>0</number>
      </property>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="Button_OpenAutoForm">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans Condensed</family>
+         <pointsize>22</pointsize>
+         <weight>9</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 75 oblique 22pt &quot;DejaVu Sans Condensed&quot;;
+background-image: url(:/images/MainButton_image.jpg);
+color: rgb(85, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Автомобили</string>
+       </property>
+      </widget>
+     </item>
      <item row="1" column="0">
       <widget class="QPushButton" name="Button_OpenRepairs">
        <property name="sizePolicy">
@@ -68,18 +95,17 @@ background-image: url(:/images/Images/ideas.jpg);</string>
        </property>
        <property name="font">
         <font>
-         <family>Noto Sans</family>
-         <pointsize>14</pointsize>
+         <family>DejaVu Sans Condensed</family>
+         <pointsize>22</pointsize>
          <weight>9</weight>
          <italic>true</italic>
          <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-top-color: rgb(69, 37, 255);
-font: 75 italic 14pt &quot;Noto Sans&quot;;
-color: rgb(255, 255, 255);
-background-image: url(:/images/Images/MainButton_image.jpg);</string>
+        <string notr="true">font: 75 oblique 22pt &quot;DejaVu Sans Condensed&quot;;
+background-image: url(:/images/MainButton_image.jpg);
+color: rgb(85, 255, 255);</string>
        </property>
        <property name="text">
         <string>Ремонти</string>
@@ -96,49 +122,20 @@ background-image: url(:/images/Images/MainButton_image.jpg);</string>
        </property>
        <property name="font">
         <font>
-         <family>Noto Sans</family>
-         <pointsize>14</pointsize>
+         <family>DejaVu Sans Condensed</family>
+         <pointsize>22</pointsize>
          <weight>9</weight>
          <italic>true</italic>
          <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-top-color: rgb(69, 37, 255);
-font: 75 italic 14pt &quot;Noto Sans&quot;;
-color: rgb(255, 255, 255);
-background-image: url(:/images/Images/MainButton_image.jpg);</string>
+        <string notr="true">font: 75 oblique 22pt &quot;DejaVu Sans Condensed&quot;;
+background-image: url(:/images/MainButton_image.jpg);
+color: rgb(85, 255, 255);</string>
        </property>
        <property name="text">
         <string>Клиенти</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="Button_OpenAutoForm">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Noto Sans</family>
-         <pointsize>14</pointsize>
-         <weight>9</weight>
-         <italic>true</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-top-color: rgb(69, 37, 255);
-font: 75 italic 14pt &quot;Noto Sans&quot;;
-color: rgb(255, 255, 255);
-background-image: url(:/images/Images/MainButton_image.jpg);</string>
-       </property>
-       <property name="text">
-        <string>Автомобили</string>
        </property>
       </widget>
      </item>
@@ -152,18 +149,17 @@ background-image: url(:/images/Images/MainButton_image.jpg);</string>
        </property>
        <property name="font">
         <font>
-         <family>Noto Sans</family>
-         <pointsize>14</pointsize>
+         <family>DejaVu Sans Condensed</family>
+         <pointsize>22</pointsize>
          <weight>9</weight>
          <italic>true</italic>
          <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-top-color: rgb(69, 37, 255);
-font: 75 italic 14pt &quot;Noto Sans&quot;;
-color: rgb(255, 255, 255);
-background-image: url(:/images/Images/MainButton_image.jpg);</string>
+        <string notr="true">font: 75 oblique 22pt &quot;DejaVu Sans Condensed&quot;;
+background-image: url(:/images/MainButton_image.jpg);
+color: rgb(85, 255, 255);</string>
        </property>
        <property name="text">
         <string>Търсене</string>
@@ -179,7 +175,7 @@ background-image: url(:/images/Images/MainButton_image.jpg);</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>27</height>
+     <height>33</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
