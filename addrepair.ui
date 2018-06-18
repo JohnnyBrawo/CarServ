@@ -139,7 +139,7 @@
      <x>10</x>
      <y>160</y>
      <width>941</width>
-     <height>401</height>
+     <height>371</height>
     </rect>
    </property>
   </widget>
@@ -206,7 +206,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="L_Quantity">
       <property name="font">
        <font>
         <pointsize>10</pointsize>
@@ -223,7 +223,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="L_SinglePrice">
       <property name="font">
        <font>
         <pointsize>10</pointsize>
@@ -240,7 +240,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="L_Value">
       <property name="font">
        <font>
         <pointsize>10</pointsize>
@@ -362,6 +362,68 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLabel" name="L_RepairDate">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>51</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Дата:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="LText_RepairDate">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>50</y>
+     <width>113</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="LText_TotalPrice">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>530</y>
+     <width>361</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_TotalPrice">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>530</y>
+     <width>171</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Сума за плащане</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
   <zorder>L_CarRegNumber</zorder>
   <zorder>Check_RandomClient</zorder>
   <zorder>Button_Search</zorder>
@@ -373,6 +435,10 @@
   <zorder>LText_RandomClient</zorder>
   <zorder>LText_RandClientName</zorder>
   <zorder>L_RandClientName</zorder>
+  <zorder>L_RepairDate</zorder>
+  <zorder>LText_RepairDate</zorder>
+  <zorder>LText_TotalPrice</zorder>
+  <zorder>L_TotalPrice</zorder>
  </widget>
  <resources/>
  <connections/>

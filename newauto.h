@@ -26,6 +26,7 @@ public:
     explicit NewAuto(QWidget *parent = 0);
     ~NewAuto();
     void ClearAllFields();
+    QString GetNewCarID(){ return m_strSelectedCarID;}
 
 private:
     Ui::NewAuto *ui;
@@ -36,6 +37,8 @@ private:
     void ActivateField(NewAuto::NewAutoFields Field);
     void DeActivateField(NewAuto::NewAutoFields Field);
     bool CheckRecordInformation();
+    bool CheckRecordObligatory();
+    QString m_strSelectedCarID;
 signals:
     void CloseNewAutoForm();
 

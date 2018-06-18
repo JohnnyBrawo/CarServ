@@ -15,6 +15,7 @@ NewAuto::NewAuto(QWidget *parent) :
     ui(new Ui::NewAuto)
 {
     ui->setupUi(this);
+    m_strSelectedCarID = "None";
     CenterForm();
     setWindowTitle("New Auto");
 }
@@ -64,6 +65,9 @@ void NewAuto::ClearAllFields()
 
     ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
     ui->Combo_NewAuto_Fuel->setEnabled(false);
+
+    ui->Combo_NewAuto_Type->setCurrentIndex(0);
+    ui->Combo_NewAuto_Type->setEnabled(false);
 
     ui->LText_NewAutoRegNumber->clear();
     ui->LText_NewAutoRegNumber->setEnabled(false);
@@ -119,8 +123,25 @@ bool NewAuto::CheckRecordInformation(){
     return true;
 }
 
+
+bool NewAuto::CheckRecordObligatory(){
+
+    if(!CheckSelected(ui->Combo_NewAuto_Marka->currentText()) || !CheckSelected(ui->LText_NewAutoRegNumber->text()) ){
+
+        QMessageBox::information(this,"Важно!","Не сте попълнили задължителните полега ( * ).");
+         return false;
+     }
+
+    return true;
+}
+
 void NewAuto::on_Button_AddNewAuto_clicked()
 {
+
+    if(!CheckRecordObligatory()){
+        qDebug() << " MUST fields empty ";
+        return;
+    }
     if(!CheckRecordInformation())
     {
          qDebug() << "INSERT Rejected because of empty fields ";
@@ -143,12 +164,22 @@ void NewAuto::on_Button_AddNewAuto_clicked()
     AddNewAuto.bindValue(":AutoType",ui->Combo_NewAuto_Type->currentText());
 
     if(!AddNewAuto.exec()){
-        qDebug() << "INSERT INTO Automobiles_Table fail "<< endl;
-
+        qDebug() << "INSERT INTO Automobiles_Table fail "<< AddNewAuto.lastError().text();
     }
 
-    MyData.CloseConnection();
-    ClearAllFields();
+    // Get Last RowID
+    QSqlQuery query(MyData.CarsDB);
+        query.prepare("SELECT last_insert_rowid()");
+        if(!query.exec())
+        {
+            qDebug() << "SELECT last_insert_rowid() "<< AddNewAuto.lastError().text();
+        }
+        else {
+            m_strSelectedCarID = query.lastInsertId().toString();
+             qDebug() << "m_strSelectedCarID   "<< m_strSelectedCarID;
+             ClearAllFields();
+        }
+     MyData.CloseConnection();
 }
 
 
@@ -163,7 +194,7 @@ void NewAuto::FillComboMarki()
     ShowMakriQry.prepare("SELECT Marki FROM AutoMarki_Table");
 
     if(! ShowMakriQry.exec()){
-        qDebug() << "ShowMakriQry.Exec() SELECT Model_Name FROM AutoMarki_Table fail "<< endl;
+        qDebug() << "ShowMakriQry.Exec() SELECT Model_Name FROM AutoMarki_Table fail "<< ShowMakriQry.lastError().text();
     }
 
     MyModel->setQuery(ShowMakriQry);
@@ -193,30 +224,12 @@ void NewAuto::DeActivateField(NewAuto::NewAutoFields Field)
     {
     case NewAuto::eModel :
     {
-        ui->Combo_NewAuto_Model->setCurrentText("");
-        ui->Combo_NewAuto_Model->setEnabled(false);
-
-        ui->Combo_NewAuto_Year->setCurrentIndex(0);
-        ui->Combo_NewAuto_Year->setEnabled(false);
-
-        ui->Combo_NewAuto_Type->setCurrentIndex(0);
-        ui->Combo_NewAuto_Type->setEnabled(false);
-
-        ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
-        ui->Combo_NewAuto_Fuel->setEnabled(false);
-
-        ui->LText_NewAutoRegNumber->clear();
-        ui->LText_NewAutoRegNumber->setEnabled(false);
-
-        ui->LText_NewAutoVIN->clear();
-        ui->LText_NewAutoVIN->setEnabled(false);
-
-        ui->Button_AddNewAuto->setEnabled(false);
+        ClearAllFields();
         break;
     }
 
     default:
-//        qDebug() << "DeActivate UnknownField";
+        qDebug() << "DeActivate UnknownField";
         break;
     }
 }
@@ -229,11 +242,7 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
     case NewAuto::eModel :
     {
         ui->Combo_NewAuto_Model->setEnabled(true);
-//        break;
-//    }
 
-//    case NewAuto::eYear :
-//    {
         ui->Combo_NewAuto_Year->setCurrentIndex(0);
         ui->Combo_NewAuto_Year->setEnabled(true);
 
@@ -254,7 +263,7 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
     }
 
     default:
-//        qDebug() << "Activate UnknownField";
+        qDebug() << "Activate UnknownField";
         break;
     }
 }
@@ -263,21 +272,20 @@ void NewAuto::FillComboModeli(int MarkaIndex)
 {
     CarsDatabase MyData;
     MyData.OpenConnection("All_Models.sqlite");
-    QSqlQueryModel * MyModel = new QSqlQueryModel();
+    QSqlQueryModel *MyModel = new QSqlQueryModel();
     QSqlQuery ShowModelQry(MyData.CarsDB);
 
     ShowModelQry.prepare("SELECT Model_Name FROM All_Models_Table WHERE Model_ID='"+QString::number(MarkaIndex)+"' ");
 
 
     if(! ShowModelQry.exec()){
-        qDebug() << "ShowModelQry.Exec() SELECT Model_Name FROM All_Models_Table fail "<< endl;
+        qDebug() << "ShowModelQry.Exec() SELECT Model_Name FROM All_Models_Table fail "<< ShowModelQry.lastError().text();
     }
 
     MyModel->setQuery(ShowModelQry);
     ui->Combo_NewAuto_Model->setModel(MyModel);
     MyData.CloseConnection();
 
-    qDebug() << "ui->Combo_NewAuto_Model->count()"<< ui->Combo_NewAuto_Model->count();
     if(ui->Combo_NewAuto_Model->count() == 1)
     {
         ActivateField(NewAuto::eYear);
@@ -302,8 +310,5 @@ void NewAuto::on_Combo_NewAuto_Model_currentIndexChanged(int index)
 
     if(CheckSelected(ui->Combo_NewAuto_Model->currentText()) && index !=0)  {
       ActivateField(NewAuto::eYear);
-    }
-    else {
-//        DeActivateField(NewAuto::eYear);
     }
 }

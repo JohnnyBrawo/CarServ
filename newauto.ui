@@ -84,23 +84,6 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="L_NewAuto_Marka">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Марка</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="1">
      <widget class="QComboBox" name="Combo_NewAuto_Marka">
       <property name="sizePolicy">
@@ -246,9 +229,12 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 0, 0);</string>
+      </property>
       <property name="text">
        <string>Регистрационен 
- номер</string>
+ номер *</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -274,6 +260,9 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="LText_NewAutoVIN"/>
     </item>
     <item row="3" column="1">
      <widget class="QComboBox" name="Combo_NewAuto_Year">
@@ -496,10 +485,43 @@
       </item>
      </widget>
     </item>
-    <item row="8" column="1">
-     <widget class="QLineEdit" name="LText_NewAutoVIN"/>
+    <item row="0" column="0">
+     <widget class="QLabel" name="L_NewAuto_Marka">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Марка *</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>720</y>
+     <width>511</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Задължителните полеса са отбелязани със звездичка ( * )</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
  </widget>
  <resources/>

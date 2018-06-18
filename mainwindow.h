@@ -39,6 +39,7 @@ private slots:
     void RestoreMainForm();
     void CenterForm();
 
+    void on_pushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

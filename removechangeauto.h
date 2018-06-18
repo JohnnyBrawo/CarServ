@@ -14,17 +14,24 @@ class RemoveChangeAuto : public QDialog
 public:
     explicit RemoveChangeAuto(QWidget *parent = 0);
     ~RemoveChangeAuto();
-    int GetSelectedCarID() { return m_iAutoID;}
+    QString GetSelectedCarID() { return m_strAutoID;}
 
 private:
     Ui::RemoveChangeAuto *ui;
 
     void FillPage();
+    void FillRegCombo();
+    void FillClientNameCombo();
+
     void SetUnactiveFields();
     void ClearAllFields();
-    QString m_SelectedRegNumber;
     void ShowAllFieldsText();
-    int  m_iAutoID;
+
+    QString m_SelectedRegNumber;
+    QString m_SelectedClientName;
+    QString  m_strAutoID;
+
+    bool m_bRefillTable;
 
 signals:
     void CloseDeletePage();
@@ -43,6 +50,7 @@ private slots:
 
      void on_Button_DeleteAuto_clicked();
      void on_Button_Add_clicked();
+     void on_Combo_DelChangeClientName_currentIndexChanged(const QString &arg1);
 };
 
 #endif // REMOVECHANGEAUTO_H

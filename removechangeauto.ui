@@ -22,6 +22,11 @@
      <height>26</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string/>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="L_ChangeAutoMain">
    <property name="geometry">

@@ -25,6 +25,12 @@ private:
     void SetRandomDesign();
     void ClearAllinputs();
     bool m_bChecked;
+    void FillPage();
+    bool CheckRecordInformation();
+
+    void RecordRepair();
+    QString m_strSelCarNumber;
+    int RepairsNumber;
 
 public:
     explicit AddRepair(QWidget *parent = 0);
@@ -43,6 +49,7 @@ private slots:
     void on_Check_RandomClient_clicked(bool checked);
     void on_Button_Search_clicked();
     void OpenClearWindow();
+    void on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1);
 };
 
 #endif // ADDREPAIR_H

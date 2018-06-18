@@ -60,10 +60,11 @@ FORMS += \
     removechangeauto.ui
 
 RESOURCES += \
-    ../Images/images.qrc
+    Images/images.qrc
 
 DISTFILES += \
     DataBase/All_Models.sqlite \
     DataBase/Automobiles.sqlite \
     DataBase/Clients.sqlite \
-    DataBase/Marki.sqlite
+    DataBase/Marki.sqlite \
+    Images/CarFormBackground.jpeg

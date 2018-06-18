@@ -14,21 +14,17 @@ QString  CarsDatabase::GetReousrcesPath()
 
     if(position != (-1)){
             testPath.truncate(position);
-            qDebug() << " testPath :    " << testPath;
             if(position2 != (-1)){
-                qDebug() << "LINUX ";
-                testPath.append("Images/");
+                testPath.append("CarServ/Images/");
             }
             else {
                 qDebug() << "WINDOWS ";
-                testPath.append("Images\\");
+                testPath.append("CarServ\\Images\\");
             }
     }
     else {
          qDebug() << " BUILD PATH NOT FOUND   ";
     }
-
-    qDebug() << " Resources Path :  " << testPath;
     return testPath;
 }
 
@@ -41,14 +37,13 @@ QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
 
     if(position != (-1)){
             testPath.truncate(position);
-            qDebug() << " testPath :    " << testPath;
             if(position2 != (-1)){
-                qDebug() << "LINUX ";
-                testPath.append("DataBase/");
+//                qDebug() << "LINUX ";
+                testPath.append("CarServ/DataBase/");
             }
             else {
                 qDebug() << "WINDOWS ";
-                testPath.append("DataBase\\");
+                testPath.append("CarServ\\DataBase\\");
             }
     }
     else {
@@ -72,7 +67,7 @@ bool CarsDatabase::OpenConnection(QString DataBaseName)
         return false;
     }else
      {
-        qDebug() << " Connected to database : " << m_CurrDataName;
+//        qDebug() << " Connected to database : " << m_CurrDataName;
         return true;
     }
 }

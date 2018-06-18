@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>ideas.jpg</file>
+        <file>MainButton_image.jpg</file>
+        <file>NextRepair_Active.jpeg</file>
+        <file>NextRepair_Inactive.jpeg</file>
+        <file>PrevRepair_Active.png</file>
+        <file>PrevRepair_Inactive.jpeg</file>
+        <file>CarFormBackground.jpeg</file>
+        <file>car-search.jpg</file>
+    </qresource>
+</RCC>

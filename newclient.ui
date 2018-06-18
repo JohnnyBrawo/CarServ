@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>990</width>
-    <height>444</height>
+    <width>800</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>10</y>
-     <width>991</width>
+     <y>0</y>
+     <width>801</width>
      <height>41</height>
     </rect>
    </property>
@@ -40,9 +40,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
-     <width>971</width>
-     <height>351</height>
+     <y>50</y>
+     <width>781</width>
+     <height>301</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -58,8 +58,11 @@
       <property name="autoFillBackground">
        <bool>true</bool>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 0, 0);</string>
+      </property>
       <property name="text">
-       <string>Име на клиента</string>
+       <string>Име на клиента ( * )</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -89,20 +92,6 @@
     </item>
     <item row="4" column="1">
      <widget class="QLineEdit" name="LText_ClientPhone"/>
-    </item>
-    <item row="6" column="2">
-     <widget class="QPushButton" name="Button_Add_Client">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Добавяне</string>
-      </property>
-     </widget>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="L_Klien_City">
@@ -164,21 +153,6 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="2">
-     <widget class="QPushButton" name="Button_AddClientAutoNew">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Добавяне на нов 
-автомобил</string>
-      </property>
-     </widget>
-    </item>
     <item row="4" column="0">
      <widget class="QLabel" name="L_Klient_Phone">
       <property name="font">
@@ -199,6 +173,9 @@
       </property>
      </widget>
     </item>
+    <item row="5" column="1" rowspan="3">
+     <widget class="QPlainTextEdit" name="PText_ClientAddress"/>
+    </item>
     <item row="1" column="1">
      <widget class="QLineEdit" name="LText_ClientCity"/>
     </item>
@@ -216,8 +193,34 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="1" rowspan="3">
-     <widget class="QPlainTextEdit" name="PText_ClientAddress"/>
+    <item row="6" column="2">
+     <widget class="QPushButton" name="Button_Add_Client">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>OK</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="Button_AddClientAutoNew">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Добавяне на нов 
+автомобил</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
