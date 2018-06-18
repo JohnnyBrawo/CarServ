@@ -28,7 +28,7 @@ private:
     void ShowAllFieldsText();
 
     QString m_SelectedRegNumber;
-    QString m_SelectedClientName;
+    QString m_SelectedClientID;
     QString  m_strAutoID;
 
     bool m_bRefillTable;
