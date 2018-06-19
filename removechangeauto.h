@@ -26,16 +26,19 @@ private:
     void SetUnactiveFields();
     void ClearAllFields();
     void ShowAllFieldsText();
+    void UpdateFlags();
 
     QString m_SelectedRegNumber;
     QString m_SelectedClientID;
     QString  m_strAutoID;
 
-    bool m_bRefillTable;
+    bool m_bInitialize;
+    bool m_bComboClientsHit;
+    bool m_bComboRegsHit;
+
 
 signals:
     void CloseDeletePage();
-//    void CloseAttachPage();
 
 private slots:
      void OpenClearEditWindow();
@@ -45,12 +48,9 @@ private slots:
      void on_Combo_DelChangeAutoRegs_currentIndexChanged(const QString &arg1);
      void on_Button_Record_clicked();
 
-     //Edit handler
-//     void HandleNewText(const QString &);
-
      void on_Button_DeleteAuto_clicked();
      void on_Button_Add_clicked();
-     void on_Combo_DelChangeClientName_currentIndexChanged(const QString &arg1);
+     void on_Combo_DelChangeClientName_currentIndexChanged(QString);
 };
 
 #endif // REMOVECHANGEAUTO_H

@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "addrepair.h"
-#include "newclient.h"
+#include "clientsform.h"
 #include "searchform.h"
 #include "carsform.h"
 #include "carsdatabase.h"
@@ -18,7 +18,7 @@ class MainWindow : public QMainWindow
 
 private:
     Ui::MainWindow *ui;
-    NewClient   *m_Clients;
+    ClientsForm *m_Clients;
     AddRepair   *m_Repairs;
     CarsForm    *m_Autos;
     SearchForm  *m_Search;

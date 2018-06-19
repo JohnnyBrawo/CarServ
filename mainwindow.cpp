@@ -7,11 +7,11 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    m_Clients(new NewClient()),
+    m_Clients(new ClientsForm()),
     m_Repairs(new AddRepair()),
     m_Autos(new CarsForm()),
     m_Search(new SearchForm()),
-    m_BasePath(new CarsDatabase)
+    m_BasePath(new CarsDatabase())
 
 {
     ui->setupUi(this);
@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Connect all new windows
     QObject::connect(m_Autos, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreMainForm()));
-    QObject::connect(m_Clients, SIGNAL(CloseNewClientForm()), this, SLOT(RestoreMainForm()));
+    QObject::connect(m_Clients, SIGNAL(CloseClientsPage()), this, SLOT(RestoreMainForm()));
     QObject::connect(m_Repairs, SIGNAL(CloseNewRepairForm()), this, SLOT(RestoreMainForm()));
     QObject::connect(m_Search, SIGNAL(CloseSearchForm()), this, SLOT(RestoreMainForm()));
 

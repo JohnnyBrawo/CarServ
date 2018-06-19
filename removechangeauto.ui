@@ -327,7 +327,8 @@
     </font>
    </property>
    <property name="text">
-    <string>Изтрий</string>
+    <string>Изтрий 
+ автомобил</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Button_Add">
