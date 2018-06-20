@@ -25,7 +25,10 @@ private:
     void RecordCarToClient();
     bool CheckRecordObligatory();
     bool m_bRecordPermission;
-
+    bool m_bClientFormEditMode;
+    void SetNewClientDesignMode();
+    void SetEditDesignMode();
+    void FillClientsNameCombo();
 
 public:
     explicit NewClient(QWidget *parent = 0);
@@ -35,15 +38,18 @@ signals:
     void CloseNewClientForm();
 
 private slots:
+    void OpenNewClientForm();
+    void OpenEditClientForm();
+
     void on_Button_CancelAdd_clicked();
     void RestoreFormAttachAuto();
     void RestoreFormNewAuto();
     void on_Button_AddClientAuto_clicked();
     void on_Button_AddClientAutoNew_clicked();
-    void OpenClearWindow();
 
     void on_Button_Add_Client_clicked();
     void on_LText_ClientName_textChanged(const QString &arg1);
+    void on_Combo_Clients_currentIndexChanged(const QString &arg1);
 };
 
 #endif // NEWCLIENT_H

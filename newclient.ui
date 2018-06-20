@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>400</height>
+    <height>470</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="L_MainFormLabel">
+  <widget class="QLabel" name="L_MainFormLabel_Add">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -40,12 +40,18 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>50</y>
+     <y>130</y>
      <width>781</width>
-     <height>301</height>
+     <height>332</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <item row="5" column="1" rowspan="3">
+     <widget class="QPlainTextEdit" name="Text_ClientAddress"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="LText_ClientCity"/>
+    </item>
     <item row="0" column="0">
      <widget class="QLabel" name="L_Klient_Name">
       <property name="font">
@@ -86,32 +92,6 @@
     </item>
     <item row="0" column="1">
      <widget class="QLineEdit" name="LText_ClientName"/>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="LText_ClientFirm"/>
-    </item>
-    <item row="4" column="1">
-     <widget class="QLineEdit" name="LText_ClientPhone"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="L_Klien_City">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="autoFillBackground">
-       <bool>true</bool>
-      </property>
-      <property name="text">
-       <string>Град</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
     </item>
     <item row="5" column="0" rowspan="3">
      <widget class="QLabel" name="L_Klient_Address">
@@ -173,11 +153,8 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="1" rowspan="3">
-     <widget class="QPlainTextEdit" name="PText_ClientAddress"/>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="LText_ClientCity"/>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="LText_ClientFirm"/>
     </item>
     <item row="7" column="2">
      <widget class="QPushButton" name="Button_CancelAdd">
@@ -222,7 +199,103 @@
       </property>
      </widget>
     </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="LText_ClientPhone"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="L_Klien_City">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>Град</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="Button_AddClientAutoEdit">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Редактиране автомобил</string>
+      </property>
+     </widget>
+    </item>
    </layout>
+  </widget>
+  <widget class="QComboBox" name="Combo_Clients">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>70</y>
+     <width>191</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_Klient_Name_Edit">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Изберете клиент</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_MainFormLabel_Edit">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>801</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Редактиране на клиент</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
  </widget>
  <resources/>

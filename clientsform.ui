@@ -19,9 +19,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">background-image: url(:/images/clients2.png);</string>
-  </property>
   <widget class="QLabel" name="L_MainLabel">
    <property name="geometry">
     <rect>
@@ -36,9 +33,6 @@
      <family>Noto Naskh Arabic UI</family>
      <pointsize>26</pointsize>
     </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 0, 255);</string>
    </property>
    <property name="text">
     <string>КЛИЕНТИ</string>
@@ -66,7 +60,7 @@
     <string>Назад</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>50</x>
