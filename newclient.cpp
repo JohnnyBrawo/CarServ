@@ -22,10 +22,10 @@ NewClient::NewClient(QWidget *parent) :
     ui->Button_Add_Client->setEnabled(false);
 
     QObject::connect(m_AttachAuto, SIGNAL(CloseDeletePage()), this, SLOT(RestoreFormAttachAuto()));
-    QObject::connect(ui->Button_AddClientAuto, SIGNAL(clicked()), m_AttachAuto, SLOT(OpenClearWindow()));
-
-
     QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreFormNewAuto()));
+
+    QObject::connect(ui->Button_AddClientAuto, SIGNAL(clicked()), m_AttachAuto, SLOT(OpenClearWindow()));
+    QObject::connect(this, SIGNAL(ButtonEditHit(QString)), m_AttachAuto, SLOT(OpenClientEditWindow(QString)));
     QObject::connect(ui->Button_AddClientAutoNew, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
 
     ui->Button_AddClientAuto->setEnabled(false);
@@ -150,23 +150,6 @@ void NewClient::RecordCarToClient()
     // Update Current Changes
     MyData.CloseConnection();
 }
-
-void NewClient::on_Button_CancelAdd_clicked()
-{
-    emit CloseNewClientForm();
-    hide();
-}
-
-void NewClient::on_Button_AddClientAuto_clicked()
-{
-    hide();
-}
-
-void NewClient::on_Button_AddClientAutoNew_clicked()
-{
-    hide();
-}
-
 
 bool NewClient::CheckRecordObligatory(){
 
@@ -300,4 +283,27 @@ void NewClient::on_Combo_Clients_currentIndexChanged(const QString &arg1)
       }
       MyData.CloseConnection();
       m_strLastClientName =ui->LText_ClientName->text();
+}
+
+void NewClient::on_Button_AddClientAutoEdit_clicked()
+{
+    emit ButtonEditHit( GetClientName());
+    hide();
+}
+
+void NewClient::on_Button_CancelAdd_clicked()
+{
+    emit CloseNewClientForm();
+    hide();
+}
+
+void NewClient::on_Button_AddClientAuto_clicked()
+{
+    hide();
+}
+
+void NewClient::on_Button_AddClientAutoNew_clicked()
+{
+
+    hide();
 }

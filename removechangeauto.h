@@ -30,11 +30,13 @@ private:
 
     QString m_SelectedRegNumber;
     QString m_SelectedClientID;
+    QString m_SentClientName;
     QString  m_strAutoID;
 
     bool m_bInitialize;
     bool m_bComboClientsHit;
     bool m_bComboRegsHit;
+    bool m_bEditFromClients;
 
 
 signals:
@@ -42,6 +44,7 @@ signals:
 
 private slots:
      void OpenClearEditWindow();
+     void OpenClientEditWindow(QString ClientName);
      void OpenClearWindow();
      void on_Button_Back_clicked();
 

@@ -33,9 +33,11 @@ private:
 public:
     explicit NewClient(QWidget *parent = 0);
     ~NewClient();
+    QString GetClientName(){return m_strLastClientName;}
 
 signals:
     void CloseNewClientForm();
+    void ButtonEditHit(QString CLientName);
 
 private slots:
     void OpenNewClientForm();
@@ -50,6 +52,7 @@ private slots:
     void on_Button_Add_Client_clicked();
     void on_LText_ClientName_textChanged(const QString &arg1);
     void on_Combo_Clients_currentIndexChanged(const QString &arg1);
+    void on_Button_AddClientAutoEdit_clicked();
 };
 
 #endif // NEWCLIENT_H

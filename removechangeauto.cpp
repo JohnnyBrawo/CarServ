@@ -8,9 +8,11 @@ RemoveChangeAuto::RemoveChangeAuto(QWidget *parent) :
     ui(new Ui::RemoveChangeAuto),
     m_SelectedRegNumber(""),
     m_SelectedClientID(""),
+    m_SentClientName(""),
     m_bInitialize(true),
     m_bComboClientsHit(false),
-    m_bComboRegsHit(false)
+    m_bComboRegsHit(false),
+    m_bEditFromClients(false)
 {
     ui->setupUi(this);
     m_strAutoID = "None";
@@ -53,7 +55,29 @@ void RemoveChangeAuto::ClearAllFields()
     ui->LText_DelChangeVIN->setText("");
     ui->LText_DelChangeYear->setText("");
     ui->Combo_DelChangeAutoRegs->setCurrentIndex(-1);
+    m_SelectedRegNumber.clear();
+    m_SelectedClientID.clear();
+    m_SentClientName.clear();
+//    m_strAutoID;
 
+    m_bComboClientsHit = false;
+    m_bComboRegsHit = false;
+    m_bEditFromClients = false;
+
+}
+
+
+void RemoveChangeAuto::OpenClientEditWindow(QString ClientName)
+{
+    show();
+    m_SentClientName = ClientName;
+    m_bComboClientsHit = false;
+    m_bComboRegsHit = false;
+    m_bEditFromClients = true;
+    ui->Button_Add->setVisible(false);
+    FillPage();
+    m_bInitialize = false;
+//    ui->Combo_DelChangeClientName->setEnabled(false);
 }
 
 void RemoveChangeAuto::OpenClearEditWindow()
@@ -61,6 +85,7 @@ void RemoveChangeAuto::OpenClearEditWindow()
     show();
     m_bComboClientsHit = false;
     m_bComboRegsHit = false;
+    m_bEditFromClients = false;
 
     ui->Button_Add->setVisible(false);
     FillPage();
@@ -74,6 +99,7 @@ void RemoveChangeAuto::OpenClearWindow()
     m_bInitialize = true;
     m_bComboClientsHit = false;
     m_bComboRegsHit = false;
+    m_bEditFromClients = false;
     FillPage();
     SetUnactiveFields();
     m_bInitialize = false;
@@ -91,15 +117,31 @@ void RemoveChangeAuto::FillRegCombo()
     CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
-    QSqlQuery EditAutoQry(MyData.CarsDB);
+    QSqlQuery RegComboQry(MyData.CarsDB);
+qDebug() << " FillRegCombo   m_SelectedClientID " << m_SelectedClientID;
+qDebug() << " FillRegCombo  m_SentClientName.isEmpty()   " << m_SentClientName.isEmpty();
+qDebug() << " FillRegCombo  m_SentClientName   " << m_SentClientName;
 
-    EditAutoQry.prepare("SELECT Auto_RegNumber FROM Automobiles_Table ");
+    if(m_SentClientName.isEmpty())
+    {
+        RegComboQry.prepare("SELECT Auto_RegNumber FROM Automobiles_Table ");
+    }else {
+        RegComboQry.prepare("SELECT Auto_RegNumber FROM Automobiles_Table WHERE CLIENT_ID='"+m_SelectedClientID+"'");
+    }
 
-    if(! EditAutoQry.exec()){
+    if(! RegComboQry.exec()){
         qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< endl;
     }
 
-    MyModel->setQuery(EditAutoQry);
+    if(!RegComboQry.next())
+    {
+           qDebug() << " FillRegCombo   RegComboQry.Exec() SELECT not valid  ";
+    }else {
+
+        qDebug() << "  FillRegCombo Sent Client ID  ->  "<< RegComboQry.value(0).toString();
+    }
+
+    MyModel->setQuery(RegComboQry);
     ui->Combo_DelChangeAutoRegs->setModel(MyModel);
 
     MyData.CloseConnection();
@@ -110,16 +152,39 @@ void RemoveChangeAuto::FillClientNameCombo()
     CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
-    QSqlQuery EditAutoQry(MyData.CarsDB);
-
-    EditAutoQry.prepare("SELECT ClientName FROM Clients_Table ");
-
-
-    if(! EditAutoQry.exec()){
-        qDebug() << "EditAutoQry.Exec() SELECT ClientName FROM Clients_Table Fail "<< endl;
+    QSqlQuery ClientComboQry(MyData.CarsDB);
+    if(m_SentClientName.isEmpty())
+    {
+          qDebug() << "  ClientName SELECT ";
+        ClientComboQry.prepare("SELECT ClientName FROM Clients_Table ");
+    }else {
+        qDebug() << " SELECT     m_SentClientName "<< m_SentClientName;
+        ClientComboQry.prepare("SELECT * FROM Clients_Table WHERE ClientName='"+m_SentClientName+"' ");
     }
 
-    MyModel->setQuery(EditAutoQry);
+   if(! ClientComboQry.exec()){
+        qDebug() << "ClientComboQry.Exec() SELECT ClientName FROM Clients_Table Fail "<< endl;
+    }
+
+    while(ClientComboQry.next())
+    {
+        m_SelectedClientID =  ClientComboQry.value(0).toString();
+        qDebug() << "  Sent Client ID  ->  "<< ClientComboQry.value(0).toString();
+        qDebug() << "  Sent Client ID  ->  "<< ClientComboQry.value(1).toString();
+        qDebug() << "  Sent Client ID  ->  "<< ClientComboQry.value(2).toString();
+        qDebug() << "  Sent Client ID  ->  "<< ClientComboQry.value(3).toString();
+        qDebug() << "  Sent Client ID m_SelectedClientID  ->  "<<m_SelectedClientID;
+
+    }
+
+   qDebug() << "\n\n SELECT     m_SentClientName "<< m_SentClientName <<"\n\n";
+   ClientComboQry.prepare("SELECT ClientName FROM Clients_Table WHERE ClientName='"+m_SentClientName+"' ");
+   if(! ClientComboQry.exec()){
+        qDebug() << "ClientComboQry.Exec() SELECT ClientName FROM Clients_Table Fail "<< endl;
+    }
+
+   // НЕ модел а QLineEdit в която ще се изписва само името на клиента.
+    MyModel->setQuery(ClientComboQry);
     ui->Combo_DelChangeClientName->setModel(MyModel);
     MyData.CloseConnection();
 }
@@ -189,6 +254,8 @@ void RemoveChangeAuto::on_Button_Add_clicked()
 void RemoveChangeAuto::on_Button_Back_clicked()
 {
     m_strAutoID = "None";
+    m_SelectedClientID="";
+    m_SelectedRegNumber="";
     hide();
     emit CloseDeletePage();
 }
@@ -229,7 +296,10 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
         qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< endl;
     }else {
         if (EditAutoQry.next()) {
-             m_SelectedClientID = EditAutoQry.value(1).toString();
+            if(m_SelectedClientID.isEmpty()){
+                 qDebug() << "1111111111111111111111111111111111111111 ";
+                 m_SelectedClientID = EditAutoQry.value(1).toString();
+            }
             ui->LText_DelChangeMarka->setText(EditAutoQry.value(2).toString());
             ui->LText_DelChangeModel->setText(EditAutoQry.value(3).toString());
             ui->LText_DelChangeYear->setText(EditAutoQry.value(4).toString());
