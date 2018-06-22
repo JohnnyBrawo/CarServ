@@ -10,15 +10,17 @@ NewClient::NewClient(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewClient),
     m_AttachAuto(new RemoveChangeAuto()),
-    m_NewAuto(new NewAuto())
+    m_NewAuto(new NewAuto()),
+    m_strClientID(""),
+    m_strLastClientName(""),
+    m_strClientCarReg(""),
+    m_bRecordPermission(false),
+    m_bClientFormEditMode(false)
+
 {
     ui->setupUi(this);
     setWindowTitle("New Client");
     CenterForm();
-    m_bClientFormEditMode = false;
-    m_strClientID = -1;
-    m_strLastClientName.clear();
-    m_bRecordPermission = false;
     ui->Button_Add_Client->setEnabled(false);
 
     QObject::connect(m_AttachAuto, SIGNAL(CloseDeletePage()), this, SLOT(RestoreFormAttachAuto()));
@@ -30,13 +32,6 @@ NewClient::NewClient(QWidget *parent) :
 
     ui->Button_AddClientAuto->setEnabled(false);
     ui->Button_AddClientAutoNew->setEnabled(false);
-
-    //    ui->Button_AddClientAuto->setEnabled(false);
-
-    // Да може да се добавя кола само при въведени определени полета !!
-    //    connect(ui->LText_DelChangeRegNumber, SIGNAL(textChanged(const QString &)), this, SLOT(HandleNewText(const QString &)));
-
-
 }
 
 NewClient::~NewClient()
@@ -78,6 +73,8 @@ void NewClient::ClearAllFields()
     ui->LText_ClientFirm->clear();
     ui->LText_ClientName->clear();
     ui->Text_ClientAddress->document()->setPlainText("");
+    m_strClientCarReg.clear();
+
 }
 
 void NewClient::OpenNewClientForm()
@@ -103,8 +100,9 @@ void NewClient::RestoreFormAttachAuto()
     this->show();
     CenterForm();
 
-    if(m_AttachAuto->GetSelectedCarID() != "None")
+    if(m_AttachAuto->GetSelectedCarReg() != "None")
     {
+        m_strClientCarReg = m_AttachAuto->GetSelectedCarReg();
         m_bRecordPermission = true;
         ui->Button_Add_Client->setEnabled(true);
     }else {
@@ -119,8 +117,9 @@ void NewClient::RestoreFormNewAuto()
 {
     this->show();
     CenterForm();
-    if(m_NewAuto->GetNewCarID() != "None")
+    if(m_NewAuto->GetNewCarReg() != "None")
     {
+        m_strClientCarReg = m_NewAuto->GetNewCarReg();
         m_bRecordPermission = true;
         ui->Button_Add_Client->setEnabled(true);
     }else {
@@ -145,8 +144,9 @@ void NewClient::RecordCarToClient()
     CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
 
+     qDebug() << "RecordCarToClient  m_strClientCarReg " << m_strClientCarReg;
     QSqlQuery ClientQry(MyData.CarsDB);
-    ClientQry.prepare("UPDATE Automobiles_Table set CLIENT_ID='"+m_strClientID+"' WHERE PR_ID='"+m_AttachAuto->GetSelectedCarID()+"' ");
+    ClientQry.prepare("UPDATE Automobiles_Table set CLIENT_ID='"+m_strClientID+"' WHERE Auto_RegNumber='"+m_strClientCarReg+"' ");
 
     if(!ClientQry.exec()){
         qDebug() << "UPDATE Automobiles_Table set CLIENT_ID faile with "<< ClientQry.lastError().text();
@@ -242,7 +242,6 @@ void NewClient::on_Button_Add_Client_clicked()
 
 void NewClient::on_LText_ClientName_textChanged(const QString &arg1)
 {
-    qDebug() << "NewClient::on_LText_ClientName_textChanged()   ";
     if(!arg1.isEmpty() && (!ui->Button_AddClientAuto->isEnabled() || !ui->Button_AddClientAutoNew->isEnabled() ) )
     {
         ui->Button_AddClientAuto->setEnabled(true);

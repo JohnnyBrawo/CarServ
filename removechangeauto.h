@@ -28,7 +28,7 @@ private:
     QString m_SelectedClientID;
     QString m_SentClientName;
     QString m_SentClientID;
-    QString  m_strAutoID;
+    QString m_strAutoReg;
 
     bool m_bInitialize;
     bool m_bComboClientsHit;
@@ -38,7 +38,7 @@ private:
 public:
     explicit RemoveChangeAuto(QWidget *parent = 0);
     ~RemoveChangeAuto();
-    QString GetSelectedCarID() { return m_strAutoID;}
+    QString GetSelectedCarReg() { return m_strAutoReg;}
 
 signals:
     void CloseDeletePage();

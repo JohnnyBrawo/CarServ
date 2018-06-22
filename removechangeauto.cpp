@@ -9,14 +9,14 @@ RemoveChangeAuto::RemoveChangeAuto(QWidget *parent) :
     m_SelectedRegNumber(""),
     m_SelectedClientID(""),
     m_SentClientName(""),
-    m_SentClientID(""),
+    m_SentClientID("None"),
+    m_strAutoReg(""),
     m_bInitialize(true),
     m_bComboClientsHit(false),
     m_bComboRegsHit(false),
     m_bEditFromClients(false)
 {
     ui->setupUi(this);
-    m_strAutoID = "None";
     setWindowTitle("Euro Kriss - Edit AUTOS ");
 }
 
@@ -276,7 +276,7 @@ void RemoveChangeAuto::on_Button_Add_clicked()
 
 void RemoveChangeAuto::on_Button_Back_clicked()
 {
-    m_strAutoID = "None";
+    m_strAutoReg = "None";
     m_SelectedClientID="";
     m_SelectedRegNumber="";
     hide();
@@ -345,7 +345,7 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
             ui->LText_DelChangeType->setText(EditAutoQry.value(8).toString());
 
             /// Record selected AutoID - attach it to the New client
-            m_strAutoID = EditAutoQry.value(0).toString();
+            m_strAutoReg = EditAutoQry.value(6).toString();
             ui->Combo_DelChangeAutoRegs->setCurrentText(EditAutoQry.value(6).toString());
         }else {
             /// Fill all automobiles with No cliet assigned

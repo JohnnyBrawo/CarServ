@@ -17,19 +17,24 @@ private:
     Ui::NewClient *ui;
     RemoveChangeAuto    *m_AttachAuto;
     NewAuto             *m_NewAuto;
+
     QString            m_strClientID;
     QString             m_strLastClientName;
+    QString             m_strClientCarReg;
+
+    bool m_bRecordPermission;
+    bool m_bClientFormEditMode;
+
+    bool CheckRecordObligatory();
+    bool CheckField(QString SelectedString);
 
     void CenterForm();
     void ClearAllFields();
     void RecordCarToClient();
-    bool CheckRecordObligatory();
-    bool m_bRecordPermission;
-    bool m_bClientFormEditMode;
     void SetNewClientDesignMode();
     void SetEditDesignMode();
     void FillClientsNameCombo();
-    bool CheckField(QString SelectedString);
+
 
 public:
     explicit NewClient(QWidget *parent = 0);

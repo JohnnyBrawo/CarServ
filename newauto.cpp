@@ -15,7 +15,7 @@ NewAuto::NewAuto(QWidget *parent) :
     ui(new Ui::NewAuto)
 {
     ui->setupUi(this);
-    m_strSelectedCarID = "None";
+    m_strSelectedCarReg = "None";
     CenterForm();
     setWindowTitle("New Auto");
 }
@@ -158,22 +158,23 @@ void NewAuto::on_Button_AddNewAuto_clicked()
     AddNewAuto.bindValue(":AutoVIN",CheckSelected(ui->LText_NewAutoVIN->text())?ui->LText_NewAutoVIN->text():"None");
     AddNewAuto.bindValue(":AutoType",CheckSelected(ui->Combo_NewAuto_Type->currentText())?ui->Combo_NewAuto_Type->currentText():"None");
 
+    m_strSelectedCarReg = ui->LText_NewAutoRegNumber->text();
     if(!AddNewAuto.exec()){
         qDebug() << "INSERT INTO Automobiles_Table fail "<< AddNewAuto.lastError().text();
     }
 
-    // Get Last RowID
-    QSqlQuery query(MyData.CarsDB);
-        query.prepare("SELECT last_insert_rowid()");
-        if(!query.exec())
-        {
-            qDebug() << "SELECT last_insert_rowid() "<< AddNewAuto.lastError().text();
-        }
-        else {
-            m_strSelectedCarID = query.lastInsertId().toString();
-             qDebug() << "m_strSelectedCarID   "<< m_strSelectedCarID;
+//    // Get Last RowID
+//    QSqlQuery query(MyData.CarsDB);
+//        query.prepare("SELECT last_insert_rowid()");
+//        if(!query.exec())
+//        {
+//            qDebug() << "SELECT last_insert_rowid() "<< AddNewAuto.lastError().text();
+//        }
+//        else {
+//            m_strSelectedCarReg = query.lastInsertId().toString();
+             qDebug() << "m_strSelectedCarReg   "<< m_strSelectedCarReg;
              ClearAllFields();
-        }
+//        }
      MyData.CloseConnection();
 }
 

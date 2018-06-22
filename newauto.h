@@ -32,13 +32,13 @@ private:
     void DeActivateField(NewAuto::NewAutoFields Field);
     bool CheckRecordInformation();
     bool CheckRecordObligatory();
-    QString m_strSelectedCarID;
+    QString m_strSelectedCarReg;
 
 public:
     explicit NewAuto(QWidget *parent = 0);
     ~NewAuto();
     void ClearAllFields();
-    QString GetNewCarID(){ return m_strSelectedCarID;}
+    QString GetNewCarReg(){ return m_strSelectedCarReg;}
 
 signals:
     void CloseNewAutoForm();
