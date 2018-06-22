@@ -29,15 +29,17 @@ private:
     void SetNewClientDesignMode();
     void SetEditDesignMode();
     void FillClientsNameCombo();
+    bool CheckField(QString SelectedString);
 
 public:
     explicit NewClient(QWidget *parent = 0);
     ~NewClient();
     QString GetClientName(){return m_strLastClientName;}
+    QString GetClientID(){return m_strClientID;}
 
 signals:
     void CloseNewClientForm();
-    void ButtonEditHit(QString CLientName);
+    void ButtonEditHit(QString CLientName,QString ClientID);
 
 private slots:
     void OpenNewClientForm();

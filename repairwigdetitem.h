@@ -14,6 +14,13 @@ class NewRepairItem : public QWidget
 {
     Q_OBJECT
 
+private:
+    Ui::NewRepairItem *ui;
+
+    void ResetAllFields();
+    void CenterForm();
+    void ClearFields();
+
 public:
     explicit NewRepairItem(QWidget *parent = 0);
     ~NewRepairItem();
@@ -25,13 +32,6 @@ public:
     QLineEdit *QuantityText;
     QLineEdit *SinglePriceText;
     QLineEdit *ValueText;
-
-private:
-    Ui::NewRepairItem *ui;
-
-    void ResetAllFields();
-    void CenterForm();
-    void ClearFields();
 
 private slots:
     void on_ButtonClear_clicked();

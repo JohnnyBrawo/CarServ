@@ -28,8 +28,8 @@ void ShowAllcars::ClearAllFields()
 
 void ShowAllcars::OpenClearWindow()
 {
-     ClearAllFields();
-     this->show();
+    ClearAllFields();
+    this->show();
 }
 
 void ShowAllcars::on_Button_Back_clicked()

@@ -14,10 +14,6 @@ class CarsForm : public QDialog
 {
     Q_OBJECT
 
-public:
-    explicit CarsForm(QWidget *parent = 0);
-    ~CarsForm();
-
 private:
     Ui::CarsForm *ui;
 
@@ -26,6 +22,10 @@ private:
     RemoveChangeAuto *m_DelEdtiAuto;
 
     void CenterForm();
+
+public:
+    explicit CarsForm(QWidget *parent = 0);
+    ~CarsForm();
 
 signals:
     void CloseNewAutoForm();

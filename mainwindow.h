@@ -25,7 +25,6 @@ private:
     CarsDatabase   *m_BasePath;
     void LoadDesignView();
 
-
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();

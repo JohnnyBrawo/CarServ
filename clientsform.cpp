@@ -8,6 +8,7 @@ ClientsForm::ClientsForm(QWidget *parent) :
     m_RemoveClient(new RemoveClient())
 {
     ui->setupUi(this);
+    setWindowTitle("Euro Kriss - CLIENTS ");
     // Connect all new windows
     QObject::connect(m_NewClient, SIGNAL(CloseNewClientForm()), this, SLOT(RestoreClientsForm()));
     QObject::connect(m_RemoveClient, SIGNAL(CloseRemoveClientPage()), this, SLOT(RestoreClientsForm()));
@@ -21,7 +22,7 @@ ClientsForm::ClientsForm(QWidget *parent) :
 ClientsForm::~ClientsForm()
 {
     delete m_NewClient;
-//    delete m_RemoveClient;
+    //    delete m_RemoveClient;
     delete ui;
 }
 

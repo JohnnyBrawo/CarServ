@@ -25,9 +25,8 @@ signals:
 private slots:
     void on_Button_Search_Back_clicked();
     void OpenClearWindow();
-
-
     void on_pushButton_clicked();
+
 };
 
 #endif // SEARCHFORM_H

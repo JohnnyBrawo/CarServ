@@ -11,11 +11,6 @@ class RemoveChangeAuto : public QDialog
 {
     Q_OBJECT
 
-public:
-    explicit RemoveChangeAuto(QWidget *parent = 0);
-    ~RemoveChangeAuto();
-    QString GetSelectedCarID() { return m_strAutoID;}
-
 private:
     Ui::RemoveChangeAuto *ui;
 
@@ -27,10 +22,12 @@ private:
     void ClearAllFields();
     void ShowAllFieldsText();
     void UpdateFlags();
+    bool CheckField(QString SelectedString);
 
     QString m_SelectedRegNumber;
     QString m_SelectedClientID;
     QString m_SentClientName;
+    QString m_SentClientID;
     QString  m_strAutoID;
 
     bool m_bInitialize;
@@ -38,22 +35,26 @@ private:
     bool m_bComboRegsHit;
     bool m_bEditFromClients;
 
+public:
+    explicit RemoveChangeAuto(QWidget *parent = 0);
+    ~RemoveChangeAuto();
+    QString GetSelectedCarID() { return m_strAutoID;}
 
 signals:
     void CloseDeletePage();
 
 private slots:
-     void OpenClearEditWindow();
-     void OpenClientEditWindow(QString ClientName);
-     void OpenClearWindow();
-     void on_Button_Back_clicked();
+    void OpenClearEditWindow();
+    void OpenClientEditWindow(QString ClientName, QString ClientEditID);
+    void OpenClearWindow();
+    void on_Button_Back_clicked();
 
-     void on_Combo_DelChangeAutoRegs_currentIndexChanged(const QString &arg1);
-     void on_Button_Record_clicked();
+    void on_Combo_DelChangeAutoRegs_currentIndexChanged(const QString &arg1);
+    void on_Button_Record_clicked();
 
-     void on_Button_DeleteAuto_clicked();
-     void on_Button_Add_clicked();
-     void on_Combo_DelChangeClientName_currentIndexChanged(QString);
+    void on_Button_DeleteAuto_clicked();
+    void on_Button_Add_clicked();
+    void on_Combo_DelChangeClientName_currentIndexChanged(QString);
 };
 
 #endif // REMOVECHANGEAUTO_H

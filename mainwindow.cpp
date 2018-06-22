@@ -53,8 +53,8 @@ MainWindow::~MainWindow()
 void MainWindow::LoadDesignView()
 {
 
-//    setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
-//    setStyleSheet("background-image: url(:"+m_BasePath->GetReousrcesPath()+"ideas.jpg);");
+    //    setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
+    //    setStyleSheet("background-image: url(:"+m_BasePath->GetReousrcesPath()+"ideas.jpg);");
 }
 
 void MainWindow::on_Button_Search_clicked()

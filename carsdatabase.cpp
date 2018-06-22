@@ -13,17 +13,17 @@ QString  CarsDatabase::GetReousrcesPath()
 
 
     if(position != (-1)){
-            testPath.truncate(position);
-            if(position2 != (-1)){
-                testPath.append("CarServ/Images/");
-            }
-            else {
-                qDebug() << "WINDOWS ";
-                testPath.append("CarServ\\Images\\");
-            }
+        testPath.truncate(position);
+        if(position2 != (-1)){
+            testPath.append("CarServ/Images/");
+        }
+        else {
+            qDebug() << "WINDOWS ";
+            testPath.append("CarServ\\Images\\");
+        }
     }
     else {
-         qDebug() << " BUILD PATH NOT FOUND   ";
+        qDebug() << " BUILD PATH NOT FOUND   ";
     }
     return testPath;
 }
@@ -36,18 +36,18 @@ QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
 
 
     if(position != (-1)){
-            testPath.truncate(position);
-            if(position2 != (-1)){
-//                qDebug() << "LINUX ";
-                testPath.append("CarServ/DataBase/");
-            }
-            else {
-                qDebug() << "WINDOWS ";
-                testPath.append("CarServ\\DataBase\\");
-            }
+        testPath.truncate(position);
+        if(position2 != (-1)){
+            //                qDebug() << "LINUX ";
+            testPath.append("CarServ/DataBase/");
+        }
+        else {
+            qDebug() << "WINDOWS ";
+            testPath.append("CarServ\\DataBase\\");
+        }
     }
     else {
-         qDebug() << " BUILD PATH NOT FOUND   ";
+        qDebug() << " BUILD PATH NOT FOUND   ";
     }
 
     m_CurrDataName = testPath + DataBaseName;
@@ -66,8 +66,8 @@ bool CarsDatabase::OpenConnection(QString DataBaseName)
         qDebug() << " Can not open database : " << m_CurrDataName;
         return false;
     }else
-     {
-//        qDebug() << " Connected to database : " << m_CurrDataName;
+    {
+        //        qDebug() << " Connected to database : " << m_CurrDataName;
         return true;
     }
 }

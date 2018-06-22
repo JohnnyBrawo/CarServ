@@ -13,6 +13,11 @@ class ClientsForm : public QDialog
 {
     Q_OBJECT
 
+private:
+    Ui::ClientsForm *ui;
+    NewClient       *m_NewClient;
+    RemoveClient    *m_RemoveClient;
+
 public:
     explicit ClientsForm(QWidget *parent = 0);
     ~ClientsForm();
@@ -22,18 +27,13 @@ private slots:
      void OpenClearWindow();
      void on_pushButton_clicked();
      void on_Button_RemoveClient_clicked();
-
      void RestoreClientsForm();
-
      void on_Button_EditClient_clicked();
 
 signals:
     void CloseClientsPage();
 
-private:
-    Ui::ClientsForm *ui;
-    NewClient       *m_NewClient;
-    RemoveClient    *m_RemoveClient;
+
 };
 
 #endif // CLIENTSFORM_H

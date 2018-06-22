@@ -11,6 +11,9 @@ class RemoveClient : public QDialog
 {
     Q_OBJECT
 
+private:
+    Ui::RemoveClient *ui;
+
 public:
     explicit RemoveClient(QWidget *parent = 0);
     ~RemoveClient();
@@ -22,8 +25,6 @@ private slots:
 signals:
     void CloseRemoveClientPage();
 
-private:
-    Ui::RemoveClient *ui;
 };
 
 #endif // REMOVECLIENT_H

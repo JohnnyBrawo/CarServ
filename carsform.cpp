@@ -18,7 +18,7 @@ CarsForm::CarsForm(QWidget *parent) :
     // Connect all new windows
     QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreView()));
     QObject::connect(m_ShowAllAutos, SIGNAL(CloseShowAllAutoForm()), this, SLOT(RestoreView()));
-//    QObject::connect(m_DelEdtiAuto, SIGNAL(CloseChangePage()), this, SLOT(RestoreView()));
+    //    QObject::connect(m_DelEdtiAuto, SIGNAL(CloseChangePage()), this, SLOT(RestoreView()));
     QObject::connect(m_DelEdtiAuto, SIGNAL(CloseDeletePage()), this, SLOT(RestoreView()));
 
     QObject::connect(ui->Button_AddNewAuto, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
@@ -26,7 +26,7 @@ CarsForm::CarsForm(QWidget *parent) :
     QObject::connect(ui->Button_EditAuto, SIGNAL(clicked()), m_DelEdtiAuto, SLOT(OpenClearEditWindow()));
     //QObject::connect(ui->Button_ChangeAuto, SIGNAL(clicked()), m_DelEdtiAuto, SLOT(OpenClearEditWindow())); - > Not Used
 
-//    setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
+    //    setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
 }
 
 CarsForm::~CarsForm()
@@ -41,7 +41,7 @@ CarsForm::~CarsForm()
 void CarsForm::RestoreView()
 {
     show();
-//    CenterForm();     uncomment to set the MainForm position in the middle of the screen
+    //    CenterForm();     uncomment to set the MainForm position in the middle of the screen
 }
 
 void CarsForm::CenterForm()
@@ -54,7 +54,7 @@ void CarsForm::CenterForm()
 
 void CarsForm::OpenClearWindow()
 {
-     show();
+    show();
 }
 
 void CarsForm::on_Button_Back_clicked()

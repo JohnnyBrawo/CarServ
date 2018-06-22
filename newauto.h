@@ -22,12 +22,6 @@ enum NewAutoFields
         eFieldsNum
     };
 
-public:
-    explicit NewAuto(QWidget *parent = 0);
-    ~NewAuto();
-    void ClearAllFields();
-    QString GetNewCarID(){ return m_strSelectedCarID;}
-
 private:
     Ui::NewAuto *ui;
 
@@ -39,6 +33,13 @@ private:
     bool CheckRecordInformation();
     bool CheckRecordObligatory();
     QString m_strSelectedCarID;
+
+public:
+    explicit NewAuto(QWidget *parent = 0);
+    ~NewAuto();
+    void ClearAllFields();
+    QString GetNewCarID(){ return m_strSelectedCarID;}
+
 signals:
     void CloseNewAutoForm();
 

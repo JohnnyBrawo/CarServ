@@ -98,37 +98,37 @@ void AddRepair::InsertRepair()
 
 
     //Creating a new list widget item whose parent is the listwidget itself
-       QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->RepairList);
+    QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->RepairList);
 
-       //Adding the item to the listwidget
-       ui->RepairList->addItem (listWidgetItem);
+    //Adding the item to the listwidget
+    ui->RepairList->addItem (listWidgetItem);
 
-       //Creating an object of the designed widget which is to be added to the listwidget
-       NewRepairItem *m_newRepair = new NewRepairItem;
+    //Creating an object of the designed widget which is to be added to the listwidget
+    NewRepairItem *m_newRepair = new NewRepairItem;
 
-//       m_vRepairItem.push_back(m_newRepair);
+    //       m_vRepairItem.push_back(m_newRepair);
 
-       //Making sure that the listWidgetItem has the same size as the TheNewRepairItem
-       listWidgetItem->setSizeHint (m_newRepair->sizeHint ());
+    //Making sure that the listWidgetItem has the same size as the TheNewRepairItem
+    listWidgetItem->setSizeHint (m_newRepair->sizeHint ());
 
-       //Finally adding the itemWidget to the list
-       ui->RepairList->setItemWidget (listWidgetItem, m_newRepair);
-       RepairsNumber ++;
+    //Finally adding the itemWidget to the list
+    ui->RepairList->setItemWidget (listWidgetItem, m_newRepair);
+    RepairsNumber ++;
 
-//       listWidgetItem = ui->RepairList->currentItem();
-//       m_newRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listWidgetItem));
-//       m_vRepairItem.push_back(m_newRepair);
+    //       listWidgetItem = ui->RepairList->currentItem();
+    //       m_newRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listWidgetItem));
+    //       m_vRepairItem.push_back(m_newRepair);
 }
 
 void AddRepair::on_Button_InsertRepair_clicked()
 {
-   InsertRepair();
+    InsertRepair();
 }
 
 void AddRepair::on_Button_DeleteRepair_clicked()
 {
     //Delete selected item from the listWidget
-       delete ui->RepairList->currentItem ();
+    delete ui->RepairList->currentItem ();
 }
 
 void AddRepair::ClearAllinputs()
@@ -145,7 +145,7 @@ void AddRepair::ClearAllinputs()
 
 bool AddRepair::CheckRecordInformation()
 {
-//    QMessageBox::StandardButton UserReply;
+    //    QMessageBox::StandardButton UserReply;
     QListWidgetItem *  listWidgetItem;
     NewRepairItem * m_newRepair;
 
@@ -159,9 +159,9 @@ bool AddRepair::CheckRecordInformation()
         if(m_newRepair->GetRepairDescrText().isEmpty() && m_newRepair->GetRepairQuantityText().isEmpty() && m_newRepair->GetRepairSinglePriceText().isEmpty() && m_newRepair->GetRepairValueText().isEmpty())
         {
             QMessageBox::information(this,"Празни полета!","Празните полета няма да бъдат записани.");
-//            if(UserReply == QMessageBox::No){
-//                return false;
-//            }
+            //            if(UserReply == QMessageBox::No){
+            //                return false;
+            //            }
         }
     }
 
@@ -191,31 +191,31 @@ void AddRepair::RecordRepair()
     {
         if(!CheckRecordInformation())
         {
-             qDebug() << "RecordRepair Rejected because of empty fields ";
+            qDebug() << "RecordRepair Rejected because of empty fields ";
             continue;
         }
 
         listWidgetItem = ui->RepairList->item(i);
         m_newRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listWidgetItem));
 
-    ////// Record all repairs for this car
+        ////// Record all repairs for this car
 
-    QSqlQuery AddNewAuto(MyData.CarsDB);
-    AddNewAuto.prepare("INSERT INTO Repair_Table(RepairName, RepairQuantity, RepairSinglePrice, RepairValue, RepairTotal, RepairDate, RepairCarRegNumber) "
-                       "VALUES(:RepairName, :RepairQuantity, :RepairSinglePrice, :RepairValue, :RepairTotal, :RepairDate, :RepairCarRegNumber)");
+        QSqlQuery AddNewAuto(MyData.CarsDB);
+        AddNewAuto.prepare("INSERT INTO Repair_Table(RepairName, RepairQuantity, RepairSinglePrice, RepairValue, RepairTotal, RepairDate, RepairCarRegNumber) "
+                           "VALUES(:RepairName, :RepairQuantity, :RepairSinglePrice, :RepairValue, :RepairTotal, :RepairDate, :RepairCarRegNumber)");
 
-    AddNewAuto.bindValue(":RepairName",m_newRepair->GetRepairDescrText());
-    AddNewAuto.bindValue(":RepairQuantity",m_newRepair->GetRepairQuantityText());
-    AddNewAuto.bindValue(":RepairSinglePrice",m_newRepair->GetRepairSinglePriceText());
-    AddNewAuto.bindValue(":RepairValue",m_newRepair->GetRepairValueText());
-    AddNewAuto.bindValue(":RepairTotal",ui->LText_TotalPrice->text());
-    AddNewAuto.bindValue(":RepairDate",ui->LText_RepairDate->text());
-    AddNewAuto.bindValue(":RepairCarRegNumber",m_strSelCarNumber);
+        AddNewAuto.bindValue(":RepairName",m_newRepair->GetRepairDescrText());
+        AddNewAuto.bindValue(":RepairQuantity",m_newRepair->GetRepairQuantityText());
+        AddNewAuto.bindValue(":RepairSinglePrice",m_newRepair->GetRepairSinglePriceText());
+        AddNewAuto.bindValue(":RepairValue",m_newRepair->GetRepairValueText());
+        AddNewAuto.bindValue(":RepairTotal",ui->LText_TotalPrice->text());
+        AddNewAuto.bindValue(":RepairDate",ui->LText_RepairDate->text());
+        AddNewAuto.bindValue(":RepairCarRegNumber",m_strSelCarNumber);
 
-    if(!AddNewAuto.exec()){
-        qDebug() << "INSERT INTO Repair_Table fail "<< AddNewAuto.lastError().text();
+        if(!AddNewAuto.exec()){
+            qDebug() << "INSERT INTO Repair_Table fail "<< AddNewAuto.lastError().text();
+        }
     }
-  }
     MyData.CloseConnection();
     ClearAllinputs();
     OpenClearWindow();

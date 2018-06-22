@@ -95,11 +95,6 @@ bool NewAuto::CheckRecordInformation(){
         EmptyFields = EmptyFields + " Гориво " + "\n";
     }
 
-    if(!CheckSelected(ui->LText_NewAutoRegNumber->text())) {
-        EmptyFields =EmptyFields +  " Геристрационен номер " + "\n";
-    }
-
-
     if(!CheckSelected(ui->LText_NewAutoVIN->text())) {
         EmptyFields =EmptyFields +  " Рама/Вин " + "\n";
     }
@@ -156,12 +151,12 @@ void NewAuto::on_Button_AddNewAuto_clicked()
                        "VALUES(:AutoMarka, :AutoModel, :AutoYear, :AutoFuel, :Auto_RegNumber, :AutoVIN, :AutoType)");
 
     AddNewAuto.bindValue(":AutoMarka",ui->Combo_NewAuto_Marka->currentText());
-    AddNewAuto.bindValue(":AutoModel",ui->Combo_NewAuto_Model->currentText());
-    AddNewAuto.bindValue(":AutoYear",ui->Combo_NewAuto_Year->currentText());
-    AddNewAuto.bindValue(":AutoFuel",ui->Combo_NewAuto_Fuel->currentText());
-    AddNewAuto.bindValue(":Auto_RegNumber",ui->LText_NewAutoRegNumber->text());
-    AddNewAuto.bindValue(":AutoVIN",ui->LText_NewAutoVIN->text());
-    AddNewAuto.bindValue(":AutoType",ui->Combo_NewAuto_Type->currentText());
+    AddNewAuto.bindValue(":AutoModel",CheckSelected(ui->Combo_NewAuto_Model->currentText())?ui->Combo_NewAuto_Model->currentText():"None");
+    AddNewAuto.bindValue(":AutoYear",CheckSelected(ui->Combo_NewAuto_Year->currentText())?ui->Combo_NewAuto_Year->currentText():"None");
+    AddNewAuto.bindValue(":AutoFuel",CheckSelected(ui->Combo_NewAuto_Fuel->currentText())?ui->Combo_NewAuto_Fuel->currentText():"None");
+    AddNewAuto.bindValue(":Auto_RegNumber",CheckSelected(ui->LText_NewAutoRegNumber->text())?ui->LText_NewAutoRegNumber->text():"None");
+    AddNewAuto.bindValue(":AutoVIN",CheckSelected(ui->LText_NewAutoVIN->text())?ui->LText_NewAutoVIN->text():"None");
+    AddNewAuto.bindValue(":AutoType",CheckSelected(ui->Combo_NewAuto_Type->currentText())?ui->Combo_NewAuto_Type->currentText():"None");
 
     if(!AddNewAuto.exec()){
         qDebug() << "INSERT INTO Automobiles_Table fail "<< AddNewAuto.lastError().text();
@@ -208,13 +203,10 @@ bool NewAuto::CheckSelected(QString SelectedString)
 {
     if(( (int)SelectedString.size() < 2 ) || (SelectedString == "Select") || SelectedString == "")
     {
-        qDebug() << "Back to Select  " << SelectedString << endl;
+        qDebug() << "CheckSelected  FAIL SelectedString " << SelectedString;
         return false;
     }
-    else
-    {
-        return true;
-    }
+    return true;
 }
 
 
