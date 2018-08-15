@@ -20,17 +20,20 @@ class AddRepair : public QWidget
 private:
     Ui::AddRepair *ui;
     void CenterForm();
-    void InsertRepair();
+    void InsertRepair(bool SubMenu);
     void SetInitialDesign();
     void SetRandomDesign();
     void ClearAllinputs();
     bool m_bChecked;
     void FillPage();
     bool CheckRecordInformation();
+    void ReFillRepairIndexes();
+
 
     void RecordRepair();
     QString m_strSelCarNumber;
-    int RepairsNumber;
+    unsigned int RepairsNumber;
+    unsigned int SubMenuNumber;
 
 public:
     explicit AddRepair(QWidget *parent = 0);
@@ -50,6 +53,7 @@ private slots:
     void on_Button_Search_clicked();
     void OpenClearWindow();
     void on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1);
+    void on_Button_InsertSubMenu_clicked();
 };
 
 #endif // ADDREPAIR_H

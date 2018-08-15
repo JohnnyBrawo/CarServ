@@ -20,26 +20,19 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="1">
-    <widget class="QPushButton" name="ButtonClear">
-     <property name="text">
-      <string>Изчисти</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QPushButton" name="ButtonSubMenu">
-     <property name="text">
-      <string>ПодМеню</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="VLayout">
      <item>
       <layout class="QHBoxLayout" name="HLayout"/>
      </item>
     </layout>
+   </item>
+   <item row="0" column="1">
+    <widget class="QPushButton" name="ButtonClear">
+     <property name="text">
+      <string>Изчисти</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

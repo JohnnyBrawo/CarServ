@@ -10,7 +10,9 @@
 
 AddRepair::AddRepair(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::AddRepair)
+    ui(new Ui::AddRepair),
+    RepairsNumber(0),
+    SubMenuNumber(0)
 {
     ui->setupUi(this);
     setWindowTitle("Repair Dictionary");
@@ -93,7 +95,7 @@ void AddRepair::on_Button_ExitRepair_clicked()
     this->hide();
 }
 
-void AddRepair::InsertRepair()
+void AddRepair::InsertRepair(bool SubMenu)
 {
 
 
@@ -110,10 +112,11 @@ void AddRepair::InsertRepair()
 
     //Making sure that the listWidgetItem has the same size as the TheNewRepairItem
     listWidgetItem->setSizeHint (m_newRepair->sizeHint ());
-
+    RepairsNumber ++;
+    m_newRepair->SetRepairIndex(RepairsNumber);
     //Finally adding the itemWidget to the list
     ui->RepairList->setItemWidget (listWidgetItem, m_newRepair);
-    RepairsNumber ++;
+
 
     //       listWidgetItem = ui->RepairList->currentItem();
     //       m_newRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listWidgetItem));
@@ -122,13 +125,31 @@ void AddRepair::InsertRepair()
 
 void AddRepair::on_Button_InsertRepair_clicked()
 {
-    InsertRepair();
+    InsertRepair(false);
 }
 
 void AddRepair::on_Button_DeleteRepair_clicked()
 {
     //Delete selected item from the listWidget
     delete ui->RepairList->currentItem ();
+    ReFillRepairIndexes();
+}
+
+
+void AddRepair::ReFillRepairIndexes()
+{
+    int count = ui->RepairList->count();
+    NewRepairItem * m_currentRepair;
+    QListWidgetItem *  listWidgetItem;
+
+    // Then clear all fields
+    for(int i=0; i< count; i++)
+    {
+         listWidgetItem = ui->RepairList->item(i);
+         m_currentRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listWidgetItem));
+         m_currentRepair->SetRepairIndex(i+1);
+    }
+
 }
 
 void AddRepair::ClearAllinputs()
@@ -224,7 +245,7 @@ void AddRepair::RecordRepair()
 void AddRepair::OpenClearWindow()
 {
     SetInitialDesign();
-    InsertRepair();
+    InsertRepair(false);
     this->show();
 }
 
@@ -252,4 +273,9 @@ void AddRepair::on_Button_Search_clicked()
 void AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1)
 {
     m_strSelCarNumber = arg1;
+}
+
+void AddRepair::on_Button_InsertSubMenu_clicked()
+{
+
 }

@@ -21,6 +21,7 @@ private:
     void CenterForm();
     void ClearFields();
 
+    unsigned int m_uiRepairIndex;
 public:
     explicit NewRepairItem(QWidget *parent = 0);
     ~NewRepairItem();
@@ -28,10 +29,12 @@ public:
     QString GetRepairQuantityText();
     QString GetRepairSinglePriceText();
     QString GetRepairValueText();
+    void SetRepairIndex(unsigned int Idx);
     QLineEdit *DescrText;
     QLineEdit *QuantityText;
     QLineEdit *SinglePriceText;
     QLineEdit *ValueText;
+    QLineEdit *RepairIndex;
 
 private slots:
     void on_ButtonClear_clicked();

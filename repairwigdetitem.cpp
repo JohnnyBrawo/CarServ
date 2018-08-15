@@ -4,7 +4,8 @@
 
 NewRepairItem::NewRepairItem(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::NewRepairItem)
+    ui(new Ui::NewRepairItem),
+    m_uiRepairIndex(1)
 {
     ui->setupUi(this);
     ResetAllFields();
@@ -17,6 +18,7 @@ NewRepairItem::~NewRepairItem()
     delete QuantityText;
     delete SinglePriceText;
     delete ValueText;
+    delete RepairIndex;
 }
 
 void NewRepairItem::ResetAllFields()
@@ -25,10 +27,16 @@ void NewRepairItem::ResetAllFields()
     QuantityText = new QLineEdit();
     SinglePriceText = new QLineEdit();
     ValueText = new QLineEdit();
+    RepairIndex = new QLineEdit();
     DescrText->setText("");
     QuantityText->setText("");
     SinglePriceText->setText("");
     ValueText->setText("");
+    RepairIndex->setText(QString::number(m_uiRepairIndex));
+    //    RepairIndex->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Preferred);
+//    RepairIndex->setFixedHeight(20);
+    RepairIndex->setFixedWidth(30);
+    ui->HLayout->addWidget(RepairIndex);
     ui->HLayout->addWidget(DescrText);
     ui->HLayout->addWidget(QuantityText);
     ui->HLayout->addWidget(SinglePriceText);
@@ -51,6 +59,11 @@ QString NewRepairItem::GetRepairDescrText()
 QString NewRepairItem::GetRepairQuantityText()
 {
     return QuantityText->text();
+}
+
+void NewRepairItem::SetRepairIndex(unsigned int Idx)
+{
+    RepairIndex->setText(QString::number(Idx));
 }
 
 QString NewRepairItem::GetRepairSinglePriceText()
