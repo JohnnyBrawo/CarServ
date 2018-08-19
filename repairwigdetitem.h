@@ -22,6 +22,8 @@ private:
     void ClearFields();
 
     unsigned int m_uiRepairIndex;
+    bool       m_bSubMenuField;
+
 public:
     explicit NewRepairItem(QWidget *parent = 0);
     ~NewRepairItem();
@@ -29,12 +31,15 @@ public:
     QString GetRepairQuantityText();
     QString GetRepairSinglePriceText();
     QString GetRepairValueText();
-    void SetRepairIndex(unsigned int Idx);
+    QString GetRepairIndexText();
+    void SetRepairIndex(unsigned int Idx, unsigned int SubMenuIdx=0);
     QLineEdit *DescrText;
     QLineEdit *QuantityText;
     QLineEdit *SinglePriceText;
     QLineEdit *ValueText;
     QLineEdit *RepairIndex;
+
+    bool        IsFieldSubmenu() { return m_bSubMenuField;}
 
 private slots:
     void on_ButtonClear_clicked();

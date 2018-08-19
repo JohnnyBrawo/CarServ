@@ -28,18 +28,21 @@ private:
     void FillPage();
     bool CheckRecordInformation();
     void ReFillRepairIndexes();
-
-
+    void ListAllMenus();
+    void SetFieldWithSubMenus();
     void RecordRepair();
+
     QString m_strSelCarNumber;
-    unsigned int RepairsNumber;
-    unsigned int SubMenuNumber;
+    unsigned int m_uiRepairsNumber;
+    unsigned int m_uiSubMenuNumber;
+    bool         m_bSubMenuADD;
 
 public:
     explicit AddRepair(QWidget *parent = 0);
     ~AddRepair();
 
     QVector <NewRepairItem*> m_vRepairItem;
+    QVector <unsigned int> m_vMenusAndSubmebus;
 
 signals:
     void CloseNewRepairForm();
@@ -54,6 +57,9 @@ private slots:
     void OpenClearWindow();
     void on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1);
     void on_Button_InsertSubMenu_clicked();
+
+    void on_RepairList_clicked();
+
 };
 
 #endif // ADDREPAIR_H

@@ -11,8 +11,8 @@
 AddRepair::AddRepair(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddRepair),
-    RepairsNumber(0),
-    SubMenuNumber(0)
+    m_uiRepairsNumber(0),
+    m_uiSubMenuNumber(0)
 {
     ui->setupUi(this);
     setWindowTitle("Repair Dictionary");
@@ -20,11 +20,13 @@ AddRepair::AddRepair(QWidget *parent) :
     m_bChecked = false;
     m_strSelCarNumber.clear();
     m_vRepairItem.clear();
-    RepairsNumber = 0;
+    m_vMenusAndSubmebus.clear();
+
 }
 
 AddRepair::~AddRepair()
 {
+
     delete ui;
 
 }
@@ -98,29 +100,40 @@ void AddRepair::on_Button_ExitRepair_clicked()
 void AddRepair::InsertRepair(bool SubMenu)
 {
 
+    qDebug() << " INSERT  ";
 
     //Creating a new list widget item whose parent is the listwidget itself
-    QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->RepairList);
+    QListWidgetItem *listInsertItem = new QListWidgetItem(ui->RepairList);
 
     //Adding the item to the listwidget
-    ui->RepairList->addItem (listWidgetItem);
+    ui->RepairList->addItem (listInsertItem);
 
     //Creating an object of the designed widget which is to be added to the listwidget
     NewRepairItem *m_newRepair = new NewRepairItem;
 
-    //       m_vRepairItem.push_back(m_newRepair);
+    //Making sure that the listInsertItem has the same size as the TheNewRepairItem
+    listInsertItem->setSizeHint (m_newRepair->sizeHint ());
 
-    //Making sure that the listWidgetItem has the same size as the TheNewRepairItem
-    listWidgetItem->setSizeHint (m_newRepair->sizeHint ());
-    RepairsNumber ++;
-    m_newRepair->SetRepairIndex(RepairsNumber);
+    if(!SubMenu){
+        m_uiRepairsNumber ++;
+        m_vMenusAndSubmebus.push_back(0);
+        m_uiSubMenuNumber = 0;
+    }else {
+        m_vMenusAndSubmebus[m_uiRepairsNumber-1]++;
+        m_uiSubMenuNumber ++;
+    }
+
+    m_newRepair->SetRepairIndex(m_uiRepairsNumber,m_uiSubMenuNumber);
     //Finally adding the itemWidget to the list
-    ui->RepairList->setItemWidget (listWidgetItem, m_newRepair);
+    ui->RepairList->setItemWidget (listInsertItem, m_newRepair);
 
+    if(m_uiRepairsNumber > 0)
+    {
+        ui->Button_InsertSubMenu->setEnabled(true);
+        ui->Button_DeleteRepair->setEnabled(true);
+    }
 
-    //       listWidgetItem = ui->RepairList->currentItem();
-    //       m_newRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listWidgetItem));
-    //       m_vRepairItem.push_back(m_newRepair);
+    ListAllMenus();
 }
 
 void AddRepair::on_Button_InsertRepair_clicked()
@@ -130,9 +143,61 @@ void AddRepair::on_Button_InsertRepair_clicked()
 
 void AddRepair::on_Button_DeleteRepair_clicked()
 {
+    qDebug() << " DELETE  ";
+    QMessageBox::StandardButton UserReply;
+    ListAllMenus();
+
+    NewRepairItem * m_currentRepair;
+    QListWidgetItem *  listDeleteItem;
+    listDeleteItem = ui->RepairList->currentItem();
+
+    m_currentRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listDeleteItem));
+
+
+
+
+
     //Delete selected item from the listWidget
-    delete ui->RepairList->currentItem ();
+    qDebug() << " GetRepairIndexText   " << m_currentRepair->GetRepairIndexText();
+    QString str = m_currentRepair->GetRepairIndexText();
+    QStringList list1 = str.split('.');
+//     qDebug() << " GetRepairIndexText  to LIST " << list1;
+     int SubmenuStartIndex = QString(list1.first()).toInt();
+     qDebug() << " SubmenuStartIndex " << SubmenuStartIndex;
+     qDebug() << " SubmenuCount : " << m_vMenusAndSubmebus.at(SubmenuStartIndex-1);
+
+
+
+
+     if(m_vMenusAndSubmebus.at(SubmenuStartIndex-1) > 0){
+         UserReply= QMessageBox::question(this,"Внимание!","Всички подточки ще бъдат изтрити!",QMessageBox::Ok|QMessageBox::Cancel);
+         if(UserReply == QMessageBox::Cancel){
+             return;
+         }else {
+             QListWidgetItem *  listItem;
+             NewRepairItem * m_cu;
+
+             unsigned int Cnt = m_vMenusAndSubmebus.at(SubmenuStartIndex-1);
+             for(unsigned int i=0,currItem=SubmenuStartIndex; i< Cnt; i++)
+             {
+                  listItem = ui->RepairList->item(currItem);
+                  m_cu = (NewRepairItem*)(ui->RepairList->itemWidget(listItem));
+                  qDebug() << " GetRepairDescrText " << m_cu->GetRepairDescrText();
+                  delete listItem;
+                  m_vMenusAndSubmebus[SubmenuStartIndex-1]--;
+             }
+             qDebug() << " SUBMENU DELETE FINISH ";
+             ListAllMenus();
+         }
+     }
+
+    delete listDeleteItem;
+      qDebug() << " removeAt index  " << SubmenuStartIndex-1;
+      qDebug() << " m_vMenusAndSubmebus.at(SubmenuStartIndex-1) " <<m_vMenusAndSubmebus.at(SubmenuStartIndex-1);
+      m_vMenusAndSubmebus.removeAt(SubmenuStartIndex-1);
+    ListAllMenus();
     ReFillRepairIndexes();
+
 }
 
 
@@ -140,16 +205,40 @@ void AddRepair::ReFillRepairIndexes()
 {
     int count = ui->RepairList->count();
     NewRepairItem * m_currentRepair;
-    QListWidgetItem *  listWidgetItem;
+    QListWidgetItem *  listItem;
 
+    unsigned short CurrentSub, CurrMenu = 0;
     // Then clear all fields
     for(int i=0; i< count; i++)
     {
-         listWidgetItem = ui->RepairList->item(i);
-         m_currentRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listWidgetItem));
-         m_currentRepair->SetRepairIndex(i+1);
+
+         listItem = ui->RepairList->item(i);
+         m_currentRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listItem));
+
+         if( m_currentRepair->IsFieldSubmenu()){
+             CurrentSub ++;
+             m_currentRepair->SetRepairIndex(CurrMenu,CurrentSub);
+         }else{
+             CurrentSub = 0;
+             CurrMenu =i+1;
+             m_currentRepair->SetRepairIndex(i+1);
+         }
     }
 
+    if(ui->RepairList->count() < 1){
+        ui->Button_InsertSubMenu->setEnabled(false);
+        ui->Button_DeleteRepair->setEnabled(false);
+        m_uiRepairsNumber =0;
+    }
+}
+
+void AddRepair::ListAllMenus()
+{
+     qDebug() << "\n\n ListAllMenus";
+    for(int i=0; i< m_vMenusAndSubmebus.size(); i++)
+    {
+         qDebug() << " Field :  " << i << " have    :   " << m_vMenusAndSubmebus.at(i) << " submebus. ";
+    }
 }
 
 void AddRepair::ClearAllinputs()
@@ -162,12 +251,14 @@ void AddRepair::ClearAllinputs()
         delete ui->RepairList->item(0);
     }
 
+    m_uiSubMenuNumber = 0;
+    m_uiRepairsNumber = 0;
 }
 
 bool AddRepair::CheckRecordInformation()
 {
     //    QMessageBox::StandardButton UserReply;
-    QListWidgetItem *  listWidgetItem;
+    QListWidgetItem *  listRecordItem;
     NewRepairItem * m_newRepair;
 
     CarsDatabase MyData;
@@ -175,8 +266,8 @@ bool AddRepair::CheckRecordInformation()
 
     for(int i=0; i< ui->RepairList->count(); i++)
     {
-        listWidgetItem = ui->RepairList->item(i);
-        m_newRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listWidgetItem));
+        listRecordItem = ui->RepairList->item(i);
+        m_newRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listRecordItem));
         if(m_newRepair->GetRepairDescrText().isEmpty() && m_newRepair->GetRepairQuantityText().isEmpty() && m_newRepair->GetRepairSinglePriceText().isEmpty() && m_newRepair->GetRepairValueText().isEmpty())
         {
             QMessageBox::information(this,"Празни полета!","Празните полета няма да бъдат записани.");
@@ -202,7 +293,7 @@ void AddRepair::RecordRepair()
 {
     /// Check for correct input information
 
-    QListWidgetItem *  listWidgetItem;
+    QListWidgetItem *  listItemData;
     NewRepairItem * m_newRepair;
 
     CarsDatabase MyData;
@@ -216,8 +307,8 @@ void AddRepair::RecordRepair()
             continue;
         }
 
-        listWidgetItem = ui->RepairList->item(i);
-        m_newRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listWidgetItem));
+        listItemData = ui->RepairList->item(i);
+        m_newRepair = (NewRepairItem*)(ui->RepairList->itemWidget(listItemData));
 
         ////// Record all repairs for this car
 
@@ -277,5 +368,10 @@ void AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &
 
 void AddRepair::on_Button_InsertSubMenu_clicked()
 {
+    InsertRepair(true);
+}
 
+void AddRepair::on_RepairList_clicked()
+{
+     qDebug() << " on_RepairList_clicked";
 }

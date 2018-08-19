@@ -24,10 +24,26 @@
      <x>6</x>
      <y>564</y>
      <width>941</width>
-     <height>41</height>
+     <height>54</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="7">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Preferred</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
     <item row="0" column="3">
      <spacer name="horizontalSpacer">
       <property name="orientation">
@@ -101,8 +117,35 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="7">
-     <spacer name="horizontalSpacer_3">
+    <item row="0" column="11">
+     <widget class="QPushButton" name="Button_ExitRepair">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Назад</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="8">
+     <widget class="QPushButton" name="Button_RecordRepairs">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Запис</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <spacer name="horizontalSpacer_4">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -118,34 +161,23 @@
      </spacer>
     </item>
     <item row="0" column="9">
-     <widget class="QPushButton" name="Button_ExitRepair">
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
+     <spacer name="horizontalSpacer_5">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="text">
-       <string>Назад</string>
+      <property name="sizeType">
+       <enum>QSizePolicy::Preferred</enum>
       </property>
-     </widget>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item row="0" column="6">
-     <widget class="QPushButton" name="Button_RecordRepairs">
-      <property name="font">
-       <font>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Запис</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <spacer name="horizontalSpacer_4">
+     <spacer name="horizontalSpacer_6">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>

@@ -5,7 +5,8 @@
 NewRepairItem::NewRepairItem(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::NewRepairItem),
-    m_uiRepairIndex(1)
+    m_uiRepairIndex(1),
+    m_bSubMenuField(false)
 {
     ui->setupUi(this);
     ResetAllFields();
@@ -32,9 +33,8 @@ void NewRepairItem::ResetAllFields()
     QuantityText->setText("");
     SinglePriceText->setText("");
     ValueText->setText("");
+
     RepairIndex->setText(QString::number(m_uiRepairIndex));
-    //    RepairIndex->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Preferred);
-//    RepairIndex->setFixedHeight(20);
     RepairIndex->setFixedWidth(30);
     ui->HLayout->addWidget(RepairIndex);
     ui->HLayout->addWidget(DescrText);
@@ -61,9 +61,14 @@ QString NewRepairItem::GetRepairQuantityText()
     return QuantityText->text();
 }
 
-void NewRepairItem::SetRepairIndex(unsigned int Idx)
+void NewRepairItem::SetRepairIndex(unsigned int Idx,unsigned int SubMenuIdx)
 {
-    RepairIndex->setText(QString::number(Idx));
+    if(SubMenuIdx != 0){
+        m_bSubMenuField = true;
+        RepairIndex->setText(QString::number(Idx)+"." + QString::number(SubMenuIdx));
+    }else {
+        RepairIndex->setText(QString::number(Idx));
+    }
 }
 
 QString NewRepairItem::GetRepairSinglePriceText()
@@ -75,6 +80,12 @@ QString NewRepairItem::GetRepairValueText()
 {
     return ValueText->text();
 }
+
+QString NewRepairItem::GetRepairIndexText()
+{
+    return RepairIndex->text();
+}
+
 
 void NewRepairItem::on_ButtonClear_clicked()
 {
