@@ -20,7 +20,7 @@ class AddRepair : public QWidget
 private:
     Ui::AddRepair *ui;
     void CenterForm();
-    void InsertRepair(bool SubMenu);
+    void InsertRepair(bool SubMenu = false);
     void SetInitialDesign();
     void SetRandomDesign();
     void ClearAllinputs();
@@ -59,7 +59,6 @@ private slots:
     void on_Button_InsertSubMenu_clicked();
 
     void on_RepairList_clicked();
-
 };
 
 #endif // ADDREPAIR_H

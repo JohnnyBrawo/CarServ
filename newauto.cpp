@@ -31,7 +31,7 @@ void NewAuto::CenterForm()
     setFixedSize(geometry().width(), geometry().height());
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
-    move(center.x()-width()*0.5, center.y()-height()*0.5);
+    move(center.x()-static_cast<int>(width()*0.5), center.y()-static_cast<int>(height()*0.5) );
 }
 
 
@@ -202,7 +202,7 @@ void NewAuto::FillComboMarki()
 
 bool NewAuto::CheckSelected(QString SelectedString)
 {
-    if(( (int)SelectedString.size() < 2 ) || (SelectedString == "Select") || SelectedString == "")
+    if((static_cast<int>(SelectedString.size()) < 2 ) || (SelectedString == "Select") || SelectedString == "")
     {
         qDebug() << "CheckSelected  FAIL SelectedString " << SelectedString;
         return false;

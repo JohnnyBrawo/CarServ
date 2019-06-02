@@ -14,9 +14,12 @@ class SearchForm : public QDialog
 private:
     Ui::SearchForm *ui;
     void CenterForm();
-
+    void FillClientsNameCombo();
+    void FillRegNumbersCombo();
+    void FillAutosCombo();
+    void DeactivateAllFields();
 public:
-    explicit SearchForm(QWidget *parent = 0);
+    explicit SearchForm(QWidget *parent = nullptr);
     ~SearchForm();
 
 signals:
@@ -25,8 +28,12 @@ signals:
 private slots:
     void on_Button_Search_Back_clicked();
     void OpenClearWindow();
-    void on_pushButton_clicked();
 
+    void on_Combo_Search_Klient_currentTextChanged(const QString &arg1);
+    void on_RButton_SearchAutos_clicked();
+    void on_RButton_SearchClients_clicked();
+    void on_RButton_SearchRegNumbers_clicked();
+    void on_RButton_SearchDate_clicked();
 };
 
 #endif // SEARCHFORM_H
