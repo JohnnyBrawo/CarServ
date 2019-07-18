@@ -17,7 +17,7 @@ AddRepair::AddRepair(QWidget *parent) :
     ui->setupUi(this);
     setWindowTitle("Repair Dictionary");
     CenterForm();
-    m_bChecked = false;
+//    m_bChecked = false;
     m_strSelCarNumber.clear();
     m_vRepairItem.clear();
     m_vMenusAndSubmebus.clear();
@@ -181,13 +181,13 @@ void AddRepair::on_Button_DeleteRepair_clicked()
              return;
          }else {
              QListWidgetItem *  listItem;
-             NewRepairItem * m_cu;
+//             NewRepairItem * m_cu;
 
              unsigned int Cnt = m_vMenusAndSubmebus.at(SubmenuStartIndex-1);
              for(unsigned int i=0,currItem=SubmenuStartIndex; i< Cnt; i++)
              {
                   listItem = ui->RepairList->item(currItem);
-                  m_cu = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItem));
+//                  m_cu = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItem));
        //           qDebug() << " GetRepairDescrText " << m_cu->GetRepairDescrText();
                   delete listItem;
                   m_vMenusAndSubmebus[SubmenuStartIndex-1]--;
@@ -282,7 +282,7 @@ bool AddRepair::CheckRecordInformation()
             //            }
         }
     }
-
+    MyData.CloseConnection();
     return true;
 }
 
@@ -307,15 +307,26 @@ void AddRepair::RecordRepair()
 
     for(int i=0; i< ui->RepairList->count(); i++)
     {
-        if(!CheckRecordInformation())
-        {
-            qDebug() << "RecordRepair Rejected because of empty fields ";
-            continue;
-        }
+//        if(!CheckRecordInformation())
+//        {
+//            qDebug() << "RecordRepair Rejected because of empty fields ";
+//            continue;
+//        }
 
         listItemData = ui->RepairList->item(i);
         m_newRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
 
+        if(m_newRepair->GetRepairDescrText().isEmpty() && m_newRepair->GetRepairQuantityText().isEmpty() && m_newRepair->GetRepairSinglePriceText().isEmpty() && m_newRepair->GetRepairValueText().isEmpty())
+        {
+//            QMessageBox::information(this,"Празни полета!","Празните полета няма да бъдат записани.");
+            //            if(UserReply == QMessageBox::No){
+            //                return false;
+            //            }
+            qDebug() << "Ima prazni poleta - Continue ";
+            continue;
+        }
+
+        qDebug() << " Записваме !  ";
         ////// Record all repairs for this car
 
         QSqlQuery AddNewAuto(MyData.CarsDB);
@@ -348,8 +359,8 @@ void AddRepair::OpenClearWindow()
 }
 
 
-void AddRepair::on_Check_RandomClient_clicked(bool checked)
-{
+//void AddRepair::on_Check_RandomClient_clicked(bool checked)
+//{
 //    m_bChecked = checked;
 //    if(!checked)
 //    {
@@ -359,16 +370,16 @@ void AddRepair::on_Check_RandomClient_clicked(bool checked)
 //        SetRandomDesign();
 //    }
 
-}
+//}
 
 void AddRepair::on_Button_Search_clicked()
 {
-    if (m_bChecked)
-    {
-        qDebug() << " Добавяме колата в базата на колите";
-    }
+//    if (m_bChecked)
+//    {
+//        qDebug() << " Добавяме колата в базата на колите";
+//    }
 
-    SetInitialDesign();
+//    SetInitialDesign();
     for(unsigned int i=0; i< 10; i++)
     {
         InsertRepair(false);
@@ -389,7 +400,7 @@ void AddRepair::on_Button_Search_clicked()
 void AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1)
 {
     m_strSelCarNumber = arg1;
-    qDebug() << " Резет на всичко до момента или СЪобщение ?! ";
+    qDebug() << " Резет на всичко до момента или СЪобщение ?! " << m_strSelCarNumber;
 }
 
 void AddRepair::on_Button_InsertSubMenu_clicked()

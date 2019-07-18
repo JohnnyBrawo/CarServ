@@ -24,7 +24,7 @@ private:
     void SetInitialDesign();
     void SetRandomDesign();
     void ClearAllinputs();
-    bool m_bChecked;
+//    bool m_bChecked;
     void FillPage();
     bool CheckRecordInformation();
     void ReFillRepairIndexes();
@@ -52,7 +52,7 @@ private slots:
     void on_Button_InsertRepair_clicked();
     void on_Button_DeleteRepair_clicked();
     void on_Button_RecordRepairs_clicked();
-    void on_Check_RandomClient_clicked(bool checked);
+//    void on_Check_RandomClient_clicked(bool checked);
     void on_Button_Search_clicked();
     void OpenClearWindow();
     void on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1);
