@@ -24,12 +24,12 @@
      <x>6</x>
      <y>564</y>
      <width>941</width>
-     <height>54</height>
+     <height>56</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="7">
-     <spacer name="horizontalSpacer_3">
+    <item row="0" column="9">
+     <spacer name="horizontalSpacer_5">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -44,32 +44,31 @@
       </property>
      </spacer>
     </item>
-    <item row="0" column="3">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Preferred</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="Button_InsertSubMenu">
+    <item row="0" column="11">
+     <widget class="QPushButton" name="Button_ExitRepair">
       <property name="font">
        <font>
+        <pointsize>10</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>ПодМеню</string>
+       <string>Назад</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="Button_InsertRepair">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Добави ремонт</string>
       </property>
      </widget>
     </item>
@@ -103,33 +102,53 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="Button_InsertRepair">
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
+    <item row="0" column="7">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="text">
-       <string>Добави ремонт</string>
+      <property name="sizeType">
+       <enum>QSizePolicy::Preferred</enum>
       </property>
-     </widget>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
-    <item row="0" column="11">
-     <widget class="QPushButton" name="Button_ExitRepair">
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
+    <item row="0" column="6">
+     <spacer name="horizontalSpacer_6">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="text">
-       <string>Назад</string>
+      <property name="sizeType">
+       <enum>QSizePolicy::Preferred</enum>
       </property>
-     </widget>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="3">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Preferred</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item row="0" column="8">
      <widget class="QPushButton" name="Button_RecordRepairs">
@@ -160,37 +179,18 @@
       </property>
      </spacer>
     </item>
-    <item row="0" column="9">
-     <spacer name="horizontalSpacer_5">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="Button_InsertSubMenu">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Preferred</enum>
+      <property name="text">
+       <string>ПодМеню</string>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="0" column="6">
-     <spacer name="horizontalSpacer_6">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Preferred</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -469,27 +469,17 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="L_TotalPrice">
+  <widget class="QPushButton" name="Button_TotalCostCalc">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>470</x>
      <y>530</y>
-     <width>171</width>
-     <height>29</height>
+     <width>121</width>
+     <height>31</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <property name="text">
     <string>Сума за плащане</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
   <zorder>L_CarRegNumber</zorder>
@@ -506,7 +496,7 @@
   <zorder>L_RepairDate</zorder>
   <zorder>LText_RepairDate</zorder>
   <zorder>LText_TotalPrice</zorder>
-  <zorder>L_TotalPrice</zorder>
+  <zorder>Button_TotalCostCalc</zorder>
  </widget>
  <resources/>
  <connections/>

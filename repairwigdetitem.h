@@ -25,12 +25,13 @@ private:
     bool       m_bSubMenuField;
 
 public:
-    explicit NewRepairItem(QWidget *parent = 0);
+    explicit NewRepairItem(QWidget *parent = nullptr);
     ~NewRepairItem();
     QString GetRepairDescrText();
     QString GetRepairQuantityText();
     QString GetRepairSinglePriceText();
     QString GetRepairValueText();
+    void SetRepairValueText(const QString &StrValue);
     QString GetRepairIndexText();
     void SetRepairIndex(unsigned int Idx, unsigned int SubMenuIdx=0);
     QLineEdit *DescrText;

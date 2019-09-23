@@ -14,9 +14,13 @@ class ShowAllcars : public QDialog
 private:
     Ui::ShowAllcars *ui;
     void ClearAllFields();
+    void FillClientsNameCombo();
+    void FillRegNumbersCombo();
+    void FillAutosCombo();
+    void DeactivateAllFields();
 
 public:
-    explicit ShowAllcars(QWidget *parent = 0);
+    explicit ShowAllcars(QWidget *parent = nullptr);
     ~ShowAllcars();
 
 signals:
@@ -26,6 +30,10 @@ private slots:
     void OpenClearWindow();
     void on_Button_Back_clicked();
 
+    void on_RButton_SearchRegNumbers_clicked();
+    void on_RButton_SearchClients_clicked();
+    void on_RButton_SearchAutos_clicked();
+    void on_RButton_SearchDate_clicked();
 };
 
 #endif // SHOWALLCARS_H

@@ -81,6 +81,11 @@ QString NewRepairItem::GetRepairValueText()
     return ValueText->text();
 }
 
+void NewRepairItem::SetRepairValueText(const QString &StrValue)
+{
+    ValueText->setText(StrValue);
+}
+
 QString NewRepairItem::GetRepairIndexText()
 {
     return RepairIndex->text();

@@ -15,7 +15,7 @@ private:
     Ui::RemoveClient *ui;
 
 public:
-    explicit RemoveClient(QWidget *parent = 0);
+    explicit RemoveClient(QWidget *parent = nullptr);
     ~RemoveClient();
 
 private slots:

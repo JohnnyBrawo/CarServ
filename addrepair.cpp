@@ -88,6 +88,11 @@ void AddRepair::SetInitialDesign()
     ui->Button_DeleteRepair->setEnabled(false);
     ui->Button_InsertRepair->setEnabled(false);
     ui->Button_RecordRepairs->setEnabled(false);
+    ui->Button_InsertSubMenu->setEnabled(false);
+    ui->Button_TotalCostCalc->setEnabled(false);
+    ui->LText_TotalPrice->setEnabled(false);
+    ui->LText_TotalPrice->setText("");
+
     FillPage();
 }
 
@@ -110,7 +115,7 @@ void AddRepair::on_Button_ExitRepair_clicked()
 void AddRepair::InsertRepair(bool SubMenu)
 {
 
-    qDebug() << " INSERT  ";
+//    qDebug() << " INSERT  ";
 
     //Creating a new list widget item whose parent is the listwidget itself
     QListWidgetItem *listInsertItem = new QListWidgetItem(ui->RepairList);
@@ -129,6 +134,8 @@ void AddRepair::InsertRepair(bool SubMenu)
         m_vMenusAndSubmebus.push_back(0);
         m_uiSubMenuNumber = 0;
     }else if(m_uiRepairsNumber>0){
+        qDebug() << "  m_uiRepairsNumber  " << m_uiRepairsNumber;
+        qDebug() << "  m_vMenusAndSubmebus.size()  " << m_vMenusAndSubmebus.size();
         m_vMenusAndSubmebus[m_uiRepairsNumber-1]++;
         m_uiSubMenuNumber ++;
     }
@@ -154,7 +161,7 @@ void AddRepair::on_Button_InsertRepair_clicked()
 
 void AddRepair::on_Button_DeleteRepair_clicked()
 {
-    qDebug() << " DELETE  ";
+//    qDebug() << " DELETE  ";
     QMessageBox::StandardButton UserReply;
     //ListAllMenus();
 
@@ -164,16 +171,12 @@ void AddRepair::on_Button_DeleteRepair_clicked()
 
     m_currentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listDeleteItem));
 
-
-
-
-
     //Delete selected item from the listWidget
     qDebug() << " GetRepairIndexText   " << m_currentRepair->GetRepairIndexText();
     QString str = m_currentRepair->GetRepairIndexText();
     QStringList list1 = str.split('.');
 //     qDebug() << " GetRepairIndexText  to LIST " << list1;
-     int SubmenuStartIndex = QString(list1.first()).toInt();
+       int SubmenuStartIndex = QString(list1.first()).toInt();
 
      if(m_vMenusAndSubmebus.at(SubmenuStartIndex-1) > 0){
          UserReply= QMessageBox::question(this,"Внимание!","Всички подточки ще бъдат изтрити!",QMessageBox::Ok|QMessageBox::Cancel);
@@ -201,6 +204,7 @@ void AddRepair::on_Button_DeleteRepair_clicked()
      // qDebug() << " removeAt index  " << SubmenuStartIndex-1;
      // qDebug() << " m_vMenusAndSubmebus.at(SubmenuStartIndex-1) " <<m_vMenusAndSubmebus.at(SubmenuStartIndex-1);
       m_vMenusAndSubmebus.removeAt(SubmenuStartIndex-1);
+      m_uiRepairsNumber--;
     //ListAllMenus();
     ReFillRepairIndexes();
 
@@ -388,7 +392,10 @@ void AddRepair::on_Button_Search_clicked()
     ui->Button_DeleteRepair->setEnabled(true);
     ui->Button_InsertRepair->setEnabled(true);
     ui->Button_RecordRepairs->setEnabled(true);
+    ui->Button_InsertSubMenu->setEnabled(true);
 
+    ui->Button_TotalCostCalc->setEnabled(true);
+    ui->LText_TotalPrice->setEnabled(true);
     ui->Combo_RepairAutoRegNumber->setEnabled(false);
     ui->Button_Search->setEnabled(false);
     ui->LText_RepairDate->setEnabled(false);
@@ -412,3 +419,38 @@ void AddRepair::on_RepairList_clicked()
 {
      qDebug() << " on_RepairList_clicked";
 }
+
+void AddRepair::on_Button_TotalCostCalc_clicked()
+{
+    QListWidgetItem *  listItemData;
+    NewRepairItem * m_CurrentRepair;
+    double totalCost = 0.0;
+
+    for(int i=0; i< ui->RepairList->count(); i++)
+    {
+        listItemData = ui->RepairList->item(i);
+        m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
+
+        if(m_CurrentRepair->GetRepairValueText().isEmpty() && !m_CurrentRepair->GetRepairDescrText().isEmpty() ){
+            double CalcValue = 0.0;
+            CalcValue = m_CurrentRepair->GetRepairQuantityText().toDouble() * m_CurrentRepair->GetRepairSinglePriceText().toDouble();
+            qDebug()<< " Smetnata kraina cena :  " << CalcValue;
+            m_CurrentRepair->SetRepairValueText(QString::number(CalcValue, 'f', 2));
+        }
+        qDebug() << " GetRepairValueText " << m_CurrentRepair->GetRepairValueText().toDouble();
+    }
+
+
+    for(int i=0; i< ui->RepairList->count(); i++)
+    {
+        listItemData = ui->RepairList->item(i);
+        m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
+
+        totalCost += m_CurrentRepair->GetRepairValueText().toDouble();
+        qDebug() << " GetRepairValueText " << m_CurrentRepair->GetRepairValueText().toDouble();
+    }
+    qDebug() << " Calculated total Cost " << totalCost;
+    qDebug() << " Calculated total Cost " << QString::number(totalCost, 'f',2);
+    ui->LText_TotalPrice->setText(QString::number(totalCost, 'f',2));
+}
+

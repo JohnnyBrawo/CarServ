@@ -59,6 +59,7 @@ private slots:
     void on_Button_InsertSubMenu_clicked();
 
     void on_RepairList_clicked();
+    void on_Button_TotalCostCalc_clicked();
 };
 
 #endif // ADDREPAIR_H
