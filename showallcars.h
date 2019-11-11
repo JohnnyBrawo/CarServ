@@ -18,7 +18,18 @@ private:
     void FillRegNumbersCombo();
     void FillAutosCombo();
     void DeactivateAllFields();
+    void FillAutoData(QString CurrentClientID = "");
+    enum SearchChoise {
+        eNone,
+        eAutos,
+        eClients,
+        eRegNumber,
+        eDate
+    };
 
+    SearchChoise m_uiSearchChoice;
+    QString         m_ComboClientName;
+    QString         m_ComboRegNumber;
 public:
     explicit ShowAllcars(QWidget *parent = nullptr);
     ~ShowAllcars();
@@ -34,6 +45,8 @@ private slots:
     void on_RButton_SearchClients_clicked();
     void on_RButton_SearchAutos_clicked();
     void on_RButton_SearchDate_clicked();
+    void on_Button_Search_clicked();
+    void on_Combo_Search_Klient_currentTextChanged(const QString &arg1);
 };
 
 #endif // SHOWALLCARS_H
