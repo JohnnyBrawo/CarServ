@@ -351,7 +351,7 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
             /// Fill all automobiles with No cliet assigned
             qDebug() << " Autos Not Found !  ";
             m_SelectedClientID.clear();
-            //            ClearAllFields();
+            ClearAllFields();
         }
     }
 

@@ -5,6 +5,8 @@
 #include "newauto.h"
 #include "carsdatabase.h"
 #include <QtWidgets>
+#include <QPrintDialog>
+#include <QPrinter>
 
 NewClient::NewClient(QWidget *parent) :
     QDialog(parent),
