@@ -36,7 +36,7 @@ background-image: url(:/images/ideas.jpg);</string>
       <height>331</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout" columnstretch="0,0">
+    <layout class="QGridLayout" name="gridLayout" columnstretch="0">
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
@@ -58,33 +58,6 @@ background-image: url(:/images/ideas.jpg);</string>
      <property name="verticalSpacing">
       <number>0</number>
      </property>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="Button_OpenAutoForm">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>DejaVu Sans Condensed</family>
-         <pointsize>22</pointsize>
-         <weight>9</weight>
-         <italic>true</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 75 oblique 22pt &quot;DejaVu Sans Condensed&quot;;
-background-image: url(:/images/MainButton_image.jpg);
-color: rgb(85, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>Автомобили</string>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <widget class="QPushButton" name="Button_OpenRepairs">
        <property name="sizePolicy">
@@ -112,35 +85,11 @@ color: rgb(85, 255, 255);</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="Button_OpenClents">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>DejaVu Sans Condensed</family>
-         <pointsize>22</pointsize>
-         <weight>9</weight>
-         <italic>true</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 75 oblique 22pt &quot;DejaVu Sans Condensed&quot;;
-background-image: url(:/images/MainButton_image.jpg);
-color: rgb(85, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>Клиенти</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
       <widget class="QPushButton" name="Button_Search">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
          <horstretch>0</horstretch>
@@ -168,7 +117,7 @@ color: rgb(85, 255, 255);</string>
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="Exit">
     <property name="geometry">
      <rect>
       <x>510</x>
@@ -188,7 +137,7 @@ color: rgb(85, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>33</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -199,15 +148,37 @@ color: rgb(85, 255, 255);</string>
     <addaction name="actionUpLoad"/>
     <addaction name="separator"/>
    </widget>
-   <widget class="QMenu" name="menu_2">
+   <widget class="QMenu" name="menu_Help">
     <property name="title">
      <string>Помощ</string>
     </property>
     <addaction name="Notes"/>
     <addaction name="ProdInfo"/>
    </widget>
+   <widget class="QMenu" name="menu_Clients">
+    <property name="title">
+     <string>Клиенти</string>
+    </property>
+    <addaction name="EditClient"/>
+    <addaction name="separator"/>
+    <addaction name="AddNewClient"/>
+    <addaction name="separator"/>
+    <addaction name="DeleteClient"/>
+   </widget>
+   <widget class="QMenu" name="menu_Autos">
+    <property name="title">
+     <string>Автомобили</string>
+    </property>
+    <addaction name="EditDeleteAuto"/>
+    <addaction name="separator"/>
+    <addaction name="ShowAllAutos"/>
+    <addaction name="separator"/>
+    <addaction name="AddNewAuto"/>
+   </widget>
    <addaction name="menu"/>
-   <addaction name="menu_2"/>
+   <addaction name="menu_Help"/>
+   <addaction name="menu_Clients"/>
+   <addaction name="menu_Autos"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -236,6 +207,36 @@ color: rgb(85, 255, 255);</string>
   <action name="ProdInfo">
    <property name="text">
     <string>Информация за продукта</string>
+   </property>
+  </action>
+  <action name="EditClient">
+   <property name="text">
+    <string>Корекция на клиент</string>
+   </property>
+  </action>
+  <action name="AddNewClient">
+   <property name="text">
+    <string>Добавяне на клиент</string>
+   </property>
+  </action>
+  <action name="DeleteClient">
+   <property name="text">
+    <string>Изтриване на клиент</string>
+   </property>
+  </action>
+  <action name="EditDeleteAuto">
+   <property name="text">
+    <string>Премахване/Корекция</string>
+   </property>
+  </action>
+  <action name="ShowAllAutos">
+   <property name="text">
+    <string>Покажи всички</string>
+   </property>
+  </action>
+  <action name="AddNewAuto">
+   <property name="text">
+    <string>Добавяне на нов</string>
    </property>
   </action>
  </widget>

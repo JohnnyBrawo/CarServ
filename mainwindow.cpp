@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_Search(new SearchForm()),
     m_BasePath(new CarsDatabase())
 
+
 {
     ui->setupUi(this);
     setWindowTitle("Euro Kriss Service");
@@ -20,16 +21,15 @@ MainWindow::MainWindow(QWidget *parent) :
     LoadDesignView();
 
     // Connect all new windows
-    QObject::connect(m_Autos, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreMainForm()));
-    QObject::connect(m_Clients, SIGNAL(CloseClientsPage()), this, SLOT(RestoreMainForm()));
+//    QObject::connect(m_Autos, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreMainForm()));
+//    QObject::connect(m_Clients, SIGNAL(CloseClientsPage()), this, SLOT(RestoreMainForm()));
     QObject::connect(m_Repairs, SIGNAL(CloseNewRepairForm()), this, SLOT(RestoreMainForm()));
     QObject::connect(m_Search, SIGNAL(CloseSearchForm()), this, SLOT(RestoreMainForm()));
 
-    QObject::connect(ui->Button_OpenAutoForm, SIGNAL(clicked()), m_Autos, SLOT(OpenClearWindow()));
-    QObject::connect(ui->Button_OpenClents, SIGNAL(clicked()), m_Clients, SLOT(OpenClearWindow()));
+//    QObject::connect(ui->Button_OpenAutoForm, SIGNAL(clicked()), m_Autos, SLOT(OpenClearWindow()));
+//    QObject::connect(ui->Button_OpenClents, SIGNAL(clicked()), m_Clients, SLOT(OpenClearWindow()));
     QObject::connect(ui->Button_OpenRepairs, SIGNAL(clicked()), m_Repairs, SLOT(OpenClearWindow()));
     QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_Search, SLOT(OpenClearWindow()));
-
 }
 
 void MainWindow::CenterForm()
@@ -37,7 +37,7 @@ void MainWindow::CenterForm()
     setFixedSize(geometry().width(), geometry().height());
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
-    move(center.x()-width()*0.5, center.y()-height()*0.5);
+    move(center.x()-static_cast<int>(width()*0.5), center.y()-static_cast<int>(height()*0.5));
 }
 
 MainWindow::~MainWindow()
@@ -82,7 +82,8 @@ void MainWindow::RestoreMainForm()
     this->show();
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_Exit_clicked()
 {
     this->close();
 }
+

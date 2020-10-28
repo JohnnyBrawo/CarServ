@@ -388,7 +388,7 @@ void RemoveChangeAuto::UpdateFlags()
 
 bool RemoveChangeAuto::CheckField(QString SelectedString)
 {
-    if(( (int)SelectedString.size() < 2 ) || (SelectedString == "Select") || SelectedString == "")
+    if(( static_cast<int>(SelectedString.size()) < 2 ) || (SelectedString == "Select") || SelectedString == "")
     {
         qDebug() << "RemoveChangeAuto::CheckField  FAIL SelectedString " << SelectedString;
         return false;

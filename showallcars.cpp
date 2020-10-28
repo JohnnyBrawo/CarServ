@@ -274,7 +274,9 @@ void ShowAllcars::on_Button_Search_clicked()
         return;
     }
 
+
     QString strClientID = "";
+
     switch (static_cast<int>(m_uiSearchChoice) ) {
     case eAutos : {
     qDebug() << "Search Autos   \n";

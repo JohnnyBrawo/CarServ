@@ -22,11 +22,12 @@ private:
     AddRepair   *m_Repairs;
     CarsForm    *m_Autos;
     SearchForm  *m_Search;
+
     CarsDatabase   *m_BasePath;
     void LoadDesignView();
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -38,7 +39,7 @@ private slots:
     void RestoreMainForm();
     void CenterForm();
 
-    void on_pushButton_clicked();
+    void on_Exit_clicked();
 };
 
 #endif // MAINWINDOW_H
