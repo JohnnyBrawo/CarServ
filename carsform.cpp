@@ -6,24 +6,24 @@
 
 CarsForm::CarsForm(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::CarsForm),
-    m_NewAuto(new NewAuto()),
-    m_ShowAllAutos(new ShowAllcars()),
-    m_DelEdtiAuto(new RemoveChangeAuto())
+    ui(new Ui::CarsForm)
+//    m_NewAuto(new NewAuto()),
+//    m_ShowAllAutos(new ShowAllcars()),
+//    m_DelEdtiAuto(new RemoveChangeAuto())
 {
     ui->setupUi(this);
     setWindowTitle("Euro Kriss - AUTOS ");
     CenterForm();
 
     // Connect all new windows
-    QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreView()));
-    QObject::connect(m_ShowAllAutos, SIGNAL(CloseShowAllAutoForm()), this, SLOT(RestoreView()));
+//    QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreView()));
+//    QObject::connect(m_ShowAllAutos, SIGNAL(CloseShowAllAutoForm()), this, SLOT(RestoreView()));
     //    QObject::connect(m_DelEdtiAuto, SIGNAL(CloseChangePage()), this, SLOT(RestoreView()));
-    QObject::connect(m_DelEdtiAuto, SIGNAL(CloseDeletePage()), this, SLOT(RestoreView()));
+//    QObject::connect(m_DelEdtiAuto, SIGNAL(CloseDeletePage()), this, SLOT(RestoreView()));
 
-    QObject::connect(ui->Button_AddNewAuto, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
-    QObject::connect(ui->Button_ShowAllAutos, SIGNAL(clicked()), m_ShowAllAutos, SLOT(OpenClearWindow()));
-    QObject::connect(ui->Button_EditAuto, SIGNAL(clicked()), m_DelEdtiAuto, SLOT(OpenClearEditWindow()));
+//    QObject::connect(ui->Button_AddNewAuto, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
+//    QObject::connect(ui->Button_ShowAllAutos, SIGNAL(clicked()), m_ShowAllAutos, SLOT(OpenClearWindow()));
+//    QObject::connect(ui->Button_EditAuto, SIGNAL(clicked()), m_DelEdtiAuto, SLOT(OpenClearEditWindow()));
     //QObject::connect(ui->Button_ChangeAuto, SIGNAL(clicked()), m_DelEdtiAuto, SLOT(OpenClearEditWindow())); - > Not Used
 
     //    setStyleSheet("background-image: url(:/images/Images/ideas.jpg);");
@@ -32,9 +32,9 @@ CarsForm::CarsForm(QWidget *parent) :
 CarsForm::~CarsForm()
 {
     delete ui;
-    delete m_NewAuto;
-    delete m_ShowAllAutos;
-    delete m_DelEdtiAuto;
+//    delete m_NewAuto;
+//    delete m_ShowAllAutos;
+//    delete m_DelEdtiAuto;
 }
 
 

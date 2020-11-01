@@ -2,8 +2,8 @@
 #define CARSFORM_H
 
 #include <QDialog>
-#include "newauto.h"
-#include "showallcars.h"
+//#include "newauto.h"
+//#include "showallcars.h"
 #include "removechangeauto.h"
 
 namespace Ui {
@@ -17,8 +17,8 @@ class CarsForm : public QDialog
 private:
     Ui::CarsForm *ui;
 
-    NewAuto *m_NewAuto;
-    ShowAllcars *m_ShowAllAutos;
+//    NewAuto *m_NewAuto;
+//    ShowAllcars *m_ShowAllAutos;
     RemoveChangeAuto *m_DelEdtiAuto;
 
     void CenterForm();

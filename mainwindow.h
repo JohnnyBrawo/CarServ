@@ -3,10 +3,20 @@
 
 #include <QMainWindow>
 #include "addrepair.h"
-#include "clientsform.h"
 #include "searchform.h"
+
+/**Autos */
 #include "carsform.h"
 #include "carsdatabase.h"
+#include "showallcars.h"
+#include "newauto.h"
+#include "removechangeauto.h"
+
+
+/**Clients */
+#include "clientsform.h"
+#include "newclient.h"
+#include "removeclient.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,12 +28,23 @@ class MainWindow : public QMainWindow
 
 private:
     Ui::MainWindow *ui;
-    ClientsForm *m_Clients;
-    AddRepair   *m_Repairs;
-    CarsForm    *m_Autos;
-    SearchForm  *m_Search;
 
-    CarsDatabase   *m_BasePath;
+    AddRepair           *m_Repairs;
+    SearchForm          *m_Search;
+    CarsDatabase        *m_BasePath;
+
+    /**Autos */
+    CarsForm            *m_Autos; // ????
+    ShowAllcars         *m_ShowAllAutos;
+    NewAuto             *m_NewAuto;
+    RemoveChangeAuto    *m_DelEdtiAuto;
+
+    /**Clients  */
+    ClientsForm         *m_Clients; // ????
+    NewClient           *m_NewClient;
+    RemoveClient        *m_RemoveClient;
+
+
     void LoadDesignView();
 
 public:
@@ -32,14 +53,20 @@ public:
 
 private slots:
     void on_Button_Search_clicked();
-    void on_Button_OpenAutoForm_clicked();
-    void on_Button_OpenClents_clicked();
+//    void on_Button_OpenAutoForm_clicked();
+//    void on_Button_OpenClents_clicked();
     void on_Button_OpenRepairs_clicked();
 
     void RestoreMainForm();
     void CenterForm();
 
     void on_Exit_clicked();
+    void on_ShowAllAutos_triggered();
+    void on_AddNewAuto_triggered();
+    void on_EditDeleteAuto_triggered();
+    void on_DeleteClient_triggered();
+    void on_AddNewClient_triggered();
+    void on_EditClient_triggered();
 };
 
 #endif // MAINWINDOW_H
