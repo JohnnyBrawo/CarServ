@@ -11,4 +11,7 @@
         <file>clients.jpg</file>
         <file>clients2.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>car_Repair.jpg</file>
+    </qresource>
 </RCC>
