@@ -3,7 +3,6 @@
 #include "QDate"
 #include "QDateTime"
 #include <qdebug.h>
-#include "carsdatabase.h"
 
 ShowAllcars::ShowAllcars(QWidget *parent) :
     QDialog(parent),
@@ -12,7 +11,6 @@ ShowAllcars::ShowAllcars(QWidget *parent) :
     m_ComboRegNumber("")
 {
     ui->setupUi(this);
-
 }
 
 ShowAllcars::~ShowAllcars()
@@ -65,6 +63,7 @@ void ShowAllcars::OpenClearWindow()
 
 void ShowAllcars::on_Button_Back_clicked()
 {
+    MyData.CloseConnection();
     this->hide();
     emit CloseShowAllAutoForm();
     ClearAllFields();
@@ -74,7 +73,7 @@ void ShowAllcars::on_Button_Back_clicked()
 void ShowAllcars::FillClientsNameCombo()
 {
     qDebug() << "ShowAllcars::FillClientsNameCombo()   ++++++   ";
-    CarsDatabase MyData;
+//    CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
 
     QSqlQueryModel * ClientsNameComboModel = new QSqlQueryModel();
@@ -96,7 +95,7 @@ void ShowAllcars::FillClientsNameCombo()
 void ShowAllcars::FillRegNumbersCombo()
 {
     qDebug() << "ShowAllcars::FillRegNumbersCombo()   ";
-    CarsDatabase MyData;
+//    CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQueryModel * CarRegNumberComboModel = new QSqlQueryModel();
@@ -119,7 +118,7 @@ void ShowAllcars::FillRegNumbersCombo()
 void ShowAllcars::FillAutosCombo()
 {
     qDebug() << "SearchForm::FillRegNumbersCombo()   ";
-    CarsDatabase MyData;
+//    CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQueryModel * CarsComboModel = new QSqlQueryModel();
@@ -151,6 +150,7 @@ void ShowAllcars::on_RButton_SearchClients_clicked()
     /*  2 - Clients */
     m_uiSearchChoice = eClients;
     DeactivateAllFields();
+    qDebug()<<" TEXT "  << ui->Combo_Search_Klient->itemData(ui->Combo_Search_Klient->currentIndex());
     ui->Combo_Search_Klient->setEnabled(true);
 }
 
@@ -177,10 +177,10 @@ void ShowAllcars::FillAutoData(QString CurrentClientID)
 {
     qDebug() << "ShowAllcars::FillAutoData()   ";
 
-        CarsDatabase MyData;
+//        CarsDatabase MyData;
         MyData.OpenConnection("Automobiles.sqlite");
         QSqlQuery EditAutoQry(MyData.CarsDB);
-
+        QString m_strAutoReg="";
 
 
 //        m_SelectedRegNumber = arg1;
@@ -222,7 +222,7 @@ void ShowAllcars::FillAutoData(QString CurrentClientID)
 //                    m_SelectedClientID = EditAutoQry.value(1).toString();
 //                }
 
-                qDebug() << "1111111111111111111111111111111111111111    " << EditAutoQry.value(2).toString();
+                qDebug() << " Show Car's details    ";
                 ui->LText_RepairMarka->setText(EditAutoQry.value(2).toString());
                 ui->LText_RepairModel->setText(EditAutoQry.value(3).toString());
                 ui->LText_RepairYear->setText(EditAutoQry.value(4).toString());
@@ -231,8 +231,8 @@ void ShowAllcars::FillAutoData(QString CurrentClientID)
                 ui->LText_RepairVIN->setText(EditAutoQry.value(7).toString());
                 ui->LText_RepairType->setText(EditAutoQry.value(8).toString());
 
-//                /// Record selected AutoID - attach it to the New client
-//                m_strAutoReg = EditAutoQry.value(6).toString();
+                /// Record selected AutoID - attach it to the New client
+                m_strAutoReg = EditAutoQry.value(6).toString();
 //                ui->Combo_DelChangeAutoRegs->setCurrentText(EditAutoQry.value(6).toString());
             }else {
                 /// Fill all automobiles with No cliet assigned
@@ -264,8 +264,23 @@ void ShowAllcars::FillAutoData(QString CurrentClientID)
 //        }
 
 //        UpdateFlags();
+        if(!m_strAutoReg.isEmpty()){
+            FillRepairsList(m_strAutoReg);
+        }
 }
 
+void ShowAllcars::FillRepairsList(QString CarRegNumber /*= ""*/)
+{
+    qDebug()<<" Show all repairs for " << CarRegNumber <<" auto ";
+
+//    CarsDatabase MyData;
+    MyData.OpenConnection("Repairs.sqlite");
+
+    QStringList items;
+    items += "Дата : ";
+    items += "Ремонт : ";
+    ui->RepairsList->addItems(items);
+}
 
 void ShowAllcars::on_Button_Search_clicked()
 {
@@ -273,6 +288,9 @@ void ShowAllcars::on_Button_Search_clicked()
         qDebug() <<"\n  Nothing to search \n";
         return;
     }
+    /* Erase all data if search button clicked ! Need this is search method is changed */
+    ui->RepairsList->clear();
+    MyData.CloseConnection();
 
 
     QString strClientID = "";
@@ -283,9 +301,9 @@ void ShowAllcars::on_Button_Search_clicked()
         break;
     }
     case eClients: {
-          CarsDatabase MyClientData;
-            MyClientData.OpenConnection("Clients.sqlite");
-             QSqlQuery EditClientsQry(MyClientData.CarsDB);
+//          CarsDatabase MyClientData;
+            MyData.OpenConnection("Clients.sqlite");
+             QSqlQuery EditClientsQry(MyData.CarsDB);
 
                 /** Namireme klienta po ime. Sled koeto mu wzemame CLIENT_ID- to , za da move da go namerim w bazata s kolite ! Ako move da mu izmislq neshto po-umno -> Chudesno*/
              qDebug() << "ui->Combo_Search_Klient->currentText()   " << ui->Combo_Search_Klient->currentText();
@@ -295,16 +313,18 @@ void ShowAllcars::on_Button_Search_clicked()
                  }else {
                      /// Fill all automobiles with speciffic ClientID or Auto_Reg Number
                      if (EditClientsQry.next()) {
-                         qDebug() << " Towa sme procheli 1   "<<EditClientsQry.value(1).toString();
-                         qDebug() << " Towa sme procheli 0  "<<EditClientsQry.value(0).toString();
-                         qDebug() << " Towa sme procheli 2  "<<EditClientsQry.value(2).toString();
+                         qDebug() << " Towa sme procheli 1 -  "<<EditClientsQry.value(1).toString();
+                         qDebug() << " Towa sme procheli 0 - "<<EditClientsQry.value(0).toString();
+                         qDebug() << " Towa sme procheli 2 - "<<EditClientsQry.value(2).toString();
                          strClientID = EditClientsQry.value(0).toString();
                      }else {
                          qDebug() << " Nqma kakwo powe4e da prawim , zatwarqme klientskata baza ";
                      }
                  }
-                 MyClientData.CloseConnection();
-         qDebug() << "Search eClients   \n";
+//                 MyClientData.CloseConnection();
+         qDebug() << "Search By ClentID \n";
+
+        FillAutoData(strClientID);
         break;
     }
     case eRegNumber : {
@@ -321,10 +341,15 @@ void ShowAllcars::on_Button_Search_clicked()
       break;
     }
     }
-     FillAutoData(strClientID);
+
 }
 
 void ShowAllcars::on_Combo_Search_Klient_currentTextChanged(const QString &arg1)
 {
     qDebug() << "    on_Combo_Search_Klient_currentTextChanged " <<arg1;
+}
+
+void ShowAllcars::on_RButton_SearchAutos_pressed()
+{
+    qDebug() << " Search nutton pressed  !! \n";
 }

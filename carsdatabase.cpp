@@ -18,7 +18,6 @@ QString  CarsDatabase::GetReousrcesPath()
             testPath.append("CarServ/Images/");
         }
         else {
-            qDebug() << "WINDOWS ";
             testPath.append("CarServ\\Images\\");
         }
     }
@@ -34,30 +33,26 @@ QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
     int position = testPath.indexOf("build");
     int position2 = testPath.indexOf("/");
 
-
     if(position != (-1)){
         testPath.truncate(position);
         if(position2 != (-1)){
-            //                qDebug() << "LINUX ";
             testPath.append("CarServ/DataBase/");
         }
         else {
-            qDebug() << "WINDOWS ";
             testPath.append("CarServ\\DataBase\\");
         }
     }
     else {
         qDebug() << " BUILD PATH NOT FOUND   ";
     }
-
-    m_CurrDataName = testPath + DataBaseName;
+// @ TODO   make this smart !!
+    m_CurrDataName = "C:\\Users\\BUFU\\Projects\\DATA_BASE\\" + DataBaseName;
 
     return m_CurrDataName;
 }
 
 bool CarsDatabase::OpenConnection(QString DataBaseName)
 {
-
     CarsDB = QSqlDatabase::addDatabase("QSQLITE","CarsConnection");
     CarsDB.setDatabaseName(GetDataBasePath(DataBaseName));
 
@@ -67,7 +62,6 @@ bool CarsDatabase::OpenConnection(QString DataBaseName)
         return false;
     }else
     {
-        //        qDebug() << " Connected to database : " << m_CurrDataName;
         return true;
     }
 }

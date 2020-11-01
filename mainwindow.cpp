@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_DelEdtiAuto, SIGNAL(CloseDeletePage()), this, SLOT(RestoreMainForm()));
 
     /**Clients Menu - Close */
-    QObject::connect(m_NewClient, SIGNAL(CloseClientsPage()), this, SLOT(RestoreMainForm()));
+    QObject::connect(m_NewClient, SIGNAL(CloseNewClientForm()), this, SLOT(RestoreMainForm()));
     QObject::connect(m_NewClient, SIGNAL(CloseNewClientForm()), this, SLOT(RestoreMainForm()));
     QObject::connect(m_RemoveClient, SIGNAL(CloseRemoveClientPage()), this, SLOT(RestoreMainForm()));
 

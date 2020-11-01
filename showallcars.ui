@@ -98,7 +98,7 @@
      <height>261</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="AutoData">
     <item row="1" column="0">
      <widget class="QLabel" name="L_Repair_Marka">
       <property name="font">
@@ -350,16 +350,6 @@
     <string>ТЪРСИ</string>
    </property>
   </widget>
-  <widget class="QListView" name="listView">
-   <property name="geometry">
-    <rect>
-     <x>395</x>
-     <y>91</y>
-     <width>731</width>
-     <height>491</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QWidget" name="layoutWidget_2">
    <property name="geometry">
     <rect>
@@ -369,7 +359,7 @@
      <height>251</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout_2">
+   <layout class="QGridLayout" name="SearchOptions">
     <item row="0" column="0">
      <widget class="QRadioButton" name="RButton_SearchAutos">
       <property name="font">
@@ -490,6 +480,16 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QListWidget" name="RepairsList">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>91</y>
+     <width>721</width>
+     <height>491</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>

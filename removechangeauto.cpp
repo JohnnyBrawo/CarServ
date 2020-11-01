@@ -139,9 +139,9 @@ void RemoveChangeAuto::FillRegCombo()
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
     QSqlQuery RegComboQry(MyData.CarsDB);
-    qDebug() << " FillRegCombo   m_SelectedClientID " << m_SelectedClientID;
-    qDebug() << " FillRegCombo  m_SentClientID   " << m_SentClientID;
-    qDebug() << " FillRegCombo  m_SentClientName   " << m_SentClientName;
+//    qDebug() << " FillRegCombo   m_SelectedClientID " << m_SelectedClientID;
+//    qDebug() << " FillRegCombo  m_SentClientID   " << m_SentClientID;
+//    qDebug() << " FillRegCombo  m_SentClientName   " << m_SentClientName;
 
     if(m_SentClientName.isEmpty())
     {
@@ -158,10 +158,10 @@ void RemoveChangeAuto::FillRegCombo()
     if(!RegComboQry.next())
     {
         // Тука зареждаме празните атомобили.
-        qDebug() << " FillRegCombo   RegComboQry.Exec() SELECT not valid  ";
+//        qDebug() << " FillRegCombo   RegComboQry.Exec() SELECT not valid  ";
         RegComboQry.prepare("SELECT Auto_RegNumber FROM Automobiles_Table WHERE CLIENT_ID='""'");
         if(! RegComboQry.exec()){
-            qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< endl;
+//            qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< endl;
             return;
         }
         if(!RegComboQry.next())
