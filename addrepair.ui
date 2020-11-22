@@ -154,6 +154,7 @@
      <widget class="QPushButton" name="Button_RecordRepairs">
       <property name="font">
        <font>
+        <pointsize>10</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -183,6 +184,7 @@
      <widget class="QPushButton" name="Button_InsertSubMenu">
       <property name="font">
        <font>
+        <pointsize>10</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -337,32 +339,13 @@
    </property>
    <property name="font">
     <font>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
    <property name="text">
     <string>Изберете Региострационен Номер  :   </string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="Check_RandomClient">
-   <property name="geometry">
-    <rect>
-     <x>870</x>
-     <y>80</y>
-     <width>81</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Случаен 
- клиент</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Button_Search">
@@ -398,38 +381,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="LText_RandClientName">
-   <property name="geometry">
-    <rect>
-     <x>550</x>
-     <y>90</y>
-     <width>311</width>
-     <height>26</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="L_RandClientName">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>60</y>
-     <width>161</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Име на клиента</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QLabel" name="L_RepairDate">
    <property name="geometry">
     <rect>
@@ -441,6 +392,7 @@
    </property>
    <property name="font">
     <font>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -482,8 +434,20 @@
     <string>Сума за плащане</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="Button_NewClient">
+   <property name="geometry">
+    <rect>
+     <x>870</x>
+     <y>90</y>
+     <width>80</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Нов клиент</string>
+   </property>
+  </widget>
   <zorder>L_CarRegNumber</zorder>
-  <zorder>Check_RandomClient</zorder>
   <zorder>Button_Search</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>RepairList</zorder>
@@ -491,12 +455,11 @@
   <zorder>horizontalLayoutWidget</zorder>
   <zorder>Combo_RepairAutoRegNumber</zorder>
   <zorder>LText_RandomClient</zorder>
-  <zorder>LText_RandClientName</zorder>
-  <zorder>L_RandClientName</zorder>
   <zorder>L_RepairDate</zorder>
   <zorder>LText_RepairDate</zorder>
   <zorder>LText_TotalPrice</zorder>
   <zorder>Button_TotalCostCalc</zorder>
+  <zorder>Button_NewClient</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -12,16 +12,17 @@ AddRepair::AddRepair(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddRepair),
     m_uiRepairsNumber(0),
-    m_uiSubMenuNumber(0)
+    m_uiSubMenuNumber(0),
+    m_NewRepairForm(new NewRepair())
 {
     ui->setupUi(this);
     setWindowTitle("Repair Dictionary");
     CenterForm();
-//    m_bChecked = false;
     m_strSelCarNumber.clear();
     m_vRepairItem.clear();
     m_vMenusAndSubmebus.clear();
 
+     QObject::connect(ui->Button_NewClient, SIGNAL(clicked()), m_NewRepairForm, SLOT(OpenClearWindow()));
 }
 
 AddRepair::~AddRepair()
@@ -38,9 +39,7 @@ void AddRepair::SetRandomDesign()
     ui->LText_RepairDate->setText(CurrentDate.toString("dd.MM.yyyy"));
 
     ui->LText_RandomClient->setVisible(true);
-    ui->LText_RandClientName->setVisible(true);
     ui->Combo_RepairAutoRegNumber->setVisible(false);
-    ui->L_RandClientName->setVisible(true);
     ui->L_CarRegNumber->setText("Въведете Региострационен Номер  :   ");
     ui->Button_Search->setText("Добави");
 
@@ -71,16 +70,11 @@ void AddRepair::SetInitialDesign()
     QDate CurrentDate= QDate::currentDate();
 
     ui->LText_RepairDate->setText(CurrentDate.toString("dd.MM.yyyy"));
-/** Bez toq buton zasega **/
-    ui->Check_RandomClient->setChecked(false);
-    ui->Check_RandomClient->setVisible(false);
 
 
     ui->LText_RandomClient->setVisible(false);
-    ui->LText_RandClientName->setVisible(false);
     ui->Combo_RepairAutoRegNumber->setVisible(true);
     ui->L_CarRegNumber->setText("Изберете Региострационен Номер  :   ");
-    ui->L_RandClientName->setVisible(false);
     ui->Button_Search->setText("Въведи");
 
     ui->Button_Search->setEnabled(true);
@@ -144,13 +138,6 @@ void AddRepair::InsertRepair(bool SubMenu)
     //Finally adding the itemWidget to the list
     ui->RepairList->setItemWidget (listInsertItem, m_newRepair);
 
-//    if(m_uiRepairsNumber > 0)
-//    {
-//        ui->Button_InsertSubMenu->setEnabled(false); //Da Nqma podmeniuta, a wseki remont da si e otdelen za sebe si
-//        ui->Button_InsertSubMenu->setVisible(false);
-//        ui->Button_DeleteRepair->setEnabled(true);
-//    }
-
     //ListAllMenus();
 }
 
@@ -184,19 +171,13 @@ void AddRepair::on_Button_DeleteRepair_clicked()
              return;
          }else {
              QListWidgetItem *  listItem;
-//             NewRepairItem * m_cu;
-
              unsigned int Cnt = m_vMenusAndSubmebus.at(SubmenuStartIndex-1);
              for(unsigned int i=0,currItem=SubmenuStartIndex; i< Cnt; i++)
              {
                   listItem = ui->RepairList->item(currItem);
-//                  m_cu = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItem));
-       //           qDebug() << " GetRepairDescrText " << m_cu->GetRepairDescrText();
                   delete listItem;
                   m_vMenusAndSubmebus[SubmenuStartIndex-1]--;
              }
-             qDebug() << " SUBMENU DELETE FINISH ";
-           //  ListAllMenus();
          }
      }
 
@@ -311,21 +292,11 @@ void AddRepair::RecordRepair()
 
     for(int i=0; i< ui->RepairList->count(); i++)
     {
-//        if(!CheckRecordInformation())
-//        {
-//            qDebug() << "RecordRepair Rejected because of empty fields ";
-//            continue;
-//        }
-
         listItemData = ui->RepairList->item(i);
         m_newRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
 
         if(m_newRepair->GetRepairDescrText().isEmpty() && m_newRepair->GetRepairQuantityText().isEmpty() && m_newRepair->GetRepairSinglePriceText().isEmpty() && m_newRepair->GetRepairValueText().isEmpty())
         {
-//            QMessageBox::information(this,"Празни полета!","Празните полета няма да бъдат записани.");
-            //            if(UserReply == QMessageBox::No){
-            //                return false;
-            //            }
             qDebug() << "Ima prazni poleta - Continue ";
             continue;
         }
@@ -362,28 +333,8 @@ void AddRepair::OpenClearWindow()
     this->show();
 }
 
-
-//void AddRepair::on_Check_RandomClient_clicked(bool checked)
-//{
-//    m_bChecked = checked;
-//    if(!checked)
-//    {
-//        SetInitialDesign();
-//    }else
-//    {
-//        SetRandomDesign();
-//    }
-
-//}
-
 void AddRepair::on_Button_Search_clicked()
 {
-//    if (m_bChecked)
-//    {
-//        qDebug() << " Добавяме колата в базата на колите";
-//    }
-
-//    SetInitialDesign();
     for(unsigned int i=0; i< 10; i++)
     {
         InsertRepair(false);
@@ -399,9 +350,6 @@ void AddRepair::on_Button_Search_clicked()
     ui->Combo_RepairAutoRegNumber->setEnabled(false);
     ui->Button_Search->setEnabled(false);
     ui->LText_RepairDate->setEnabled(false);
-
-//    ui->RepairList->item(0)->
-//            ui->RepairList->setCursor()
 }
 
 void AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1)
@@ -454,3 +402,8 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
     ui->LText_TotalPrice->setText(QString::number(totalCost, 'f',2));
 }
 
+
+void AddRepair::on_Button_NewClient_clicked()
+{
+
+}

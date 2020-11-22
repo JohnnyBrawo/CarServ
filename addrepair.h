@@ -6,6 +6,7 @@
 #include <QListWidgetItem>
 #include <QVector>
 #include <QDebug>
+#include "newrepair.h"
 
 #include "repairwigdetitem.h"
 
@@ -24,7 +25,6 @@ private:
     void SetInitialDesign();
     void SetRandomDesign();
     void ClearAllinputs();
-//    bool m_bChecked;
     void FillPage();
     bool CheckRecordInformation();
     void ReFillRepairIndexes();
@@ -36,6 +36,9 @@ private:
     unsigned int m_uiRepairsNumber;
     unsigned int m_uiSubMenuNumber;
     bool         m_bSubMenuADD;
+
+    /** Repair  */
+    NewRepair         *m_NewRepairForm; // ????
 
 public:
     explicit AddRepair(QWidget *parent = 0);
@@ -52,7 +55,6 @@ private slots:
     void on_Button_InsertRepair_clicked();
     void on_Button_DeleteRepair_clicked();
     void on_Button_RecordRepairs_clicked();
-//    void on_Check_RandomClient_clicked(bool checked);
     void on_Button_Search_clicked();
     void OpenClearWindow();
     void on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1);
@@ -60,6 +62,7 @@ private slots:
 
     void on_RepairList_clicked();
     void on_Button_TotalCostCalc_clicked();
+    void on_Button_NewClient_clicked();
 };
 
 #endif // ADDREPAIR_H

@@ -1,42 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>NewAuto</class>
- <widget class="QDialog" name="NewAuto">
+ <class>NewRepair</class>
+ <widget class="QDialog" name="NewRepair">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>508</width>
-    <height>741</height>
+    <width>599</width>
+    <height>713</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="Button_AddNewAuto">
+  <widget class="QPushButton" name="Button_CancelNewRepair">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>660</y>
-     <width>101</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Добавяне</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Button_CancelNewAuto">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>660</y>
+     <x>423</x>
+     <y>590</y>
      <width>101</width>
      <height>51</height>
     </rect>
@@ -51,11 +32,46 @@
     <string>Назад</string>
    </property>
   </widget>
-  <widget class="QLabel" name="Label_NewAuto_Form">
+  <widget class="QLabel" name="L_StarFields">
    <property name="geometry">
     <rect>
-     <x>77</x>
-     <y>10</y>
+     <x>33</x>
+     <y>650</y>
+     <width>511</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Задължителните полеса са отбелязани със звездичка ( * )</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Button_AddNewRepair">
+   <property name="geometry">
+    <rect>
+     <x>53</x>
+     <y>590</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Добавяне</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Label_NewRepair_Form">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>20</y>
      <width>351</width>
      <height>51</height>
     </rect>
@@ -68,24 +84,59 @@
     </font>
    </property>
    <property name="text">
-    <string>Добавяне на нов автомобил</string>
+    <string>Добавяне на данни за ремонта</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>110</y>
-     <width>471</width>
-     <height>521</height>
+     <x>20</x>
+     <y>90</y>
+     <width>521</width>
+     <height>451</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridAutoData">
+   <layout class="QGridLayout" name="gridRepairData">
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
+    <property name="horizontalSpacing">
+     <number>36</number>
+    </property>
+    <property name="verticalSpacing">
+     <number>33</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="L_NewRepairAutoMarka">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Марка *</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="1">
-     <widget class="QComboBox" name="Combo_NewAuto_Marka">
+     <widget class="QComboBox" name="Combo_NewRepair_Marka">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -101,7 +152,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="L_NewAuto_Model">
+     <widget class="QLabel" name="L_NewRepairAutoModel">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -118,76 +169,10 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QComboBox" name="Combo_NewAuto_Model"/>
+     <widget class="QComboBox" name="Combo_NewRepair_Model"/>
     </item>
     <item row="2" column="0">
-     <widget class="QLabel" name="L_NewAuto_Type">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Купе</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QComboBox" name="Combo_NewAuto_Type">
-      <item>
-       <property name="text">
-        <string>Select</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Седан</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Хечбек</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Комби</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Купе</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Кабрио</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Джип</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Пикап</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Ван</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="L_NewAuto_Year">
+     <widget class="QLabel" name="L_NewRepairAutoYear">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -203,69 +188,8 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="L_NewAuto_Fuel">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Гориво</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="0">
-     <widget class="QLabel" name="L_NewAuto_RegNumber">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(170, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string>Регистрационен 
- номер *</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="1">
-     <widget class="QLineEdit" name="LText_NewAutoRegNumber"/>
-    </item>
-    <item row="8" column="0">
-     <widget class="QLabel" name="L_NewAuto_VIN">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>РАМА / VIN /</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="1">
-     <widget class="QLineEdit" name="LText_NewAutoVIN"/>
-    </item>
-    <item row="3" column="1">
-     <widget class="QComboBox" name="Combo_NewAuto_Year">
+    <item row="2" column="1">
+     <widget class="QComboBox" name="Combo_NewRepair_Year">
       <property name="currentText">
        <string>Select</string>
       </property>
@@ -446,8 +370,25 @@
       </item>
      </widget>
     </item>
-    <item row="5" column="1">
-     <widget class="QComboBox" name="Combo_NewAuto_Fuel">
+    <item row="3" column="0">
+     <widget class="QLabel" name="L_NewRepairAutoFuel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Гориво</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="Combo_NewRepair_Fuel">
       <item>
        <property name="text">
         <string>Select</string>
@@ -485,8 +426,8 @@
       </item>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="L_NewAuto_Marka">
+    <item row="4" column="0">
+     <widget class="QLabel" name="L_NewRepairAutoRegNumber">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -498,30 +439,98 @@
        <string notr="true">color: rgb(170, 0, 0);</string>
       </property>
       <property name="text">
-       <string>Марка *</string>
+       <string>Регистрационен 
+ номер *</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="LText_NewRepairAutoRegNumber"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="L_NewRepairKlient">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Клиент</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLabel" name="L_NewRepair_KlientData">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Данни за клента</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="L_NewRepairKlientName">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color : rgb(170, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>Име * </string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="LText_NewRepairKlientName"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="L_NewRepairKlientPhone">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color : rgb(170, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>Телефон *</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="LText_NewRepairKlientPhone"/>
+    </item>
    </layout>
-  </widget>
-  <widget class="QLabel" name="L_StarFields">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>720</y>
-     <width>511</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Задължителните полеса са отбелязани със звездичка ( * )</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
   </widget>
  </widget>
  <resources/>

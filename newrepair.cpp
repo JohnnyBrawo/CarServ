@@ -1,30 +1,25 @@
-#include "newauto.h"
-#include "ui_newauto.h"
+#include "newrepair.h"
+#include "ui_newrepair.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
 #include <qdebug.h>
 #include "carsdatabase.h"
 #include <QtWidgets>
 
-// Must have Automobile database here
-
-NewAuto::NewAuto(QWidget *parent) :
+NewRepair::NewRepair(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::NewAuto)
+    ui(new Ui::NewRepair)
 {
     ui->setupUi(this);
-    m_strSelectedCarReg = "None";
-    CenterForm();
-    setWindowTitle("New Auto");
 }
 
-NewAuto::~NewAuto()
+NewRepair::~NewRepair()
 {
     delete ui;
 }
 
 
-void NewAuto::CenterForm()
+void NewRepair::CenterForm()
 {
     setFixedSize(geometry().width(), geometry().height());
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
@@ -32,71 +27,47 @@ void NewAuto::CenterForm()
     move(center.x()-static_cast<int>(width()*0.5), center.y()-static_cast<int>(height()*0.5) );
 }
 
-
-void NewAuto::on_Button_CancelNewAuto_clicked()
-{
-    emit CloseNewAutoForm();
-    ClearAllFields();
-    this->hide();
-}
-
-
-void NewAuto::OpenClearWindow()
+void NewRepair::OpenClearWindow()
 {
      FillComboMarki();
      ClearAllFields();
      this->show();
 }
 
-void NewAuto::ClearAllFields()
+void NewRepair::ClearAllFields()
 {
     //  Disable all fields except Auto Model.
     //  Enable fields one after other
-    ui->Combo_NewAuto_Marka->setCurrentIndex(0);
+    ui->Combo_NewRepair_Marka->setCurrentIndex(0);
 
-    ui->Combo_NewAuto_Model->clear();
-     ui->Combo_NewAuto_Model->setCurrentIndex(-1);
-    ui->Combo_NewAuto_Model->setEnabled(false);
+    ui->Combo_NewRepair_Model->clear();
+    ui->Combo_NewRepair_Model->setCurrentIndex(-1);
+    ui->Combo_NewRepair_Model->setEnabled(false);
 
-    ui->Combo_NewAuto_Year->setCurrentIndex(0);
-    ui->Combo_NewAuto_Year->setEnabled(false);
+    ui->Combo_NewRepair_Year->setCurrentIndex(0);
+    ui->Combo_NewRepair_Year->setEnabled(false);
 
-    ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
-    ui->Combo_NewAuto_Fuel->setEnabled(false);
+    ui->Combo_NewRepair_Fuel->setCurrentIndex(0);
+    ui->Combo_NewRepair_Fuel->setEnabled(false);
 
-    ui->Combo_NewAuto_Type->setCurrentIndex(0);
-    ui->Combo_NewAuto_Type->setEnabled(false);
+    ui->LText_NewRepairAutoRegNumber->clear();
+    ui->LText_NewRepairAutoRegNumber->setEnabled(false);
 
-    ui->LText_NewAutoRegNumber->clear();
-    ui->LText_NewAutoRegNumber->setEnabled(false);
-
-    ui->LText_NewAutoVIN->clear();
-    ui->LText_NewAutoVIN->setEnabled(false);
-
-    ui->Button_AddNewAuto->setEnabled(false);
+    ui->Button_AddNewRepair->setEnabled(false);
 }
 
-bool NewAuto::CheckRecordInformation(){
+bool NewRepair::CheckRecordInformation(){
 
     QString EmptyFields = "";
     QMessageBox::StandardButton UserReply;
 
-    if(!CheckSelected(ui->Combo_NewAuto_Type->currentText())){
-        EmptyFields = EmptyFields + " Купе " + "\n";
-    }
-
-    if(!CheckSelected(ui->Combo_NewAuto_Year->currentText())){
+    if(!CheckSelected(ui->Combo_NewRepair_Year->currentText())){
         EmptyFields = EmptyFields + " Година " + "\n";
     }
 
-    if(!CheckSelected(ui->Combo_NewAuto_Fuel->currentText())){
+    if(!CheckSelected(ui->Combo_NewRepair_Fuel->currentText())){
         EmptyFields = EmptyFields + " Гориво " + "\n";
     }
-
-    if(!CheckSelected(ui->LText_NewAutoVIN->text())) {
-        EmptyFields =EmptyFields +  " Рама/Вин " + "\n";
-    }
-
 
     /**  Ако дразни съобщението може да се направи само да blink-ват полетата и да иска повторно натиска не на
           ЗАПИШИ бутона
@@ -117,9 +88,9 @@ bool NewAuto::CheckRecordInformation(){
 }
 
 
-bool NewAuto::CheckRecordObligatory(){
+bool NewRepair::CheckRecordObligatory(){
 
-    if(!CheckSelected(ui->Combo_NewAuto_Marka->currentText()) || !CheckSelected(ui->LText_NewAutoRegNumber->text()) ){
+    if(!CheckSelected(ui->Combo_NewRepair_Marka->currentText()) || !CheckSelected(ui->LText_NewRepairAutoRegNumber->text()) ){
 
         QMessageBox::information(this,"Важно!","Не сте попълнили задължителните полега ( * ).");
          return false;
@@ -128,7 +99,7 @@ bool NewAuto::CheckRecordObligatory(){
     return true;
 }
 
-void NewAuto::on_Button_AddNewAuto_clicked()
+void NewRepair::on_Button_AddNewAuto_clicked()
 {
 
     if(!CheckRecordObligatory()){
@@ -148,15 +119,15 @@ void NewAuto::on_Button_AddNewAuto_clicked()
     AddNewAuto.prepare("INSERT INTO Automobiles_Table(AutoMarka, AutoModel, AutoYear, AutoFuel, Auto_RegNumber, AutoVIN, AutoType) "
                        "VALUES(:AutoMarka, :AutoModel, :AutoYear, :AutoFuel, :Auto_RegNumber, :AutoVIN, :AutoType)");
 
-    AddNewAuto.bindValue(":AutoMarka",ui->Combo_NewAuto_Marka->currentText());
-    AddNewAuto.bindValue(":AutoModel",CheckSelected(ui->Combo_NewAuto_Model->currentText())?ui->Combo_NewAuto_Model->currentText():"None");
-    AddNewAuto.bindValue(":AutoYear",CheckSelected(ui->Combo_NewAuto_Year->currentText())?ui->Combo_NewAuto_Year->currentText():"None");
-    AddNewAuto.bindValue(":AutoFuel",CheckSelected(ui->Combo_NewAuto_Fuel->currentText())?ui->Combo_NewAuto_Fuel->currentText():"None");
-    AddNewAuto.bindValue(":Auto_RegNumber",CheckSelected(ui->LText_NewAutoRegNumber->text())?ui->LText_NewAutoRegNumber->text():"None");
-    AddNewAuto.bindValue(":AutoVIN",CheckSelected(ui->LText_NewAutoVIN->text())?ui->LText_NewAutoVIN->text():"None");
-    AddNewAuto.bindValue(":AutoType",CheckSelected(ui->Combo_NewAuto_Type->currentText())?ui->Combo_NewAuto_Type->currentText():"None");
+    AddNewAuto.bindValue(":AutoMarka",ui->Combo_NewRepair_Marka->currentText());
+    AddNewAuto.bindValue(":AutoModel",CheckSelected(ui->Combo_NewRepair_Model->currentText())?ui->Combo_NewRepair_Model->currentText():"None");
+    AddNewAuto.bindValue(":AutoYear",CheckSelected(ui->Combo_NewRepair_Year->currentText())?ui->Combo_NewRepair_Year->currentText():"None");
+    AddNewAuto.bindValue(":AutoFuel",CheckSelected(ui->Combo_NewRepair_Fuel->currentText())?ui->Combo_NewRepair_Fuel->currentText():"None");
+    AddNewAuto.bindValue(":Auto_RegNumber",CheckSelected(ui->LText_NewRepairAutoRegNumber->text())?ui->LText_NewRepairAutoRegNumber->text():"None");
+    AddNewAuto.bindValue(":AutoVIN","None");
+    AddNewAuto.bindValue(":AutoType","None");
 
-    m_strSelectedCarReg = ui->LText_NewAutoRegNumber->text();
+    m_strSelectedCarReg = ui->LText_NewRepairAutoRegNumber->text();
     if(!AddNewAuto.exec()){
         qDebug() << "INSERT INTO Automobiles_Table fail "<< AddNewAuto.lastError().text();
     }
@@ -177,7 +148,7 @@ void NewAuto::on_Button_AddNewAuto_clicked()
 }
 
 
-void NewAuto::FillComboMarki()
+void NewRepair::FillComboMarki()
 {
     CarsDatabase MyData;
     MyData.OpenConnection("Marki.sqlite");
@@ -192,13 +163,13 @@ void NewAuto::FillComboMarki()
     }
 
     MyModel->setQuery(ShowMakriQry);
-    ui->Combo_NewAuto_Marka->setModel(MyModel);
+    ui->Combo_NewRepair_Marka->setModel(MyModel);
 
     MyData.CloseConnection();
 
 }
 
-bool NewAuto::CheckSelected(QString SelectedString)
+bool NewRepair::CheckSelected(QString SelectedString)
 {
     if((static_cast<int>(SelectedString.size()) < 2 ) || (SelectedString == "Select") || SelectedString == "")
     {
@@ -209,11 +180,11 @@ bool NewAuto::CheckSelected(QString SelectedString)
 }
 
 
-void NewAuto::DeActivateField(NewAuto::NewAutoFields Field)
+void NewRepair::DeActivateField(NewRepair::NewAutoFields Field)
 {
     switch (Field)
     {
-    case NewAuto::eModel :
+    case NewRepair::eModel :
     {
         ClearAllFields();
         break;
@@ -226,30 +197,24 @@ void NewAuto::DeActivateField(NewAuto::NewAutoFields Field)
 }
 
 
-void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
+void NewRepair::ActivateField(NewRepair::NewAutoFields Field)
 {
     switch (Field)
     {
-    case NewAuto::eModel :
+    case NewRepair::eModel :
     {
-        ui->Combo_NewAuto_Model->setEnabled(true);
+        ui->Combo_NewRepair_Model->setEnabled(true);
 
-        ui->Combo_NewAuto_Year->setCurrentIndex(0);
-        ui->Combo_NewAuto_Year->setEnabled(true);
+        ui->Combo_NewRepair_Year->setCurrentIndex(0);
+        ui->Combo_NewRepair_Year->setEnabled(true);
 
-        ui->Combo_NewAuto_Fuel->setCurrentIndex(0);
-        ui->Combo_NewAuto_Fuel->setEnabled(true);
+        ui->Combo_NewRepair_Fuel->setCurrentIndex(0);
+        ui->Combo_NewRepair_Fuel->setEnabled(true);
 
-        ui->Combo_NewAuto_Type->setCurrentIndex(0);
-        ui->Combo_NewAuto_Type->setEnabled(true);
+        ui->LText_NewRepairAutoRegNumber->clear();
+        ui->LText_NewRepairAutoRegNumber->setEnabled(true);
 
-        ui->LText_NewAutoRegNumber->clear();
-        ui->LText_NewAutoRegNumber->setEnabled(true);
-
-        ui->LText_NewAutoVIN->clear();
-        ui->LText_NewAutoVIN->setEnabled(true);
-
-        ui->Button_AddNewAuto->setEnabled(true);
+        ui->Button_AddNewRepair->setEnabled(true);
         break;
     }
 
@@ -259,7 +224,7 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
     }
 }
 
-void NewAuto::FillComboModeli(int MarkaIndex)
+void NewRepair::FillComboModeli(int MarkaIndex)
 {
     CarsDatabase MyData;
     MyData.OpenConnection("All_Models.sqlite");
@@ -274,32 +239,38 @@ void NewAuto::FillComboModeli(int MarkaIndex)
     }
 
     MyModel->setQuery(ShowModelQry);
-    ui->Combo_NewAuto_Model->setModel(MyModel);
+    ui->Combo_NewRepair_Model->setModel(MyModel);
     MyData.CloseConnection();
 
-    if(ui->Combo_NewAuto_Model->count() == 1)
+    if(ui->Combo_NewRepair_Model->count() == 1)
     {
-        ActivateField(NewAuto::eYear);
+        ActivateField(NewRepair::eYear);
     }
 
 }
 
-void NewAuto::on_Combo_NewAuto_Marka_currentIndexChanged(int index)
+void NewRepair::on_Combo_NewAuto_Marka_currentIndexChanged(int index)
 {
-    if(CheckSelected(ui->Combo_NewAuto_Marka->currentText()))  {
-      ActivateField(NewAuto::eModel);
+    if(CheckSelected(ui->Combo_NewRepair_Marka->currentText()))  {
+      ActivateField(NewRepair::eModel);
       FillComboModeli(index);
 
     }
     else {
-        DeActivateField(NewAuto::eModel);
+        DeActivateField(NewRepair::eModel);
     }
 }
 
-void NewAuto::on_Combo_NewAuto_Model_currentIndexChanged(int index)
+void NewRepair::on_Combo_NewAuto_Model_currentIndexChanged(int index)
 {
 
-    if(CheckSelected(ui->Combo_NewAuto_Model->currentText()) && index !=0)  {
-      ActivateField(NewAuto::eYear);
+    if(CheckSelected(ui->Combo_NewRepair_Model->currentText()) && index !=0)  {
+      ActivateField(NewRepair::eYear);
     }
+}
+
+void NewRepair::on_Button_CancelNewRepair_clicked()
+{
+    ClearAllFields();
+    this->hide();
 }

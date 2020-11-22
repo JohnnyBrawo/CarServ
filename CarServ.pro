@@ -26,6 +26,7 @@ SOURCES += \
         mainwindow.cpp \
     newclient.cpp \
     newauto.cpp \
+    newrepair.cpp \
     searchform.cpp \
     repairwigdetitem.cpp \
     addrepair.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
         mainwindow.h \
     newclient.h \
     newauto.h \
+    newrepair.h \
     searchform.h \
     repairwigdetitem.h \
     addrepair.h \
@@ -53,6 +55,7 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
     newclient.ui \
+    newrepair.ui \
     searchform.ui \
     addrepair.ui \
     repairwigdetitem.ui \
