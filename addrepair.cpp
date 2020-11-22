@@ -22,7 +22,8 @@ AddRepair::AddRepair(QWidget *parent) :
     m_vRepairItem.clear();
     m_vMenusAndSubmebus.clear();
 
-     QObject::connect(ui->Button_NewClient, SIGNAL(clicked()), m_NewRepairForm, SLOT(OpenClearWindow()));
+     QObject::connect(ui->Button_NewClientRepair, SIGNAL(clicked()), m_NewRepairForm, SLOT(OpenNewRepairWindow()));
+     QObject::connect(m_NewRepairForm, SIGNAL(CloseNewRepairForm()), this, SLOT(RestoreAutoRepairForm()));
 }
 
 AddRepair::~AddRepair()
@@ -32,18 +33,6 @@ AddRepair::~AddRepair()
 
 }
 
-void AddRepair::SetRandomDesign()
-{
-    QDate CurrentDate= QDate::currentDate();
-
-    ui->LText_RepairDate->setText(CurrentDate.toString("dd.MM.yyyy"));
-
-    ui->LText_RandomClient->setVisible(true);
-    ui->Combo_RepairAutoRegNumber->setVisible(false);
-    ui->L_CarRegNumber->setText("Въведете Региострационен Номер  :   ");
-    ui->Button_Search->setText("Добави");
-
-}
 
 void AddRepair::FillPage()
 {
@@ -71,8 +60,6 @@ void AddRepair::SetInitialDesign()
 
     ui->LText_RepairDate->setText(CurrentDate.toString("dd.MM.yyyy"));
 
-
-    ui->LText_RandomClient->setVisible(false);
     ui->Combo_RepairAutoRegNumber->setVisible(true);
     ui->L_CarRegNumber->setText("Изберете Региострационен Номер  :   ");
     ui->Button_Search->setText("Въведи");
@@ -328,8 +315,6 @@ void AddRepair::RecordRepair()
 void AddRepair::OpenClearWindow()
 {
     SetInitialDesign();
-
-
     this->show();
 }
 
@@ -402,8 +387,15 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
     ui->LText_TotalPrice->setText(QString::number(totalCost, 'f',2));
 }
 
-
-void AddRepair::on_Button_NewClient_clicked()
+void AddRepair::on_Button_NewClientRepair_clicked()
 {
+    this->hide();
+    SetInitialDesign();
 
+}
+
+void AddRepair::RestoreAutoRepairForm()
+{
+    this->show();
+    SetInitialDesign();
 }

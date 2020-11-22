@@ -43,11 +43,14 @@ private:
 
 private slots:
     void CenterForm();
-    void OpenClearWindow();
-    void on_Button_AddNewAuto_clicked();
-    void on_Combo_NewAuto_Marka_currentIndexChanged(int index);
-    void on_Combo_NewAuto_Model_currentIndexChanged(int index);
+    void OpenNewRepairWindow();
+    void on_Button_AddNewRepair_clicked();
+    void on_Combo_NewRepair_Marka_currentIndexChanged(int index);
+//    void on_Combo_NewAuto_Model_currentIndexChanged(int index);
     void on_Button_CancelNewRepair_clicked();
+
+signals:
+    void CloseNewRepairForm();
 };
 
 #endif // NEWREPAIR_H
