@@ -22,7 +22,7 @@ QString  CarsDatabase::GetReousrcesPath()
         }
     }
     else {
-        qDebug() << " BUILD PATH NOT FOUND   ";
+        qDebug() << " GetReousrcesPath BUILD PATH NOT FOUND   ";
     }
     return testPath;
 }
@@ -43,7 +43,7 @@ QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
         }
     }
     else {
-        qDebug() << " BUILD PATH NOT FOUND   ";
+        qDebug() << "GetDataBasePath BUILD PATH NOT FOUND   ";
     }
 // @ TODO   make this smart !!
     m_CurrDataName = "C:\\Users\\BUFU\\Projects\\DATA_BASE\\" + DataBaseName;

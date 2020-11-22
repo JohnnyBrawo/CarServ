@@ -62,7 +62,9 @@ private slots:
 
     void on_RepairList_clicked();
     void on_Button_TotalCostCalc_clicked();
-    void on_Button_NewClient_clicked();
+    void on_Button_NewClientRepair_clicked();
+
+    void RestoreAutoRepairForm();
 };
 
 #endif // ADDREPAIR_H

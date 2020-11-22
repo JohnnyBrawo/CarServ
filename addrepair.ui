@@ -371,16 +371,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="LText_RandomClient">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>90</y>
-     <width>151</width>
-     <height>26</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="L_RepairDate">
    <property name="geometry">
     <rect>
@@ -434,7 +424,7 @@
     <string>Сума за плащане</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Button_NewClient">
+  <widget class="QPushButton" name="Button_NewClientRepair">
    <property name="geometry">
     <rect>
      <x>870</x>
@@ -454,12 +444,11 @@
   <zorder>L_RepairMainLabel</zorder>
   <zorder>horizontalLayoutWidget</zorder>
   <zorder>Combo_RepairAutoRegNumber</zorder>
-  <zorder>LText_RandomClient</zorder>
   <zorder>L_RepairDate</zorder>
   <zorder>LText_RepairDate</zorder>
   <zorder>LText_TotalPrice</zorder>
   <zorder>Button_TotalCostCalc</zorder>
-  <zorder>Button_NewClient</zorder>
+  <zorder>Button_NewClientRepair</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -27,7 +27,7 @@ void NewRepair::CenterForm()
     move(center.x()-static_cast<int>(width()*0.5), center.y()-static_cast<int>(height()*0.5) );
 }
 
-void NewRepair::OpenClearWindow()
+void NewRepair::OpenNewRepairWindow()
 {
      FillComboMarki();
      ClearAllFields();
@@ -54,6 +54,9 @@ void NewRepair::ClearAllFields()
     ui->LText_NewRepairAutoRegNumber->setEnabled(false);
 
     ui->Button_AddNewRepair->setEnabled(false);
+
+    ui->LText_NewRepairKlientName->clear();
+    ui->LText_NewRepairKlientPhone->clear();
 }
 
 bool NewRepair::CheckRecordInformation(){
@@ -90,7 +93,10 @@ bool NewRepair::CheckRecordInformation(){
 
 bool NewRepair::CheckRecordObligatory(){
 
-    if(!CheckSelected(ui->Combo_NewRepair_Marka->currentText()) || !CheckSelected(ui->LText_NewRepairAutoRegNumber->text()) ){
+    if(!CheckSelected(ui->Combo_NewRepair_Marka->currentText()) ||
+       !CheckSelected(ui->LText_NewRepairAutoRegNumber->text()) ||
+       !CheckSelected(ui->LText_NewRepairKlientName->text()) ||
+       !CheckSelected(ui->LText_NewRepairKlientPhone->text())){
 
         QMessageBox::information(this,"Важно!","Не сте попълнили задължителните полега ( * ).");
          return false;
@@ -99,7 +105,7 @@ bool NewRepair::CheckRecordObligatory(){
     return true;
 }
 
-void NewRepair::on_Button_AddNewAuto_clicked()
+void NewRepair::on_Button_AddNewRepair_clicked()
 {
 
     if(!CheckRecordObligatory()){
@@ -249,7 +255,7 @@ void NewRepair::FillComboModeli(int MarkaIndex)
 
 }
 
-void NewRepair::on_Combo_NewAuto_Marka_currentIndexChanged(int index)
+void NewRepair::on_Combo_NewRepair_Marka_currentIndexChanged(int index)
 {
     if(CheckSelected(ui->Combo_NewRepair_Marka->currentText()))  {
       ActivateField(NewRepair::eModel);
@@ -261,16 +267,17 @@ void NewRepair::on_Combo_NewAuto_Marka_currentIndexChanged(int index)
     }
 }
 
-void NewRepair::on_Combo_NewAuto_Model_currentIndexChanged(int index)
-{
+//void NewRepair::on_Combo_NewRepair_Model_currentIndexChanged(int index)
+//{
 
-    if(CheckSelected(ui->Combo_NewRepair_Model->currentText()) && index !=0)  {
-      ActivateField(NewRepair::eYear);
-    }
-}
+//    if(CheckSelected(ui->Combo_NewRepair_Model->currentText()) && index !=0)  {
+//      ActivateField(NewRepair::eYear);
+//    }
+//}
 
 void NewRepair::on_Button_CancelNewRepair_clicked()
 {
     ClearAllFields();
     this->hide();
+    emit CloseNewRepairForm();
 }
