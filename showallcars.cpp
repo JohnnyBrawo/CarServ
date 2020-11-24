@@ -177,20 +177,10 @@ void ShowAllcars::FillAutoData(QString CurrentClientID)
 {
     qDebug() << "ShowAllcars::FillAutoData()   ";
 
-//        CarsDatabase MyData;
         MyData.OpenConnection("Automobiles.sqlite");
         QSqlQuery EditAutoQry(MyData.CarsDB);
         QString m_strAutoReg="";
 
-
-//        m_SelectedRegNumber = arg1;
-
-//        if(m_bComboRegsHit)
-//        {
-//            MyData.CloseConnection();
-//            return;
-//        }
-//        qDebug() << " eAutoRegs_  arg1  " << arg1 << "  m_bComboClientsHit  " <<m_bComboClientsHit  ;
         switch (m_uiSearchChoice) {
             case eClients: {
                   qDebug() << " Populwame Query-to ot bazata s kolite :  " << CurrentClientID;
@@ -212,15 +202,6 @@ void ShowAllcars::FillAutoData(QString CurrentClientID)
         }else {
             /// Fill all automobiles with speciffic ClientID or Auto_Reg Number
             if (EditAutoQry.next()) {
-//                if(m_SelectedClientID.isEmpty() ){
-//                    qDebug() << "1111111111111111111111111111111111111111 m_bComboClientsHit   " << m_bComboClientsHit;
-//                    qDebug() << "1111111111111111111111111111111111111111 m_bComboRegsHit   " << m_bComboRegsHit;
-//                    qDebug() << "1111111111111111111111111111111111111111 m_SentClientName   " << m_SentClientName;
-//                    qDebug() << "1111111111111111111111111111111111111111 m_SentClientID   " << m_SentClientID;
-
-//                    ui->L_UnkownClients->setVisible(false);
-//                    m_SelectedClientID = EditAutoQry.value(1).toString();
-//                }
 
                 qDebug() << " Show Car's details    ";
                 ui->LText_RepairMarka->setText(EditAutoQry.value(2).toString());
@@ -233,37 +214,13 @@ void ShowAllcars::FillAutoData(QString CurrentClientID)
 
                 /// Record selected AutoID - attach it to the New client
                 m_strAutoReg = EditAutoQry.value(6).toString();
-//                ui->Combo_DelChangeAutoRegs->setCurrentText(EditAutoQry.value(6).toString());
             }else {
                 /// Fill all automobiles with No cliet assigned
                 qDebug() << " Autos Not Found !  ";
-//                m_SelectedClientID.clear();
-                //            ClearAllFields();
             }
         }
-
-//        // We still have no records for this client - show all unassigned autos
-//        if(ui->L_UnkownClients->isVisible())
-//        {
-//            EditAutoQry.prepare("SELECT * FROM Automobiles_Table WHERE CLIENT_ID='""' ");
-//            if(!EditAutoQry.exec()){
-//                qDebug() << "EditAutoQry.Exec() unassigned autos Fail "<< EditAutoQry.lastError().text();
-//            }else {
-//                /// Fill all automobiles with speciffic ClientID or Auto_Reg Number
-//                if (EditAutoQry.next()) {
-//                    qDebug() << " There are some unassigned autos   " << EditAutoQry.value(6).toString();
-//                }
-//            }
-//        }
-
         MyData.CloseConnection();
 
-//        if(!m_SelectedClientID.isEmpty() && !m_bComboClientsHit)
-//        {
-//            ui->Combo_DelChangeClientName->setCurrentIndex(m_SelectedClientID.toInt()-1);
-//        }
-
-//        UpdateFlags();
         if(!m_strAutoReg.isEmpty()){
             FillRepairsList(m_strAutoReg);
         }

@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "addrepair.h"
-#include "searchform.h"
+//#include "searchform.h"   Not used
 
 /**Autos */
 #include "carsform.h"
@@ -30,7 +30,7 @@ private:
     Ui::MainWindow *ui;
 
     AddRepair           *m_Repairs;
-    SearchForm          *m_Search;
+//    SearchForm          *m_Search;    Not used
     CarsDatabase        *m_BasePath;
 
     /**Autos */

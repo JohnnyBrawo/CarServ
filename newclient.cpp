@@ -181,64 +181,16 @@ bool NewClient::CheckRecordObligatory(){
 void NewClient::on_Button_Add_Client_clicked()
 {
     qDebug() << "NewClient::on_Button_Add_Client_clicked()   ";
-    CarsDatabase MyData;
-    MyData.OpenConnection("Clients.sqlite");
-    QSqlQuery ClientQry(MyData.CarsDB);
-
-    QString ClientName = CheckField(ui->LText_ClientName->text())?ui->LText_ClientName->text():"None";
-    QString ClientCity = CheckField(ui->LText_ClientCity->text())?ui->LText_ClientCity->text():"None";
-    QString ClientFirm = CheckField(ui->LText_ClientFirm->text())?ui->LText_ClientFirm->text():"None";
-    QString ClientPhone = CheckField(ui->LText_ClientPhone->text())?ui->LText_ClientPhone->text():"None";
-    QString ClientAddress = CheckField(ui->Text_ClientAddress->toPlainText())?ui->Text_ClientAddress->toPlainText():"None";
-
-
-    if( !m_bClientFormEditMode ){
-
-        ClientQry.prepare("INSERT INTO Clients_Table(ClientName, ClientCity, ClientFirm, ClientPhone, ClientAddress) "
-                          "VALUES(:ClientName, :ClientCity, :ClientFirm, :ClientPhone, :ClientAddress)");
-
-        ClientQry.bindValue(":ClientName",ClientName);
-        ClientQry.bindValue(":ClientCity",ClientCity);
-        ClientQry.bindValue(":ClientFirm",ClientFirm);
-        ClientQry.bindValue(":ClientPhone",ClientPhone);
-        ClientQry.bindValue(":ClientAddress",ClientAddress);
-
-        if(!ClientQry.exec()){
-            qDebug() << "INSERT INTO Clients_Table fail "<< ClientQry.lastError().text() << " return ";
-            return;
-        }else {
-            m_strLastClientName =ui->LText_ClientName->text();
-            qDebug() << "m_strLastClientName   "<< m_strLastClientName;
-        }
-
-        // Get Last RowID
-        QSqlQuery LastRowQry(MyData.CarsDB);
-        LastRowQry.prepare("SELECT last_insert_rowid()");
-        if(!LastRowQry.exec())
-        {
-            qDebug() << "SELECT LastRowQry last_insert_rowid() "<< LastRowQry.lastError().text();
-        }
-        else {
-            m_strClientID = LastRowQry.lastInsertId().toString();
-            qDebug() << "m_strClientID   "<< m_strClientID;
-
-            RecordCarToClient();
-
-        }
+    if (CheckRecordObligatory()){
+        AddClentInfo( ui->LText_ClientName->text(),
+                     ui->LText_ClientPhone->text(),
+                     ui->LText_ClientFirm->text(),
+                     ui->LText_ClientCity->text(),
+                     ui->Text_ClientAddress->toPlainText());
     }
-    else {
-
-        qDebug() << "m_strLastClientName  EDIT MODE  "<< m_strLastClientName;
-        ClientQry.prepare("UPDATE Clients_Table set ClientName='"+ClientName+"', ClientCity='"+ClientCity+"', ClientFirm='"+ClientFirm+"', ClientPhone='"+ClientPhone+"', ClientAddress='"+ClientAddress+"' WHERE ClientName='"+m_strLastClientName+"'  ");
-
-        if(!ClientQry.exec()){
-            qDebug() << "UPDATE Clients_Table fail "<< ClientQry.lastError().text();
-        }
-    }
-
     ClearAllFields();
-    MyData.CloseConnection();
     on_Button_CancelAdd_clicked();
+
 
 }
 
@@ -282,12 +234,6 @@ void NewClient::on_Combo_Clients_currentIndexChanged(const QString &arg1)
     CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
     QSqlQuery SelectClientQry(MyData.CarsDB);
-
-    //      if(m_bComboRegsHit)
-    //      {
-    //          MyData.CloseConnection();
-    //          return;
-    //      }
 
     SelectClientQry.prepare("SELECT * FROM Clients_Table WHERE ClientName='"+arg1+"' ");
 
@@ -334,4 +280,61 @@ void NewClient::on_Button_AddClientAutoNew_clicked()
 {
     qDebug() << "NewClient::on_Button_AddClientAutoNew_clicked()   ";
     hide();
+}
+
+
+bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString ClientFirm, QString ClientCity,  QString ClientAddress)
+{
+    CarsDatabase MyData;
+    MyData.OpenConnection("Clients.sqlite");
+    QSqlQuery ClientQry(MyData.CarsDB);
+
+    if( !m_bClientFormEditMode ){
+
+        ClientQry.prepare("INSERT INTO Clients_Table(ClientName, ClientCity, ClientFirm, ClientPhone, ClientAddress) "
+                          "VALUES(:ClientName, :ClientCity, :ClientFirm, :ClientPhone, :ClientAddress)");
+
+        ClientQry.bindValue(":ClientName",ClientName);
+        ClientQry.bindValue(":ClientCity",ClientCity);
+        ClientQry.bindValue(":ClientFirm",ClientFirm);
+        ClientQry.bindValue(":ClientPhone",ClientPhone);
+        ClientQry.bindValue(":ClientAddress",ClientAddress);
+
+        if(!ClientQry.exec()){
+            qDebug() << "INSERT INTO Clients_Table fail "<< ClientQry.lastError().text() << " return ";
+            return false;
+        }else {
+            m_strLastClientName =ui->LText_ClientName->text();
+            qDebug() << "m_strLastClientName   "<< m_strLastClientName;
+        }
+
+        // Get Last RowID
+        QSqlQuery LastRowQry(MyData.CarsDB);
+        LastRowQry.prepare("SELECT last_insert_rowid()");
+        if(!LastRowQry.exec())
+        {
+            qDebug() << "SELECT LastRowQry last_insert_rowid() "<< LastRowQry.lastError().text();
+        }
+        else {
+            m_strClientID = LastRowQry.lastInsertId().toString();
+            qDebug() << "m_strClientID   "<< m_strClientID;
+
+            RecordCarToClient();
+
+        }
+    }
+    else {
+
+        qDebug() << "m_strLastClientName  EDIT MODE  "<< m_strLastClientName;
+        ClientQry.prepare("UPDATE Clients_Table set ClientName='"+ClientName+"', ClientCity='"+ClientCity+"', ClientFirm='"+ClientFirm+"', ClientPhone='"+ClientPhone+"', ClientAddress='"+ClientAddress+"' WHERE ClientName='"+m_strLastClientName+"'  ");
+
+        if(!ClientQry.exec()){
+            qDebug() << "UPDATE Clients_Table fail "<< ClientQry.lastError().text();
+            MyData.CloseConnection();
+
+            return false;
+        }
+    }
+
+    return true;
 }

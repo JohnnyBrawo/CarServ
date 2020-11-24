@@ -40,6 +40,9 @@ public:
     void ClearAllFields();
     QString GetNewCarReg(){ return m_strSelectedCarReg;}
 
+    bool AddCarInfo(QString RegNumber, QString AutoMarka = "None", QString AutoModel = "None", QString AutoYear = "None"
+            , QString AutoFuel = "None", QString AutoVIN = "None", QString AutoType = "None");
+
 signals:
     void CloseNewAutoForm();
 

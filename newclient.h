@@ -42,6 +42,7 @@ public:
     QString GetClientName(){return m_strLastClientName;}
     QString GetClientID(){return m_strClientID;}
 
+    bool AddClentInfo(QString ClientName ,QString ClientPhone , QString ClientFirm = "None", QString ClientCity  = "None",  QString ClientAddress = "None");
 signals:
     void CloseNewClientForm();
     void ButtonEditHit(QString CLientName,QString ClientID);

@@ -96,10 +96,13 @@
      <x>20</x>
      <y>90</y>
      <width>521</width>
-     <height>451</height>
+     <height>473</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridRepairData">
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
     <property name="topMargin">
      <number>10</number>
     </property>

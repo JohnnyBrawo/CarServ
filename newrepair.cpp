@@ -8,7 +8,8 @@
 
 NewRepair::NewRepair(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::NewRepair)
+    ui(new Ui::NewRepair),
+    m_Client(new NewClient())
 {
     ui->setupUi(this);
 }
@@ -16,6 +17,7 @@ NewRepair::NewRepair(QWidget *parent) :
 NewRepair::~NewRepair()
 {
     delete ui;
+    delete m_Client;
 }
 
 
@@ -118,62 +120,33 @@ void NewRepair::on_Button_AddNewRepair_clicked()
         return;
     }
 
-    CarsDatabase MyData;
-    MyData.OpenConnection("Automobiles.sqlite");
+    m_Client->AddClentInfo(ui->LText_NewRepairKlientName->text(),ui->LText_NewRepairKlientPhone->text() );
 
-    QSqlQuery AddNewAuto(MyData.CarsDB);
-    AddNewAuto.prepare("INSERT INTO Automobiles_Table(AutoMarka, AutoModel, AutoYear, AutoFuel, Auto_RegNumber, AutoVIN, AutoType) "
-                       "VALUES(:AutoMarka, :AutoModel, :AutoYear, :AutoFuel, :Auto_RegNumber, :AutoVIN, :AutoType)");
 
-    AddNewAuto.bindValue(":AutoMarka",ui->Combo_NewRepair_Marka->currentText());
-    AddNewAuto.bindValue(":AutoModel",CheckSelected(ui->Combo_NewRepair_Model->currentText())?ui->Combo_NewRepair_Model->currentText():"None");
-    AddNewAuto.bindValue(":AutoYear",CheckSelected(ui->Combo_NewRepair_Year->currentText())?ui->Combo_NewRepair_Year->currentText():"None");
-    AddNewAuto.bindValue(":AutoFuel",CheckSelected(ui->Combo_NewRepair_Fuel->currentText())?ui->Combo_NewRepair_Fuel->currentText():"None");
-    AddNewAuto.bindValue(":Auto_RegNumber",CheckSelected(ui->LText_NewRepairAutoRegNumber->text())?ui->LText_NewRepairAutoRegNumber->text():"None");
-    AddNewAuto.bindValue(":AutoVIN","None");
-    AddNewAuto.bindValue(":AutoType","None");
-
-    m_strSelectedCarReg = ui->LText_NewRepairAutoRegNumber->text();
-    if(!AddNewAuto.exec()){
-        qDebug() << "INSERT INTO Automobiles_Table fail "<< AddNewAuto.lastError().text();
-    }
-
-//    // Get Last RowID
-//    QSqlQuery query(MyData.CarsDB);
-//        query.prepare("SELECT last_insert_rowid()");
-//        if(!query.exec())
-//        {
-//            qDebug() << "SELECT last_insert_rowid() "<< AddNewAuto.lastError().text();
-//        }
-//        else {
-//            m_strSelectedCarReg = query.lastInsertId().toString();
-             qDebug() << "m_strSelectedCarReg   "<< m_strSelectedCarReg;
-             ClearAllFields();
-//        }
-     MyData.CloseConnection();
 }
 
 
 void NewRepair::FillComboMarki()
 {
-    CarsDatabase MyData;
-    MyData.OpenConnection("Marki.sqlite");
+   CarsDatabase MyData;
+   MyData.OpenConnection("Marki.sqlite");
 
-    QSqlQueryModel * MyModel = new QSqlQueryModel();
+   QSqlQueryModel * MyModel = new QSqlQueryModel();
 
-    QSqlQuery ShowMakriQry(MyData.CarsDB);
-    ShowMakriQry.prepare("SELECT Marki FROM AutoMarki_Table");
+   QSqlQuery ShowMakriQry(MyData.CarsDB);
+   ShowMakriQry.prepare("SELECT Marki FROM AutoMarki_Table");
 
-    if(! ShowMakriQry.exec()){
-        qDebug() << "ShowMakriQry.Exec() SELECT Model_Name FROM AutoMarki_Table fail "<< ShowMakriQry.lastError().text();
-    }
+   if(! ShowMakriQry.exec()){
+       qDebug() << "ShowMakriQry.Exec() SELECT Model_Name FROM AutoMarki_Table fail "<< ShowMakriQry.lastError().text();
+   }
 
-    MyModel->setQuery(ShowMakriQry);
-    ui->Combo_NewRepair_Marka->setModel(MyModel);
+   MyModel->setQuery(ShowMakriQry);
+   ui->Combo_NewRepair_Marka->setModel(MyModel);
 
-    MyData.CloseConnection();
+   MyData.CloseConnection();
 
 }
+
 
 bool NewRepair::CheckSelected(QString SelectedString)
 {

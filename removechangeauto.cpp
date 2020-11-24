@@ -139,9 +139,6 @@ void RemoveChangeAuto::FillRegCombo()
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
     QSqlQuery RegComboQry(MyData.CarsDB);
-//    qDebug() << " FillRegCombo   m_SelectedClientID " << m_SelectedClientID;
-//    qDebug() << " FillRegCombo  m_SentClientID   " << m_SentClientID;
-//    qDebug() << " FillRegCombo  m_SentClientName   " << m_SentClientName;
 
     if(m_SentClientName.isEmpty())
     {
@@ -158,7 +155,6 @@ void RemoveChangeAuto::FillRegCombo()
     if(!RegComboQry.next())
     {
         // Тука зареждаме празните атомобили.
-//        qDebug() << " FillRegCombo   RegComboQry.Exec() SELECT not valid  ";
         RegComboQry.prepare("SELECT Auto_RegNumber FROM Automobiles_Table WHERE CLIENT_ID='""'");
         if(! RegComboQry.exec()){
 //            qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< endl;
@@ -231,7 +227,7 @@ void RemoveChangeAuto::on_Button_Record_clicked()
 
     qDebug() << " m_SelectedRegNumber   " << m_SelectedRegNumber << "Changed " << ui->LText_DelChangeRegNumber->text();
     QSqlQuery AddNewAuto(MyData.CarsDB);
-    AddNewAuto.prepare("UPDATE Automobiles_Table set AutoMarka='"+Marka+"', AutoModel='"+Model+"', AutoYear='"+Year+"', AutoFuel='"+Fuel+"', Auto_RegNumber='"+RegNumber+"', AutoVIN='"+Vin+"', AutoType='"+Type+"' WHERE Auto_RegNumber='"+m_SelectedRegNumber+"' ");
+    AddNewAuto.prepare("UPDATE Automobiles_Table set Auto_RegNumber='"+RegNumber+"',Auto_Marka='"+Marka+"', Auto_Model='"+Model+"', Auto_Year='"+Year+"', Auto_Fuel='"+Fuel+"',  Auto_VIN='"+Vin+"', Auto_Type='"+Type+"' WHERE Auto_RegNumber='"+m_SelectedRegNumber+"' ");
 
     if(!AddNewAuto.exec()){
         qDebug() << "UPDATE Automobiles_Table fail "<< endl;

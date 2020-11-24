@@ -130,7 +130,6 @@ bool NewAuto::CheckRecordObligatory(){
 
 void NewAuto::on_Button_AddNewAuto_clicked()
 {
-
     if(!CheckRecordObligatory()){
         qDebug() << " MUST fields empty ";
         return;
@@ -141,39 +140,20 @@ void NewAuto::on_Button_AddNewAuto_clicked()
         return;
     }
 
-    CarsDatabase MyData;
-    MyData.OpenConnection("Automobiles.sqlite");
-
-    QSqlQuery AddNewAuto(MyData.CarsDB);
-    AddNewAuto.prepare("INSERT INTO Automobiles_Table(AutoMarka, AutoModel, AutoYear, AutoFuel, Auto_RegNumber, AutoVIN, AutoType) "
-                       "VALUES(:AutoMarka, :AutoModel, :AutoYear, :AutoFuel, :Auto_RegNumber, :AutoVIN, :AutoType)");
-
-    AddNewAuto.bindValue(":AutoMarka",ui->Combo_NewAuto_Marka->currentText());
-    AddNewAuto.bindValue(":AutoModel",CheckSelected(ui->Combo_NewAuto_Model->currentText())?ui->Combo_NewAuto_Model->currentText():"None");
-    AddNewAuto.bindValue(":AutoYear",CheckSelected(ui->Combo_NewAuto_Year->currentText())?ui->Combo_NewAuto_Year->currentText():"None");
-    AddNewAuto.bindValue(":AutoFuel",CheckSelected(ui->Combo_NewAuto_Fuel->currentText())?ui->Combo_NewAuto_Fuel->currentText():"None");
-    AddNewAuto.bindValue(":Auto_RegNumber",CheckSelected(ui->LText_NewAutoRegNumber->text())?ui->LText_NewAutoRegNumber->text():"None");
-    AddNewAuto.bindValue(":AutoVIN",CheckSelected(ui->LText_NewAutoVIN->text())?ui->LText_NewAutoVIN->text():"None");
-    AddNewAuto.bindValue(":AutoType",CheckSelected(ui->Combo_NewAuto_Type->currentText())?ui->Combo_NewAuto_Type->currentText():"None");
-
-    m_strSelectedCarReg = ui->LText_NewAutoRegNumber->text();
-    if(!AddNewAuto.exec()){
-        qDebug() << "INSERT INTO Automobiles_Table fail "<< AddNewAuto.lastError().text();
+    if(!AddCarInfo(ui->LText_NewAutoRegNumber->text(), ui->Combo_NewAuto_Marka->currentText(), ui->Combo_NewAuto_Model->currentText(),
+                  ui->Combo_NewAuto_Year->currentText(), ui->Combo_NewAuto_Fuel->currentText(), ui->LText_NewAutoVIN->text(), ui->Combo_NewAuto_Type->currentText()))
+    {
+         qDebug() << " Auto Record Done ! ";
+         ClearAllFields();
+    }else {
+        QMessageBox msgWarning;
+        msgWarning.setText("WARNING!\nRunning low on coffee.");
+        msgWarning.setIcon(QMessageBox::Warning);
+        msgWarning.setWindowTitle("Caution");
+        msgWarning.exec();
     }
 
-//    // Get Last RowID
-//    QSqlQuery query(MyData.CarsDB);
-//        query.prepare("SELECT last_insert_rowid()");
-//        if(!query.exec())
-//        {
-//            qDebug() << "SELECT last_insert_rowid() "<< AddNewAuto.lastError().text();
-//        }
-//        else {
-//            m_strSelectedCarReg = query.lastInsertId().toString();
-             qDebug() << "m_strSelectedCarReg   "<< m_strSelectedCarReg;
-             ClearAllFields();
-//        }
-     MyData.CloseConnection();
+
 }
 
 
@@ -302,4 +282,34 @@ void NewAuto::on_Combo_NewAuto_Model_currentIndexChanged(int index)
     if(CheckSelected(ui->Combo_NewAuto_Model->currentText()) && index !=0)  {
       ActivateField(NewAuto::eYear);
     }
+}
+
+bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel, QString AutoYear,
+                         QString AutoFuel, QString AutoVIN, QString AutoType)
+{
+
+    CarsDatabase MyData;
+    MyData.OpenConnection("Automobiles.sqlite");
+
+    QSqlQuery AddNewAuto(MyData.CarsDB);
+    AddNewAuto.prepare("INSERT INTO Automobiles_Table(Auto_RegNumber, Auto_Marka, Auto_Model, Auto_Year, Auto_Fuel, Auto_VIN, Auto_Type) "
+                       "VALUES(:Auto_RegNumber, :Auto_Marka, :Auto_Model, :Auto_Year, :Auto_Fuel, :Auto_VIN, :Auto_Type)");
+
+    AddNewAuto.bindValue(":Auto_RegNumber",RegNumber);
+    AddNewAuto.bindValue(":Auto_Marka",AutoMarka);
+    AddNewAuto.bindValue(":Auto_Model",AutoModel);
+    AddNewAuto.bindValue(":Auto_Year",AutoYear);
+    AddNewAuto.bindValue(":Auto_Fuel",AutoFuel);
+    AddNewAuto.bindValue(":Auto_VIN",AutoVIN);
+    AddNewAuto.bindValue(":Auto_Type",AutoType);
+
+    m_strSelectedCarReg = ui->LText_NewAutoRegNumber->text();
+    if(!AddNewAuto.exec()){
+        qDebug() << "INSERT INTO Automobiles_Table fail "<< AddNewAuto.lastError().text();
+        MyData.CloseConnection();
+        return false;
+    }
+
+    MyData.CloseConnection();
+    return true;
 }

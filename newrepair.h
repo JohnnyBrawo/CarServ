@@ -2,6 +2,7 @@
 #define NEWREPAIR_H
 
 #include <QDialog>
+#include "newclient.h"
 
 namespace Ui {
 class NewRepair;
@@ -31,6 +32,8 @@ public:
 private:
     Ui::NewRepair *ui;
 
+    NewClient *m_Client;
+
     void FillComboMarki();
     void FillComboModeli(int MarkaIndex);
     bool CheckSelected(QString SelectedString);
@@ -39,7 +42,6 @@ private:
     bool CheckRecordInformation();
     bool CheckRecordObligatory();
     QString m_strSelectedCarReg;
-
 
 private slots:
     void CenterForm();

@@ -7,24 +7,24 @@ CarsDatabase::CarsDatabase()
 
 QString  CarsDatabase::GetReousrcesPath()
 {
-    QString testPath = QApplication::applicationDirPath();
-    int position = testPath.indexOf("build");
-    int position2 = testPath.indexOf("/");
+//    QString testPath = QApplication::applicationDirPath();
+//    int position = testPath.indexOf("build");
+//    int position2 = testPath.indexOf("/");
 
-
-    if(position != (-1)){
-        testPath.truncate(position);
-        if(position2 != (-1)){
-            testPath.append("CarServ/Images/");
-        }
-        else {
-            testPath.append("CarServ\\Images\\");
-        }
-    }
-    else {
-        qDebug() << " GetReousrcesPath BUILD PATH NOT FOUND   ";
-    }
-    return testPath;
+// qDebug() << "GetReousrcesPath BUILD PATH NOT FOUND   testPath    "<< testPath;
+//    if(position != (-1)){
+//        testPath.truncate(position);
+//        if(position2 != (-1)){
+//            testPath.append("CarServ/Images/");
+//        }
+//        else {
+//            testPath.append("CarServ\\Images\\");
+//        }
+//    }
+//    else {
+//        qDebug() << " GetReousrcesPath BUILD PATH NOT FOUND   ";
+//    }
+    return "/home/default/Gosheto/CarServ/Images/";
 }
 
 QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
@@ -32,7 +32,6 @@ QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
     QString testPath = QApplication::applicationDirPath();
     int position = testPath.indexOf("build");
     int position2 = testPath.indexOf("/");
-
     if(position != (-1)){
         testPath.truncate(position);
         if(position2 != (-1)){
@@ -43,11 +42,13 @@ QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
         }
     }
     else {
-        qDebug() << "GetDataBasePath BUILD PATH NOT FOUND   ";
+        qDebug() << "GetDataBasePath BUILD PATH NOT FOUND   testPath    "<< testPath << "  DataBaseName  "<<DataBaseName;;
     }
 // @ TODO   make this smart !!
-    m_CurrDataName = "C:\\Users\\BUFU\\Projects\\DATA_BASE\\" + DataBaseName;
-
+// Windows
+//    m_CurrDataName = "C:\\Users\\BUFU\\Projects\\DATA_BASE\\" + DataBaseName;
+// Linux
+    m_CurrDataName = "/home/default/Gosheto/CarServ/DataBase/"+ DataBaseName;
     return m_CurrDataName;
 }
 
