@@ -70,9 +70,9 @@
   <widget class="QLabel" name="Label_NewRepair_Form">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>10</x>
      <y>20</y>
-     <width>351</width>
+     <width>581</width>
      <height>51</height>
     </rect>
    </property>
@@ -399,32 +399,32 @@
       </item>
       <item>
        <property name="text">
-        <string>Бензин</string>
+        <string>Petrol</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Дизел</string>
+        <string>Disel</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Газ/Бензин</string>
+        <string>LPG/Petrol</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Метан/Бензин</string>
+        <string>CNG/Petrol</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Хибрид</string>
+        <string>Hybrid</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Електрически</string>
+        <string>Electric</string>
        </property>
       </item>
      </widget>

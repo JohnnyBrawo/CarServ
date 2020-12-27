@@ -1,4 +1,4 @@
-#ifndef NEWAUTO_H
+﻿#ifndef NEWAUTO_H
 #define NEWAUTO_H
 
 #include <QDialog>
@@ -33,7 +33,6 @@ private:
     bool CheckRecordInformation();
     bool CheckRecordObligatory();
     QString m_strSelectedCarReg;
-
 public:
     explicit NewAuto(QWidget *parent = 0);
     ~NewAuto();
@@ -42,6 +41,8 @@ public:
 
     bool AddCarInfo(QString RegNumber, QString AutoMarka = "None", QString AutoModel = "None", QString AutoYear = "None"
             , QString AutoFuel = "None", QString AutoVIN = "None", QString AutoType = "None");
+
+    bool AutoExsist(QString RegNum);
 
 signals:
     void CloseNewAutoForm();

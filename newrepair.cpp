@@ -1,4 +1,4 @@
-#include "newrepair.h"
+﻿#include "newrepair.h"
 #include "ui_newrepair.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
@@ -9,7 +9,8 @@
 NewRepair::NewRepair(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewRepair),
-    m_Client(new NewClient())
+    m_Client(new NewClient()),
+    m_Auto(new NewAuto())
 {
     ui->setupUi(this);
 }
@@ -18,6 +19,7 @@ NewRepair::~NewRepair()
 {
     delete ui;
     delete m_Client;
+    delete m_Auto;
 }
 
 
@@ -59,12 +61,14 @@ void NewRepair::ClearAllFields()
 
     ui->LText_NewRepairKlientName->clear();
     ui->LText_NewRepairKlientPhone->clear();
+    AutoInfoDone = false;
+    ClientInfoDone = false;
 }
 
 bool NewRepair::CheckRecordInformation(){
 
     QString EmptyFields = "";
-    QMessageBox::StandardButton UserReply;
+//    QMessageBox::StandardButton UserReply;
 
     if(!CheckSelected(ui->Combo_NewRepair_Year->currentText())){
         EmptyFields = EmptyFields + " Година " + "\n";
@@ -80,15 +84,6 @@ bool NewRepair::CheckRecordInformation(){
             QTimer::singleShot(100*i, this, SLOT(changeBackgroundColor()));
             QTimer::singleShot(100*(i+1), this, SLOT(retrieveBackgroundColor()));
     }**/
-
-    if(EmptyFields !="")
-    {
-     UserReply =  QMessageBox::question(this,"Опаа! Спиш нещо!", "Има непопълнени полета!" + EmptyFields + "\n Да продължа ли със записа ?",QMessageBox::Yes | QMessageBox::No);
-     if(UserReply == QMessageBox::No){
-         return false;
-     }
-    }
-
     return true;
 }
 
@@ -100,7 +95,7 @@ bool NewRepair::CheckRecordObligatory(){
        !CheckSelected(ui->LText_NewRepairKlientName->text()) ||
        !CheckSelected(ui->LText_NewRepairKlientPhone->text())){
 
-        QMessageBox::information(this,"Важно!","Не сте попълнили задължителните полега ( * ).");
+        QMessageBox::information(this,"Ops!","Missing fields ( * ).");
          return false;
      }
 
@@ -120,9 +115,33 @@ void NewRepair::on_Button_AddNewRepair_clicked()
         return;
     }
 
-    m_Client->AddClentInfo(ui->LText_NewRepairKlientName->text(),ui->LText_NewRepairKlientPhone->text() );
+    if(!ClientInfoDone){
+        if(m_Client->AddClentInfo(ui->LText_NewRepairKlientName->text(),ui->LText_NewRepairKlientPhone->text())){
+            ClientInfoDone = true;
+        }else{
+            return;
+        }
+    }
 
+    if(!AutoInfoDone && ClientInfoDone){
 
+            if (m_Auto->AddCarInfo(ui->LText_NewRepairAutoRegNumber->text(),
+                                   ui->Combo_NewRepair_Marka->currentText(),
+                                   ui->Combo_NewRepair_Model->currentText(),
+                                   ui->Combo_NewRepair_Year->currentText(),
+                                   ui->Combo_NewRepair_Fuel->currentText() ) ){
+             m_Client->SetNewRepairRegNumber(ui->LText_NewRepairAutoRegNumber->text());
+             m_Client->RecordCarToClient();
+             AutoInfoDone = true;
+            }
+            else{
+                qDebug() <<" Car info failed ";
+            }
+        }
+
+ if(ClientInfoDone && AutoInfoDone){
+    on_Button_CancelNewRepair_clicked();
+ }
 }
 
 

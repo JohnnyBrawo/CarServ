@@ -1,4 +1,4 @@
-#include "repairwigdetitem.h"
+﻿#include "repairwigdetitem.h"
 #include "ui_repairwigdetitem.h"
 #include "qdebug.h"
 
@@ -30,9 +30,9 @@ void NewRepairItem::ResetAllFields()
     ValueText = new QLineEdit();
     RepairIndex = new QLineEdit();
     DescrText->setText("");
-    QuantityText->setText("");
-    SinglePriceText->setText("");
-    ValueText->setText("");
+    QuantityText->setText("0");
+    SinglePriceText->setText("0");
+    ValueText->setText("0");
 
     RepairIndex->setText(QString::number(m_uiRepairIndex));
     RepairIndex->setFixedWidth(30);

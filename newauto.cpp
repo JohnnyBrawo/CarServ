@@ -1,4 +1,4 @@
-#include "newauto.h"
+﻿#include "newauto.h"
 #include "ui_newauto.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
@@ -79,7 +79,7 @@ void NewAuto::ClearAllFields()
 bool NewAuto::CheckRecordInformation(){
 
     QString EmptyFields = "";
-    QMessageBox::StandardButton UserReply;
+//    QMessageBox::StandardButton UserReply;
 
     if(!CheckSelected(ui->Combo_NewAuto_Type->currentText())){
         EmptyFields = EmptyFields + " Купе " + "\n";
@@ -105,14 +105,6 @@ bool NewAuto::CheckRecordInformation(){
             QTimer::singleShot(100*(i+1), this, SLOT(retrieveBackgroundColor()));
     }**/
 
-    if(EmptyFields !="")
-    {
-     UserReply =  QMessageBox::question(this,"Опаа! Спиш нещо!", "Има непопълнени полета!" + EmptyFields + "\n Да продължа ли със записа ?",QMessageBox::Yes | QMessageBox::No);
-     if(UserReply == QMessageBox::No){
-         return false;
-     }
-    }
-
     return true;
 }
 
@@ -121,7 +113,7 @@ bool NewAuto::CheckRecordObligatory(){
 
     if(!CheckSelected(ui->Combo_NewAuto_Marka->currentText()) || !CheckSelected(ui->LText_NewAutoRegNumber->text()) ){
 
-        QMessageBox::information(this,"Важно!","Не сте попълнили задължителните полега ( * ).");
+        QMessageBox::information(this,"Attention!","Missing information in some fields( * ).");
          return false;
      }
 
@@ -145,15 +137,7 @@ void NewAuto::on_Button_AddNewAuto_clicked()
     {
          qDebug() << " Auto Record Done ! ";
          ClearAllFields();
-    }else {
-        QMessageBox msgWarning;
-        msgWarning.setText("WARNING!\nRunning low on coffee.");
-        msgWarning.setIcon(QMessageBox::Warning);
-        msgWarning.setWindowTitle("Caution");
-        msgWarning.exec();
     }
-
-
 }
 
 
@@ -284,13 +268,46 @@ void NewAuto::on_Combo_NewAuto_Model_currentIndexChanged(int index)
     }
 }
 
+bool NewAuto::AutoExsist(QString RegNum){
+    CarsDatabase MyData;
+    MyData.OpenConnection("Automobiles.sqlite");
+    QSqlQuery ShowModelQry(MyData.CarsDB);
+    bool m_bfound = false;
+    ShowModelQry.prepare("SELECT Auto_RegNumber FROM Automobiles_Table WHERE Auto_RegNumber='"+RegNum+"' ");
+
+    if(ShowModelQry.exec()){
+       if(ShowModelQry.next()){
+             qDebug() << " There is a client with this name ";
+           m_bfound = true;
+       }
+    }else{
+          qDebug() << " AutoExsist Ima problem s cheteneto ot bazata ";
+    }
+
+    MyData.CloseConnection();
+    return m_bfound;
+}
+
+
 bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel, QString AutoYear,
                          QString AutoFuel, QString AutoVIN, QString AutoType)
 {
+    if (AutoExsist(RegNumber)) {
+       QMessageBox::information(this,"Erroe!","There is automobile with this registration !! ");
+       return false;
+    }
+    qDebug() << " NewAuto::AddCarInfo : " <<
+                " RegNumber " << RegNumber<<
+                " AutoMarka " << AutoMarka<<
+                " AutoModel " << AutoModel<<
+                " AutoYear " << AutoYear<<
+                " AutoFuel " << AutoFuel<<
+                " AutoVIN " << AutoVIN<<
+                " AutoType " << AutoType ;
 
     CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
-
+    qDebug() << " zapchwame INSERT INTO Automobiles_Table ";
     QSqlQuery AddNewAuto(MyData.CarsDB);
     AddNewAuto.prepare("INSERT INTO Automobiles_Table(Auto_RegNumber, Auto_Marka, Auto_Model, Auto_Year, Auto_Fuel, Auto_VIN, Auto_Type) "
                        "VALUES(:Auto_RegNumber, :Auto_Marka, :Auto_Model, :Auto_Year, :Auto_Fuel, :Auto_VIN, :Auto_Type)");
@@ -308,6 +325,8 @@ bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel
         qDebug() << "INSERT INTO Automobiles_Table fail "<< AddNewAuto.lastError().text();
         MyData.CloseConnection();
         return false;
+    }else {
+        qDebug() << " AddNewAuto.exec e uspeshno ";
     }
 
     MyData.CloseConnection();

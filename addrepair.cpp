@@ -1,4 +1,4 @@
-#include "addrepair.h"
+﻿#include "addrepair.h"
 #include "ui_addrepair.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
@@ -28,9 +28,7 @@ AddRepair::AddRepair(QWidget *parent) :
 
 AddRepair::~AddRepair()
 {
-
     delete ui;
-
 }
 
 
@@ -64,6 +62,7 @@ void AddRepair::SetInitialDesign()
     ui->L_CarRegNumber->setText("Изберете Региострационен Номер  :   ");
     ui->Button_Search->setText("Въведи");
 
+// @ TODO DElete repeair is not working !!!
     ui->Button_Search->setEnabled(true);
     ui->Combo_RepairAutoRegNumber->setEnabled(true);
     ui->Button_DeleteRepair->setEnabled(false);
@@ -95,9 +94,6 @@ void AddRepair::on_Button_ExitRepair_clicked()
 
 void AddRepair::InsertRepair(bool SubMenu)
 {
-
-//    qDebug() << " INSERT  ";
-
     //Creating a new list widget item whose parent is the listwidget itself
     QListWidgetItem *listInsertItem = new QListWidgetItem(ui->RepairList);
 
@@ -125,6 +121,10 @@ void AddRepair::InsertRepair(bool SubMenu)
     //Finally adding the itemWidget to the list
     ui->RepairList->setItemWidget (listInsertItem, m_newRepair);
 
+    qDebug()<<" m_uiRepairsNumber"<<m_uiRepairsNumber;
+//    if(m_uiRepairsNumber > 1 ){
+//        ui->Button_DeleteRepair->setEnabled(true);
+//    }
     //ListAllMenus();
 }
 
@@ -153,7 +153,7 @@ void AddRepair::on_Button_DeleteRepair_clicked()
        int SubmenuStartIndex = QString(list1.first()).toInt();
 
      if(m_vMenusAndSubmebus.at(SubmenuStartIndex-1) > 0){
-         UserReply= QMessageBox::question(this,"Внимание!","Всички подточки ще бъдат изтрити!",QMessageBox::Ok|QMessageBox::Cancel);
+         UserReply= QMessageBox::question(this,"Attention!","All fields will be deleted !",QMessageBox::Ok|QMessageBox::Cancel);
          if(UserReply == QMessageBox::Cancel){
              return;
          }else {
@@ -235,7 +235,6 @@ void AddRepair::ClearAllinputs()
 
 bool AddRepair::CheckRecordInformation()
 {
-    //    QMessageBox::StandardButton UserReply;
     QListWidgetItem *  listRecordItem;
     NewRepairItem * m_newRepair;
 
@@ -248,7 +247,7 @@ bool AddRepair::CheckRecordInformation()
         m_newRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listRecordItem));
         if(m_newRepair->GetRepairDescrText().isEmpty() && m_newRepair->GetRepairQuantityText().isEmpty() && m_newRepair->GetRepairSinglePriceText().isEmpty() && m_newRepair->GetRepairValueText().isEmpty())
         {
-            QMessageBox::information(this,"Празни полета!","Празните полета няма да бъдат записани.");
+            QMessageBox::information(this,"Empty fields!","Emtpy fields will NOT be recorded .");
             //            if(UserReply == QMessageBox::No){
             //                return false;
             //            }
@@ -282,13 +281,16 @@ void AddRepair::RecordRepair()
         listItemData = ui->RepairList->item(i);
         m_newRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
 
-        if(m_newRepair->GetRepairDescrText().isEmpty() && m_newRepair->GetRepairQuantityText().isEmpty() && m_newRepair->GetRepairSinglePriceText().isEmpty() && m_newRepair->GetRepairValueText().isEmpty())
+        if( m_newRepair->GetRepairDescrText().isEmpty() ||
+            m_newRepair->GetRepairQuantityText().isEmpty() ||
+            m_newRepair->GetRepairSinglePriceText().isEmpty() ||
+            m_newRepair->GetRepairValueText().isEmpty())
         {
             qDebug() << "Ima prazni poleta - Continue ";
             continue;
         }
 
-        qDebug() << " Записваме !  ";
+        qDebug() << " Zapiswame !  ";
         ////// Record all repairs for this car
 
         QSqlQuery AddNewAuto(MyData.CarsDB);
@@ -320,12 +322,12 @@ void AddRepair::OpenClearWindow()
 
 void AddRepair::on_Button_Search_clicked()
 {
-    for(unsigned int i=0; i< 10; i++)
-    {
+//    for(unsigned int i=0; i< 1; i++)
+//    {
         InsertRepair(false);
-    }
+//    }
 
-    ui->Button_DeleteRepair->setEnabled(true);
+    ui->Button_DeleteRepair->setEnabled(false);
     ui->Button_InsertRepair->setEnabled(true);
     ui->Button_RecordRepairs->setEnabled(true);
     ui->Button_InsertSubMenu->setEnabled(true);
@@ -340,7 +342,7 @@ void AddRepair::on_Button_Search_clicked()
 void AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1)
 {
     m_strSelCarNumber = arg1;
-    qDebug() << " Резет на всичко до момента или СЪобщение ?! " << m_strSelCarNumber;
+    qDebug() << " Reset na wsichko do momenta m_strSelCarNumber ?! " << m_strSelCarNumber;
 }
 
 void AddRepair::on_Button_InsertSubMenu_clicked()
@@ -379,8 +381,15 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
         listItemData = ui->RepairList->item(i);
         m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
 
-        totalCost += m_CurrentRepair->GetRepairValueText().toDouble();
-        qDebug() << " GetRepairValueText " << m_CurrentRepair->GetRepairValueText().toDouble();
+        qDebug() << " Calculated total Cost " << totalCost;
+
+        if(!m_CurrentRepair->GetRepairDescrText().isEmpty()){
+            totalCost += m_CurrentRepair->GetRepairValueText().toDouble();
+            qDebug() << " Add to total GetRepairDescrText " << m_CurrentRepair->GetRepairDescrText();
+        }
+        else{
+            qDebug() << " Skip total price ";
+        }
     }
     qDebug() << " Calculated total Cost " << totalCost;
     qDebug() << " Calculated total Cost " << QString::number(totalCost, 'f',2);
@@ -391,7 +400,6 @@ void AddRepair::on_Button_NewClientRepair_clicked()
 {
     this->hide();
     SetInitialDesign();
-
 }
 
 void AddRepair::RestoreAutoRepairForm()

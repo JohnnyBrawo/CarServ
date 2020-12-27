@@ -1,4 +1,4 @@
-#include "removechangeauto.h"
+﻿#include "removechangeauto.h"
 #include "ui_removechangeauto.h"
 #include "carsdatabase.h"
 #include <QtWidgets>
@@ -148,7 +148,7 @@ void RemoveChangeAuto::FillRegCombo()
     }
 
     if(! RegComboQry.exec()){
-        qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< endl;
+        qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail ";
         return;
     }
 
@@ -157,12 +157,12 @@ void RemoveChangeAuto::FillRegCombo()
         // Тука зареждаме празните атомобили.
         RegComboQry.prepare("SELECT Auto_RegNumber FROM Automobiles_Table WHERE CLIENT_ID='""'");
         if(! RegComboQry.exec()){
-//            qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< endl;
+//            qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail ";
             return;
         }
         if(!RegComboQry.next())
         {
-            qDebug() << " Няма нерегистрирани автомобили !!!  "<< endl;
+            qDebug() << "Nqma neregistrirani awtomobili !!!  ";
         }
         //           return;
     }else {
@@ -186,11 +186,11 @@ void RemoveChangeAuto::FillClientNameCombo()
     ClientComboQry.prepare("SELECT ClientName FROM Clients_Table ");
 
     if(! ClientComboQry.exec()){
-        qDebug() << "ClientComboQry.Exec() SELECT ClientName FROM Clients_Table Fail "<< endl;
+        qDebug() << "ClientComboQry.Exec() SELECT ClientName FROM Clients_Table Fail ";
     }
 
     if(! ClientComboQry.exec()){
-        qDebug() << "ClientComboQry.Exec() SELECT ClientName FROM Clients_Table Fail "<< endl;
+        qDebug() << "ClientComboQry.Exec() SELECT ClientName FROM Clients_Table Fail ";
     }
 
     MyModel->setQuery(ClientComboQry);
@@ -230,7 +230,7 @@ void RemoveChangeAuto::on_Button_Record_clicked()
     AddNewAuto.prepare("UPDATE Automobiles_Table set Auto_RegNumber='"+RegNumber+"',Auto_Marka='"+Marka+"', Auto_Model='"+Model+"', Auto_Year='"+Year+"', Auto_Fuel='"+Fuel+"',  Auto_VIN='"+Vin+"', Auto_Type='"+Type+"' WHERE Auto_RegNumber='"+m_SelectedRegNumber+"' ");
 
     if(!AddNewAuto.exec()){
-        qDebug() << "UPDATE Automobiles_Table fail "<< endl;
+        qDebug() << "UPDATE Automobiles_Table fail ";
     }
 
     // Update Current Changes
@@ -249,10 +249,10 @@ void RemoveChangeAuto::on_Button_DeleteAuto_clicked()
     AddNewAuto.prepare("DELETE FROM Automobiles_Table WHERE Auto_RegNumber='"+m_SelectedRegNumber+"' ");
 
     QMessageBox::StandardButton UserReply;
-    UserReply =  QMessageBox::question(this,"Внимавай ! ", "Автомобил с регистрационен номер : \n " + ui->LText_DelChangeRegNumber->text() + " \n ще бъде изтрит!! \n Да продължа ли ?",QMessageBox::Yes | QMessageBox::No);
+    UserReply =  QMessageBox::question(this,"Attention ! ", "Atomobile with registration  : \n " + ui->LText_DelChangeRegNumber->text() + " \n will be deleted!! \n Continue ?",QMessageBox::Yes | QMessageBox::No);
     if(UserReply == QMessageBox::Yes){
         if(!AddNewAuto.exec()){
-            qDebug() << "DELETE FROM Automobiles_Table WHERE Auto_RegNumber FAIL "<< endl;
+            qDebug() << "DELETE FROM Automobiles_Table WHERE Auto_RegNumber FAIL ";
         }
 
         // Update Current Changes

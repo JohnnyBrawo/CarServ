@@ -1,4 +1,4 @@
-#ifndef NEWCLIENT_H
+﻿#ifndef NEWCLIENT_H
 #define NEWCLIENT_H
 
 #include <QDialog>
@@ -30,18 +30,19 @@ private:
 
     void CenterForm();
     void ClearAllFields();
-    void RecordCarToClient();
     void SetNewClientDesignMode();
     void SetEditDesignMode();
     void FillClientsNameCombo();
-
 
 public:
     explicit NewClient(QWidget *parent = 0);
     ~NewClient();
     QString GetClientName(){return m_strLastClientName;}
     QString GetClientID(){return m_strClientID;}
+    void SetNewRepairRegNumber(QString RegNum){m_strClientCarReg = RegNum;}
 
+    void RecordCarToClient();
+    bool ClientExsist(QString ClientName, QString ClientPhone);
     bool AddClentInfo(QString ClientName ,QString ClientPhone , QString ClientFirm = "None", QString ClientCity  = "None",  QString ClientAddress = "None");
 signals:
     void CloseNewClientForm();

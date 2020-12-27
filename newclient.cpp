@@ -1,4 +1,4 @@
-#include "newclient.h"
+﻿#include "newclient.h"
 #include "ui_newclient.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
@@ -109,7 +109,7 @@ void NewClient::RestoreFormAttachAuto()
         ui->Button_Add_Client->setEnabled(true);
     }else {
         m_bRecordPermission = false;
-        QMessageBox::information(this,"Важно!","Не сте задали автомобил!");
+        QMessageBox::information(this,"Attention!","No Auto selected !");
     }
 
 }
@@ -126,7 +126,7 @@ void NewClient::RestoreFormNewAuto()
         ui->Button_Add_Client->setEnabled(true);
     }else {
         m_bRecordPermission = false;
-        QMessageBox::information(this,"Важно!","Не сте задали автомобил!");
+        QMessageBox::information(this,"Attention!","No Auto selected !");
     }
 
 }
@@ -171,7 +171,7 @@ bool NewClient::CheckField(QString SelectedString)
 bool NewClient::CheckRecordObligatory(){
 
     if(ui->LText_ClientName->text().isEmpty() ){
-        QMessageBox::information(this,"Важно!","Не сте попълнили задължителните полега ( * ).");
+        QMessageBox::information(this,"Attention!","Missin information in some fields  ( * ).");
         return false;
     }
 
@@ -283,8 +283,65 @@ void NewClient::on_Button_AddClientAutoNew_clicked()
 }
 
 
+bool NewClient::ClientExsist(QString ClientName, QString ClientPhone){
+
+    QRegExp re("\\d*");  // a digit (\d), zero or more times (*)
+    if (!re.exactMatch(ClientPhone)){
+       QMessageBox::information(this,"Error !"," Only Gidits in phone number !! ");
+       return true;
+    }
+
+    CarsDatabase MyData;
+    MyData.OpenConnection("Clients.sqlite");
+    QSqlQuery ShowModelQry(MyData.CarsDB);
+    bool m_bfoundName = false;
+    bool m_bfoundPhone = false;
+    ShowModelQry.prepare("SELECT ClientPhone FROM Clients_Table WHERE ClientPhone='"+ClientPhone+"' ");
+
+    if(ShowModelQry.exec()){
+       if(ShowModelQry.next()){
+           m_bfoundName = true;
+       }
+    }else{
+          qDebug() << "ClientPhone Ima problem s cheteneto ot bazata ";
+    }
+
+    ShowModelQry.prepare("SELECT ClientName FROM Clients_Table WHERE ClientName='"+ClientName+"' ");
+    if(ShowModelQry.exec()){
+       if(ShowModelQry.next()){
+           m_bfoundPhone = true;
+       }
+    }else{
+          qDebug() << "ClientName Ima problem s cheteneto ot bazata ";
+    }
+
+    MyData.CloseConnection();
+
+    if(m_bfoundPhone && m_bfoundName){
+         QMessageBox::information(this,"ERROR!"," Phone and name exist !! ");
+          qDebug() << "Phone and name exist !! ";
+         return true;
+    }
+    else if (m_bfoundPhone){
+         QMessageBox::information(this,"ERROR!"," There is a client with this phone !! ");
+          qDebug() << "here is a client with this phone ";
+         return true;
+    }else if(m_bfoundName){
+        QMessageBox::information(this,"ERROR!"," There is a client with this name !! ");
+          qDebug() << " There is a client with this name ";
+        return true;
+    }
+
+    return false;
+}
+
+
 bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString ClientFirm, QString ClientCity,  QString ClientAddress)
 {
+    if (ClientExsist(ClientName,ClientPhone )) {
+       return false;
+    }
+
     CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
     QSqlQuery ClientQry(MyData.CarsDB);
@@ -294,7 +351,7 @@ bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString C
         ClientQry.prepare("INSERT INTO Clients_Table(ClientName, ClientCity, ClientFirm, ClientPhone, ClientAddress) "
                           "VALUES(:ClientName, :ClientCity, :ClientFirm, :ClientPhone, :ClientAddress)");
 
-        ClientQry.bindValue(":ClientName",ClientName);
+        ClientQry.bindValue(":ClientName",ClientName.toUpper());
         ClientQry.bindValue(":ClientCity",ClientCity);
         ClientQry.bindValue(":ClientFirm",ClientFirm);
         ClientQry.bindValue(":ClientPhone",ClientPhone);
@@ -319,7 +376,7 @@ bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString C
             m_strClientID = LastRowQry.lastInsertId().toString();
             qDebug() << "m_strClientID   "<< m_strClientID;
 
-            RecordCarToClient();
+           // RecordCarToClient();
 
         }
     }
