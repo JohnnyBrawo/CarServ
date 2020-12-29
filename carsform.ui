@@ -112,8 +112,7 @@ font: 75 oblique 22pt &quot;DejaVu Sans&quot;;</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-image: url(:/images/Images/asd.jpg);
-color: rgb(255, 255, 255);
+       <string notr="true">color: rgb(255, 255, 255);
 background-color: rgba(170, 170, 127, 0);
 </string>
       </property>
@@ -140,8 +139,7 @@ background-color: rgba(170, 170, 127, 0);
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-image: url(:/images/Images/asd.jpg);
-color: rgb(255, 255, 255);
+       <string notr="true">color: rgb(255, 255, 255);
 background-color: rgba(170, 170, 127, 0);
 </string>
       </property>
@@ -167,8 +165,7 @@ background-color: rgba(170, 170, 127, 0);
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-image: url(:/images/Images/asd.jpg);
-color: rgb(255, 255, 255);
+       <string notr="true">color: rgb(255, 255, 255);
 background-color: rgba(170, 170, 127, 0);
 </string>
       </property>

@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "carsdatabase.h"
 #include <QVector>
+#include "printformat.h"
 
 namespace Ui {
 class ShowAllcars;
@@ -15,6 +16,8 @@ class ShowAllcars : public QDialog
 
 private:
     Ui::ShowAllcars *ui;
+    PrintFormat *m_Print;
+
     void ClearAllFields();
     void FillClientsNameCombo();
     void FillRegNumbersCombo();
@@ -47,14 +50,14 @@ signals:
 
 private slots:
     void OpenClearWindow();
+
     void on_Button_Back_clicked();
     void on_RButton_SearchRegNumbers_clicked();
     void on_RButton_SearchClients_clicked();
-    void on_RButton_SearchAutos_clicked();
+//    void on_RButton_Autos_clicked();
     void on_RButton_SearchDate_clicked();
     void on_Button_Search_clicked();
     void on_Combo_Search_Klient_currentTextChanged(const QString &arg1);
-    void on_RButton_SearchAutos_pressed();
     void on_Button_NextRepair_clicked();
     void on_Button_PrevRepair_clicked();
     void on_Button_PRINT_clicked();

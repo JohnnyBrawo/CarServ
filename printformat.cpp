@@ -1,4 +1,4 @@
-#include "printformat.h"
+﻿#include "printformat.h"
 #include "ui_printformat.h"
 
 PrintFormat::PrintFormat(QWidget *parent) :
@@ -12,3 +12,16 @@ PrintFormat::~PrintFormat()
 {
     delete ui;
 }
+
+void PrintFormat::on_B_PrintCancel_clicked()
+{
+    emit ClosePrintForm();
+    hide();
+}
+
+void PrintFormat::OpenPrintForm()
+{
+    this->show();
+}
+
+

@@ -7,12 +7,988 @@
     <x>0</x>
     <y>0</y>
     <width>1133</width>
-    <height>1568</height>
+    <height>1000</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Work Card</string>
   </property>
+  <widget class="QLineEdit" name="lineEdit_123">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>690</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_142">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>790</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Цена на извършения ремонт : </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_135">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>660</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_131">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>540</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_95">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>570</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_146">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>790</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_29">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>830</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>ДАТА : </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_89">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>540</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_96">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>450</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_116">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>450</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_23">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>340</y>
+     <width>71</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>№</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_137">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>510</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_AutoModel">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>170</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_88">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>480</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_105">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>720</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_21">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>340</y>
+     <width>611</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>Извършени дейности</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_90">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>630</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_145">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>820</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_91">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>600</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_KlientName">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>130</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Име : </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_118">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>570</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_134">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>720</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_AutoMilage">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>200</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Пробег ( км ) : </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_138">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>420</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_101">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>660</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_86">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>390</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_AutoVIN">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>260</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Шаси : </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_98">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>510</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_KlientFirm">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>220</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_113">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>540</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>10</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>ТИТИ  ГК ЕООД </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_WorkCard_Nubmer">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>160</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_KlientAdress">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>190</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Адрес :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_32">
+   <property name="geometry">
+    <rect>
+     <x>870</x>
+     <y>120</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>АВТОМОБИЛ</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_20">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>340</y>
+     <width>71</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>7</horstretch>
+     <verstretch>7</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 255);</string>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="text">
+    <string>Брой</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_106">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>450</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_117">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>660</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_132">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>630</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_119">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>510</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_AutoRegNumber">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>230</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_104">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>450</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_103">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>690</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_120">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>570</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_31">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>90</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>КЛИЕНТ</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_140">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>660</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_28">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>750</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Общо услуги  : </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_107">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>540</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_115">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>420</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_KlientPhone">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>160</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Телефон : </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_100">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>690</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_122">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>600</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_99">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>600</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_KlientAdress">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>190</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_AutoMarka">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>140</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_24">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>340</y>
+     <width>71</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>Ед. Цена</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_127">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>720</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_27">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>750</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 155, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_128">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>720</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>30</y>
+     <width>331</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Стара Загора, ул. &quot;Христо Ботев&quot; 47 , вх Б, ап. 50 </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_93">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>390</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_147">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>850</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_84">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>720</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_102">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>660</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_136">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>690</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_KlientCity">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>250</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_AutoRepairDate">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>290</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Дата на постъпване : </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_129">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>480</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_114">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>450</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_121">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>510</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_KlientName">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>130</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_AutoRegNubmer">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>230</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Рег. Номер :  </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_AutoMilage">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>200</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_144">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>850</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Обща сума за плащане : </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_126">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>690</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_110">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>630</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_AutoModel">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>170</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Модел : </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_AutoVIN">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>260</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <widget class="QLabel" name="L_WorkCard">
    <property name="geometry">
     <rect>
@@ -34,44 +1010,77 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="L_WorkKardNumber">
+  <widget class="QLineEdit" name="lineEdit_85">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>150</y>
-     <width>231</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>24</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;№ .......&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>220</y>
-     <width>161</width>
+     <x>740</x>
+     <y>600</y>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Име : </string>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_109">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>480</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLineEdit" name="lineEdit_92">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>480</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_108">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>420</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_133">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>480</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_83">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>420</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_81">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>390</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_KlientCity">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -84,14 +1093,48 @@
     <string notr="true">background-color: rgb(170, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Телефон : </string>
+    <string>Град  : </string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLabel" name="label_22">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>280</y>
+     <x>880</x>
+     <y>340</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>Общо</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_111">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>630</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_AutoMarka">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>140</y>
      <width>161</width>
      <height>31</height>
     </rect>
@@ -100,14 +1143,42 @@
     <string notr="true">background-color: rgb(170, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Адрес :</string>
+    <string>Марка : </string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLineEdit" name="lineEdit_97">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>390</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="B_PrintCancel">
+   <property name="geometry">
+    <rect>
+     <x>940</x>
+     <y>920</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>CANCEL</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_KlientFirm">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>310</y>
+     <y>220</y>
      <width>161</width>
      <height>31</height>
     </rect>
@@ -119,123 +1190,74 @@
     <string>Фрима : </string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLineEdit" name="lineEdit_143">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>340</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>  : </string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>220</y>
-     <width>181</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>250</y>
-     <width>181</width>
+     <x>590</x>
+     <y>820</y>
+     <width>221</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>ДДС : </string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="lineEdit_87">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>280</y>
-     <width>181</width>
+     <x>810</x>
+     <y>540</y>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
-   <property name="text">
-    <string/>
-   </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLabel" name="L_WorkKardNumber">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>310</y>
-     <width>181</width>
-     <height>31</height>
+     <x>460</x>
+     <y>150</y>
+     <width>71</width>
+     <height>60</height>
     </rect>
    </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_6">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>340</y>
-     <width>181</width>
-     <height>31</height>
-    </rect>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+    </font>
    </property>
    <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>800</x>
-     <y>30</y>
-     <width>331</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Стара Загора, ул. &quot;Христо Ботев&quot; 47 , вх Б, ап. 50 </string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>950</x>
-     <y>10</y>
-     <width>151</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
-   </property>
-   <property name="text">
-    <string>ТИТИ  ГК ЕООД </string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;№&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLineEdit" name="lineEdit_124">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>420</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_125">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>510</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>950</x>
+     <x>890</x>
      <y>60</y>
      <width>151</width>
      <height>21</height>
@@ -251,10 +1273,46 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLineEdit" name="T_DateRepair">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>290</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_94">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>570</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="T_KlientPhone">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>160</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>950</x>
+     <x>890</x>
      <y>80</y>
      <width>151</width>
      <height>21</height>
@@ -270,1144 +1328,12 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="lineEdit_139">
    <property name="geometry">
     <rect>
-     <x>920</x>
-     <y>200</y>
-     <width>181</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_7">
-   <property name="geometry">
-    <rect>
-     <x>920</x>
-     <y>290</y>
-     <width>181</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_8">
-   <property name="geometry">
-    <rect>
-     <x>920</x>
-     <y>260</y>
-     <width>181</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_9">
-   <property name="geometry">
-    <rect>
-     <x>920</x>
-     <y>230</y>
-     <width>181</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_10">
-   <property name="geometry">
-    <rect>
-     <x>760</x>
-     <y>320</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Шаси : </string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_10">
-   <property name="geometry">
-    <rect>
-     <x>920</x>
-     <y>320</y>
-     <width>181</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_11">
-   <property name="geometry">
-    <rect>
-     <x>760</x>
-     <y>230</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Модел : </string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_12">
-   <property name="geometry">
-    <rect>
-     <x>760</x>
-     <y>260</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Пробег ( км ) : </string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_13">
-   <property name="geometry">
-    <rect>
-     <x>760</x>
-     <y>200</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Марка : </string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_14">
-   <property name="geometry">
-    <rect>
-     <x>760</x>
-     <y>290</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Рег. Номер :  </string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_15">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>400</y>
-     <width>71</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 170, 200);</string>
-   </property>
-   <property name="text">
-    <string>№</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_16">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>400</y>
-     <width>611</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>13</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 170, 255);</string>
-   </property>
-   <property name="text">
-    <string>Вложени материали </string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_17">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>400</y>
-     <width>71</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>7</horstretch>
-     <verstretch>7</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 170, 155);</string>
-   </property>
-   <property name="lineWidth">
-    <number>1</number>
-   </property>
-   <property name="text">
-    <string>Брой</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_18">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>400</y>
-     <width>71</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 70, 255);</string>
-   </property>
-   <property name="text">
-    <string>Ед. Цена</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_19">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>400</y>
-     <width>151</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 170, 255);</string>
-   </property>
-   <property name="text">
-    <string>Общо</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_20">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>960</y>
-     <width>71</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>7</horstretch>
-     <verstretch>7</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 170, 255);</string>
-   </property>
-   <property name="lineWidth">
-    <number>1</number>
-   </property>
-   <property name="text">
-    <string>Брой</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_21">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>960</y>
-     <width>611</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>13</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 170, 255);</string>
-   </property>
-   <property name="text">
-    <string>Извършени дейности</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_22">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>960</y>
-     <width>151</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 170, 255);</string>
-   </property>
-   <property name="text">
-    <string>Общо</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_23">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>960</y>
-     <width>71</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 170, 255);</string>
-   </property>
-   <property name="text">
-    <string>№</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_24">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>960</y>
-     <width>71</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 170, 255);</string>
-   </property>
-   <property name="text">
-    <string>Ед. Цена</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_11">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>450</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_12">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>450</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_13">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>450</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_14">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>450</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_15">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>450</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_16">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>480</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_17">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>480</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_18">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>480</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_19">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>480</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_20">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>480</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_21">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>510</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_22">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>510</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_23">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>510</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_24">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>510</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_25">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>510</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_26">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>540</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_27">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>540</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_28">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>540</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_29">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>540</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_30">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>540</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_31">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>570</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_32">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>570</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_33">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>570</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_34">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>570</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_35">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>570</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_36">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>600</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_37">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>600</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_38">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>600</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_39">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
+     <x>130</x>
      <y>600</y>
      <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_40">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>600</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_41">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>630</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_42">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>630</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_43">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>630</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_44">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>630</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_45">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>630</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_46">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>660</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_47">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>660</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_48">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>660</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_49">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>660</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_50">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>660</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_51">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>690</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_52">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>690</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_53">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>690</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_54">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>690</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_55">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>690</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_56">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>720</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_57">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>720</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_58">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>720</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_59">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>720</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_60">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>720</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_61">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>750</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_62">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>750</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_63">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>750</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_64">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>750</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_65">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>750</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_66">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>780</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_67">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>780</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_68">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>780</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_69">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>780</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_70">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>780</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_71">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>810</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_72">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>810</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_73">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>810</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_74">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>810</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_75">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>810</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_76">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>840</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_77">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>840</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_78">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>840</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_79">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>840</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_80">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>840</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_25">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>870</y>
-     <width>141</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Общо материали  : </string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_26">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>870</y>
-     <width>141</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 155, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_81">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1010</y>
-     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -1415,649 +1341,36 @@
   <widget class="QLineEdit" name="lineEdit_82">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>1010</y>
+     <x>130</x>
+     <y>390</y>
      <width>611</width>
      <height>31</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_83">
+  <widget class="QPushButton" name="B_PrintDocument">
    <property name="geometry">
     <rect>
-     <x>860</x>
-     <y>1040</y>
-     <width>151</width>
-     <height>31</height>
+     <x>90</x>
+     <y>910</y>
+     <width>101</width>
+     <height>51</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_84">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1340</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_85">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1220</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_86">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1010</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_87">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1160</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_88">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1100</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_89">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1160</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_90">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1250</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_91">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1220</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_92">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1100</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_93">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1010</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_94">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1190</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_95">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1190</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_96">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1070</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_97">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1010</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_98">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1130</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_99">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1220</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_100">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1310</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_101">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1280</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_102">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1280</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_103">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1310</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_104">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1070</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_105">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1340</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_106">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1070</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_107">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1160</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_108">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1040</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_109">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1100</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_110">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1250</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_111">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1250</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_112">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1250</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_113">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1160</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_114">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1070</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_115">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1040</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_116">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1070</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_117">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1280</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_118">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1190</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_119">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1130</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_120">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1190</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_121">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1130</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_122">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1220</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_123">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1310</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_124">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1040</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_125">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1130</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_126">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1310</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_127">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1340</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_128">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1340</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_129">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1100</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_130">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1190</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_131">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1160</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_132">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1250</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_133">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1100</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_134">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1340</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_135">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1280</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_136">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1310</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_137">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1130</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_138">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1040</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_139">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>1220</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_140">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>1280</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_27">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>1370</y>
-     <width>141</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 155, 255);</string>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
-    <string> </string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_28">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>1370</y>
-     <width>141</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Общо услуги  : </string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_29">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>1450</y>
-     <width>81</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
-   </property>
-   <property name="text">
-    <string>ДАТА : </string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
+    <string>PRINT</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_30">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>1450</y>
+     <x>140</x>
+     <y>830</y>
      <width>81</width>
      <height>21</height>
     </rect>
@@ -2072,71 +1385,24 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_31">
+  <widget class="QLineEdit" name="lineEdit_112">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>180</y>
-     <width>151</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
-   </property>
-   <property name="text">
-    <string>КЛИЕНТ</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_32">
-   <property name="geometry">
-    <rect>
-     <x>870</x>
-     <y>180</y>
-     <width>151</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
-   </property>
-   <property name="text">
-    <string>АВТОМОБИЛ</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_33">
-   <property name="geometry">
-    <rect>
-     <x>760</x>
-     <y>350</y>
-     <width>161</width>
+     <x>740</x>
+     <y>630</y>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Дата на постъпване : </string>
-   </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_141">
+  <widget class="QLineEdit" name="lineEdit_130">
    <property name="geometry">
     <rect>
-     <x>920</x>
-     <y>350</y>
-     <width>181</width>
+     <x>130</x>
+     <y>570</y>
+     <width>611</width>
      <height>31</height>
     </rect>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
  </widget>

@@ -1,4 +1,4 @@
-#include "searchform.h"
+﻿#include "searchform.h"
 #include "ui_searchform.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
@@ -140,6 +140,8 @@ void SearchForm::on_Combo_Search_Klient_currentTextChanged(const QString &arg1)
 
 void SearchForm::on_RButton_SearchAutos_clicked()
 {
+    qDebug() << "  1111111111111111   ";
+
     DeactivateAllFields();
     ui->Combo_SearchAuto->setEnabled(true);
 }

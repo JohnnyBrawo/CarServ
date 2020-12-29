@@ -1,4 +1,4 @@
-#ifndef SEARCHFORM_H
+﻿#ifndef SEARCHFORM_H
 #define SEARCHFORM_H
 
 #include <QDialog>

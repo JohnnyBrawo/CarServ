@@ -1,4 +1,4 @@
-#ifndef ADDREPAIR_H
+﻿#ifndef ADDREPAIR_H
 #define ADDREPAIR_H
 
 #include <QWidget>
@@ -31,11 +31,13 @@ private:
     void ListAllMenus();
     void SetFieldWithSubMenus();
     void RecordRepair();
+    void SetKlientName(QString CarNumber);
 
     QString m_strSelCarNumber;
     unsigned int m_uiRepairsNumber;
     unsigned int m_uiSubMenuNumber;
     bool         m_bSubMenuADD;
+    double       m_dTotalCost;
 
     /** Repair  */
     NewRepair         *m_NewRepairForm; // ????
@@ -65,6 +67,7 @@ private slots:
     void on_Button_NewClientRepair_clicked();
 
     void RestoreAutoRepairForm();
+    void on_CheckBox_DDS_stateChanged(int arg1);
 };
 
 #endif // ADDREPAIR_H

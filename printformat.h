@@ -1,4 +1,4 @@
-#ifndef PRINTFORMAT_H
+﻿#ifndef PRINTFORMAT_H
 #define PRINTFORMAT_H
 
 #include <QDialog>
@@ -15,8 +15,18 @@ public:
     explicit PrintFormat(QWidget *parent = nullptr);
     ~PrintFormat();
 
+private slots:
+    void on_B_PrintCancel_clicked();
+
 private:
     Ui::PrintFormat *ui;
+
+signals:
+    void ClosePrintForm();
+
+private slots:
+    void OpenPrintForm();
+
 };
 
 #endif // PRINTFORMAT_H

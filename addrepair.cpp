@@ -13,6 +13,7 @@ AddRepair::AddRepair(QWidget *parent) :
     ui(new Ui::AddRepair),
     m_uiRepairsNumber(0),
     m_uiSubMenuNumber(0),
+    m_dTotalCost(0.0),
     m_NewRepairForm(new NewRepair())
 {
     ui->setupUi(this);
@@ -72,6 +73,7 @@ void AddRepair::SetInitialDesign()
     ui->Button_TotalCostCalc->setEnabled(false);
     ui->LText_TotalPrice->setEnabled(false);
     ui->LText_TotalPrice->setText("");
+    ui->L_KlientName->setText("");
 
     FillPage();
 }
@@ -229,8 +231,11 @@ void AddRepair::ClearAllinputs()
         delete ui->RepairList->item(0);
     }
 
+    ui->LText_TotalPrice->setText("");
+    ui->CheckBox_DDS->setChecked(false);
     m_uiSubMenuNumber = 0;
     m_uiRepairsNumber = 0;
+    m_dTotalCost = 0.0;
 }
 
 bool AddRepair::CheckRecordInformation()
@@ -286,6 +291,7 @@ void AddRepair::RecordRepair()
             m_newRepair->GetRepairSinglePriceText().isEmpty() ||
             m_newRepair->GetRepairValueText().isEmpty())
         {
+
             qDebug() << "Ima prazni poleta - Continue ";
             continue;
         }
@@ -294,8 +300,8 @@ void AddRepair::RecordRepair()
         ////// Record all repairs for this car
 
         QSqlQuery AddNewAuto(MyData.CarsDB);
-        AddNewAuto.prepare("INSERT INTO Repair_Table(RepairName, RepairQuantity, RepairSinglePrice, RepairValue, RepairTotal, RepairDate, RepairCarRegNumber) "
-                           "VALUES(:RepairName, :RepairQuantity, :RepairSinglePrice, :RepairValue, :RepairTotal, :RepairDate, :RepairCarRegNumber)");
+        AddNewAuto.prepare("INSERT INTO Repair_Table(RepairName, RepairQuantity, RepairSinglePrice, RepairValue, RepairTotal, RepairDate, RepairCarRegNumber, DDS) "
+                           "VALUES(:RepairName, :RepairQuantity, :RepairSinglePrice, :RepairValue, :RepairTotal, :RepairDate, :RepairCarRegNumber, :DDS )");
 
         AddNewAuto.bindValue(":RepairName",m_newRepair->GetRepairDescrText());
         AddNewAuto.bindValue(":RepairQuantity",m_newRepair->GetRepairQuantityText());
@@ -304,6 +310,7 @@ void AddRepair::RecordRepair()
         AddNewAuto.bindValue(":RepairTotal",ui->LText_TotalPrice->text());
         AddNewAuto.bindValue(":RepairDate",ui->LText_RepairDate->text());
         AddNewAuto.bindValue(":RepairCarRegNumber",m_strSelCarNumber);
+        AddNewAuto.bindValue(":DDS", ui->CheckBox_DDS->isChecked());
 
         if(!AddNewAuto.exec()){
             qDebug() << "INSERT INTO Repair_Table fail "<< AddNewAuto.lastError().text();
@@ -343,6 +350,42 @@ void AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &
 {
     m_strSelCarNumber = arg1;
     qDebug() << " Reset na wsichko do momenta m_strSelCarNumber ?! " << m_strSelCarNumber;
+    SetKlientName(m_strSelCarNumber);
+}
+
+void AddRepair::SetKlientName(QString CarNumber){
+
+    int ClientID = 0;
+    CarsDatabase MyCarData;
+    CarsDatabase MyClientData;
+    MyCarData.OpenConnection("Automobiles.sqlite");
+    QSqlQuery ShowModelQry(MyCarData.CarsDB);
+ qDebug() << " CarNumber"<<CarNumber;
+    ShowModelQry.prepare("SELECT CLIENT_ID FROM Automobiles_Table WHERE Auto_RegNumber='"+CarNumber+"' ");
+
+    if(! ShowModelQry.exec()){
+        qDebug() << "ShowModelQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< ShowModelQry.lastError().text();
+    }else {
+        if(ShowModelQry.next()){
+            ClientID = ShowModelQry.value(0).toInt();
+        }
+    }
+    MyCarData.CloseConnection();
+
+    MyClientData.OpenConnection("Clients.sqlite");
+    QSqlQuery ShowClentQry(MyClientData.CarsDB);
+    qDebug() << " ClientID"<<ClientID;
+    ShowClentQry.prepare("SELECT ClientName FROM Clients_Table WHERE PR_ID='"+QString::number(ClientID)+"' ");
+
+    if(! ShowClentQry.exec()){
+        qDebug() << "ShowClentQry.Exec() SELECT ClientName FROM Clients_Table Fail "<< ShowModelQry.lastError().text();
+    }else {
+        if(ShowClentQry.next()){
+            ui->L_KlientName->setText(ShowClentQry.value(0).toString());
+        }
+    }
+    MyClientData.CloseConnection();
+
 }
 
 void AddRepair::on_Button_InsertSubMenu_clicked()
@@ -391,6 +434,13 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
             qDebug() << " Skip total price ";
         }
     }
+
+    m_dTotalCost = totalCost;
+    if(ui->CheckBox_DDS->isChecked()){
+        qDebug() << " CheckBox_DDS isChecked";
+        totalCost = totalCost + (totalCost/5);
+    }
+
     qDebug() << " Calculated total Cost " << totalCost;
     qDebug() << " Calculated total Cost " << QString::number(totalCost, 'f',2);
     ui->LText_TotalPrice->setText(QString::number(totalCost, 'f',2));
@@ -406,4 +456,20 @@ void AddRepair::RestoreAutoRepairForm()
 {
     this->show();
     SetInitialDesign();
+}
+
+
+void AddRepair::on_CheckBox_DDS_stateChanged(int arg1)
+{
+    qDebug() << " ui->LText_TotalPrice->text().isEmpty() " << ui->LText_TotalPrice->text().isEmpty();
+    qDebug() << " ui->LText_TotalPrice->text().toDouble() " << ui->LText_TotalPrice->text().toDouble();
+   if(!ui->LText_TotalPrice->text().isEmpty() && ui->LText_TotalPrice->text().toDouble()!=0.0)
+   {
+       double TotalPrice = m_dTotalCost;
+           if(arg1==2) {
+               TotalPrice = TotalPrice + (TotalPrice/5);
+           }
+           ui->LText_TotalPrice->setText(QString::number(TotalPrice, 'f',2));
+    }
+    qDebug() << " on_checkBox_clicked " << arg1;
 }
