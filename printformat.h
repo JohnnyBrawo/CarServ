@@ -48,6 +48,7 @@ signals:
 private slots:
     void OpenPrintForm();
 
+    void on_B_PrintDocument_clicked();
 };
 
 #endif // PRINTFORMAT_H

@@ -1,6 +1,8 @@
 ﻿#include "printformat.h"
 #include "ui_printformat.h"
 #include <qdebug.h>
+#include <QPixmap>
+#include <QFileDialog>
 
 PrintFormat::PrintFormat(QWidget *parent) :
     QDialog(parent),
@@ -164,3 +166,14 @@ void PrintFormat::OpenPrintForm()
 }
 
 
+
+void PrintFormat::on_B_PrintDocument_clicked()
+{
+    auto active_window = qApp->activeWindow();
+    if (active_window) //could be null if your app doesn't have focus
+    {
+        QPixmap pixmap(active_window->size());
+        active_window->render(&pixmap);
+        pixmap.save("TEST.png");
+    }
+}
