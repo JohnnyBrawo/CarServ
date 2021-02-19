@@ -68,7 +68,6 @@ void NewRepair::ClearAllFields()
 bool NewRepair::CheckRecordInformation(){
 
     QString EmptyFields = "";
-//    QMessageBox::StandardButton UserReply;
 
     if(!CheckSelected(ui->Combo_NewRepair_Year->currentText())){
         EmptyFields = EmptyFields + " Година " + "\n";

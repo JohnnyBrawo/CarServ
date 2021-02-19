@@ -62,7 +62,6 @@ private slots:
     void on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1);
     void on_Button_InsertSubMenu_clicked();
 
-    void on_RepairList_clicked();
     void on_Button_TotalCostCalc_clicked();
     void on_Button_NewClientRepair_clicked();
 

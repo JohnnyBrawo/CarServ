@@ -33,41 +33,49 @@ void ShowAllcars::DeactivateAllFields()
     ui->LText_SearchFROMdate->setEnabled(false);
     ui->Button_FromDate->setEnabled(false);
     ui->Button_ToDate->setEnabled(false);
-      qDebug()<<" Set to false  ";
     ui->RButton_SearchDate->setEnabled(false);
     ui->RButton_SearchClients->setChecked(false);
     ui->RButton_SearchRegNumbers->setChecked(false);
+
+    ui->Button_NextRepair->setEnabled(false);
+    ui->Button_PrevRepair->setEnabled(false);
+
+    m_uiRepairIndex = -1;
 }
 
 bool ShowAllcars::CalculateRepairIndex(bool Upper /** = true */)
 {
     if(strRepairVector.size() == 0){
-        qDebug()<<" No Repairs ";
         return false;
+    }
+
+    if(m_uiRepairIndex ==0 && !Upper){
+         if(strRepairVector.size() >1){
+             ui->Button_NextRepair->setEnabled(true);
+         }
+
+        ui->Button_PrevRepair->setEnabled(false);
+        return true;
     }
 
     if(strRepairVector.size() == 1){
         ui->Button_NextRepair->setEnabled(false);
         ui->Button_PrevRepair->setEnabled(false);
         m_uiRepairIndex = 0;
-        qDebug()<<" SINGLE Repair ";
         return true;
     }
 
     if((m_uiRepairIndex == -1) && strRepairVector.size()>1){
         m_uiRepairIndex = 0;
          ui->Button_PrevRepair->setEnabled(false);
-         qDebug()<<" Initial SHOW ";
         return true;
     }
 
-    qDebug()<<" Going UP ";
     if(Upper && (m_uiRepairIndex < strRepairVector.size()-1 ) ){
         m_uiRepairIndex++;
         ui->Button_NextRepair->setEnabled(true);
         ui->Button_PrevRepair->setEnabled(true);
         if(m_uiRepairIndex == strRepairVector.size()-1 ){
-            qDebug()<<" Going UP - No UP Left";
             ui->Button_NextRepair->setEnabled(false);
              return true;
         }
@@ -97,6 +105,7 @@ void ShowAllcars::ClearAllFields()
     ui->LText_RepairType->setText("");
     ui->LText_RepairVIN->setText("");
     ui->LText_RepairYear->setText("");
+    ui->RepairsList->clear();
     m_ComboClientName = "";
     m_ComboRegNumber = "";
     m_uiRepairIndex = -1;
@@ -106,14 +115,9 @@ void ShowAllcars::ClearAllFields()
 
 void ShowAllcars::OpenClearWindow()
 {
-     qDebug() << "ShowAllcars::OpenClearWindow() ";
-
     QDate CurrentDate= QDate::currentDate();
-
     ui->LText_SearchFROMdate->setText(CurrentDate.toString("dd.MM.yyyy"));
     ui->LText_SearchTOdate->setText(CurrentDate.toString("dd.MM.yyyy"));
-
-
 
     FillClientsNameCombo();
     FillRegNumbersCombo();
@@ -135,7 +139,6 @@ void ShowAllcars::on_Button_Back_clicked()
 
 void ShowAllcars::FillClientsNameCombo()
 {
-    qDebug() << "ShowAllcars::FillClientsNameCombo()   ++++++   ";
     MyData.OpenConnection("Clients.sqlite");
 
     QSqlQueryModel * ClientsNameComboModel = new QSqlQueryModel();
@@ -156,7 +159,6 @@ void ShowAllcars::FillClientsNameCombo()
 
 void ShowAllcars::FillRegNumbersCombo()
 {
-    qDebug() << "ShowAllcars::FillRegNumbersCombo()   ";
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQueryModel * CarRegNumberComboModel = new QSqlQueryModel();
@@ -178,7 +180,6 @@ void ShowAllcars::FillRegNumbersCombo()
 
 void ShowAllcars::FillAutosCombo()
 {
-    qDebug() << "SearchForm::FillRegNumbersCombo()   ";
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQueryModel * CarsComboModel = new QSqlQueryModel();
@@ -191,35 +192,21 @@ void ShowAllcars::FillAutosCombo()
     }
 
     CarsComboModel->setQuery(ShowClientsQry);
-//    ui->Combo_SearchAuto->setModel(CarsComboModel);
-
     MyData.CloseConnection();
 
 }
 
-//void ShowAllcars::on_RButton_Autos_clicked()
-//{
-
-//    qDebug() << "  22222222222222222222   ";
-//    /*  1 - Autos */
-//    m_uiSearchChoice = eAutos;
-//    DeactivateAllFields();
-////    ui->Combo_SearchAuto->setEnabled(true);
-//}
 
 void ShowAllcars::on_RButton_SearchClients_clicked()
 {
-    qDebug()<<" on_RButton_SearchClients_clicked ";
     /*  2 - Clients */
     m_uiSearchChoice = eClients;
     DeactivateAllFields();
-    qDebug()<<" TEXT "  << ui->Combo_Search_Klient->itemData(ui->Combo_Search_Klient->currentIndex());
     ui->Combo_Search_Klient->setEnabled(true);
 }
 
 void ShowAllcars::on_RButton_SearchRegNumbers_clicked()
 {
-    qDebug()<<" on_RButton_SearchRegNumbers_clicked ";
     /*  3 - Reg Number */
     m_uiSearchChoice = eRegNumber;
     DeactivateAllFields();
@@ -236,20 +223,18 @@ void ShowAllcars::on_RButton_SearchDate_clicked()
 //    ui->Button_ToDate->setEnabled(false);
 //    ui->LText_SearchTOdate->setEnabled(true);
 //    ui->LText_SearchFROMdate->setEnabled(true);
+
 }
 
-void ShowAllcars::FillAutoData(QString CurrentClientID)
+void ShowAllcars::FillAutoData()
 {
-    qDebug() << "ShowAllcars::FillAutoData()   ";
-
-        MyData.OpenConnection("Automobiles.sqlite");
-        QSqlQuery EditAutoQry(MyData.CarsDB);
+    MyData.OpenConnection("Automobiles.sqlite");
+    QSqlQuery EditAutoQry(MyData.CarsDB);
         QString m_strAutoReg="";
 
         switch (m_uiSearchChoice) {
             case eClients: {
-                  qDebug() << " Populwame Query-to ot bazata s kolite :  " << CurrentClientID;
-                EditAutoQry.prepare("SELECT * FROM Automobiles_Table WHERE CLIENT_ID='"+CurrentClientID+"' ");
+                EditAutoQry.prepare("SELECT * FROM Automobiles_Table WHERE CLIENT_ID='"+m_ClientDB_ID+"' ");
                 break;
             }
             case eRegNumber : {
@@ -261,26 +246,13 @@ void ShowAllcars::FillAutoData(QString CurrentClientID)
             }
         }
 
-//        m_bComboRegsHit = true;
         if(!EditAutoQry.exec()){
             qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< EditAutoQry.lastError().text();
         }else {
             /// Fill all automobiles with speciffic ClientID or Auto_Reg Number
             if (EditAutoQry.next()) {
-                qDebug() << " Show Car's details    ";
-                qDebug() << " Index 0     "<<EditAutoQry.value(0).toString();
-                qDebug() << " Index 1     "<<EditAutoQry.value(1).toString();
-                qDebug() << " Index 2     "<<EditAutoQry.value(2).toString();
-                qDebug() << " Index 3     "<<EditAutoQry.value(3).toString();
-                qDebug() << " Index 4     "<<EditAutoQry.value(4).toString();
-                qDebug() << " Index 5     "<<EditAutoQry.value(5).toString();
-                qDebug() << " Index 6     "<<EditAutoQry.value(6).toString();
-                qDebug() << " Index 7     "<<EditAutoQry.value(7).toString();
-                qDebug() << " Index 8     "<<EditAutoQry.value(8).toString();
-                qDebug() << " Index 9     "<<EditAutoQry.value(9).toString();
-
                 ui->LText_RepairRegNumber->setText(EditAutoQry.value(2).toString());
-                 ui->LText_RepairMarka->setText(EditAutoQry.value(3).toString());
+                ui->LText_RepairMarka->setText(EditAutoQry.value(3).toString());
                 ui->LText_RepairModel->setText(EditAutoQry.value(4).toString());
                 ui->LText_RepairYear->setText(EditAutoQry.value(5).toString());
                 ui->LText_RepairFuel->setText(EditAutoQry.value(6).toString());
@@ -294,14 +266,17 @@ void ShowAllcars::FillAutoData(QString CurrentClientID)
                 qDebug() << " Autos Not Found !  ";
             }
         }
+
         MyData.CloseConnection();
 
         if(!m_strAutoReg.isEmpty()){
-            FillRepairsList(m_strAutoReg);
+            m_ComboRegNumber = m_strAutoReg;
+            FillRepairsList();
+
         }
 }
 
-void ShowAllcars::FillRepairsList(QString CarRegNumber /*= ""*/)
+void ShowAllcars::FillRepairsList()
 {
     QString RepairText = "";
     QString RepairData = "";
@@ -309,14 +284,12 @@ void ShowAllcars::FillRepairsList(QString CarRegNumber /*= ""*/)
     MyData.OpenConnection("Repairs.sqlite");
     QSqlQuery EditClientsQry(MyData.CarsDB);
 
-    EditClientsQry.prepare("SELECT * FROM Repair_Table WHERE RepairCarRegNumber='"+CarRegNumber+"' ");
+    EditClientsQry.prepare("SELECT * FROM Repair_Table WHERE RepairCarRegNumber='"+m_ComboRegNumber+"' ");
     if(!EditClientsQry.exec()){
         qDebug() << "SELECT RepairName FROM Repair_Table WHERE RepairCarRegNumber== "<< EditClientsQry.lastError().text();
     }
     else {
         while (EditClientsQry.next()) {
-            qDebug()<<" RepairData  " << RepairData;
-            qDebug()<<" Current Data  " << EditClientsQry.value(6).toString();
             bool ChangeDate = RepairData != EditClientsQry.value(6).toString();
 
             if(ChangeDate && !RepairData.isEmpty()){
@@ -326,21 +299,27 @@ void ShowAllcars::FillRepairsList(QString CarRegNumber /*= ""*/)
 
             if(ChangeDate){
                 RepairData = EditClientsQry.value(6).toString();
-                RepairText ="Дата :    " + RepairData;
+                RepairText ="Date : \n" + RepairData;
             }
 
-            RepairText += "\n Ремонт : ";
-            RepairText += "\n Наименование на ремонта : " + EditClientsQry.value(1).toString();
-            RepairText += "\n Брой : " + EditClientsQry.value(2).toString();
-            RepairText += "\t Единична Цена : " + EditClientsQry.value(3).toString();
-            RepairText += "\t Крайна Цена : " + EditClientsQry.value(4).toString();
-            RepairText += "\n Общо Цена на ремонта : " + EditClientsQry.value(5).toString();
+            RepairText += "\nRepair name: " + EditClientsQry.value(1).toString();
+            RepairText += "\n   Repair cout : " + EditClientsQry.value(2).toString();
+            RepairText += "   Single Price : " + EditClientsQry.value(3).toString();
+            RepairText += "   Final Price : " + EditClientsQry.value(4).toString();
+            RepairText += "   Total Price : " + EditClientsQry.value(5).toString();
+
+
+            if(EditClientsQry.value(8).toString()=="1"){
+                RepairText += "\t Taxes included! ";
+            }
+            RepairText += "\n===================";
+
         }
         strRepairVector.push_back(RepairText);
     }
 
     MyData.CloseConnection();
-    ShowRepairData(true);
+    ShowRepairData();
 }
 
 void ShowAllcars::on_Button_Search_clicked()
@@ -350,13 +329,15 @@ void ShowAllcars::on_Button_Search_clicked()
         return;
     }
 
+    m_ComboClientName = ui->Combo_Search_Klient->currentText();
     /* Erase all data if search button clicked ! Need this is search method is changed */
     ui->RepairsList->clear();
-    QString strClientID = "";
+    strRepairVector.clear();
 
+    m_ClientDB_ID.clear();
+    m_uiRepairIndex = 0;
     switch (static_cast<int>(m_uiSearchChoice) ) {
     case eAutos : {
-    qDebug() << "Search Autos   \n";
         break;
     }
     case eClients: {
@@ -371,20 +352,19 @@ void ShowAllcars::on_Button_Search_clicked()
             else {
                 /// Fill all automobiles with speciffic ClientID or Auto_Reg Number
                 if (EditClientsQry.next()) {
-                    strClientID = EditClientsQry.value(0).toString();
+                    m_ClientDB_ID = EditClientsQry.value(0).toString();
                 }
             }
             MyData.CloseConnection();
-            qDebug() << "Search By ClentID \n";
-            FillAutoData(strClientID);
+            FillAutoData();
            break;
     }
     case eRegNumber : {
-    qDebug() << "Search RegNumber   \n";
+
         break;
     }
     case eDate : {
-    qDebug() << "Search Date   \n";
+
         break;
     }
     default :
@@ -403,7 +383,6 @@ void ShowAllcars::ShowRepairData(bool NextRepair )
          return;
     }
 
-    qDebug()<<" Repair index    "<<m_uiRepairIndex;
     QStringList items;
     ui->RepairsList->clear();
     items += strRepairVector.at(m_uiRepairIndex);
@@ -412,7 +391,8 @@ void ShowAllcars::ShowRepairData(bool NextRepair )
 
 void ShowAllcars::on_Combo_Search_Klient_currentTextChanged(const QString &arg1)
 {
-    qDebug() << "    on_Combo_Search_Klient_currentTextChanged " <<arg1;
+    m_ComboClientName = arg1;
+    m_uiRepairIndex = 0;
 }
 
 void ShowAllcars::on_Button_NextRepair_clicked()
@@ -428,7 +408,13 @@ void ShowAllcars::on_Button_PrevRepair_clicked()
 void ShowAllcars::on_Button_PRINT_clicked()
 {
     MyData.CloseConnection();
+    m_Print->SetRepairsText(strRepairVector.at(m_uiRepairIndex));
+    m_Print->SetRegNum(m_ComboRegNumber);
+    m_Print->SetClientID(m_ClientDB_ID);
+    m_Print->SetClientName(m_ComboClientName);
     this->hide();
-//    emit CloseShowAllAutoForm();
-//    ClearAllFields();
+}
+
+QString ShowAllcars::RepairText(){
+    return strRepairVector.at(m_uiRepairIndex);
 }

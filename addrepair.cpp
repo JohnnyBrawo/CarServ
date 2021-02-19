@@ -113,8 +113,6 @@ void AddRepair::InsertRepair(bool SubMenu)
         m_vMenusAndSubmebus.push_back(0);
         m_uiSubMenuNumber = 0;
     }else if(m_uiRepairsNumber>0){
-        qDebug() << "  m_uiRepairsNumber  " << m_uiRepairsNumber;
-        qDebug() << "  m_vMenusAndSubmebus.size()  " << m_vMenusAndSubmebus.size();
         m_vMenusAndSubmebus[m_uiRepairsNumber-1]++;
         m_uiSubMenuNumber ++;
     }
@@ -123,11 +121,6 @@ void AddRepair::InsertRepair(bool SubMenu)
     //Finally adding the itemWidget to the list
     ui->RepairList->setItemWidget (listInsertItem, m_newRepair);
 
-    qDebug()<<" m_uiRepairsNumber"<<m_uiRepairsNumber;
-//    if(m_uiRepairsNumber > 1 ){
-//        ui->Button_DeleteRepair->setEnabled(true);
-//    }
-    //ListAllMenus();
 }
 
 void AddRepair::on_Button_InsertRepair_clicked()
@@ -137,9 +130,7 @@ void AddRepair::on_Button_InsertRepair_clicked()
 
 void AddRepair::on_Button_DeleteRepair_clicked()
 {
-//    qDebug() << " DELETE  ";
     QMessageBox::StandardButton UserReply;
-    //ListAllMenus();
 
     NewRepairItem * m_currentRepair;
     QListWidgetItem *  listDeleteItem;
@@ -151,8 +142,7 @@ void AddRepair::on_Button_DeleteRepair_clicked()
     qDebug() << " GetRepairIndexText   " << m_currentRepair->GetRepairIndexText();
     QString str = m_currentRepair->GetRepairIndexText();
     QStringList list1 = str.split('.');
-//     qDebug() << " GetRepairIndexText  to LIST " << list1;
-       int SubmenuStartIndex = QString(list1.first()).toInt();
+    int SubmenuStartIndex = QString(list1.first()).toInt();
 
      if(m_vMenusAndSubmebus.at(SubmenuStartIndex-1) > 0){
          UserReply= QMessageBox::question(this,"Attention!","All fields will be deleted !",QMessageBox::Ok|QMessageBox::Cancel);
@@ -171,12 +161,9 @@ void AddRepair::on_Button_DeleteRepair_clicked()
      }
 
     delete listDeleteItem;
-     // qDebug() << " removeAt index  " << SubmenuStartIndex-1;
-     // qDebug() << " m_vMenusAndSubmebus.at(SubmenuStartIndex-1) " <<m_vMenusAndSubmebus.at(SubmenuStartIndex-1);
-      m_vMenusAndSubmebus.removeAt(SubmenuStartIndex-1);
-      m_uiRepairsNumber--;
-    //ListAllMenus();
-    ReFillRepairIndexes();
+    m_vMenusAndSubmebus.removeAt(SubmenuStartIndex-1);
+     m_uiRepairsNumber--;
+     ReFillRepairIndexes();
 
 }
 
@@ -253,9 +240,6 @@ bool AddRepair::CheckRecordInformation()
         if(m_newRepair->GetRepairDescrText().isEmpty() && m_newRepair->GetRepairQuantityText().isEmpty() && m_newRepair->GetRepairSinglePriceText().isEmpty() && m_newRepair->GetRepairValueText().isEmpty())
         {
             QMessageBox::information(this,"Empty fields!","Emtpy fields will NOT be recorded .");
-            //            if(UserReply == QMessageBox::No){
-            //                return false;
-            //            }
         }
     }
     MyData.CloseConnection();
@@ -291,12 +275,9 @@ void AddRepair::RecordRepair()
             m_newRepair->GetRepairSinglePriceText().isEmpty() ||
             m_newRepair->GetRepairValueText().isEmpty())
         {
-
-            qDebug() << "Ima prazni poleta - Continue ";
             continue;
         }
 
-        qDebug() << " Zapiswame !  ";
         ////// Record all repairs for this car
 
         QSqlQuery AddNewAuto(MyData.CarsDB);
@@ -329,10 +310,7 @@ void AddRepair::OpenClearWindow()
 
 void AddRepair::on_Button_Search_clicked()
 {
-//    for(unsigned int i=0; i< 1; i++)
-//    {
-        InsertRepair(false);
-//    }
+    InsertRepair(false);
 
     ui->Button_DeleteRepair->setEnabled(false);
     ui->Button_InsertRepair->setEnabled(true);
@@ -349,7 +327,6 @@ void AddRepair::on_Button_Search_clicked()
 void AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1)
 {
     m_strSelCarNumber = arg1;
-    qDebug() << " Reset na wsichko do momenta m_strSelCarNumber ?! " << m_strSelCarNumber;
     SetKlientName(m_strSelCarNumber);
 }
 
@@ -360,7 +337,6 @@ void AddRepair::SetKlientName(QString CarNumber){
     CarsDatabase MyClientData;
     MyCarData.OpenConnection("Automobiles.sqlite");
     QSqlQuery ShowModelQry(MyCarData.CarsDB);
- qDebug() << " CarNumber"<<CarNumber;
     ShowModelQry.prepare("SELECT CLIENT_ID FROM Automobiles_Table WHERE Auto_RegNumber='"+CarNumber+"' ");
 
     if(! ShowModelQry.exec()){
@@ -374,7 +350,6 @@ void AddRepair::SetKlientName(QString CarNumber){
 
     MyClientData.OpenConnection("Clients.sqlite");
     QSqlQuery ShowClentQry(MyClientData.CarsDB);
-    qDebug() << " ClientID"<<ClientID;
     ShowClentQry.prepare("SELECT ClientName FROM Clients_Table WHERE PR_ID='"+QString::number(ClientID)+"' ");
 
     if(! ShowClentQry.exec()){
@@ -393,10 +368,6 @@ void AddRepair::on_Button_InsertSubMenu_clicked()
     InsertRepair(true);
 }
 
-void AddRepair::on_RepairList_clicked()
-{
-     qDebug() << " on_RepairList_clicked";
-}
 
 void AddRepair::on_Button_TotalCostCalc_clicked()
 {
@@ -409,13 +380,11 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
         listItemData = ui->RepairList->item(i);
         m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
 
-        if(m_CurrentRepair->GetRepairValueText().isEmpty() && !m_CurrentRepair->GetRepairDescrText().isEmpty() ){
+        if(m_CurrentRepair->GetRepairValueText()=="0" && !m_CurrentRepair->GetRepairDescrText().isEmpty() ){
             double CalcValue = 0.0;
             CalcValue = m_CurrentRepair->GetRepairQuantityText().toDouble() * m_CurrentRepair->GetRepairSinglePriceText().toDouble();
-            qDebug()<< " Smetnata kraina cena :  " << CalcValue;
             m_CurrentRepair->SetRepairValueText(QString::number(CalcValue, 'f', 2));
         }
-        qDebug() << " GetRepairValueText " << m_CurrentRepair->GetRepairValueText().toDouble();
     }
 
 
@@ -424,11 +393,8 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
         listItemData = ui->RepairList->item(i);
         m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
 
-        qDebug() << " Calculated total Cost " << totalCost;
-
         if(!m_CurrentRepair->GetRepairDescrText().isEmpty()){
             totalCost += m_CurrentRepair->GetRepairValueText().toDouble();
-            qDebug() << " Add to total GetRepairDescrText " << m_CurrentRepair->GetRepairDescrText();
         }
         else{
             qDebug() << " Skip total price ";

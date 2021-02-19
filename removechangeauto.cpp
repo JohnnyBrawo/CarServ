@@ -104,10 +104,8 @@ void RemoveChangeAuto::OpenClientEditWindow(QString ClientName, QString ClientEd
 void RemoveChangeAuto::OpenClearEditWindow()
 {
     m_bInitialize = true;
-    qDebug() << "RemoveChangeAuto::OpenClearEditWindow()   ";
     ClearAllFields();
     show();
-    //    m_bInitialize = true; !!!!!!!!!!!!
     ui->Button_Add->setVisible(false);
     FillPage();
     m_bInitialize = false;
@@ -115,11 +113,9 @@ void RemoveChangeAuto::OpenClearEditWindow()
 
 void RemoveChangeAuto::OpenClearWindow()
 {
-    qDebug() << "RemoveChangeAuto::OpenClearWindow()   ";
     m_bInitialize = true;
     show();
     ClearAllFields();
-    //    m_bInitialize = true; !!!!!!!!!!!!
     FillPage();
     SetUnactiveFields();
     m_bInitialize = false;
@@ -134,7 +130,6 @@ void RemoveChangeAuto::FillPage()
 
 void RemoveChangeAuto::FillRegCombo()
 {
-    qDebug() << "RemoveChangeAuto::FillRegCombo()   ";
     CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
@@ -157,14 +152,12 @@ void RemoveChangeAuto::FillRegCombo()
         // Тука зареждаме празните атомобили.
         RegComboQry.prepare("SELECT Auto_RegNumber FROM Automobiles_Table WHERE CLIENT_ID='""'");
         if(! RegComboQry.exec()){
-//            qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail ";
             return;
         }
         if(!RegComboQry.next())
         {
             qDebug() << "Nqma neregistrirani awtomobili !!!  ";
         }
-        //           return;
     }else {
         qDebug() << "  FillRegCombo Sent Client ID  ->  "<< RegComboQry.value(0).toString();
     }
@@ -177,7 +170,6 @@ void RemoveChangeAuto::FillRegCombo()
 
 void RemoveChangeAuto::FillClientNameCombo()
 {
-    qDebug() << "RemoveChangeAuto::FillClientNameCombo()   ";
     CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
@@ -224,8 +216,6 @@ void RemoveChangeAuto::on_Button_Record_clicked()
     QString RegNumber = CheckField(ui->LText_DelChangeRegNumber->text())?ui->LText_DelChangeRegNumber->text():"None";
     QString Vin = CheckField(ui->LText_DelChangeVIN->text())?ui->LText_DelChangeVIN->text():"None";
 
-
-    qDebug() << " m_SelectedRegNumber   " << m_SelectedRegNumber << "Changed " << ui->LText_DelChangeRegNumber->text();
     QSqlQuery AddNewAuto(MyData.CarsDB);
     AddNewAuto.prepare("UPDATE Automobiles_Table set Auto_RegNumber='"+RegNumber+"',Auto_Marka='"+Marka+"', Auto_Model='"+Model+"', Auto_Year='"+Year+"', Auto_Fuel='"+Fuel+"',  Auto_VIN='"+Vin+"', Auto_Type='"+Type+"' WHERE Auto_RegNumber='"+m_SelectedRegNumber+"' ");
 
@@ -281,7 +271,6 @@ void RemoveChangeAuto::on_Button_Back_clicked()
 
 void RemoveChangeAuto::on_Combo_DelChangeClientName_currentIndexChanged(QString)
 {
-    qDebug() << "RemoveChangeAuto::on_Combo_DelChangeClientName_currentIndexChanged()   ";
     if((!m_bInitialize || m_SentClientName.isEmpty()) && !m_bComboRegsHit)
     {
         m_bComboClientsHit = true;
@@ -292,9 +281,7 @@ void RemoveChangeAuto::on_Combo_DelChangeClientName_currentIndexChanged(QString)
 
 void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QString &arg1)
 {
-    qDebug() << "RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged()   ";
     if(m_bInitialize){
-        qDebug() << " Clear Fields - INITIAL STATE !! Return . ";
         return;
     }
     CarsDatabase MyData;
@@ -308,7 +295,6 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
         MyData.CloseConnection();
         return;
     }
-    qDebug() << " eAutoRegs_  arg1  " << arg1 << "  m_bComboClientsHit  " <<m_bComboClientsHit  ;
 
     if( m_bComboClientsHit)
     {
@@ -324,11 +310,6 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
         /// Fill all automobiles with speciffic ClientID or Auto_Reg Number
         if (EditAutoQry.next()) {
             if(m_SelectedClientID.isEmpty() ){
-                qDebug() << "1111111111111111111111111111111111111111 m_bComboClientsHit   " << m_bComboClientsHit;
-                qDebug() << "1111111111111111111111111111111111111111 m_bComboRegsHit   " << m_bComboRegsHit;
-                qDebug() << "1111111111111111111111111111111111111111 m_SentClientName   " << m_SentClientName;
-                qDebug() << "1111111111111111111111111111111111111111 m_SentClientID   " << m_SentClientID;
-
                 ui->L_UnkownClients->setVisible(false);
                 m_SelectedClientID = EditAutoQry.value(1).toString();
             }

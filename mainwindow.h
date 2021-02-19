@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include "addrepair.h"
-//#include "searchform.h"   Not used
 
 /**Autos */
 #include "carsform.h"
@@ -30,7 +29,6 @@ private:
     Ui::MainWindow *ui;
 
     AddRepair           *m_Repairs;
-//    SearchForm          *m_Search;    Not used
     CarsDatabase        *m_BasePath;
 
     /**Autos */
@@ -53,8 +51,6 @@ public:
 
 private slots:
     void on_Button_Search_clicked();
-//    void on_Button_OpenAutoForm_clicked();
-//    void on_Button_OpenClents_clicked();
     void on_Button_OpenRepairs_clicked();
 
     void RestoreMainForm();

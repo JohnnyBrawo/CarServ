@@ -123,7 +123,6 @@ bool NewAuto::CheckRecordObligatory(){
 void NewAuto::on_Button_AddNewAuto_clicked()
 {
     if(!CheckRecordObligatory()){
-        qDebug() << " MUST fields empty ";
         return;
     }
     if(!CheckRecordInformation())
@@ -135,7 +134,6 @@ void NewAuto::on_Button_AddNewAuto_clicked()
     if(!AddCarInfo(ui->LText_NewAutoRegNumber->text(), ui->Combo_NewAuto_Marka->currentText(), ui->Combo_NewAuto_Model->currentText(),
                   ui->Combo_NewAuto_Year->currentText(), ui->Combo_NewAuto_Fuel->currentText(), ui->LText_NewAutoVIN->text(), ui->Combo_NewAuto_Type->currentText()))
     {
-         qDebug() << " Auto Record Done ! ";
          ClearAllFields();
     }
 }
@@ -166,7 +164,6 @@ bool NewAuto::CheckSelected(QString SelectedString)
 {
     if((static_cast<int>(SelectedString.size()) < 2 ) || (SelectedString == "Select") || SelectedString == "")
     {
-        qDebug() << "CheckSelected  FAIL SelectedString " << SelectedString;
         return false;
     }
     return true;
@@ -277,7 +274,6 @@ bool NewAuto::AutoExsist(QString RegNum){
 
     if(ShowModelQry.exec()){
        if(ShowModelQry.next()){
-             qDebug() << " There is a client with this name ";
            m_bfound = true;
        }
     }else{
@@ -325,8 +321,6 @@ bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel
         qDebug() << "INSERT INTO Automobiles_Table fail "<< AddNewAuto.lastError().text();
         MyData.CloseConnection();
         return false;
-    }else {
-        qDebug() << " AddNewAuto.exec e uspeshno ";
     }
 
     MyData.CloseConnection();

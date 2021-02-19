@@ -146,7 +146,6 @@ void NewClient::RecordCarToClient()
     CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
 
-     qDebug() << "RecordCarToClient  m_strClientCarReg " << m_strClientCarReg;
     QSqlQuery ClientQry(MyData.CarsDB);
     ClientQry.prepare("UPDATE Automobiles_Table set CLIENT_ID='"+m_strClientID+"' WHERE Auto_RegNumber='"+m_strClientCarReg+"' ");
 
@@ -162,7 +161,6 @@ bool NewClient::CheckField(QString SelectedString)
 {
     if(( static_cast<int>(SelectedString.size()) < 2 ) || SelectedString.isEmpty())
     {
-        qDebug() << "NewClient::CheckField  FAIL SelectedString " << SelectedString;
         return false;
     }
     return true;
@@ -180,7 +178,6 @@ bool NewClient::CheckRecordObligatory(){
 
 void NewClient::on_Button_Add_Client_clicked()
 {
-    qDebug() << "NewClient::on_Button_Add_Client_clicked()   ";
     if (CheckRecordObligatory()){
         AddClentInfo( ui->LText_ClientName->text(),
                      ui->LText_ClientPhone->text(),
@@ -208,7 +205,6 @@ void NewClient::on_LText_ClientName_textChanged(const QString &arg1)
 
 void NewClient::FillClientsNameCombo()
 {
-    qDebug() << "NewClient::FillClientsNameCombo()   ";
     CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
 
@@ -230,7 +226,6 @@ void NewClient::FillClientsNameCombo()
 
 void NewClient::on_Combo_Clients_currentIndexChanged(const QString &arg1)
 {
-    qDebug() << "NewClient::on_Combo_Clients_currentIndexChanged()   ";
     CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
     QSqlQuery SelectClientQry(MyData.CarsDB);
@@ -258,27 +253,23 @@ void NewClient::on_Combo_Clients_currentIndexChanged(const QString &arg1)
 
 void NewClient::on_Button_AddClientAutoEdit_clicked()
 {
-    qDebug() << "NewClient::on_Button_AddClientAutoEdit_clicked()   ";
     emit ButtonEditHit( GetClientName(), GetClientID());
     hide();
 }
 
 void NewClient::on_Button_CancelAdd_clicked()
 {
-    qDebug() << "NewClient::on_Button_CancelAdd_clicked()   ";
     emit CloseNewClientForm();
     hide();
 }
 
 void NewClient::on_Button_AddClientAuto_clicked()
 {
-    qDebug() << "NewClient::on_Button_AddClientAuto_clicked()   ";
     hide();
 }
 
 void NewClient::on_Button_AddClientAutoNew_clicked()
 {
-    qDebug() << "NewClient::on_Button_AddClientAutoNew_clicked()   ";
     hide();
 }
 
@@ -319,16 +310,13 @@ bool NewClient::ClientExsist(QString ClientName, QString ClientPhone){
 
     if(m_bfoundPhone && m_bfoundName){
          QMessageBox::information(this,"ERROR!"," Phone and name exist !! ");
-          qDebug() << "Phone and name exist !! ";
          return true;
     }
     else if (m_bfoundPhone){
          QMessageBox::information(this,"ERROR!"," There is a client with this phone !! ");
-          qDebug() << "here is a client with this phone ";
          return true;
     }else if(m_bfoundName){
         QMessageBox::information(this,"ERROR!"," There is a client with this name !! ");
-          qDebug() << " There is a client with this name ";
         return true;
     }
 
@@ -362,7 +350,6 @@ bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString C
             return false;
         }else {
             m_strLastClientName =ui->LText_ClientName->text();
-            qDebug() << "m_strLastClientName   "<< m_strLastClientName;
         }
 
         // Get Last RowID
@@ -374,21 +361,14 @@ bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString C
         }
         else {
             m_strClientID = LastRowQry.lastInsertId().toString();
-            qDebug() << "m_strClientID   "<< m_strClientID;
-
-           // RecordCarToClient();
-
         }
     }
     else {
-
-        qDebug() << "m_strLastClientName  EDIT MODE  "<< m_strLastClientName;
         ClientQry.prepare("UPDATE Clients_Table set ClientName='"+ClientName+"', ClientCity='"+ClientCity+"', ClientFirm='"+ClientFirm+"', ClientPhone='"+ClientPhone+"', ClientAddress='"+ClientAddress+"' WHERE ClientName='"+m_strLastClientName+"'  ");
 
         if(!ClientQry.exec()){
             qDebug() << "UPDATE Clients_Table fail "<< ClientQry.lastError().text();
             MyData.CloseConnection();
-
             return false;
         }
     }

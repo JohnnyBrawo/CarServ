@@ -7,27 +7,17 @@
     <x>0</x>
     <y>0</y>
     <width>1133</width>
-    <height>1000</height>
+    <height>1045</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Work Card</string>
   </property>
-  <widget class="QLineEdit" name="lineEdit_123">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>690</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_142">
+  <widget class="QLineEdit" name="lineEdit_TotalRepairCost">
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>790</y>
+     <y>880</y>
      <width>221</width>
      <height>31</height>
     </rect>
@@ -36,41 +26,11 @@
     <string>Цена на извършения ремонт : </string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_135">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>660</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_131">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>540</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_95">
+  <widget class="QLineEdit" name="lineEdit_TotalRepairCost_Value">
    <property name="geometry">
     <rect>
      <x>810</x>
-     <y>570</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_146">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>790</y>
+     <y>880</y>
      <width>221</width>
      <height>31</height>
     </rect>
@@ -79,11 +39,11 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_29">
+  <widget class="QLabel" name="L_Date">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>830</y>
+     <y>900</y>
      <width>81</width>
      <height>21</height>
     </rect>
@@ -98,41 +58,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_89">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>540</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_96">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>450</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_116">
+  <widget class="QLabel" name="L_RepairNumber">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>450</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_23">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>340</y>
+     <y>330</y>
      <width>71</width>
      <height>51</height>
     </rect>
@@ -152,16 +82,6 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_137">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>510</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="T_AutoModel">
    <property name="geometry">
     <rect>
@@ -175,31 +95,11 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_88">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>480</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_105">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>720</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_21">
+  <widget class="QLabel" name="L_RepairDescription">
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>340</y>
+     <y>330</y>
      <width>611</width>
      <height>51</height>
     </rect>
@@ -219,37 +119,17 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_90">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>630</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_145">
+  <widget class="QLineEdit" name="lineEdit_DDS_CostValue">
    <property name="geometry">
     <rect>
      <x>810</x>
-     <y>820</y>
+     <y>910</y>
      <width>221</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_91">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>600</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
    </property>
   </widget>
   <widget class="QLabel" name="L_KlientName">
@@ -268,26 +148,6 @@
     <string>Име : </string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_118">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>570</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_134">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>720</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="L_AutoMilage">
    <property name="geometry">
     <rect>
@@ -304,31 +164,11 @@
     <string>Пробег ( км ) : </string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_138">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>420</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_101">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>660</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_86">
+  <widget class="QLineEdit" name="lineEdit_1_NUM">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>390</y>
+     <y>380</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -350,16 +190,6 @@
     <string>Шаси : </string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_98">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>510</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="T_KlientFirm">
    <property name="geometry">
     <rect>
@@ -373,17 +203,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_113">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>540</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="L_FirmName">
    <property name="geometry">
     <rect>
      <x>890</x>
@@ -405,7 +225,7 @@
   <widget class="QLineEdit" name="T_WorkCard_Nubmer">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>500</x>
      <y>160</y>
      <width>181</width>
      <height>41</height>
@@ -431,7 +251,7 @@
     <string>Адрес :</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_32">
+  <widget class="QLabel" name="L_AutoinfoLabel">
    <property name="geometry">
     <rect>
      <x>870</x>
@@ -450,11 +270,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_20">
+  <widget class="QLabel" name="L_RepairPartsCount">
    <property name="geometry">
     <rect>
      <x>740</x>
-     <y>340</y>
+     <y>330</y>
      <width>71</width>
      <height>51</height>
     </rect>
@@ -483,46 +303,6 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_106">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>450</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_117">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>660</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_132">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>630</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_119">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>510</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="T_AutoRegNumber">
    <property name="geometry">
     <rect>
@@ -536,37 +316,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_104">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>450</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_103">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>690</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_120">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>570</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_31">
+  <widget class="QLabel" name="L_ClientLabel">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -585,21 +335,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_140">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>660</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_28">
+  <widget class="QLabel" name="L_TotalWorkCost">
    <property name="geometry">
     <rect>
      <x>740</x>
-     <y>750</y>
+     <y>840</y>
      <width>141</width>
      <height>31</height>
     </rect>
@@ -609,26 +349,6 @@
    </property>
    <property name="text">
     <string>Общо услуги  : </string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_107">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>540</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_115">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>420</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
    </property>
   </widget>
   <widget class="QLabel" name="L_KlientPhone">
@@ -645,36 +365,6 @@
    </property>
    <property name="text">
     <string>Телефон : </string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_100">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>690</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_122">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>600</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_99">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>600</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
    </property>
   </widget>
   <widget class="QLineEdit" name="T_KlientAdress">
@@ -700,11 +390,11 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_24">
+  <widget class="QLabel" name="L_RepairsSinglePrice">
    <property name="geometry">
     <rect>
      <x>810</x>
-     <y>340</y>
+     <y>330</y>
      <width>71</width>
      <height>51</height>
     </rect>
@@ -724,21 +414,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_127">
+  <widget class="QLabel" name="L_TotalWorkCostValue">
    <property name="geometry">
     <rect>
      <x>880</x>
-     <y>720</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_27">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>750</y>
+     <y>840</y>
      <width>151</width>
      <height>31</height>
     </rect>
@@ -750,17 +430,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_128">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>720</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="L_FirmAdress">
    <property name="geometry">
     <rect>
      <x>740</x>
@@ -776,57 +446,27 @@
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_93">
+  <widget class="QLineEdit" name="lineEdit_1_SPrice">
    <property name="geometry">
     <rect>
      <x>810</x>
-     <y>390</y>
+     <y>380</y>
      <width>71</width>
      <height>31</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_147">
+  <widget class="QLineEdit" name="lineEdit_TotalPay_Value">
    <property name="geometry">
     <rect>
      <x>810</x>
-     <y>850</y>
+     <y>940</y>
      <width>221</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_84">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>720</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_102">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>660</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_136">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>690</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
    </property>
   </widget>
   <widget class="QLineEdit" name="T_KlientCity">
@@ -856,36 +496,6 @@
    </property>
    <property name="text">
     <string>Дата на постъпване : </string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_129">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>480</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_114">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>450</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_121">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>510</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
    </property>
   </widget>
   <widget class="QLineEdit" name="T_KlientName">
@@ -927,37 +537,17 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_144">
+  <widget class="QLineEdit" name="lineEdit_TotalToPay">
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>850</y>
+     <y>940</y>
      <width>221</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Обща сума за плащане : </string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_126">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>690</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_110">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>630</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
    </property>
   </widget>
   <widget class="QLabel" name="L_AutoModel">
@@ -992,9 +582,9 @@
   <widget class="QLabel" name="L_WorkCard">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>370</x>
      <y>110</y>
-     <width>1131</width>
+     <width>391</width>
      <height>41</height>
     </rect>
    </property>
@@ -1010,71 +600,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_85">
+  <widget class="QLineEdit" name="lineEdit_1_CNT">
    <property name="geometry">
     <rect>
      <x>740</x>
-     <y>600</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_109">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>480</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_92">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>480</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_108">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>420</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_133">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>480</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_83">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>420</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_81">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>390</y>
+     <y>380</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -1096,11 +626,11 @@
     <string>Град  : </string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_22">
+  <widget class="QLabel" name="L_RepairTotalCost">
    <property name="geometry">
     <rect>
      <x>880</x>
-     <y>340</y>
+     <y>330</y>
      <width>151</width>
      <height>51</height>
     </rect>
@@ -1120,16 +650,6 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_111">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>630</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="L_AutoMarka">
    <property name="geometry">
     <rect>
@@ -1146,11 +666,11 @@
     <string>Марка : </string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_97">
+  <widget class="QLineEdit" name="lineEdit_1_Total">
    <property name="geometry">
     <rect>
      <x>880</x>
-     <y>390</y>
+     <y>380</y>
      <width>151</width>
      <height>31</height>
     </rect>
@@ -1160,7 +680,7 @@
    <property name="geometry">
     <rect>
      <x>940</x>
-     <y>920</y>
+     <y>980</y>
      <width>101</width>
      <height>51</height>
     </rect>
@@ -1190,11 +710,11 @@
     <string>Фрима : </string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_143">
+  <widget class="QLineEdit" name="lineEdit_DDS_Cost">
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>820</y>
+     <y>910</y>
      <width>221</width>
      <height>31</height>
     </rect>
@@ -1203,20 +723,10 @@
     <string>ДДС : </string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_87">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>540</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="L_WorkKardNumber">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>440</x>
      <y>150</y>
      <width>71</width>
      <height>60</height>
@@ -1234,27 +744,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_124">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>420</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_125">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>510</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_8">
+  <widget class="QLabel" name="L_FirmEIK">
    <property name="geometry">
     <rect>
      <x>890</x>
@@ -1286,16 +776,6 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_94">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>570</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="T_KlientPhone">
    <property name="geometry">
     <rect>
@@ -1309,7 +789,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="L_FirmPhone">
    <property name="geometry">
     <rect>
      <x>890</x>
@@ -1328,21 +808,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_139">
+  <widget class="QLineEdit" name="lineEdit_1_Descr">
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>600</y>
-     <width>611</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_82">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>390</y>
+     <y>380</y>
      <width>611</width>
      <height>31</height>
     </rect>
@@ -1352,7 +822,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>910</y>
+     <y>980</y>
      <width>101</width>
      <height>51</height>
     </rect>
@@ -1366,11 +836,11 @@
     <string>PRINT</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_30">
+  <widget class="QLabel" name="L_DateDots">
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>830</y>
+     <y>900</y>
      <width>81</width>
      <height>21</height>
     </rect>
@@ -1385,22 +855,702 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_112">
+  <widget class="QLineEdit" name="lineEdit_2_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
-     <y>630</y>
+     <x>810</x>
+     <y>410</y>
      <width>71</width>
      <height>31</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_130">
+  <widget class="QLineEdit" name="lineEdit_2_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>410</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_2_Descr">
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>570</y>
+     <y>410</y>
      <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_2_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>410</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_2_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>410</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>440</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>440</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>440</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>440</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>440</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_4_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>470</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_4_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>470</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_4_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>470</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_4_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>470</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_4_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>470</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_5_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>500</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_5_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>500</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_5_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>500</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_5_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>500</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_5_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>500</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_6_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>530</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_6_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>530</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_6_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>530</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_6_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>530</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_6_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>530</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_7_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>560</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_7_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>560</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_7_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>560</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_7_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>560</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_7_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>560</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_8_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>590</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_8_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>590</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_8_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>590</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_8_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>590</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_8_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>590</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_9_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>620</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_9_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>620</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_9_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>620</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_9_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>620</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_9_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>620</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_10_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>650</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_10_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>650</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_10_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>650</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_10_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>650</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_10_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>650</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_11_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>680</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_11_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>680</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_11_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>680</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_11_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>680</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_11_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>680</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_12_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>710</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_12_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>710</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_12_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>710</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_12_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>710</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_12_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>710</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_13_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>740</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_13_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>740</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_13_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>740</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_13_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>740</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_13_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>740</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_14_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>770</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_14_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>770</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_14_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>770</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_14_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>770</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_14_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>770</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_15_Total">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>800</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_15_Descr">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>800</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_15_NUM">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>800</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_15_CNT">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>800</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_15_SPrice">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>800</y>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>

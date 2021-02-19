@@ -23,10 +23,10 @@ private:
     void FillRegNumbersCombo();
     void FillAutosCombo();
     void DeactivateAllFields();
-    void FillAutoData(QString CurrentClientID = "");
-    void FillRepairsList(QString CarRegNumber = "");
+    void FillAutoData();
+    void FillRepairsList();
     bool CalculateRepairIndex(bool NextRepair = true);
-    void ShowRepairData(bool NextRepair);
+    void ShowRepairData(bool NextRepair = false);
     QVector<QString> strRepairVector;
     enum SearchChoise {
         eNone,
@@ -38,6 +38,7 @@ private:
 
     SearchChoise m_uiSearchChoice;
     QString         m_ComboClientName;
+    QString         m_ClientDB_ID;
     QString         m_ComboRegNumber;
     int    m_uiRepairIndex;
     CarsDatabase MyData;
@@ -61,6 +62,7 @@ private slots:
     void on_Button_NextRepair_clicked();
     void on_Button_PrevRepair_clicked();
     void on_Button_PRINT_clicked();
+    QString RepairText();
 };
 
 #endif // SHOWALLCARS_H

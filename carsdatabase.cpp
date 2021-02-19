@@ -24,7 +24,7 @@ QString  CarsDatabase::GetReousrcesPath()
 //    else {
 //        qDebug() << " GetReousrcesPath BUILD PATH NOT FOUND   ";
 //    }
-    return "C:\\Users\\eleba\\projects\\CarServ\\DataBase\\Images\\";
+    return "/home/default/Gosheto/CarServ/DataBase/";
 }
 
 QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
@@ -46,9 +46,9 @@ QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
     }
 // @ TODO   make this smart !!
 // Windows
-//    m_CurrDataName = "C:\\Users\\BUFU\\Projects\\DATA_BASE\\" + DataBaseName;
+//    m_CurrDataName = "C:\\Users\\BUFU\\Projects\\DATA_BASE\\" + DataBaseName;b
 // Linux
-    m_CurrDataName = "C:\\Users\\eleba\\projects\\CarServ\\DataBase\\"+ DataBaseName;
+    m_CurrDataName = "/home/default/Gosheto/CarServ/DataBase/"+ DataBaseName;
     return m_CurrDataName;
 }
 

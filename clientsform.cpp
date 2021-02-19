@@ -22,7 +22,6 @@ ClientsForm::ClientsForm(QWidget *parent) :
 ClientsForm::~ClientsForm()
 {
     delete m_NewClient;
-    //    delete m_RemoveClient;
     delete ui;
 }
 
