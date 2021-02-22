@@ -272,3 +272,19 @@ void NewRepair::on_Button_CancelNewRepair_clicked()
     this->hide();
     emit CloseNewRepairForm();
 }
+
+void NewRepair::on_LText_NewRepairAutoRegNumber_editingFinished()
+{
+    ui->LText_NewRepairAutoRegNumber->setText(ui->LText_NewRepairAutoRegNumber->text().replace(" ",""));
+    ui->LText_NewRepairAutoRegNumber->setText(ui->LText_NewRepairAutoRegNumber->text().toUpper());
+}
+
+void NewRepair::on_LText_NewRepairKlientName_editingFinished()
+{
+    ui->LText_NewRepairKlientName->setText(ui->LText_NewRepairKlientName->text().trimmed());
+}
+
+void NewRepair::on_LText_NewRepairKlientPhone_editingFinished()
+{
+    ui->LText_NewRepairKlientPhone->setText(ui->LText_NewRepairKlientPhone->text().replace(" ",""));
+}

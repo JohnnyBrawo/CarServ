@@ -31,8 +31,11 @@ void NewRepairItem::ResetAllFields()
     RepairIndex = new QLineEdit();
     DescrText->setText("");
     QuantityText->setText("0");
+    QuantityText->setValidator(new QDoubleValidator(0, 100, 2, this) );
     SinglePriceText->setText("0");
+    SinglePriceText->setValidator(new QDoubleValidator(0, 100, 2, this) );
     ValueText->setText("0");
+    ValueText->setValidator(new QDoubleValidator(0, 100, 2, this) );
 
     RepairIndex->setText(QString::number(m_uiRepairIndex));
     RepairIndex->setFixedWidth(30);

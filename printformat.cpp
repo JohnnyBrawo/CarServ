@@ -3,6 +3,10 @@
 #include <qdebug.h>
 #include <QPixmap>
 #include <QFileDialog>
+#include <QDir>
+#include <QMessageBox>
+#include <QSysInfo>
+#include <QFileInfo>
 
 PrintFormat::PrintFormat(QWidget *parent) :
     QDialog(parent),
@@ -165,15 +169,54 @@ void PrintFormat::OpenPrintForm()
 
 }
 
+QString PrintFormat::GetWorkingPath()
+{
+    QString ScreenShotPath = QApplication::applicationDirPath();
+
+    if(QSysInfo::productType() == "debian"){
+        int position = ScreenShotPath.indexOf("/build");
+        ScreenShotPath.truncate(position);
+        ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
+    }else if(QSysInfo::productType() == "Win32"){
+        int position = ScreenShotPath.indexOf("\\build");
+        ScreenShotPath.truncate(position);
+        ScreenShotPath.append("\\Repairs\\" + m_strClient_Name + "\\");
+    }
+
+
+    qDebug() << " GetWorkingPath "<< ScreenShotPath;
+    QDir::root().mkpath(ScreenShotPath);
+    return ScreenShotPath;
+}
 
 
 void PrintFormat::on_B_PrintDocument_clicked()
 {
+    m_bPrintingDone = false;
     auto active_window = qApp->activeWindow();
     if (active_window) //could be null if your app doesn't have focus
     {
         QPixmap pixmap(active_window->size());
         active_window->render(&pixmap);
-        pixmap.save("TEST.png");
+        QString CurrentDate = QDate::currentDate().toString("dd.MM.yyyy");
+// if file exist - make smart checks -
+// -> Owerwrite , make dialog for FileName .. something like this
+
+//        if(QFileInfo::exists(GetWorkingPath() + m_strClientRegNumber + "_" + CurrentDate + ".png"))
+//        {
+//            CurrentDate +="_" + Additional++;
+//        }
+
+        if(pixmap.save(GetWorkingPath() + m_strClientRegNumber + "_" + CurrentDate + ".png"))
+        {
+            QMessageBox::information(this,"Success!","Print Page is saved for printing!");
+            m_bPrintingDone = true;
+            emit on_B_PrintCancel_clicked();
+        }
+        else
+        {
+            m_bPrintingDone = false;
+            qDebug() << " Something Wrong with SnapShot ! ";
+        }
     }
 }

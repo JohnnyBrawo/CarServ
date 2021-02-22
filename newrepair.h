@@ -54,6 +54,12 @@ private slots:
 //    void on_Combo_NewAuto_Model_currentIndexChanged(int index);
     void on_Button_CancelNewRepair_clicked();
 
+    void on_LText_NewRepairAutoRegNumber_editingFinished();
+
+    void on_LText_NewRepairKlientName_editingFinished();
+
+    void on_LText_NewRepairKlientPhone_editingFinished();
+
 signals:
     void CloseNewRepairForm();
 };

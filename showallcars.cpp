@@ -115,6 +115,12 @@ void ShowAllcars::ClearAllFields()
 
 void ShowAllcars::OpenClearWindow()
 {
+    if(m_Print->GetPrintStatus()){
+        m_Print->ResetPrintStatus();
+        emit on_Button_Back_clicked();
+        return;
+    }
+
     QDate CurrentDate= QDate::currentDate();
     ui->LText_SearchFROMdate->setText(CurrentDate.toString("dd.MM.yyyy"));
     ui->LText_SearchTOdate->setText(CurrentDate.toString("dd.MM.yyyy"));

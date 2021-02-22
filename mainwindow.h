@@ -21,6 +21,7 @@ namespace Ui {
 class MainWindow;
 }
 
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -29,7 +30,6 @@ private:
     Ui::MainWindow *ui;
 
     AddRepair           *m_Repairs;
-    CarsDatabase        *m_BasePath;
 
     /**Autos */
     CarsForm            *m_Autos; // ????

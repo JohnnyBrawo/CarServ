@@ -2,53 +2,32 @@
 
 CarsDatabase::CarsDatabase()
 {
-
+    GetWorkingPath();
 }
 
-QString  CarsDatabase::GetReousrcesPath()
+
+void CarsDatabase::GetWorkingPath()
 {
-//    QString testPath = QApplication::applicationDirPath();
-//    int position = testPath.indexOf("build");
-//    int position2 = testPath.indexOf("/");
+    QString testPath = QApplication::applicationDirPath();
 
-// qDebug() << "GetReousrcesPath BUILD PATH NOT FOUND   testPath    "<< testPath;
-//    if(position != (-1)){
-//        testPath.truncate(position);
-//        if(position2 != (-1)){
-//            testPath.append("CarServ/Images/");
-//        }
-//        else {
-//            testPath.append("CarServ\\Images\\");
-//        }
-//    }
-//    else {
-//        qDebug() << " GetReousrcesPath BUILD PATH NOT FOUND   ";
-//    }
-    return "/home/default/Gosheto/CarServ/DataBase/";
+    if(QSysInfo::productType() == "debian"){
+        int position = testPath.indexOf("/build");
+        testPath.truncate(position);
+        testPath.append("/CarServ/DataBase/");
+    }else if(QSysInfo::productType() == "Win32"){
+        int position = testPath.indexOf("\\build");
+        testPath.truncate(position);
+        testPath.append("\\CarServ\\DataBase\\");
+    }
+    m_WorkPath = testPath;
 }
+
 
 QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
 {
-    QString testPath = QApplication::applicationDirPath();
-    int position = testPath.indexOf("build");
-    int position2 = testPath.indexOf("/");
-    if(position != (-1)){
-        testPath.truncate(position);
-        if(position2 != (-1)){
-            testPath.append("CarServ/DataBase/");
-        }
-        else {
-            testPath.append("CarServ\\DataBase\\");
-        }
-    }
-    else {
-        qDebug() << "GetDataBasePath BUILD PATH NOT FOUND   testPath    "<< testPath << "  DataBaseName  "<<DataBaseName;;
-    }
-// @ TODO   make this smart !!
-// Windows
-//    m_CurrDataName = "C:\\Users\\BUFU\\Projects\\DATA_BASE\\" + DataBaseName;b
-// Linux
-    m_CurrDataName = "/home/default/Gosheto/CarServ/DataBase/"+ DataBaseName;
+    m_CurrDataName = m_WorkPath + DataBaseName;
+
+//            qDebug() << "GetDataBasePath m_CurrDataName: " << m_CurrDataName;
     return m_CurrDataName;
 }
 

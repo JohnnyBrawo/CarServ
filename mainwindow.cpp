@@ -2,13 +2,14 @@
 #include "ui_mainwindow.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
+#include <QDir>
+
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     m_Repairs(new AddRepair()),
-    m_BasePath(new CarsDatabase()),
 
     m_Autos(new CarsForm()),
     m_ShowAllAutos(new ShowAllcars()),
@@ -52,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+
 void MainWindow::CenterForm()
 {
     setFixedSize(geometry().width(), geometry().height());
@@ -66,7 +68,6 @@ MainWindow::~MainWindow()
     delete m_Clients;
     delete m_Repairs;
     delete m_Autos;
-    delete m_BasePath;
     delete m_ShowAllAutos;
     delete m_NewAuto;
     delete m_DelEdtiAuto;
@@ -76,6 +77,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::LoadDesignView()
 {
+
+
 
 }
 
