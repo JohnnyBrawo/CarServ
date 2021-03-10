@@ -35,7 +35,8 @@ SOURCES += \
     showallcars.cpp \
     removechangeauto.cpp \
     clientsform.cpp \
-    removeclient.cpp
+    removeclient.cpp \
+    printformat.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -50,7 +51,8 @@ HEADERS += \
     showallcars.h \
     removechangeauto.h \
     clientsform.h \
-    removeclient.h
+    removeclient.h \
+    printformat.h
 
 FORMS += \
         mainwindow.ui \
@@ -64,7 +66,8 @@ FORMS += \
     showallcars.ui \
     removechangeauto.ui \
     clientsform.ui \
-    removeclient.ui
+    removeclient.ui \
+    printformat.ui
 
 RESOURCES += \
     Images/images.qrc

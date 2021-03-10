@@ -1,4 +1,0 @@
-
-              "name" : "Campagnola",
-              "name" : "Daily",
-              "name" : "Massif", 

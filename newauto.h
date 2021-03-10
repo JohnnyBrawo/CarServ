@@ -54,6 +54,8 @@ private slots:
     void on_Button_AddNewAuto_clicked();
     void on_Combo_NewAuto_Marka_currentIndexChanged(int index);
     void on_Combo_NewAuto_Model_currentIndexChanged(int index);
+    void on_LText_NewAutoRegNumber_editingFinished();
+    void on_LText_NewAutoVIN_editingFinished();
 };
 
 #endif // NEWAUTO_H

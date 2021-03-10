@@ -155,7 +155,8 @@ void NewAuto::FillComboMarki()
 
     MyModel->setQuery(ShowMakriQry);
     ui->Combo_NewAuto_Marka->setModel(MyModel);
-
+    ui->Combo_NewAuto_Marka->setMaxVisibleItems(10);
+    ui->Combo_NewAuto_Marka->setStyleSheet("combobox-popup: 0;");
     MyData.CloseConnection();
 
 }
@@ -195,6 +196,7 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
     {
         ui->Combo_NewAuto_Model->setEnabled(true);
 
+
         ui->Combo_NewAuto_Year->setCurrentIndex(0);
         ui->Combo_NewAuto_Year->setEnabled(true);
 
@@ -226,6 +228,7 @@ void NewAuto::FillComboModeli(int MarkaIndex)
     MyData.OpenConnection("All_Models.sqlite");
     QSqlQueryModel *MyModel = new QSqlQueryModel();
     QSqlQuery ShowModelQry(MyData.CarsDB);
+qDebug() << "MarkaIndex "<<MarkaIndex;
 
     ShowModelQry.prepare("SELECT Model_Name FROM All_Models_Table WHERE Model_ID='"+QString::number(MarkaIndex)+"' ");
 
@@ -236,6 +239,9 @@ void NewAuto::FillComboModeli(int MarkaIndex)
 
     MyModel->setQuery(ShowModelQry);
     ui->Combo_NewAuto_Model->setModel(MyModel);
+    ui->Combo_NewAuto_Model->setMaxVisibleItems(10);
+    ui->Combo_NewAuto_Model->setStyleSheet("combobox-popup: 0;");
+
     MyData.CloseConnection();
 
     if(ui->Combo_NewAuto_Model->count() == 1)
@@ -325,4 +331,15 @@ bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel
 
     MyData.CloseConnection();
     return true;
+}
+
+void NewAuto::on_LText_NewAutoRegNumber_editingFinished()
+{
+    ui->LText_NewAutoRegNumber->setText(ui->LText_NewAutoRegNumber->text().replace(" ",""));
+    ui->LText_NewAutoRegNumber->setText(ui->LText_NewAutoRegNumber->text().toUpper());
+}
+
+void NewAuto::on_LText_NewAutoVIN_editingFinished()
+{
+    ui->LText_NewAutoVIN->setText(ui->LText_NewAutoVIN->text().replace(" ",""));
 }

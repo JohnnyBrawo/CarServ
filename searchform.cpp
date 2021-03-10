@@ -59,6 +59,8 @@ void SearchForm::FillClientsNameCombo()
 
     ClientsNameComboModel->setQuery(ShowClientsQry);
     ui->Combo_Search_Klient->setModel(ClientsNameComboModel);
+    ui->Combo_Search_Klient->setMaxVisibleItems(10);
+    ui->Combo_Search_Klient->setStyleSheet("combobox-popup: 0;");
 
     MyData.CloseConnection();
 }
@@ -81,6 +83,8 @@ void SearchForm::FillRegNumbersCombo()
 
     CarRegNumberComboModel->setQuery(ShowClientsQry);
     ui->Combo_Search_RegNumber->setModel(CarRegNumberComboModel);
+    ui->Combo_Search_RegNumber->setMaxVisibleItems(10);
+    ui->Combo_Search_RegNumber->setStyleSheet("combobox-popup: 0;");
 
     MyData.CloseConnection();
 
@@ -104,6 +108,8 @@ void SearchForm::FillAutosCombo()
 
     CarsComboModel->setQuery(ShowClientsQry);
     ui->Combo_SearchAuto->setModel(CarsComboModel);
+    ui->Combo_SearchAuto->setMaxVisibleItems(10);
+    ui->Combo_SearchAuto->setStyleSheet("combobox-popup: 0;");
 
     MyData.CloseConnection();
 

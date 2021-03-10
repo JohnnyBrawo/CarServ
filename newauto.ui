@@ -92,11 +92,14 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="maxVisibleItems">
-       <number>15</number>
+       <number>10</number>
       </property>
       <property name="sizeAdjustPolicy">
-       <enum>QComboBox::AdjustToMinimumContentsLength</enum>
+       <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
       </property>
      </widget>
     </item>

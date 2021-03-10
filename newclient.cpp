@@ -219,6 +219,8 @@ void NewClient::FillClientsNameCombo()
 
     ClientsNameComboModel->setQuery(ShowClientsQry);
     ui->Combo_Clients->setModel(ClientsNameComboModel);
+    ui->Combo_Clients->setMaxVisibleItems(10);
+    ui->Combo_Clients->setStyleSheet("combobox-popup: 0;");
 
     MyData.CloseConnection();
 
@@ -374,4 +376,9 @@ bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString C
     }
 
     return true;
+}
+
+void NewClient::on_LText_ClientPhone_editingFinished()
+{
+    ui->LText_ClientPhone->setText(ui->LText_ClientPhone->text().replace(" ",""));
 }

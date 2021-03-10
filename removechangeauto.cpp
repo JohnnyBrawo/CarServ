@@ -164,6 +164,8 @@ void RemoveChangeAuto::FillRegCombo()
 
     MyModel->setQuery(RegComboQry);
     ui->Combo_DelChangeAutoRegs->setModel(MyModel);
+    ui->Combo_DelChangeAutoRegs->setMaxVisibleItems(10);
+    ui->Combo_DelChangeAutoRegs->setStyleSheet("combobox-popup: 0;");
 
     MyData.CloseConnection();
 }
@@ -187,6 +189,8 @@ void RemoveChangeAuto::FillClientNameCombo()
 
     MyModel->setQuery(ClientComboQry);
     ui->Combo_DelChangeClientName->setModel(MyModel);
+    ui->Combo_DelChangeClientName->setMaxVisibleItems(10);
+    ui->Combo_DelChangeClientName->setStyleSheet("combobox-popup: 0;");
     MyData.CloseConnection();
 }
 

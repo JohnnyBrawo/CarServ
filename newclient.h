@@ -62,6 +62,7 @@ private slots:
     void on_LText_ClientName_textChanged(const QString &arg1);
     void on_Combo_Clients_currentIndexChanged(const QString &arg1);
     void on_Button_AddClientAutoEdit_clicked();
+    void on_LText_ClientPhone_editingFinished();
 };
 
 #endif // NEWCLIENT_H

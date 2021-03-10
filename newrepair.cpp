@@ -160,6 +160,8 @@ void NewRepair::FillComboMarki()
 
    MyModel->setQuery(ShowMakriQry);
    ui->Combo_NewRepair_Marka->setModel(MyModel);
+   ui->Combo_NewRepair_Marka->setMaxVisibleItems(10);
+   ui->Combo_NewRepair_Marka->setStyleSheet("combobox-popup: 0;");
 
    MyData.CloseConnection();
 
@@ -237,6 +239,9 @@ void NewRepair::FillComboModeli(int MarkaIndex)
 
     MyModel->setQuery(ShowModelQry);
     ui->Combo_NewRepair_Model->setModel(MyModel);
+    ui->Combo_NewRepair_Model->setMaxVisibleItems(10);
+    ui->Combo_NewRepair_Model->setStyleSheet("combobox-popup: 0;");
+
     MyData.CloseConnection();
 
     if(ui->Combo_NewRepair_Model->count() == 1)
