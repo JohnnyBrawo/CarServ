@@ -41,6 +41,8 @@ private:
     QString         m_ClientDB_ID;
     QString         m_ComboRegNumber;
     int    m_uiRepairIndex;
+    double m_dTotalPrice = 0.0;
+    bool   m_bTaxesIncluded = false;
     CarsDatabase MyData;
 public:
     explicit ShowAllcars(QWidget *parent = nullptr);

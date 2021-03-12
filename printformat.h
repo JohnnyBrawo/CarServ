@@ -20,6 +20,8 @@ public:
     void SetRegNum (QString RegNumber){ m_strClientRegNumber = RegNumber;}
     void SetClientID (QString ClientBD_ID){ m_strClient_ID = ClientBD_ID;}
     void SetClientName(QString  ClientName){ m_strClient_Name = ClientName;}
+    void SetRepairCost(double TotalCost, bool TaxesIncluded) { m_TotalRepairCost = TotalCost;
+                                                               m_bTaxesIncluded = TaxesIncluded; }
     bool GetPrintStatus() { return m_bPrintingDone; }
     void ResetPrintStatus() { m_bPrintingDone = false; }
 private slots:
@@ -39,6 +41,8 @@ private:
     QString m_strRepairCnt="";
     QString m_strRepairSPrice="";
     QString m_strRepairTotal="";
+    double m_TotalRepairCost = 0.0;
+    bool   m_bTaxesIncluded = false;
     QList<int> m_list;
     void FillClientData();
     void FillAutoData();

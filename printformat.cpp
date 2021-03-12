@@ -79,12 +79,13 @@ void PrintFormat::FillRepairData(int RepairNum)
 
     m_strRepairTotal  = "lineEdit_" + QString::number(RepairNum) + "_Total";
     CurrField =  this->findChild<QLineEdit *>(m_strRepairTotal);
-    if(CurrField)CurrField->setText(QString::number(m_list.at(3)));
+    if(CurrField)CurrField->setText(QString::number(m_list.at(2)));
 }
 
 void PrintFormat::ReadRepairs()
 {
     QRegExp tagExp("\n");
+      qDebug() << " ReadRepairs  "<<m_strRepairs;
     QStringList RepairsList = m_strRepairs.split(tagExp);
     ui->T_DateRepair->setText(RepairsList.at(1));
     QRegExp rx("(-?\\d+(?:[\\.,]\\d+(?:e\\d+)?)?)");
@@ -120,10 +121,11 @@ void PrintFormat::ReadRepairs()
 
         pos = 0;
         while ((pos = rx.indexIn(RepairsList.at(i), pos)) != -1) {
-            m_list << rx.cap(1).toInt();
+            m_list << rx.cap(1).toDouble();
             pos += rx.matchedLength();
         }
         if(!m_list.isEmpty()){
+             qDebug() << " Repair numbers  "<< m_list;
             FillRepairData(repair_num);
         }
     }
@@ -158,6 +160,14 @@ void PrintFormat::OpenPrintForm()
     ReadRepairs();
     QDate CurrentDate= QDate::currentDate();
     ui->T_Data->setText(CurrentDate.toString("dd.MM.yyyy"));
+    ui->lineEdit_TotalPay_Value->setText(QString::number(m_TotalRepairCost));
+    if(m_bTaxesIncluded){
+        ui->lineEdit_DDS_CostValue->setText(QString::number(m_TotalRepairCost/5));
+        ui->lineEdit_TotalRepairCost_Value->setText(QString::number(m_TotalRepairCost - (m_TotalRepairCost/5) ));
+    }else{
+        ui->lineEdit_DDS_CostValue->setText("-");
+        ui->lineEdit_TotalRepairCost_Value->setText(QString::number(m_TotalRepairCost ));
+    }
 
     this->show();
 
@@ -166,16 +176,16 @@ void PrintFormat::OpenPrintForm()
 QString PrintFormat::GetWorkingPath()
 {
     QString ScreenShotPath = QApplication::applicationDirPath();
-
-    if(QSysInfo::productType() == "debian"){
-        int position = ScreenShotPath.indexOf("/build");
-        ScreenShotPath.truncate(position);
-        ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
-    }else if(QSysInfo::productType() == "windows"){
-        int position = ScreenShotPath.indexOf("/build");
-        ScreenShotPath.truncate(position);
-        ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
-    }
+    ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
+//    if(QSysInfo::productType() == "debian"){
+//        int position = ScreenShotPath.indexOf("/build");
+//        ScreenShotPath.truncate(position);
+//        ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
+//    }else if(QSysInfo::productType() == "windows"){
+//        int position = ScreenShotPath.indexOf("/build");
+//        ScreenShotPath.truncate(position);
+//        ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
+//    }
 
     QDir::root().mkpath(ScreenShotPath);
     return ScreenShotPath;
@@ -187,25 +197,21 @@ void PrintFormat::on_B_PrintDocument_clicked()
     m_bPrintingDone = false;
     ui->B_PrintCancel->setVisible(false);
     ui->B_PrintDocument->setVisible(false);
-    ui->B_PrintCancel->setFocus();
+
+    ui->L_AutoMarka->setFocus();
 
     auto active_window = qApp->activeWindow();
     if (active_window) //could be null if your app doesn't have focus
     {
         QPixmap pixmap(active_window->size());
         active_window->render(&pixmap);
-        QString CurrentDate = QDate::currentDate().toString("dd.MM.yyyy");
+
+        // Format Output filename - date and time in case of multiple repairs in one day fo same car
+        QLocale testLocale = QLocale(QLocale::English, QLocale::UnitedStates);
+        QString CurrentTime = testLocale.toString(QDateTime::currentDateTime(), "dddd_dd_MMMM_yyyy_hh_mm_ss");
         ui->B_PrintCancel->setVisible(true);
         ui->B_PrintDocument->setVisible(true);
-// if file exist - make smart checks -
-// -> Owerwrite , make dialog for FileName .. something like this
-
-//        if(QFileInfo::exists(GetWorkingPath() + m_strClientRegNumber + "_" + CurrentDate + ".png"))
-//        {
-//            CurrentDate +="_" + Additional++;
-//        }
-
-        if(pixmap.save(GetWorkingPath() + m_strClientRegNumber + "_" + CurrentDate + ".png"))
+        if(pixmap.save(GetWorkingPath() + m_strClientRegNumber + "_" + CurrentTime + ".png"))
         {
             QMessageBox::information(this,"Success!","Print Page is saved for printing!");
             m_bPrintingDone = true;

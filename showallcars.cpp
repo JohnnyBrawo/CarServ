@@ -288,6 +288,9 @@ void ShowAllcars::FillAutoData()
 
 void ShowAllcars::FillRepairsList()
 {
+    m_bTaxesIncluded = false;
+    m_dTotalPrice = 0.0;
+
     QString RepairText = "";
     QString RepairData = "";
 
@@ -317,10 +320,12 @@ void ShowAllcars::FillRepairsList()
             RepairText += "   Single Price : " + EditClientsQry.value(3).toString();
             RepairText += "   Final Price : " + EditClientsQry.value(4).toString();
             RepairText += "   Total Price : " + EditClientsQry.value(5).toString();
+            m_dTotalPrice = EditClientsQry.value(5).toDouble();
 
 
             if(EditClientsQry.value(8).toString()=="1"){
                 RepairText += "\t Taxes included! ";
+                m_bTaxesIncluded = true;
             }
             RepairText += "\n===================";
 
@@ -435,6 +440,8 @@ void ShowAllcars::on_Button_PRINT_clicked()
     m_Print->SetRegNum(m_ComboRegNumber);
     m_Print->SetClientID(m_ClientDB_ID);
     m_Print->SetClientName(m_ComboClientName);
+    m_Print->SetRepairCost(m_dTotalPrice, m_bTaxesIncluded);
+
     this->hide();
 }
 

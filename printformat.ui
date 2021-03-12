@@ -368,6 +368,9 @@
    </property>
   </widget>
   <widget class="QLabel" name="L_TotalWorkCost">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>670</x>
@@ -453,6 +456,9 @@
    </property>
   </widget>
   <widget class="QLabel" name="L_TotalWorkCostValue">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>810</x>
