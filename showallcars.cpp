@@ -38,6 +38,7 @@ void ShowAllcars::DeactivateAllFields()
     ui->RButton_SearchRegNumbers->setChecked(false);
 
     ui->Button_NextRepair->setEnabled(false);
+
     ui->Button_PrevRepair->setEnabled(false);
 
     m_uiRepairIndex = -1;
