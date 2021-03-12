@@ -1,4 +1,6 @@
 ﻿#include "printformat.h"
+#include "QDate"
+#include "QDateTime"
 #include "ui_printformat.h"
 #include <qdebug.h>
 #include <QPixmap>
@@ -107,10 +109,8 @@ void PrintFormat::ReadRepairs()
         }
 
         m_list.clear();
-        pos = 0;
-
         // Get Repair name and Go on
-        if((pos = RepairsList.at(i).indexOf("Repair name:", pos)) != -1){
+        if((RepairsList.at(i).indexOf("Repair name:", 0)) != -1){
             QStringList myStringList = RepairsList.at(i).split(':');
             m_strRepairDescr = "lineEdit_" + QString::number(repair_num) + "_Descr";
             QLineEdit * CurrField =  this->findChild<QLineEdit *>(m_strRepairDescr);
@@ -126,9 +126,7 @@ void PrintFormat::ReadRepairs()
         if(!m_list.isEmpty()){
             FillRepairData(repair_num);
         }
-
     }
-
 }
 
 
@@ -142,13 +140,6 @@ void PrintFormat::FillClientData()
         qDebug() << "ShowClientsQry.Exec() SELECT ClientName FROM Clients_Table fail "<< EditClientsQry.lastError().text();
     }else {
          while (EditClientsQry.next()) {
-
-              qDebug() << " value(1) " <<EditClientsQry.value(1).toString();
-              qDebug() << " value(2) " <<EditClientsQry.value(2).toString();
-              qDebug() << " value(3) " <<EditClientsQry.value(3).toString();
-              qDebug() << " value(4) " <<EditClientsQry.value(4).toString();
-              qDebug() << " value(5) " <<EditClientsQry.value(5).toString();
-
             ui->T_KlientName->setText(EditClientsQry.value(1).toString());
             ui->T_KlientCity->setText(EditClientsQry.value(2).toString());
             ui->T_KlientFirm->setText(EditClientsQry.value(3).toString());
@@ -165,6 +156,9 @@ void PrintFormat::OpenPrintForm()
     FillAutoData();
     FillClientData();
     ReadRepairs();
+    QDate CurrentDate= QDate::currentDate();
+    ui->T_Data->setText(CurrentDate.toString("dd.MM.yyyy"));
+
     this->show();
 
 }
@@ -177,14 +171,12 @@ QString PrintFormat::GetWorkingPath()
         int position = ScreenShotPath.indexOf("/build");
         ScreenShotPath.truncate(position);
         ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
-    }else if(QSysInfo::productType() == "Win32"){
-        int position = ScreenShotPath.indexOf("\\build");
+    }else if(QSysInfo::productType() == "windows"){
+        int position = ScreenShotPath.indexOf("/build");
         ScreenShotPath.truncate(position);
-        ScreenShotPath.append("\\Repairs\\" + m_strClient_Name + "\\");
+        ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
     }
 
-
-    qDebug() << " GetWorkingPath "<< ScreenShotPath;
     QDir::root().mkpath(ScreenShotPath);
     return ScreenShotPath;
 }
@@ -193,12 +185,18 @@ QString PrintFormat::GetWorkingPath()
 void PrintFormat::on_B_PrintDocument_clicked()
 {
     m_bPrintingDone = false;
+    ui->B_PrintCancel->setVisible(false);
+    ui->B_PrintDocument->setVisible(false);
+    ui->B_PrintCancel->setFocus();
+
     auto active_window = qApp->activeWindow();
     if (active_window) //could be null if your app doesn't have focus
     {
         QPixmap pixmap(active_window->size());
         active_window->render(&pixmap);
         QString CurrentDate = QDate::currentDate().toString("dd.MM.yyyy");
+        ui->B_PrintCancel->setVisible(true);
+        ui->B_PrintDocument->setVisible(true);
 // if file exist - make smart checks -
 // -> Owerwrite , make dialog for FileName .. something like this
 
@@ -211,7 +209,7 @@ void PrintFormat::on_B_PrintDocument_clicked()
         {
             QMessageBox::information(this,"Success!","Print Page is saved for printing!");
             m_bPrintingDone = true;
-            emit on_B_PrintCancel_clicked();
+            on_B_PrintCancel_clicked();
         }
         else
         {

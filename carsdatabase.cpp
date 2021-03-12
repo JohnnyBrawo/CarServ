@@ -9,16 +9,28 @@ CarsDatabase::CarsDatabase()
 void CarsDatabase::GetWorkingPath()
 {
     QString testPath = QApplication::applicationDirPath();
+// qDebug() << "QSysInfo::productType() " << QSysInfo::productType();
+// qDebug() << "testPath " << testPath;
 
     if(QSysInfo::productType() == "debian"){
         int position = testPath.indexOf("/build");
-        testPath.truncate(position);
-        testPath.append("/CarServ/DataBase/");
-    }else if(QSysInfo::productType() == "Win32"){
-        int position = testPath.indexOf("\\build");
-        testPath.truncate(position);
-        testPath.append("\\CarServ\\DataBase\\");
+        if(position != (-1)){
+            testPath.truncate(position);
+            testPath.append("/CarServ/DataBase/");
+        }else {
+            qDebug() << " Cannot find BUILD name in project path for LINUX";
+        }
+    }else if(QSysInfo::productType() == "windows"){
+        int position = testPath.indexOf("/build");
+        if(position!=(-1)){
+            testPath.truncate(position);
+            testPath.append("/CarServ/DataBase/");
+        }else {
+            qDebug() << " Cannot find BUILD name in project path  for Windows ";
+        }
     }
+
+//    qDebug() << " Final Path " << testPath;
     m_WorkPath = testPath;
 }
 

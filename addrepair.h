@@ -38,7 +38,7 @@ private:
     unsigned int m_uiSubMenuNumber;
     bool         m_bSubMenuADD;
     double       m_dTotalCost;
-
+    bool         m_bRecordSuccess = false;
     /** Repair  */
     NewRepair         *m_NewRepairForm; // ????
 

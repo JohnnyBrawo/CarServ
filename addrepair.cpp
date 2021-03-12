@@ -111,6 +111,8 @@ void AddRepair::InsertRepair(bool SubMenu)
     if(!SubMenu){
         m_uiRepairsNumber ++;
         m_vMenusAndSubmebus.push_back(0);
+        ui->Button_DeleteRepair->setEnabled(true);
+        ui->Button_InsertSubMenu->setEnabled(true);
         m_uiSubMenuNumber = 0;
     }else if(m_uiRepairsNumber>0){
         m_vMenusAndSubmebus[m_uiRepairsNumber-1]++;
@@ -135,6 +137,13 @@ void AddRepair::on_Button_DeleteRepair_clicked()
     NewRepairItem * m_currentRepair;
     QListWidgetItem *  listDeleteItem;
     listDeleteItem = ui->RepairList->currentItem();
+
+    if(listDeleteItem == nullptr) {
+        QMessageBox::information(this,"Attention!","Select repair first  !");
+        return;
+    }
+
+    ui->RepairList->selectedItems();
 
     m_currentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listDeleteItem));
 
@@ -227,22 +236,30 @@ void AddRepair::ClearAllinputs()
 
 bool AddRepair::CheckRecordInformation()
 {
-    QListWidgetItem *  listRecordItem;
+    QListWidgetItem *  listItemData;
     NewRepairItem * m_newRepair;
+    bool CheckResults = true;
 
-    CarsDatabase MyData;
-    MyData.OpenConnection("Repairs.sqlite");
 
     for(int i=0; i< ui->RepairList->count(); i++)
     {
-        listRecordItem = ui->RepairList->item(i);
-        m_newRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listRecordItem));
-        if(m_newRepair->GetRepairDescrText().isEmpty() && m_newRepair->GetRepairQuantityText().isEmpty() && m_newRepair->GetRepairSinglePriceText().isEmpty() && m_newRepair->GetRepairValueText().isEmpty())
+        listItemData = ui->RepairList->item(i);
+        m_newRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
+
+        if( (m_newRepair->GetRepairDescrText().isEmpty() || m_newRepair->GetRepairDescrText() == "0") ||
+            ( m_newRepair->GetRepairQuantityText().isEmpty() || m_newRepair->GetRepairQuantityText() == "0") ||
+            ( m_newRepair->GetRepairSinglePriceText().isEmpty() || m_newRepair->GetRepairSinglePriceText() == "0") ||
+            ( m_newRepair->GetRepairValueText().isEmpty() || m_newRepair->GetRepairValueText() == "0") )
         {
-            QMessageBox::information(this,"Empty fields!","Emtpy fields will NOT be recorded .");
+                CheckResults = false;
         }
     }
-    MyData.CloseConnection();
+
+    if(!CheckResults){
+        QMessageBox::information(this,"Attention!","There is 0 or missing value in some fields. Record Fail  !");
+            return false;
+    }
+
     return true;
 }
 
@@ -250,9 +267,12 @@ void AddRepair::on_Button_RecordRepairs_clicked()
 {
     // Record to DATABASE
     RecordRepair();
-    ClearAllinputs();
-    // Return to MainForm
-    on_Button_ExitRepair_clicked();
+    if(m_bRecordSuccess ){
+        ClearAllinputs();
+        // Return to MainForm
+        on_Button_ExitRepair_clicked();
+    }
+     m_bRecordSuccess = true;
 }
 
 void AddRepair::RecordRepair()
@@ -263,20 +283,18 @@ void AddRepair::RecordRepair()
     NewRepairItem * m_newRepair;
 
     CarsDatabase MyData;
+
+    if(!CheckRecordInformation()){
+        m_bRecordSuccess = false;
+        return;
+    }
+
     MyData.OpenConnection("Repairs.sqlite");
 
     for(int i=0; i< ui->RepairList->count(); i++)
     {
         listItemData = ui->RepairList->item(i);
         m_newRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
-
-        if( m_newRepair->GetRepairDescrText().isEmpty() ||
-            m_newRepair->GetRepairQuantityText().isEmpty() ||
-            m_newRepair->GetRepairSinglePriceText().isEmpty() ||
-            m_newRepair->GetRepairValueText().isEmpty())
-        {
-            continue;
-        }
 
         ////// Record all repairs for this car
 
@@ -297,6 +315,8 @@ void AddRepair::RecordRepair()
             qDebug() << "INSERT INTO Repair_Table fail "<< AddNewAuto.lastError().text();
         }
     }
+
+    m_bRecordSuccess = true;
     MyData.CloseConnection();
     ClearAllinputs();
     OpenClearWindow();
@@ -379,11 +399,14 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
     {
         listItemData = ui->RepairList->item(i);
         m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
-
-        if(m_CurrentRepair->GetRepairValueText()=="0" && !m_CurrentRepair->GetRepairDescrText().isEmpty() ){
+        if( m_CurrentRepair->GetRepairValueText()=="0" && !m_CurrentRepair->GetRepairDescrText().isEmpty() ){
             double CalcValue = 0.0;
             CalcValue = m_CurrentRepair->GetRepairQuantityText().toDouble() * m_CurrentRepair->GetRepairSinglePriceText().toDouble();
-            m_CurrentRepair->SetRepairValueText(QString::number(CalcValue, 'f', 2));
+            if(CalcValue == 0.0){
+                m_CurrentRepair->SetRepairValueText(QString::number(0));
+            }else {
+                m_CurrentRepair->SetRepairValueText(QString::number(CalcValue, 'f', 2));
+            }
         }
     }
 
@@ -409,7 +432,12 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
 
     qDebug() << " Calculated total Cost " << totalCost;
     qDebug() << " Calculated total Cost " << QString::number(totalCost, 'f',2);
-    ui->LText_TotalPrice->setText(QString::number(totalCost, 'f',2));
+    if(totalCost == 0.00){
+        ui->LText_TotalPrice->setText(QString::number(0));
+    }
+    else {
+        ui->LText_TotalPrice->setText(QString::number(totalCost, 'f',2));
+    }
 }
 
 void AddRepair::on_Button_NewClientRepair_clicked()

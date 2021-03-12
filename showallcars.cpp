@@ -88,11 +88,10 @@ bool ShowAllcars::CalculateRepairIndex(bool Upper /** = true */)
         ui->Button_NextRepair->setEnabled(true);
         if(m_uiRepairIndex == 0 ){
                 ui->Button_PrevRepair->setEnabled(false);
-                 return true;
-            }
+                return true;
+        }
         return true;
     }
-
     return false;
 }
 
@@ -117,7 +116,7 @@ void ShowAllcars::OpenClearWindow()
 {
     if(m_Print->GetPrintStatus()){
         m_Print->ResetPrintStatus();
-        emit on_Button_Back_clicked();
+        on_Button_Back_clicked();
         return;
     }
 
@@ -370,11 +369,25 @@ void ShowAllcars::on_Button_Search_clicked()
            break;
     }
     case eRegNumber : {
+        MyData.OpenConnection("Automobiles.sqlite");
+        QSqlQuery EditClientsQry(MyData.CarsDB);
 
-        break;
+        /** Namireme klienta po ime. Sled koeto mu wzemame CLIENT_ID- to , za da move da go namerim w bazata s kolite ! Ako move da mu izmislq neshto po-umno -> Chudesno*/
+        EditClientsQry.prepare("SELECT * FROM Automobiles_Table WHERE Auto_RegNumber='"+ui->Combo_Search_RegNumber->currentText()+"' ");
+        if(!EditClientsQry.exec()){
+            qDebug() << " on_Button_Search_clicked REG_NUMBER QUery failed "<< EditClientsQry.lastError().text();
+        }
+        else {
+            /// Fill all automobiles with speciffic ClientID or Auto_Reg Number
+            if (EditClientsQry.next()) {
+                m_ClientDB_ID = EditClientsQry.value(0).toString();
+            }
+        }
+        MyData.CloseConnection();
+        FillAutoData();
+       break;
     }
     case eDate : {
-
         break;
     }
     default :
@@ -383,7 +396,6 @@ void ShowAllcars::on_Button_Search_clicked()
       break;
     }
     }
-
 }
 
 void ShowAllcars::ShowRepairData(bool NextRepair )
