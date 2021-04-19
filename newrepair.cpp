@@ -3,7 +3,6 @@
 #include "qapplication.h"
 #include "qdesktopwidget.h"
 #include <qdebug.h>
-#include "carsdatabase.h"
 #include <QtWidgets>
 
 NewRepair::NewRepair(QWidget *parent) :
@@ -146,7 +145,6 @@ void NewRepair::on_Button_AddNewRepair_clicked()
 
 void NewRepair::FillComboMarki()
 {
-   CarsDatabase MyData;
    MyData.OpenConnection("Marki.sqlite");
 
    QSqlQueryModel * MyModel = new QSqlQueryModel();
@@ -225,7 +223,7 @@ void NewRepair::ActivateField(NewRepair::NewAutoFields Field)
 
 void NewRepair::FillComboModeli(int MarkaIndex)
 {
-    CarsDatabase MyData;
+
     MyData.OpenConnection("All_Models.sqlite");
     QSqlQueryModel *MyModel = new QSqlQueryModel();
     QSqlQuery ShowModelQry(MyData.CarsDB);

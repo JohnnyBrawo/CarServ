@@ -5,7 +5,6 @@
 #include "qdebug.h"
 #include "QDate"
 #include "QDateTime"
-#include "carsdatabase.h"
 #include <QtWidgets>
 
 AddRepair::AddRepair(QWidget *parent) :
@@ -23,8 +22,12 @@ AddRepair::AddRepair(QWidget *parent) :
     m_vRepairItem.clear();
     m_vMenusAndSubmebus.clear();
 
-     QObject::connect(ui->Button_NewClientRepair, SIGNAL(clicked()), m_NewRepairForm, SLOT(OpenNewRepairWindow()));
-     QObject::connect(m_NewRepairForm, SIGNAL(CloseNewRepairForm()), this, SLOT(RestoreAutoRepairForm()));
+
+    ui->Combo_RepairAutoRegNumber->setMaxVisibleItems(10);
+    ui->Combo_RepairAutoRegNumber->setStyleSheet("combobox-popup: 0;");
+
+    QObject::connect(ui->Button_NewClientRepair, SIGNAL(clicked()), m_NewRepairForm, SLOT(OpenNewRepairWindow()));
+    QObject::connect(m_NewRepairForm, SIGNAL(CloseNewRepairForm()), this, SLOT(RestoreAutoRepairForm()));
 }
 
 AddRepair::~AddRepair()
@@ -35,7 +38,6 @@ AddRepair::~AddRepair()
 
 void AddRepair::FillPage()
 {
-    CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
     QSqlQuery ShowModelQry(MyData.CarsDB);
@@ -282,8 +284,6 @@ void AddRepair::RecordRepair()
     QListWidgetItem *  listItemData;
     NewRepairItem * m_newRepair;
 
-    CarsDatabase MyData;
-
     if(!CheckRecordInformation()){
         m_bRecordSuccess = false;
         return;
@@ -353,10 +353,8 @@ void AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &
 void AddRepair::SetKlientName(QString CarNumber){
 
     int ClientID = 0;
-    CarsDatabase MyCarData;
-    CarsDatabase MyClientData;
-    MyCarData.OpenConnection("Automobiles.sqlite");
-    QSqlQuery ShowModelQry(MyCarData.CarsDB);
+    MyData.OpenConnection("Automobiles.sqlite");
+    QSqlQuery ShowModelQry(MyData.CarsDB);
     ShowModelQry.prepare("SELECT CLIENT_ID FROM Automobiles_Table WHERE Auto_RegNumber='"+CarNumber+"' ");
 
     if(! ShowModelQry.exec()){
@@ -366,10 +364,10 @@ void AddRepair::SetKlientName(QString CarNumber){
             ClientID = ShowModelQry.value(0).toInt();
         }
     }
-    MyCarData.CloseConnection();
+    MyData.CloseConnection();
 
-    MyClientData.OpenConnection("Clients.sqlite");
-    QSqlQuery ShowClentQry(MyClientData.CarsDB);
+    MyData.OpenConnection("Clients.sqlite");
+    QSqlQuery ShowClentQry(MyData.CarsDB);
     ShowClentQry.prepare("SELECT ClientName FROM Clients_Table WHERE PR_ID='"+QString::number(ClientID)+"' ");
 
     if(! ShowClentQry.exec()){
@@ -379,7 +377,7 @@ void AddRepair::SetKlientName(QString CarNumber){
             ui->L_KlientName->setText(ShowClentQry.value(0).toString());
         }
     }
-    MyClientData.CloseConnection();
+    MyData.CloseConnection();
 
 }
 
@@ -426,12 +424,9 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
 
     m_dTotalCost = totalCost;
     if(ui->CheckBox_DDS->isChecked()){
-        qDebug() << " CheckBox_DDS isChecked";
         totalCost = totalCost + (totalCost/5);
     }
 
-    qDebug() << " Calculated total Cost " << totalCost;
-    qDebug() << " Calculated total Cost " << QString::number(totalCost, 'f',2);
     if(totalCost == 0.00){
         ui->LText_TotalPrice->setText(QString::number(0));
     }
@@ -455,8 +450,6 @@ void AddRepair::RestoreAutoRepairForm()
 
 void AddRepair::on_CheckBox_DDS_stateChanged(int arg1)
 {
-    qDebug() << " ui->LText_TotalPrice->text().isEmpty() " << ui->LText_TotalPrice->text().isEmpty();
-    qDebug() << " ui->LText_TotalPrice->text().toDouble() " << ui->LText_TotalPrice->text().toDouble();
    if(!ui->LText_TotalPrice->text().isEmpty() && ui->LText_TotalPrice->text().toDouble()!=0.0)
    {
        double TotalPrice = m_dTotalCost;

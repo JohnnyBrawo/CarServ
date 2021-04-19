@@ -2,6 +2,7 @@
 #define REMOVECHANGEAUTO_H
 
 #include <QDialog>
+#include "carsdatabase.h"
 
 namespace Ui {
 class RemoveChangeAuto;
@@ -13,6 +14,8 @@ class RemoveChangeAuto : public QDialog
 
 private:
     Ui::RemoveChangeAuto *ui;
+
+    CarsDatabase MyData;
 
     void FillPage();
     void FillRegCombo();

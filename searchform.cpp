@@ -5,7 +5,6 @@
 #include "QDate"
 #include "QDateTime"
 #include <qdebug.h>
-#include "carsdatabase.h"
 
 SearchForm::SearchForm(QWidget *parent) :
     QDialog(parent),
@@ -27,6 +26,14 @@ void SearchForm::OpenClearWindow()
     ui->Combo_Search_Klient->setCurrentIndex(0);
     ui->Combo_Search_RegNumber->setCurrentIndex(0);
 
+    ui->Combo_SearchAuto->setMaxVisibleItems(10);
+    ui->Combo_SearchAuto->setStyleSheet("combobox-popup: 0;");
+
+    ui->Combo_Search_Klient->setMaxVisibleItems(10);
+    ui->Combo_Search_Klient->setStyleSheet("combobox-popup: 0;");
+
+    ui->Combo_Search_RegNumber->setMaxVisibleItems(10);
+    ui->Combo_Search_RegNumber->setStyleSheet("combobox-popup: 0;");
 
     QDate CurrentDate= QDate::currentDate();
 
@@ -45,7 +52,6 @@ void SearchForm::OpenClearWindow()
 void SearchForm::FillClientsNameCombo()
 {
     qDebug() << "SearchForm::FillClientsNameCombo()   ";
-    CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
 
     QSqlQueryModel * ClientsNameComboModel = new QSqlQueryModel();
@@ -59,17 +65,12 @@ void SearchForm::FillClientsNameCombo()
 
     ClientsNameComboModel->setQuery(ShowClientsQry);
     ui->Combo_Search_Klient->setModel(ClientsNameComboModel);
-    ui->Combo_Search_Klient->setMaxVisibleItems(10);
-    ui->Combo_Search_Klient->setStyleSheet("combobox-popup: 0;");
-
     MyData.CloseConnection();
 }
 
 
 void SearchForm::FillRegNumbersCombo()
 {
-    qDebug() << "SearchForm::FillRegNumbersCombo()   ";
-    CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQueryModel * CarRegNumberComboModel = new QSqlQueryModel();
@@ -83,9 +84,6 @@ void SearchForm::FillRegNumbersCombo()
 
     CarRegNumberComboModel->setQuery(ShowClientsQry);
     ui->Combo_Search_RegNumber->setModel(CarRegNumberComboModel);
-    ui->Combo_Search_RegNumber->setMaxVisibleItems(10);
-    ui->Combo_Search_RegNumber->setStyleSheet("combobox-popup: 0;");
-
     MyData.CloseConnection();
 
 }
@@ -93,8 +91,6 @@ void SearchForm::FillRegNumbersCombo()
 
 void SearchForm::FillAutosCombo()
 {
-    qDebug() << "SearchForm::FillRegNumbersCombo()   ";
-    CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQueryModel * CarsComboModel = new QSqlQueryModel();
@@ -108,8 +104,6 @@ void SearchForm::FillAutosCombo()
 
     CarsComboModel->setQuery(ShowClientsQry);
     ui->Combo_SearchAuto->setModel(CarsComboModel);
-    ui->Combo_SearchAuto->setMaxVisibleItems(10);
-    ui->Combo_SearchAuto->setStyleSheet("combobox-popup: 0;");
 
     MyData.CloseConnection();
 
@@ -148,12 +142,16 @@ void SearchForm::on_RButton_SearchAutos_clicked()
 {
     DeactivateAllFields();
     ui->Combo_SearchAuto->setEnabled(true);
+//    ui->Combo_SearchAuto->setMaxVisibleItems(10);
+//    ui->Combo_SearchAuto->setStyleSheet("combobox-popup: 0;");
 }
 
 void SearchForm::on_RButton_SearchClients_clicked()
 {
     DeactivateAllFields();
     ui->Combo_Search_Klient->setEnabled(true);
+//    ui->Combo_Search_Klient->setMaxVisibleItems(10);
+//    ui->Combo_Search_Klient->setStyleSheet("combobox-popup: 0;");
 }
 
 void SearchForm::on_RButton_SearchRegNumbers_clicked()

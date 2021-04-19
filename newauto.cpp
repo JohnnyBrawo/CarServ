@@ -3,7 +3,6 @@
 #include "qapplication.h"
 #include "qdesktopwidget.h"
 #include <qdebug.h>
-#include "carsdatabase.h"
 #include <QtWidgets>
 
 // Must have Automobile database here
@@ -135,13 +134,15 @@ void NewAuto::on_Button_AddNewAuto_clicked()
                   ui->Combo_NewAuto_Year->currentText(), ui->Combo_NewAuto_Fuel->currentText(), ui->LText_NewAutoVIN->text(), ui->Combo_NewAuto_Type->currentText()))
     {
          ClearAllFields();
+    }else {
+        emit on_Button_CancelNewAuto_clicked();
     }
 }
 
 
 void NewAuto::FillComboMarki()
 {
-    CarsDatabase MyData;
+
     MyData.OpenConnection("Marki.sqlite");
 
     QSqlQueryModel * MyModel = new QSqlQueryModel();
@@ -224,7 +225,6 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
 
 void NewAuto::FillComboModeli(int MarkaIndex)
 {
-    CarsDatabase MyData;
     MyData.OpenConnection("All_Models.sqlite");
     QSqlQueryModel *MyModel = new QSqlQueryModel();
     QSqlQuery ShowModelQry(MyData.CarsDB);
@@ -271,8 +271,8 @@ void NewAuto::on_Combo_NewAuto_Model_currentIndexChanged(int index)
     }
 }
 
-bool NewAuto::AutoExsist(QString RegNum){
-    CarsDatabase MyData;
+bool NewAuto::AutoExsist(QString RegNum)
+{
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQuery ShowModelQry(MyData.CarsDB);
     bool m_bfound = false;
@@ -295,7 +295,7 @@ bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel
                          QString AutoFuel, QString AutoVIN, QString AutoType)
 {
     if (AutoExsist(RegNumber)) {
-       QMessageBox::information(this,"Erroe!","There is automobile with this registration !! ");
+       QMessageBox::information(this,"Error!","There is automobile with this registration !! ");
        return false;
     }
     qDebug() << " NewAuto::AddCarInfo : " <<
@@ -307,7 +307,6 @@ bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel
                 " AutoVIN " << AutoVIN<<
                 " AutoType " << AutoType ;
 
-    CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
     qDebug() << " zapchwame INSERT INTO Automobiles_Table ";
     QSqlQuery AddNewAuto(MyData.CarsDB);

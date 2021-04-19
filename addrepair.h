@@ -7,6 +7,7 @@
 #include <QVector>
 #include <QDebug>
 #include "newrepair.h"
+#include "carsdatabase.h"
 
 #include "repairwigdetitem.h"
 
@@ -41,6 +42,9 @@ private:
     bool         m_bRecordSuccess = false;
     /** Repair  */
     NewRepair         *m_NewRepairForm; // ????
+
+    /** DataBase */
+    CarsDatabase MyData;
 
 public:
     explicit AddRepair(QWidget *parent = 0);

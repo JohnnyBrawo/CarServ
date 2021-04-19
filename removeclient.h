@@ -2,6 +2,7 @@
 #define REMOVECLIENT_H
 
 #include <QDialog>
+#include "carsdatabase.h"
 
 namespace Ui {
 class RemoveClient;
@@ -13,6 +14,8 @@ class RemoveClient : public QDialog
 
 private:
     Ui::RemoveClient *ui;
+    void FillClientsNameCombo();
+    CarsDatabase MyData;
 
 public:
     explicit RemoveClient(QWidget *parent = nullptr);

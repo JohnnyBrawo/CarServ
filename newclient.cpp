@@ -3,7 +3,6 @@
 #include "qapplication.h"
 #include "qdesktopwidget.h"
 #include "newauto.h"
-#include "carsdatabase.h"
 #include <QtWidgets>
 //#include <QPrintDialog>
 //#include <QPrinter>
@@ -143,7 +142,6 @@ void NewClient::CenterForm()
 
 void NewClient::RecordCarToClient()
 {
-    CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQuery ClientQry(MyData.CarsDB);
@@ -179,12 +177,23 @@ bool NewClient::CheckRecordObligatory(){
 void NewClient::on_Button_Add_Client_clicked()
 {
     if (CheckRecordObligatory()){
-        AddClentInfo( ui->LText_ClientName->text(),
+        if(!AddClentInfo( ui->LText_ClientName->text(),
                      ui->LText_ClientPhone->text(),
                      ui->LText_ClientFirm->text(),
                      ui->LText_ClientCity->text(),
-                     ui->Text_ClientAddress->toPlainText());
+                     ui->Text_ClientAddress->toPlainText())){
+            qDebug() <<"  Add_Client    FAILED - stay for corrections " ;
+            return;
+        }else {
+            qDebug() <<"  Add_Client    Passed  RecordCarToClient" ;
+            RecordCarToClient();
+        }
+    }else {
+      qDebug() <<"  on_Button_Add_Client_clicked    FAILED " ;
     }
+
+    qDebug() <<"  on_Button_Add_Client_clicked    m_strClientCarReg "<<m_strClientCarReg ;
+
     ClearAllFields();
     on_Button_CancelAdd_clicked();
 
@@ -205,7 +214,6 @@ void NewClient::on_LText_ClientName_textChanged(const QString &arg1)
 
 void NewClient::FillClientsNameCombo()
 {
-    CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
 
     QSqlQueryModel * ClientsNameComboModel = new QSqlQueryModel();
@@ -228,7 +236,6 @@ void NewClient::FillClientsNameCombo()
 
 void NewClient::on_Combo_Clients_currentIndexChanged(const QString &arg1)
 {
-    CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
     QSqlQuery SelectClientQry(MyData.CarsDB);
 
@@ -284,7 +291,6 @@ bool NewClient::ClientExsist(QString ClientName, QString ClientPhone){
        return true;
     }
 
-    CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
     QSqlQuery ShowModelQry(MyData.CarsDB);
     bool m_bfoundName = false;
@@ -329,10 +335,14 @@ bool NewClient::ClientExsist(QString ClientName, QString ClientPhone){
 bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString ClientFirm, QString ClientCity,  QString ClientAddress)
 {
     if (ClientExsist(ClientName,ClientPhone )) {
+        qDebug() << "NewClient::AddClentInfo return false ";
        return false;
     }
 
-    CarsDatabase MyData;
+ qDebug() << "NewClient::AddClentInfo m_bClientFormEditMode " << m_bClientFormEditMode;
+    qDebug() << "NewClient::AddClentInfo ClientName " << ClientName << "\n  ClientPhone "<<ClientPhone<< "\n  ClientFirm "<<ClientFirm<<"\n  ClientCity "<<ClientCity
+             <<"\n  ClientAddress "<<ClientAddress;
+
     MyData.OpenConnection("Clients.sqlite");
     QSqlQuery ClientQry(MyData.CarsDB);
 
@@ -363,6 +373,7 @@ bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString C
         }
         else {
             m_strClientID = LastRowQry.lastInsertId().toString();
+            qDebug() << "NewClient::AddClentInfo m_strClientID  "<< m_strClientID;
         }
     }
     else {

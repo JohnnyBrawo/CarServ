@@ -1,6 +1,5 @@
 ﻿#include "removechangeauto.h"
 #include "ui_removechangeauto.h"
-#include "carsdatabase.h"
 #include <QtWidgets>
 
 RemoveChangeAuto::RemoveChangeAuto(QWidget *parent) :
@@ -130,7 +129,6 @@ void RemoveChangeAuto::FillPage()
 
 void RemoveChangeAuto::FillRegCombo()
 {
-    CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
     QSqlQuery RegComboQry(MyData.CarsDB);
@@ -172,7 +170,6 @@ void RemoveChangeAuto::FillRegCombo()
 
 void RemoveChangeAuto::FillClientNameCombo()
 {
-    CarsDatabase MyData;
     MyData.OpenConnection("Clients.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
     QSqlQuery ClientComboQry(MyData.CarsDB);
@@ -208,7 +205,6 @@ void RemoveChangeAuto::ShowAllFieldsText()
 
 void RemoveChangeAuto::on_Button_Record_clicked()
 {
-    CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
 
     /** Towa e qko typo , obache trqbwa da ima kontrol na dannite predi da se zapishat. Inache nqma hwashtane */
@@ -236,7 +232,6 @@ void RemoveChangeAuto::on_Button_Record_clicked()
 
 void RemoveChangeAuto::on_Button_DeleteAuto_clicked()
 {
-    CarsDatabase MyData;
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQuery AddNewAuto(MyData.CarsDB);
@@ -288,7 +283,7 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
     if(m_bInitialize){
         return;
     }
-    CarsDatabase MyData;
+
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQuery EditAutoQry(MyData.CarsDB);
 
@@ -313,6 +308,17 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
     }else {
         /// Fill all automobiles with speciffic ClientID or Auto_Reg Number
         if (EditAutoQry.next()) {
+
+            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(1).toString();
+            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(2).toString();
+            qDebug() << " RemoveChangeAuto  " << EditAutoQry.value(3).toString();
+            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(4).toString();
+            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(5).toString();
+            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(6).toString();
+            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(7).toString();
+            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(8).toString();
+
+
             if(m_SelectedClientID.isEmpty() ){
                 ui->L_UnkownClients->setVisible(false);
                 m_SelectedClientID = EditAutoQry.value(1).toString();

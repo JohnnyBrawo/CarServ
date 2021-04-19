@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "newauto.h"
 #include "removechangeauto.h"
+#include "carsdatabase.h"
 
 namespace Ui {
 class NewClient;
@@ -17,6 +18,7 @@ private:
     Ui::NewClient *ui;
     RemoveChangeAuto    *m_AttachAuto;
     NewAuto             *m_NewAuto;
+    CarsDatabase MyData;
 
     QString            m_strClientID;
     QString             m_strLastClientName;

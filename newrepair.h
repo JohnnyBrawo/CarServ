@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "newclient.h"
 #include "newauto.h"
+#include "carsdatabase.h"
 
 namespace Ui {
 class NewRepair;
@@ -35,6 +36,7 @@ private:
 
     NewClient *m_Client;
     NewAuto  *m_Auto;
+    CarsDatabase MyData;
 
     void FillComboMarki();
     void FillComboModeli(int MarkaIndex);

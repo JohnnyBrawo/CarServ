@@ -2,6 +2,7 @@
 #define SEARCHFORM_H
 
 #include <QDialog>
+#include "carsdatabase.h"
 
 namespace Ui {
 class SearchForm;
@@ -13,6 +14,8 @@ class SearchForm : public QDialog
 
 private:
     Ui::SearchForm *ui;
+    CarsDatabase MyData;
+
     void CenterForm();
     void FillClientsNameCombo();
     void FillRegNumbersCombo();

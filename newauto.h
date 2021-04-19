@@ -2,6 +2,7 @@
 #define NEWAUTO_H
 
 #include <QDialog>
+#include "carsdatabase.h"
 
 
 namespace Ui {
@@ -24,7 +25,7 @@ enum NewAutoFields
 
 private:
     Ui::NewAuto *ui;
-
+    CarsDatabase MyData;
     void FillComboMarki();
     void FillComboModeli(int MarkaIndex);
     bool CheckSelected(QString SelectedString);
