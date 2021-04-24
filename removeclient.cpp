@@ -1,11 +1,13 @@
 #include "removeclient.h"
 #include "ui_removeclient.h"
+#include <QtWidgets>
 
 RemoveClient::RemoveClient(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::RemoveClient)
 {
     ui->setupUi(this);
+    CenterForm();
     ui->m_ComboBoxClients->setMaxVisibleItems(10);
     ui->m_ComboBoxClients->setStyleSheet("combobox-popup: 0;");
 }
@@ -13,6 +15,14 @@ RemoveClient::RemoveClient(QWidget *parent) :
 RemoveClient::~RemoveClient()
 {
     delete ui;
+}
+
+void RemoveClient::CenterForm()
+{
+    setFixedSize(geometry().width(), geometry().height());
+    QRect desktopRect = QApplication::desktop()->availableGeometry(this);
+    QPoint center = desktopRect.center();
+    move(center.x()-static_cast<int>(width()*0.5), center.y()-static_cast<int>(height()*0.5) );
 }
 
 void RemoveClient::on_Button_Back_clicked()

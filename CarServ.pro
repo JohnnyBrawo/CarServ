@@ -30,11 +30,9 @@ SOURCES += \
     searchform.cpp \
     repairwigdetitem.cpp \
     addrepair.cpp \
-    carsform.cpp \
     carsdatabase.cpp \
     showallcars.cpp \
     removechangeauto.cpp \
-    clientsform.cpp \
     removeclient.cpp \
     printformat.cpp
 
@@ -46,11 +44,9 @@ HEADERS += \
     searchform.h \
     repairwigdetitem.h \
     addrepair.h \
-    carsform.h \
     carsdatabase.h \
     showallcars.h \
     removechangeauto.h \
-    clientsform.h \
     removeclient.h \
     printformat.h
 
@@ -62,10 +58,8 @@ FORMS += \
     addrepair.ui \
     repairwigdetitem.ui \
     newauto.ui \
-    carsform.ui \
     showallcars.ui \
     removechangeauto.ui \
-    clientsform.ui \
     removeclient.ui \
     printformat.ui
 

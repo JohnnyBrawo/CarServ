@@ -11,12 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     m_Repairs(new AddRepair()),
 
-    m_Autos(new CarsForm()),
     m_ShowAllAutos(new ShowAllcars()),
     m_NewAuto(new NewAuto()),
     m_DelEdtiAuto(new RemoveChangeAuto()),
 
-    m_Clients(new ClientsForm()),
     m_NewClient(new NewClient()),
     m_RemoveClient(new RemoveClient())
 {
@@ -65,9 +63,7 @@ void MainWindow::CenterForm()
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete m_Clients;
     delete m_Repairs;
-    delete m_Autos;
     delete m_ShowAllAutos;
     delete m_NewAuto;
     delete m_DelEdtiAuto;

@@ -26,6 +26,7 @@ private:
     void ShowAllFieldsText();
     void UpdateFlags();
     bool CheckField(QString SelectedString);
+    void CenterForm();
 
     QString m_SelectedRegNumber;
     QString m_SelectedClientID;

@@ -27,6 +27,8 @@ private:
     void FillRepairsList();
     bool CalculateRepairIndex(bool NextRepair = true);
     void ShowRepairData(bool NextRepair = false);
+    void CenterForm();
+
     QVector<QString> strRepairVector;
     enum SearchChoise {
         eNone,

@@ -15,6 +15,15 @@ NewAuto::NewAuto(QWidget *parent) :
     m_strSelectedCarReg = "None";
     CenterForm();
     setWindowTitle("New Auto");
+
+    ui->Combo_NewAuto_Model->setMaxVisibleItems(10);
+    ui->Combo_NewAuto_Model->setStyleSheet("combobox-popup: 0;");
+
+    ui->Combo_NewAuto_Marka->setMaxVisibleItems(10);
+    ui->Combo_NewAuto_Marka->setStyleSheet("combobox-popup: 0;");
+
+    ui->Combo_NewAuto_Year->setMaxVisibleItems(10);
+    ui->Combo_NewAuto_Year->setStyleSheet("combobox-popup: 0;");
 }
 
 NewAuto::~NewAuto()
@@ -54,7 +63,7 @@ void NewAuto::ClearAllFields()
     ui->Combo_NewAuto_Marka->setCurrentIndex(0);
 
     ui->Combo_NewAuto_Model->clear();
-     ui->Combo_NewAuto_Model->setCurrentIndex(-1);
+    ui->Combo_NewAuto_Model->setCurrentIndex(-1);
     ui->Combo_NewAuto_Model->setEnabled(false);
 
     ui->Combo_NewAuto_Year->setCurrentIndex(0);
@@ -156,8 +165,6 @@ void NewAuto::FillComboMarki()
 
     MyModel->setQuery(ShowMakriQry);
     ui->Combo_NewAuto_Marka->setModel(MyModel);
-    ui->Combo_NewAuto_Marka->setMaxVisibleItems(10);
-    ui->Combo_NewAuto_Marka->setStyleSheet("combobox-popup: 0;");
     MyData.CloseConnection();
 
 }
@@ -228,7 +235,6 @@ void NewAuto::FillComboModeli(int MarkaIndex)
     MyData.OpenConnection("All_Models.sqlite");
     QSqlQueryModel *MyModel = new QSqlQueryModel();
     QSqlQuery ShowModelQry(MyData.CarsDB);
-qDebug() << "MarkaIndex "<<MarkaIndex;
 
     ShowModelQry.prepare("SELECT Model_Name FROM All_Models_Table WHERE Model_ID='"+QString::number(MarkaIndex)+"' ");
 
@@ -239,8 +245,6 @@ qDebug() << "MarkaIndex "<<MarkaIndex;
 
     MyModel->setQuery(ShowModelQry);
     ui->Combo_NewAuto_Model->setModel(MyModel);
-    ui->Combo_NewAuto_Model->setMaxVisibleItems(10);
-    ui->Combo_NewAuto_Model->setStyleSheet("combobox-popup: 0;");
 
     MyData.CloseConnection();
 

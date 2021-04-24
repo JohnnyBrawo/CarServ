@@ -168,9 +168,6 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="1" colspan="2">
-     <widget class="QLineEdit" name="LText_DelChangeFuel"/>
-    </item>
     <item row="2" column="0">
      <widget class="QLabel" name="L_Change_Model">
       <property name="font">
@@ -188,12 +185,6 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="1" colspan="2">
-     <widget class="QLineEdit" name="LText_DelChangeType"/>
-    </item>
-    <item row="6" column="2">
-     <widget class="QLineEdit" name="LText_DelChangeRegNumber"/>
-    </item>
     <item row="7" column="0">
      <widget class="QLabel" name="L_Change_VIN">
       <property name="font">
@@ -210,12 +201,6 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-    </item>
-    <item row="1" column="1" colspan="2">
-     <widget class="QLineEdit" name="LText_DelChangeMarka"/>
-    </item>
-    <item row="2" column="1" colspan="2">
-     <widget class="QLineEdit" name="LText_DelChangeModel"/>
     </item>
     <item row="0" column="0" colspan="3">
      <widget class="QLabel" name="L_ChangeAutoInfo">
@@ -245,24 +230,6 @@
       </property>
       <property name="text">
        <string>Марка</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0" colspan="2">
-     <widget class="QLabel" name="L_Change_RegNumber">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Регистрационен 
- номер</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -306,8 +273,41 @@
     <item row="7" column="1" colspan="2">
      <widget class="QLineEdit" name="LText_DelChangeVIN"/>
     </item>
+    <item row="1" column="1" colspan="2">
+     <widget class="QComboBox" name="m_ComboMarka"/>
+    </item>
+    <item row="2" column="1" colspan="2">
+     <widget class="QComboBox" name="m_ComboModel"/>
+    </item>
+    <item row="5" column="1" colspan="2">
+     <widget class="QComboBox" name="m_ComboFuel"/>
+    </item>
     <item row="4" column="1" colspan="2">
-     <widget class="QLineEdit" name="LText_DelChangeYear"/>
+     <widget class="QComboBox" name="m_ComboYear"/>
+    </item>
+    <item row="3" column="1" colspan="2">
+     <widget class="QComboBox" name="m_ComboType"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="L_Change_RegNumber">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Регистрационен 
+ номер</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1" colspan="2">
+     <widget class="QLineEdit" name="LText_DelChangeRegNumber"/>
     </item>
    </layout>
   </widget>

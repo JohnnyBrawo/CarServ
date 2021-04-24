@@ -15,6 +15,7 @@ class RemoveClient : public QDialog
 private:
     Ui::RemoveClient *ui;
     void FillClientsNameCombo();
+    void CenterForm();
     CarsDatabase MyData;
 
 public:

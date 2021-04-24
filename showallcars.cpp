@@ -14,6 +14,7 @@ ShowAllcars::ShowAllcars(QWidget *parent) :
     m_uiRepairIndex(-1)
 {
     ui->setupUi(this);
+    CenterForm();
     QObject::connect(m_Print, SIGNAL(ClosePrintForm()), this, SLOT(OpenClearWindow()));
     QObject::connect(ui->Button_PRINT, SIGNAL(clicked()), m_Print, SLOT(OpenPrintForm()));
 }
@@ -21,6 +22,14 @@ ShowAllcars::ShowAllcars(QWidget *parent) :
 ShowAllcars::~ShowAllcars()
 {
     delete ui;
+}
+
+void ShowAllcars::CenterForm()
+{
+    setFixedSize(geometry().width(), geometry().height());
+    QRect desktopRect = QApplication::desktop()->availableGeometry(this);
+    QPoint center = desktopRect.center();
+    move(center.x()-static_cast<int>(width()*0.5), center.y()-static_cast<int>(height()*0.5) );
 }
 
 

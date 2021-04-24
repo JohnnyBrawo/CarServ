@@ -32,6 +32,7 @@ private:
 
     bool m_bPrintingDone = false;
     CarsDatabase MyData;
+
     QString m_strRepairs="";
     QString m_strClientRegNumber="";
     QString m_strClient_ID="";
@@ -44,6 +45,8 @@ private:
     double m_TotalRepairCost = 0.0;
     bool   m_bTaxesIncluded = false;
     QList<int> m_list;
+
+    void CenterForm();
     void FillClientData();
     void FillAutoData();
     void ReadRepairs();

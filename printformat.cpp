@@ -9,14 +9,24 @@
 #include <QMessageBox>
 #include <QSysInfo>
 #include <QFileInfo>
+#include <QtWidgets>
 
 PrintFormat::PrintFormat(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PrintFormat)
 {
     ui->setupUi(this);
+    CenterForm();
     m_strRepairs = "";
     m_strClientRegNumber="";
+}
+
+void PrintFormat::CenterForm()
+{
+    setFixedSize(geometry().width(), geometry().height());
+    QRect desktopRect = QApplication::desktop()->availableGeometry(this);
+    QPoint center = desktopRect.center();
+    move(center.x()-static_cast<int>(width()*0.5), center.y()-static_cast<int>(height()*0.5) );
 }
 
 PrintFormat::~PrintFormat()

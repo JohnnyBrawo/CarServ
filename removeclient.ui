@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>377</width>
+    <width>464</width>
     <height>281</height>
    </rect>
   </property>
@@ -39,9 +39,9 @@
   <widget class="QComboBox" name="m_ComboBoxClients">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>120</y>
-     <width>151</width>
+     <width>291</width>
      <height>26</height>
     </rect>
    </property>
@@ -49,9 +49,9 @@
   <widget class="QLabel" name="L_ClientName">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>20</x>
      <y>90</y>
-     <width>151</width>
+     <width>281</width>
      <height>21</height>
     </rect>
    </property>
@@ -72,7 +72,7 @@
   <widget class="QPushButton" name="Button_DeleteClient">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>330</x>
      <y>100</y>
      <width>121</width>
      <height>41</height>
@@ -90,8 +90,8 @@
   <widget class="QPushButton" name="Button_Back">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>200</y>
+     <x>330</x>
+     <y>190</y>
      <width>121</width>
      <height>51</height>
     </rect>

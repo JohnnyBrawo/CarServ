@@ -5,7 +5,6 @@
 #include "addrepair.h"
 
 /**Autos */
-#include "carsform.h"
 #include "carsdatabase.h"
 #include "showallcars.h"
 #include "newauto.h"
@@ -13,7 +12,6 @@
 
 
 /**Clients */
-#include "clientsform.h"
 #include "newclient.h"
 #include "removeclient.h"
 
@@ -32,13 +30,11 @@ private:
     AddRepair           *m_Repairs;
 
     /**Autos */
-    CarsForm            *m_Autos; // ????
     ShowAllcars         *m_ShowAllAutos;
     NewAuto             *m_NewAuto;
     RemoveChangeAuto    *m_DelEdtiAuto;
 
     /**Clients  */
-    ClientsForm         *m_Clients; // ????
     NewClient           *m_NewClient;
     RemoveClient        *m_RemoveClient;
 
