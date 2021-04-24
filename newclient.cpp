@@ -33,6 +33,9 @@ NewClient::NewClient(QWidget *parent) :
 
     ui->Button_AddClientAuto->setEnabled(false);
     ui->Button_AddClientAutoNew->setEnabled(false);
+
+    ui->Combo_Clients->setMaxVisibleItems(10);
+    ui->Combo_Clients->setStyleSheet("combobox-popup: 0;");
 }
 
 NewClient::~NewClient()
@@ -52,6 +55,7 @@ void NewClient::SetEditDesignMode()
     ui->Button_AddClientAuto->setVisible(false);
     ui->Button_AddClientAutoNew->setVisible(false);
     ui->Button_Add_Client->setEnabled(true);
+    ui->L_MustAddCar->setVisible(false);
 
     FillClientsNameCombo();
 }
@@ -65,6 +69,8 @@ void NewClient::SetNewClientDesignMode()
     ui->L_MainFormLabel_Add->setVisible(true);
     ui->Button_AddClientAuto->setVisible(true);
     ui->Button_AddClientAutoNew->setVisible(true);
+    ui->Button_Add_Client->setEnabled(false);
+    ui->L_MustAddCar->setVisible(true);
 }
 
 void NewClient::ClearAllFields()
@@ -176,6 +182,7 @@ bool NewClient::CheckRecordObligatory(){
 
 void NewClient::on_Button_Add_Client_clicked()
 {
+            qDebug() <<"  on_Button_Add_Client_clicked" ;
     if (CheckRecordObligatory()){
         if(!AddClentInfo( ui->LText_ClientName->text(),
                      ui->LText_ClientPhone->text(),
@@ -227,8 +234,6 @@ void NewClient::FillClientsNameCombo()
 
     ClientsNameComboModel->setQuery(ShowClientsQry);
     ui->Combo_Clients->setModel(ClientsNameComboModel);
-    ui->Combo_Clients->setMaxVisibleItems(10);
-    ui->Combo_Clients->setStyleSheet("combobox-popup: 0;");
 
     MyData.CloseConnection();
 
@@ -334,19 +339,19 @@ bool NewClient::ClientExsist(QString ClientName, QString ClientPhone){
 
 bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString ClientFirm, QString ClientCity,  QString ClientAddress)
 {
-    if (ClientExsist(ClientName,ClientPhone )) {
-        qDebug() << "NewClient::AddClentInfo return false ";
-       return false;
-    }
 
- qDebug() << "NewClient::AddClentInfo m_bClientFormEditMode " << m_bClientFormEditMode;
-    qDebug() << "NewClient::AddClentInfo ClientName " << ClientName << "\n  ClientPhone "<<ClientPhone<< "\n  ClientFirm "<<ClientFirm<<"\n  ClientCity "<<ClientCity
-             <<"\n  ClientAddress "<<ClientAddress;
-
-    MyData.OpenConnection("Clients.sqlite");
-    QSqlQuery ClientQry(MyData.CarsDB);
+    qDebug() << "AddClentInfo m_bClientFormEditMode "<<m_bClientFormEditMode;
+    qDebug() << "AddClentInfo m_strLastClientName "<<m_strLastClientName;
+    qDebug() << "AddClentInfo ClientName "<<ClientName<< " ClientPhone"<<ClientPhone<<" ClientFirm "<<ClientFirm<<" ClientCity-"<<ClientCity<<" ClientAddress - "<<ClientAddress;
 
     if( !m_bClientFormEditMode ){
+
+        if (ClientExsist(ClientName,ClientPhone )) {
+            return false;
+        }
+        MyData.OpenConnection("Clients.sqlite");
+        QSqlQuery ClientQry(MyData.CarsDB);
+
 
         ClientQry.prepare("INSERT INTO Clients_Table(ClientName, ClientCity, ClientFirm, ClientPhone, ClientAddress) "
                           "VALUES(:ClientName, :ClientCity, :ClientFirm, :ClientPhone, :ClientAddress)");
@@ -377,7 +382,11 @@ bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString C
         }
     }
     else {
-        ClientQry.prepare("UPDATE Clients_Table set ClientName='"+ClientName+"', ClientCity='"+ClientCity+"', ClientFirm='"+ClientFirm+"', ClientPhone='"+ClientPhone+"', ClientAddress='"+ClientAddress+"' WHERE ClientName='"+m_strLastClientName+"'  ");
+        MyData.OpenConnection("Clients.sqlite");
+        QSqlQuery ClientQry(MyData.CarsDB);
+
+
+        ClientQry.prepare("UPDATE Clients_Table SET ClientName='"+ClientName+"' , ClientCity='"+ClientCity+"' , ClientFirm='"+ClientFirm+"' , ClientPhone='"+ClientPhone+"' , ClientAddress='"+ClientAddress+"' WHERE ClientName='"+m_strLastClientName+"'  ");
 
         if(!ClientQry.exec()){
             qDebug() << "UPDATE Clients_Table fail "<< ClientQry.lastError().text();
@@ -386,6 +395,7 @@ bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString C
         }
     }
 
+    MyData.CloseConnection();
     return true;
 }
 

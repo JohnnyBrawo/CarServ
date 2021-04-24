@@ -17,6 +17,12 @@ RemoveChangeAuto::RemoveChangeAuto(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Euro Kriss - Edit AUTOS ");
+
+    ui->Combo_DelChangeAutoRegs->setMaxVisibleItems(10);
+    ui->Combo_DelChangeAutoRegs->setStyleSheet("combobox-popup: 0;");
+
+    ui->Combo_DelChangeClientName->setMaxVisibleItems(10);
+    ui->Combo_DelChangeClientName->setStyleSheet("combobox-popup: 0;");
 }
 
 RemoveChangeAuto::~RemoveChangeAuto()
@@ -87,7 +93,7 @@ void RemoveChangeAuto::OpenClientEditWindow(QString ClientName, QString ClientEd
     ui->Combo_DelChangeClientName->setVisible(false);
     ui->L_ChangeClientName->setVisible(false);
     ui->LText_ClientName->setVisible(true);
-    ui->L_UnkownClients->setVisible(true);
+    ui->L_UnkownClients->setVisible(false);
 
     m_bEditFromClients = true;
     ui->Button_Add->setVisible(false);
@@ -162,8 +168,7 @@ void RemoveChangeAuto::FillRegCombo()
 
     MyModel->setQuery(RegComboQry);
     ui->Combo_DelChangeAutoRegs->setModel(MyModel);
-    ui->Combo_DelChangeAutoRegs->setMaxVisibleItems(10);
-    ui->Combo_DelChangeAutoRegs->setStyleSheet("combobox-popup: 0;");
+
 
     MyData.CloseConnection();
 }
@@ -186,8 +191,6 @@ void RemoveChangeAuto::FillClientNameCombo()
 
     MyModel->setQuery(ClientComboQry);
     ui->Combo_DelChangeClientName->setModel(MyModel);
-    ui->Combo_DelChangeClientName->setMaxVisibleItems(10);
-    ui->Combo_DelChangeClientName->setStyleSheet("combobox-popup: 0;");
     MyData.CloseConnection();
 }
 
@@ -270,11 +273,11 @@ void RemoveChangeAuto::on_Button_Back_clicked()
 
 void RemoveChangeAuto::on_Combo_DelChangeClientName_currentIndexChanged(QString)
 {
-    if((!m_bInitialize || m_SentClientName.isEmpty()) && !m_bComboRegsHit)
-    {
-        m_bComboClientsHit = true;
-        on_Combo_DelChangeAutoRegs_currentIndexChanged(QString::number(ui->Combo_DelChangeClientName->currentIndex()+1));
-    }
+//    if((!m_bInitialize || m_SentClientName.isEmpty()) && !m_bComboRegsHit)
+//    {
+//        m_bComboClientsHit = true;
+//        on_Combo_DelChangeAutoRegs_currentIndexChanged(QString::number(ui->Combo_DelChangeClientName->currentIndex()+1));
+//    }
 }
 
 
@@ -308,31 +311,22 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
     }else {
         /// Fill all automobiles with speciffic ClientID or Auto_Reg Number
         if (EditAutoQry.next()) {
-
-            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(1).toString();
-            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(2).toString();
-            qDebug() << " RemoveChangeAuto  " << EditAutoQry.value(3).toString();
-            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(4).toString();
-            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(5).toString();
-            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(6).toString();
-            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(7).toString();
-            qDebug() << " RemoveChangeAuto   " << EditAutoQry.value(8).toString();
-
-
             if(m_SelectedClientID.isEmpty() ){
                 ui->L_UnkownClients->setVisible(false);
                 m_SelectedClientID = EditAutoQry.value(1).toString();
             }
-            ui->LText_DelChangeMarka->setText(EditAutoQry.value(2).toString());
-            ui->LText_DelChangeModel->setText(EditAutoQry.value(3).toString());
-            ui->LText_DelChangeYear->setText(EditAutoQry.value(4).toString());
-            ui->LText_DelChangeFuel->setText(EditAutoQry.value(5).toString());
-            ui->LText_DelChangeRegNumber->setText(EditAutoQry.value(6).toString());
-            ui->LText_DelChangeVIN->setText(EditAutoQry.value(7).toString());
+
+
+            ui->LText_DelChangeRegNumber->setText(EditAutoQry.value(2).toString());
+            ui->LText_DelChangeMarka->setText(EditAutoQry.value(3).toString());
+            ui->LText_DelChangeModel->setText(EditAutoQry.value(4).toString());
             ui->LText_DelChangeType->setText(EditAutoQry.value(8).toString());
+            ui->LText_DelChangeYear->setText(EditAutoQry.value(5).toString());
+            ui->LText_DelChangeFuel->setText(EditAutoQry.value(6).toString());
+            ui->LText_DelChangeVIN->setText(EditAutoQry.value(7).toString());
 
             /// Record selected AutoID - attach it to the New client
-            m_strAutoReg = EditAutoQry.value(6).toString();
+            m_strAutoReg = EditAutoQry.value(2).toString();
             ui->Combo_DelChangeAutoRegs->setCurrentText(EditAutoQry.value(6).toString());
         }else {
             /// Fill all automobiles with No cliet assigned

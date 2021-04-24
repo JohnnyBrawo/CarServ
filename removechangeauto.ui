@@ -353,9 +353,9 @@
   <widget class="QLineEdit" name="LText_ClientName">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>390</y>
-     <width>231</width>
+     <width>221</width>
      <height>26</height>
     </rect>
    </property>

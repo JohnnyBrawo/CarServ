@@ -179,6 +179,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alal baba oiwdaiuw iuanwiud awda &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="text">
        <string>OK</string>
       </property>
@@ -233,6 +236,15 @@
       </property>
       <property name="text">
        <string>Редактиране автомобил</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QLabel" name="L_MustAddCar">
+      <property name="text">
+       <string>Всеки клиент е нужно
+ да се свърже с автомобил !
+ Моля изберете автомобил</string>
       </property>
      </widget>
     </item>
