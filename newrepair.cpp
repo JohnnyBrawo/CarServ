@@ -127,7 +127,8 @@ void NewRepair::on_Button_AddNewRepair_clicked()
                                    ui->Combo_NewRepair_Marka->currentText(),
                                    ui->Combo_NewRepair_Model->currentText(),
                                    ui->Combo_NewRepair_Year->currentText(),
-                                   ui->Combo_NewRepair_Fuel->currentText() ) ){
+                                   ui->Combo_NewRepair_Fuel->currentText(),
+                                   ui->LText_NewRepairAutoMillage->text()) ){
              m_Client->SetNewRepairRegNumber(ui->LText_NewRepairAutoRegNumber->text());
              m_Client->RecordCarToClient();
              AutoInfoDone = true;
@@ -290,4 +291,9 @@ void NewRepair::on_LText_NewRepairKlientName_editingFinished()
 void NewRepair::on_LText_NewRepairKlientPhone_editingFinished()
 {
     ui->LText_NewRepairKlientPhone->setText(ui->LText_NewRepairKlientPhone->text().replace(" ",""));
+}
+
+void NewRepair::on_LText_NewRepairAutoMillage_editingFinished()
+{
+    ui->LText_NewRepairAutoMillage->setText(ui->LText_NewRepairAutoMillage->text().replace(" ",""));
 }

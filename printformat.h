@@ -44,7 +44,7 @@ private:
     QString m_strRepairTotal="";
     double m_TotalRepairCost = 0.0;
     bool   m_bTaxesIncluded = false;
-    QList<int> m_list;
+    QList<double> m_list;
 
     void CenterForm();
     void FillClientData();

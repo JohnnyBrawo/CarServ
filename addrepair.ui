@@ -278,7 +278,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Количество</string>
+       <string>Количество           </string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -295,7 +295,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Единична Цена</string>
+       <string>Единична Цена         </string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -312,7 +312,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Стойност</string>
+       <string>Стойност          </string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -471,6 +471,9 @@
    </property>
   </widget>
   <widget class="QCheckBox" name="CheckBox_DDS">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>830</x>

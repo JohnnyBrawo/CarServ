@@ -133,18 +133,18 @@ void NewAuto::on_Button_AddNewAuto_clicked()
     if(!CheckRecordObligatory()){
         return;
     }
-    if(!CheckRecordInformation())
-    {
-         qDebug() << "INSERT Rejected because of empty fields ";
-        return;
-    }
+//    if(!CheckRecordInformation())
+//    {
+//         qDebug() << "INSERT Rejected because of empty fields ";
+//        return;
+//    }
 
     if(!AddCarInfo(ui->LText_NewAutoRegNumber->text(), ui->Combo_NewAuto_Marka->currentText(), ui->Combo_NewAuto_Model->currentText(),
-                  ui->Combo_NewAuto_Year->currentText(), ui->Combo_NewAuto_Fuel->currentText(), ui->LText_NewAutoVIN->text(), ui->Combo_NewAuto_Type->currentText()))
+                  ui->Combo_NewAuto_Year->currentText(), ui->Combo_NewAuto_Fuel->currentText(), ui->LText_NewAutoVIN->text(), ui->Combo_NewAuto_Type->currentText(), ui->LText_NewAutoMillage->text()))
     {
          ClearAllFields();
     }else {
-        emit on_Button_CancelNewAuto_clicked();
+        on_Button_CancelNewAuto_clicked();
     }
 }
 
@@ -219,6 +219,9 @@ void NewAuto::ActivateField(NewAuto::NewAutoFields Field)
 
         ui->LText_NewAutoVIN->clear();
         ui->LText_NewAutoVIN->setEnabled(true);
+
+        ui->LText_NewAutoMillage->clear();
+        ui->LText_NewAutoMillage->setEnabled(true);
 
         ui->Button_AddNewAuto->setEnabled(true);
         break;
@@ -296,7 +299,7 @@ bool NewAuto::AutoExsist(QString RegNum)
 
 
 bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel, QString AutoYear,
-                         QString AutoFuel, QString AutoVIN, QString AutoType)
+                         QString AutoFuel, QString AutoVIN, QString AutoType, QString AutoMillage)
 {
     if (AutoExsist(RegNumber)) {
        QMessageBox::information(this,"Error!","There is automobile with this registration !! ");
@@ -309,13 +312,14 @@ bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel
                 " AutoYear " << AutoYear<<
                 " AutoFuel " << AutoFuel<<
                 " AutoVIN " << AutoVIN<<
-                " AutoType " << AutoType ;
+                " AutoType " << AutoType<<
+                " AutoMillage " << AutoMillage ;
 
     MyData.OpenConnection("Automobiles.sqlite");
     qDebug() << " zapchwame INSERT INTO Automobiles_Table ";
     QSqlQuery AddNewAuto(MyData.CarsDB);
-    AddNewAuto.prepare("INSERT INTO Automobiles_Table(Auto_RegNumber, Auto_Marka, Auto_Model, Auto_Year, Auto_Fuel, Auto_VIN, Auto_Type) "
-                       "VALUES(:Auto_RegNumber, :Auto_Marka, :Auto_Model, :Auto_Year, :Auto_Fuel, :Auto_VIN, :Auto_Type)");
+    AddNewAuto.prepare("INSERT INTO Automobiles_Table(Auto_RegNumber, Auto_Marka, Auto_Model, Auto_Year, Auto_Fuel, Auto_VIN, Auto_Type, Auto_Millage) "
+                       "VALUES(:Auto_RegNumber, :Auto_Marka, :Auto_Model, :Auto_Year, :Auto_Fuel, :Auto_VIN, :Auto_Type, :Auto_Millage)");
 
     AddNewAuto.bindValue(":Auto_RegNumber",RegNumber);
     AddNewAuto.bindValue(":Auto_Marka",AutoMarka);
@@ -324,6 +328,7 @@ bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel
     AddNewAuto.bindValue(":Auto_Fuel",AutoFuel);
     AddNewAuto.bindValue(":Auto_VIN",AutoVIN);
     AddNewAuto.bindValue(":Auto_Type",AutoType);
+    AddNewAuto.bindValue(":Auto_Millage",AutoMillage);
 
     m_strSelectedCarReg = ui->LText_NewAutoRegNumber->text();
     if(!AddNewAuto.exec()){
@@ -345,4 +350,9 @@ void NewAuto::on_LText_NewAutoRegNumber_editingFinished()
 void NewAuto::on_LText_NewAutoVIN_editingFinished()
 {
     ui->LText_NewAutoVIN->setText(ui->LText_NewAutoVIN->text().replace(" ",""));
+}
+
+void NewAuto::on_LText_NewAutoMillage_editingFinished()
+{
+    ui->LText_NewAutoMillage->setText(ui->LText_NewAutoMillage->text().replace(" ",""));
 }

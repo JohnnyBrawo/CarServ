@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>599</width>
-    <height>713</height>
+    <height>688</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="Button_CancelNewRepair">
    <property name="geometry">
     <rect>
-     <x>423</x>
+     <x>410</x>
      <y>590</y>
      <width>101</width>
      <height>51</height>
@@ -35,7 +35,7 @@
   <widget class="QLabel" name="L_StarFields">
    <property name="geometry">
     <rect>
-     <x>33</x>
+     <x>20</x>
      <y>650</y>
      <width>511</width>
      <height>20</height>
@@ -51,7 +51,7 @@
   <widget class="QPushButton" name="Button_AddNewRepair">
    <property name="geometry">
     <rect>
-     <x>53</x>
+     <x>40</x>
      <y>590</y>
      <width>101</width>
      <height>51</height>
@@ -96,7 +96,7 @@
      <x>20</x>
      <y>90</y>
      <width>521</width>
-     <height>473</height>
+     <height>481</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridRepairData">
@@ -118,8 +118,8 @@
     <property name="verticalSpacing">
      <number>33</number>
     </property>
-    <item row="0" column="0">
-     <widget class="QLabel" name="L_NewRepairAutoMarka">
+    <item row="2" column="0">
+     <widget class="QLabel" name="L_NewRepairAutoYear">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -127,15 +127,54 @@
         <bold>true</bold>
        </font>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(170, 0, 0);</string>
-      </property>
       <property name="text">
-       <string>Марка *</string>
+       <string>Година</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="LText_NewRepairAutoRegNumber"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="Combo_NewRepair_Fuel">
+      <item>
+       <property name="text">
+        <string>Select</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Petrol</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Disel</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>LPG/Petrol</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>CNG/Petrol</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Hybrid</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Electric</string>
+       </property>
+      </item>
      </widget>
     </item>
     <item row="0" column="1">
@@ -171,11 +210,8 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QComboBox" name="Combo_NewRepair_Model"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="L_NewRepairAutoYear">
+    <item row="6" column="1">
+     <widget class="QLabel" name="L_NewRepair_KlientData">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -184,12 +220,136 @@
        </font>
       </property>
       <property name="text">
-       <string>Година</string>
+       <string>Данни за клента</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="LText_NewRepairKlientName"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="L_NewRepairKlientName">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color : rgb(170, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>Име * </string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="L_NewRepairAutoMarka">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Марка *</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="L_NewRepairAutoRegNumber">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Регистрационен 
+ номер *</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="L_NewRepairAutoFuel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Гориво</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="L_NewRepairKlient">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Клиент</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="LText_NewRepairKlientPhone"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="L_NewRepairKlientPhone">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color : rgb(170, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>Телефон *</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QComboBox" name="Combo_NewRepair_Model"/>
     </item>
     <item row="2" column="1">
      <widget class="QComboBox" name="Combo_NewRepair_Year">
@@ -373,64 +533,8 @@
       </item>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="L_NewRepairAutoFuel">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Гориво</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QComboBox" name="Combo_NewRepair_Fuel">
-      <item>
-       <property name="text">
-        <string>Select</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Petrol</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Disel</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>LPG/Petrol</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>CNG/Petrol</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Hybrid</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Electric</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="L_NewRepairAutoRegNumber">
+    <item row="5" column="0">
+     <widget class="QLabel" name="L_NewRepairAutoRegMillage">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -439,31 +543,10 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(170, 0, 0);</string>
+       <string notr="true"/>
       </property>
       <property name="text">
-       <string>Регистрационен 
- номер *</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QLineEdit" name="LText_NewRepairAutoRegNumber"/>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="L_NewRepairKlient">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Клиент</string>
+       <string>Пробег ( км )</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -471,67 +554,7 @@
      </widget>
     </item>
     <item row="5" column="1">
-     <widget class="QLabel" name="L_NewRepair_KlientData">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Данни за клента</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0">
-     <widget class="QLabel" name="L_NewRepairKlientName">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color : rgb(170, 0, 0)</string>
-      </property>
-      <property name="text">
-       <string>Име * </string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="1">
-     <widget class="QLineEdit" name="LText_NewRepairKlientName"/>
-    </item>
-    <item row="7" column="0">
-     <widget class="QLabel" name="L_NewRepairKlientPhone">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color : rgb(170, 0, 0)</string>
-      </property>
-      <property name="text">
-       <string>Телефон *</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="1">
-     <widget class="QLineEdit" name="LText_NewRepairKlientPhone"/>
+     <widget class="QLineEdit" name="LText_NewRepairAutoMillage"/>
     </item>
    </layout>
   </widget>

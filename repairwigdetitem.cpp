@@ -1,6 +1,7 @@
 ﻿#include "repairwigdetitem.h"
 #include "ui_repairwigdetitem.h"
 #include "qdebug.h"
+#include <QDoubleValidator>
 
 NewRepairItem::NewRepairItem(QWidget *parent) :
     QWidget(parent),
@@ -98,4 +99,21 @@ QString NewRepairItem::GetRepairIndexText()
 void NewRepairItem::on_ButtonClear_clicked()
 {
     ClearFields();
+}
+
+void NewRepairItem::on_QuantityText_editingFinished()
+{
+     qDebug()<<" on_m_CheckDDon_QuantityText_editingFinishedS_clicked ";
+    ValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()) );
+}
+
+void NewRepairItem::on_m_CheckDDS_clicked(bool checked)
+{
+    qDebug()<<" on_m_CheckDDS_clicked "<<checked;
+    if(checked){
+        ValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()+(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()/5)));
+    }else {
+        ValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()) );
+    }
+
 }

@@ -34,6 +34,13 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="2">
+    <widget class="QCheckBox" name="m_CheckDDS">
+     <property name="text">
+      <string>Начисли ДДС</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>

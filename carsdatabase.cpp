@@ -32,7 +32,7 @@ void CarsDatabase::GetWorkingPath()
 //        }
 //    }
 
-    qDebug() << " Final Path " << testPath;
+//    qDebug() << " Final Path " << testPath;
     m_WorkPath = testPath;
 }
 
@@ -41,8 +41,8 @@ QString  CarsDatabase::GetDataBasePath(QString DataBaseName)
 {
     m_CurrDataName = m_WorkPath + DataBaseName;
 
-            qDebug() << "GetDataBasePath DataBaseName: " << DataBaseName;
-            qDebug() << "GetDataBasePath m_CurrDataName: " << m_CurrDataName;
+//            qDebug() << "GetDataBasePath DataBaseName: " << DataBaseName;
+//            qDebug() << "GetDataBasePath m_CurrDataName: " << m_CurrDataName;
     return m_CurrDataName;
 }
 

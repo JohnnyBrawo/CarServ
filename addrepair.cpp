@@ -397,9 +397,16 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
     {
         listItemData = ui->RepairList->item(i);
         m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
-        if( m_CurrentRepair->GetRepairValueText()=="0" && !m_CurrentRepair->GetRepairDescrText().isEmpty() ){
+        if( /*m_CurrentRepair->GetRepairValueText()=="0" && */ !m_CurrentRepair->GetRepairDescrText().isEmpty() ){
             double CalcValue = 0.0;
-            CalcValue = m_CurrentRepair->GetRepairQuantityText().toDouble() * m_CurrentRepair->GetRepairSinglePriceText().toDouble();
+            if(m_CurrentRepair->GetRepairValueText()=="0"){
+                CalcValue = m_CurrentRepair->GetRepairQuantityText().toDouble() * m_CurrentRepair->GetRepairSinglePriceText().toDouble();
+            }
+            else {
+                CalcValue = m_CurrentRepair->GetRepairValueText().toDouble();
+            }
+
+
             if(CalcValue == 0.0){
                 m_CurrentRepair->SetRepairValueText(QString::number(0));
             }else {
@@ -450,13 +457,21 @@ void AddRepair::RestoreAutoRepairForm()
 
 void AddRepair::on_CheckBox_DDS_stateChanged(int arg1)
 {
-   if(!ui->LText_TotalPrice->text().isEmpty() && ui->LText_TotalPrice->text().toDouble()!=0.0)
-   {
-       double TotalPrice = m_dTotalCost;
-           if(arg1==2) {
-               TotalPrice = TotalPrice + (TotalPrice/5);
-           }
-           ui->LText_TotalPrice->setText(QString::number(TotalPrice, 'f',2));
+    QListWidgetItem *  listItemData;
+    NewRepairItem * m_CurrentRepair;
+
+    for(int i=0; i< ui->RepairList->count(); i++)
+    {
+        listItemData = ui->RepairList->item(i);
+        m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
+
     }
-    qDebug() << " on_checkBox_clicked " << arg1;
+//   if(!ui->LText_TotalPrice->text().isEmpty() && ui->LText_TotalPrice->text().toDouble()!=0.0)
+//   {
+//       double TotalPrice = m_dTotalCost;
+//           if(arg1==2) {
+//               TotalPrice = TotalPrice + (TotalPrice/5);
+//           }
+//           ui->LText_TotalPrice->setText(QString::number(TotalPrice, 'f',2));
+//    }
 }

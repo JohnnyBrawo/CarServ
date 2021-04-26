@@ -56,6 +56,7 @@ void PrintFormat::FillAutoData()
             ui->T_AutoMarka->setText(EditAutoQry.value(3).toString());
             ui->T_AutoModel->setText(EditAutoQry.value(4).toString());
             ui->T_AutoVIN->setText(EditAutoQry.value(7).toString());
+            ui->T_AutoMilage->setText(EditAutoQry.value(9).toString());
 
         }else {
             /// Fill all automobiles with No cliet assigned
@@ -95,7 +96,6 @@ void PrintFormat::FillRepairData(int RepairNum)
 void PrintFormat::ReadRepairs()
 {
     QRegExp tagExp("\n");
-      qDebug() << " ReadRepairs  "<<m_strRepairs;
     QStringList RepairsList = m_strRepairs.split(tagExp);
     ui->T_DateRepair->setText(RepairsList.at(1));
     QRegExp rx("(-?\\d+(?:[\\.,]\\d+(?:e\\d+)?)?)");
@@ -119,6 +119,12 @@ void PrintFormat::ReadRepairs()
             continue;
         }
 
+         //Meet repairs end. Next is Total payment only
+        if((RepairsList.at(i).indexOf("Total Price", 0)) != -1){
+              qDebug()<<" Exit repairs " ;
+               break;
+          }
+
         m_list.clear();
         // Get Repair name and Go on
         if((RepairsList.at(i).indexOf("Repair name:", 0)) != -1){
@@ -130,12 +136,13 @@ void PrintFormat::ReadRepairs()
         }
 
         pos = 0;
+        qDebug()<<"RepairsList.at(i) " <<RepairsList.at(i);
         while ((pos = rx.indexIn(RepairsList.at(i), pos)) != -1) {
             m_list << rx.cap(1).toDouble();
             pos += rx.matchedLength();
         }
+        qDebug() << " m_list "<<m_list;
         if(!m_list.isEmpty()){
-             qDebug() << " Repair numbers  "<< m_list;
             FillRepairData(repair_num);
         }
     }
@@ -165,6 +172,9 @@ void PrintFormat::FillClientData()
 
 void PrintFormat::OpenPrintForm()
 {
+    ui->L_TotalWorkCost->setVisible(false);
+    ui->L_TotalWorkCostValue->setVisible(false);
+
     FillAutoData();
     FillClientData();
     ReadRepairs();

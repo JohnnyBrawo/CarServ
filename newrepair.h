@@ -53,7 +53,6 @@ private slots:
     void OpenNewRepairWindow();
     void on_Button_AddNewRepair_clicked();
     void on_Combo_NewRepair_Marka_currentIndexChanged(int index);
-//    void on_Combo_NewAuto_Model_currentIndexChanged(int index);
     void on_Button_CancelNewRepair_clicked();
 
     void on_LText_NewRepairAutoRegNumber_editingFinished();
@@ -61,6 +60,8 @@ private slots:
     void on_LText_NewRepairKlientName_editingFinished();
 
     void on_LText_NewRepairKlientPhone_editingFinished();
+
+    void on_LText_NewRepairAutoMillage_editingFinished();
 
 signals:
     void CloseNewRepairForm();

@@ -338,7 +338,7 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
                 m_SelectedClientID = EditAutoQry.value(1).toString();
             }
 
-            ui->m_ComboFuel->find
+//            ui->m_ComboFuel->find
 
 //            ui->LText_DelChangeRegNumber->setText(EditAutoQry.value(2).toString());
 //            ui->LText_DelChangeMarka->setText(EditAutoQry.value(3).toString());
@@ -346,7 +346,7 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
 //            ui->LText_DelChangeType->setText(EditAutoQry.value(8).toString());
 //            ui->LText_DelChangeYear->setText(EditAutoQry.value(5).toString());
 //            ui->LText_DelChangeFuel->setText(EditAutoQry.value(6).toString());
-            ui->LText_DelChangeVIN->setText(EditAutoQry.value(7).toString());
+//            ui->LText_DelChangeVIN->setText(EditAutoQry.value(7).toString());
 
             /// Record selected AutoID - attach it to the New client
 //            m_strAutoReg = EditAutoQry.value(2).toString();

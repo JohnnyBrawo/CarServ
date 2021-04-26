@@ -41,7 +41,7 @@ public:
     QString GetNewCarReg(){ return m_strSelectedCarReg;}
 
     bool AddCarInfo(QString RegNumber, QString AutoMarka = "None", QString AutoModel = "None", QString AutoYear = "None"
-            , QString AutoFuel = "None", QString AutoVIN = "None", QString AutoType = "None");
+            , QString AutoFuel = "None", QString AutoVIN = "None", QString AutoType = "None", QString AutoMillage = "None");
 
     bool AutoExsist(QString RegNum);
 
@@ -57,6 +57,7 @@ private slots:
     void on_Combo_NewAuto_Model_currentIndexChanged(int index);
     void on_LText_NewAutoRegNumber_editingFinished();
     void on_LText_NewAutoVIN_editingFinished();
+    void on_LText_NewAutoMillage_editingFinished();
 };
 
 #endif // NEWAUTO_H

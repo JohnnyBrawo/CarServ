@@ -23,6 +23,7 @@ private:
 
     unsigned int m_uiRepairIndex;
     bool       m_bSubMenuField;
+    bool       m_bGlobatTaxEnabled;
 
 public:
     explicit NewRepairItem(QWidget *parent = nullptr);
@@ -32,6 +33,7 @@ public:
     QString GetRepairSinglePriceText();
     QString GetRepairValueText();
     void SetRepairValueText(const QString &StrValue);
+    void SetGlobalTaxes(bool AddTaxes){m_bGlobatTaxEnabled=AddTaxes;};
     QString GetRepairIndexText();
     void SetRepairIndex(unsigned int Idx, unsigned int SubMenuIdx=0);
     QLineEdit *DescrText;
@@ -44,6 +46,8 @@ public:
 
 private slots:
     void on_ButtonClear_clicked();
+    void on_m_CheckDDS_clicked(bool checked);
+    void on_QuantityText_editingFinished();
 };
 
 #endif // REPAIRWIDGETITEM_h

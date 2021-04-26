@@ -25,6 +25,11 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Цена на извършения ремонт : </string>
    </property>
@@ -38,6 +43,11 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -50,6 +60,15 @@
      <width>81</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>10</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -94,8 +113,16 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="L_RepairDescription">
@@ -131,6 +158,11 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -159,7 +191,7 @@
   <widget class="QLabel" name="L_AutoMilage">
    <property name="geometry">
     <rect>
-     <x>669</x>
+     <x>620</x>
      <y>180</y>
      <width>111</width>
      <height>21</height>
@@ -186,11 +218,16 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLabel" name="L_AutoVIN">
    <property name="geometry">
     <rect>
-     <x>669</x>
+     <x>620</x>
      <y>220</y>
      <width>111</width>
      <height>21</height>
@@ -213,12 +250,20 @@
     <rect>
      <x>140</x>
      <y>210</y>
-     <width>181</width>
+     <width>401</width>
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="L_FirmName">
@@ -249,8 +294,16 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="L_KlientAdress">
@@ -335,8 +388,16 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="L_ClientLabel">
@@ -379,6 +440,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(170, 255, 255);</string>
    </property>
@@ -412,12 +478,20 @@
     <rect>
      <x>140</x>
      <y>190</y>
-     <width>181</width>
+     <width>401</width>
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="T_AutoMarka">
@@ -428,6 +502,14 @@
      <width>181</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="L_RepairsSinglePrice">
@@ -467,6 +549,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(170, 255, 255);</string>
    </property>
@@ -504,6 +591,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_TotalPay_Value">
    <property name="geometry">
@@ -514,6 +606,11 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -523,12 +620,20 @@
     <rect>
      <x>140</x>
      <y>230</y>
-     <width>181</width>
+     <width>401</width>
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="L_AutoRepairDate">
@@ -557,15 +662,23 @@
     <rect>
      <x>140</x>
      <y>150</y>
-     <width>181</width>
+     <width>401</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="L_AutoRegNubmer">
    <property name="geometry">
     <rect>
-     <x>669</x>
+     <x>620</x>
      <y>200</y>
      <width>111</width>
      <height>21</height>
@@ -592,8 +705,16 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_TotalToPay">
@@ -605,6 +726,11 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Обща сума за плащане : </string>
    </property>
@@ -612,7 +738,7 @@
   <widget class="QLabel" name="L_AutoModel">
    <property name="geometry">
     <rect>
-     <x>669</x>
+     <x>620</x>
      <y>160</y>
      <width>111</width>
      <height>21</height>
@@ -639,8 +765,16 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="L_WorkCard">
@@ -672,6 +806,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLabel" name="L_KlientCity">
@@ -722,7 +861,7 @@
   <widget class="QLabel" name="L_AutoMarka">
    <property name="geometry">
     <rect>
-     <x>669</x>
+     <x>620</x>
      <y>140</y>
      <width>111</width>
      <height>21</height>
@@ -748,6 +887,11 @@
      <width>151</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QPushButton" name="B_PrintCancel">
@@ -797,6 +941,11 @@
      <width>221</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>ДДС : </string>
@@ -851,8 +1000,16 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="T_KlientPhone">
@@ -860,12 +1017,20 @@
     <rect>
      <x>140</x>
      <y>170</y>
-     <width>181</width>
+     <width>401</width>
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="L_FirmPhone">
@@ -895,6 +1060,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true"/>
@@ -927,6 +1097,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_2_CNT">
    <property name="geometry">
@@ -937,6 +1112,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_2_Descr">
    <property name="geometry">
@@ -946,6 +1126,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true"/>
@@ -960,6 +1145,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_2_Total">
    <property name="geometry">
@@ -969,6 +1159,11 @@
      <width>151</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3_CNT">
@@ -980,6 +1175,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3_SPrice">
    <property name="geometry">
@@ -989,6 +1189,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3_NUM">
@@ -1000,6 +1205,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3_Descr">
    <property name="geometry">
@@ -1009,6 +1219,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3_Total">
@@ -1020,6 +1235,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_4_SPrice">
    <property name="geometry">
@@ -1029,6 +1249,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_4_Total">
@@ -1040,6 +1265,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_4_CNT">
    <property name="geometry">
@@ -1049,6 +1279,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_4_NUM">
@@ -1060,6 +1295,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_4_Descr">
    <property name="geometry">
@@ -1069,6 +1309,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_5_CNT">
@@ -1080,6 +1325,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_5_Total">
    <property name="geometry">
@@ -1089,6 +1339,11 @@
      <width>151</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_5_NUM">
@@ -1100,6 +1355,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_5_SPrice">
    <property name="geometry">
@@ -1109,6 +1369,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_5_Descr">
@@ -1120,6 +1385,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_6_NUM">
    <property name="geometry">
@@ -1129,6 +1399,11 @@
      <width>41</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_6_SPrice">
@@ -1140,6 +1415,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_6_CNT">
    <property name="geometry">
@@ -1149,6 +1429,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_6_Total">
@@ -1160,6 +1445,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_6_Descr">
    <property name="geometry">
@@ -1169,6 +1459,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_7_Total">
@@ -1180,6 +1475,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_7_SPrice">
    <property name="geometry">
@@ -1189,6 +1489,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_7_CNT">
@@ -1200,6 +1505,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_7_Descr">
    <property name="geometry">
@@ -1209,6 +1519,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_7_NUM">
@@ -1220,6 +1535,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_8_Total">
    <property name="geometry">
@@ -1229,6 +1549,11 @@
      <width>151</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_8_Descr">
@@ -1240,6 +1565,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_8_CNT">
    <property name="geometry">
@@ -1249,6 +1579,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_8_SPrice">
@@ -1260,6 +1595,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_8_NUM">
    <property name="geometry">
@@ -1269,6 +1609,11 @@
      <width>41</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_9_SPrice">
@@ -1280,6 +1625,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_9_Total">
    <property name="geometry">
@@ -1289,6 +1639,11 @@
      <width>151</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_9_Descr">
@@ -1300,6 +1655,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_9_NUM">
    <property name="geometry">
@@ -1309,6 +1669,11 @@
      <width>41</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_9_CNT">
@@ -1320,6 +1685,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_10_SPrice">
    <property name="geometry">
@@ -1329,6 +1699,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_10_Total">
@@ -1340,6 +1715,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_10_NUM">
    <property name="geometry">
@@ -1349,6 +1729,11 @@
      <width>41</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_10_CNT">
@@ -1360,6 +1745,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_10_Descr">
    <property name="geometry">
@@ -1369,6 +1759,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_11_CNT">
@@ -1380,6 +1775,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_11_Total">
    <property name="geometry">
@@ -1389,6 +1789,11 @@
      <width>151</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_11_NUM">
@@ -1400,6 +1805,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_11_Descr">
    <property name="geometry">
@@ -1409,6 +1819,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_11_SPrice">
@@ -1420,6 +1835,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_12_Descr">
    <property name="geometry">
@@ -1429,6 +1849,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_12_NUM">
@@ -1440,6 +1865,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_12_SPrice">
    <property name="geometry">
@@ -1449,6 +1879,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_12_Total">
@@ -1460,6 +1895,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_12_CNT">
    <property name="geometry">
@@ -1469,6 +1909,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_13_Descr">
@@ -1480,6 +1925,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_13_Total">
    <property name="geometry">
@@ -1489,6 +1939,11 @@
      <width>151</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_13_CNT">
@@ -1500,6 +1955,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_13_NUM">
    <property name="geometry">
@@ -1509,6 +1969,11 @@
      <width>41</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_13_SPrice">
@@ -1520,6 +1985,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_14_CNT">
    <property name="geometry">
@@ -1529,6 +1999,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_14_Total">
@@ -1540,6 +2015,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_14_Descr">
    <property name="geometry">
@@ -1549,6 +2029,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_14_SPrice">
@@ -1560,6 +2045,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_14_NUM">
    <property name="geometry">
@@ -1569,6 +2059,11 @@
      <width>41</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_15_Total">
@@ -1580,6 +2075,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_15_Descr">
    <property name="geometry">
@@ -1589,6 +2089,11 @@
      <width>611</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_15_NUM">
@@ -1600,6 +2105,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_15_CNT">
    <property name="geometry">
@@ -1609,6 +2119,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_15_SPrice">
@@ -1620,6 +2135,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="T_Data">
    <property name="geometry">
@@ -1629,6 +2149,11 @@
      <width>121</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
  </widget>

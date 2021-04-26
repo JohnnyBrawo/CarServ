@@ -328,7 +328,7 @@ void ShowAllcars::FillRepairsList()
             RepairText += "\n   Repair cout : " + EditClientsQry.value(2).toString();
             RepairText += "   Single Price : " + EditClientsQry.value(3).toString();
             RepairText += "   Final Price : " + EditClientsQry.value(4).toString();
-            RepairText += "   Total Price : " + EditClientsQry.value(5).toString();
+//            RepairText += "   Total Price : " + EditClientsQry.value(5).toString();
             m_dTotalPrice = EditClientsQry.value(5).toDouble();
 
 
@@ -336,10 +336,17 @@ void ShowAllcars::FillRepairsList()
                 RepairText += "\t Taxes included! ";
                 m_bTaxesIncluded = true;
             }
-            RepairText += "\n===================";
+        RepairText += "\n===================";
 
         }
-        strRepairVector.push_back(RepairText);
+        if(RepairText.isEmpty()){
+            qDebug() <<"\n  Nothing to show \n";
+        }
+        else {
+            RepairText +="\n   Total Price : " +  QString::number(m_dTotalPrice);
+            RepairText += "\n--------------------------------------------------------------";
+            strRepairVector.push_back(RepairText);
+        }
     }
 
     MyData.CloseConnection();
