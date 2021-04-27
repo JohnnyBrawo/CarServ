@@ -108,18 +108,16 @@ void RemoveChangeAuto::ClearAllFields()
     m_bComboClientsHit = false;
     m_bComboRegsHit = false;
     m_bEditFromClients = false;
-
-
 }
 
 
-void RemoveChangeAuto::OpenClientEditWindow(QString ClientName, QString ClientEditID)
+void RemoveChangeAuto::AddAutoToClient(QString ClientName, QString ClientEditID)
 {
-    qDebug() << "RemoveChangeAuto::OpenClientEditWindow()   ";
+    qDebug() << "RemoveChangeAuto::AddAutoToClient()   ";
     m_bInitialize = true;
     ClearAllFields();
 
-    qDebug() << " OpenClientEditWindow  ClientName   " << ClientName << "   ClientEditID    " << ClientEditID;
+    qDebug() << " AddAutoToClient  ClientName   " << ClientName << "   ClientEditID    " << ClientEditID;
     m_SentClientName = ClientName;
     m_SentClientID = ClientEditID;
     ui->Combo_DelChangeClientName->setVisible(false);
@@ -320,12 +318,12 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
         return;
     }
 
-    if( m_bComboClientsHit)
-    {
-        EditAutoQry.prepare("SELECT * FROM Automobiles_Table WHERE CLIENT_ID='"+arg1+"' ");
-    }else {
+//    if( m_bComboClientsHit)
+//    {
+//        EditAutoQry.prepare("SELECT * FROM Automobiles_Table WHERE CLIENT_ID='""' ");
+//    }else {
         EditAutoQry.prepare("SELECT * FROM Automobiles_Table WHERE Auto_RegNumber='"+arg1+"' ");
-    }
+//    }
 
     m_bComboRegsHit = true;
     if(!EditAutoQry.exec()){
@@ -333,6 +331,12 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
     }else {
         /// Fill all automobiles with speciffic ClientID or Auto_Reg Number
         if (EditAutoQry.next()) {
+            qDebug() << " Value(0) "<<EditAutoQry.value(0).toString();
+             qDebug() << " Value(1) "<<EditAutoQry.value(1).toString();
+             qDebug() << " Value(2) "<<EditAutoQry.value(2).toString();
+             qDebug() << " Value(3) "<<EditAutoQry.value(3).toString();
+             qDebug() << " Value(4) "<<EditAutoQry.value(4).toString();
+
             if(m_SelectedClientID.isEmpty() ){
                 ui->L_UnkownClients->setVisible(false);
                 m_SelectedClientID = EditAutoQry.value(1).toString();

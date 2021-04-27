@@ -28,7 +28,7 @@ NewClient::NewClient(QWidget *parent) :
     QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreFormNewAuto()));
 
     QObject::connect(ui->Button_AddClientAuto, SIGNAL(clicked()), m_AttachAuto, SLOT(OpenClearWindow()));
-    QObject::connect(this, SIGNAL(ButtonEditHit(QString, QString)), m_AttachAuto, SLOT(OpenClientEditWindow(QString, QString)));
+    QObject::connect(this, SIGNAL(ButtonEditHit(QString, QString)), m_AttachAuto, SLOT(AddAutoToClient(QString, QString)));
     QObject::connect(ui->Button_AddClientAutoNew, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
 
     ui->Button_AddClientAuto->setEnabled(false);
@@ -172,7 +172,7 @@ bool NewClient::CheckField(QString SelectedString)
 
 bool NewClient::CheckRecordObligatory(){
 
-    if(ui->LText_ClientName->text().isEmpty() ){
+    if(ui->LText_ClientName->text().isEmpty() || ui->LText_ClientPhone->text().isEmpty()){
         QMessageBox::information(this,"Attention!","Missin information in some fields  ( * ).");
         return false;
     }
@@ -182,24 +182,17 @@ bool NewClient::CheckRecordObligatory(){
 
 void NewClient::on_Button_Add_Client_clicked()
 {
-            qDebug() <<"  on_Button_Add_Client_clicked" ;
     if (CheckRecordObligatory()){
         if(!AddClentInfo( ui->LText_ClientName->text(),
                      ui->LText_ClientPhone->text(),
                      ui->LText_ClientFirm->text(),
                      ui->LText_ClientCity->text(),
                      ui->Text_ClientAddress->toPlainText())){
-            qDebug() <<"  Add_Client    FAILED - stay for corrections " ;
             return;
         }else {
-            qDebug() <<"  Add_Client    Passed  RecordCarToClient" ;
             RecordCarToClient();
         }
-    }else {
-      qDebug() <<"  on_Button_Add_Client_clicked    FAILED " ;
     }
-
-    qDebug() <<"  on_Button_Add_Client_clicked    m_strClientCarReg "<<m_strClientCarReg ;
 
     ClearAllFields();
     on_Button_CancelAdd_clicked();

@@ -145,8 +145,11 @@
       <property name="autoFillBackground">
        <bool>true</bool>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 0, 0);</string>
+      </property>
       <property name="text">
-       <string>Телефон</string>
+       <string>Телефон ( * )</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

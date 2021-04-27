@@ -81,6 +81,10 @@ void NewAuto::ClearAllFields()
     ui->LText_NewAutoVIN->clear();
     ui->LText_NewAutoVIN->setEnabled(false);
 
+    ui->LText_NewAutoMillage->clear();
+    ui->LText_NewAutoMillage->setEnabled(false);
+
+
     ui->Button_AddNewAuto->setEnabled(false);
 }
 
@@ -104,15 +108,6 @@ bool NewAuto::CheckRecordInformation(){
     if(!CheckSelected(ui->LText_NewAutoVIN->text())) {
         EmptyFields =EmptyFields +  " Рама/Вин " + "\n";
     }
-
-
-    /**  Ако дразни съобщението може да се направи само да blink-ват полетата и да иска повторно натиска не на
-          ЗАПИШИ бутона
-        for(int i=1;i<15;i+=2){
-            QTimer::singleShot(100*i, this, SLOT(changeBackgroundColor()));
-            QTimer::singleShot(100*(i+1), this, SLOT(retrieveBackgroundColor()));
-    }**/
-
     return true;
 }
 
