@@ -20,10 +20,13 @@ private:
     void ResetAllFields();
     void CenterForm();
     void ClearFields();
+    double GetValueMaths();
 
     unsigned int m_uiRepairIndex;
     bool       m_bSubMenuField;
-    bool       m_bGlobatTaxEnabled;
+    bool       m_bInitializeCheckboxes;
+    bool       m_bGlobalTaxes=false;
+
 
 public:
     explicit NewRepairItem(QWidget *parent = nullptr);
@@ -33,14 +36,9 @@ public:
     QString GetRepairSinglePriceText();
     QString GetRepairValueText();
     void SetRepairValueText(const QString &StrValue);
-    void SetGlobalTaxes(bool AddTaxes){m_bGlobatTaxEnabled=AddTaxes;};
+    void ChangeTaxesCheckBox(bool GlobalTaxesChecked);
     QString GetRepairIndexText();
     void SetRepairIndex(unsigned int Idx, unsigned int SubMenuIdx=0);
-    QLineEdit *DescrText;
-    QLineEdit *QuantityText;
-    QLineEdit *SinglePriceText;
-    QLineEdit *ValueText;
-    QLineEdit *RepairIndex;
 
     bool        IsFieldSubmenu() { return m_bSubMenuField;}
 
@@ -48,6 +46,7 @@ private slots:
     void on_ButtonClear_clicked();
     void on_m_CheckDDS_clicked(bool checked);
     void on_QuantityText_editingFinished();
+    void on_SinglePriceText_editingFinished();
 };
 
 #endif // REPAIRWIDGETITEM_h

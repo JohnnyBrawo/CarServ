@@ -7,7 +7,8 @@ NewRepairItem::NewRepairItem(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::NewRepairItem),
     m_uiRepairIndex(1),
-    m_bSubMenuField(false)
+    m_bSubMenuField(false),
+    m_bInitializeCheckboxes(false)
 {
     ui->setupUi(this);
     ResetAllFields();
@@ -16,83 +17,88 @@ NewRepairItem::NewRepairItem(QWidget *parent) :
 NewRepairItem::~NewRepairItem()
 {
     delete ui;
-    delete DescrText;
-    delete QuantityText;
-    delete SinglePriceText;
-    delete ValueText;
-    delete RepairIndex;
 }
 
 void NewRepairItem::ResetAllFields()
 {
-    DescrText = new QLineEdit();
-    QuantityText = new QLineEdit();
-    SinglePriceText = new QLineEdit();
-    ValueText = new QLineEdit();
-    RepairIndex = new QLineEdit();
-    DescrText->setText("");
-    QuantityText->setText("0");
-    QuantityText->setValidator(new QDoubleValidator(0, 100, 2, this) );
-    SinglePriceText->setText("0");
-    SinglePriceText->setValidator(new QDoubleValidator(0, 100, 2, this) );
-    ValueText->setText("0");
-    ValueText->setValidator(new QDoubleValidator(0, 100, 2, this) );
+    ui->DescrText->setText("");
+    ui->QuantityText->setText("0");
+    ui->QuantityText->setValidator(new QDoubleValidator(0, 100, 2, this) );
+    ui->SinglePriceText->setText("0");
+    ui->SinglePriceText->setValidator(new QDoubleValidator(0, 100, 2, this) );
+    ui->ValueText->setText("0");
+    ui->ValueText->setValidator(new QDoubleValidator(0, 100, 2, this) );
 
-    RepairIndex->setText(QString::number(m_uiRepairIndex));
-    RepairIndex->setFixedWidth(30);
-    ui->HLayout->addWidget(RepairIndex);
-    ui->HLayout->addWidget(DescrText);
-    ui->HLayout->addWidget(QuantityText);
-    ui->HLayout->addWidget(SinglePriceText);
-    ui->HLayout->addWidget(ValueText);
+    ui->RepairIndex->setText(QString::number(m_uiRepairIndex));
+    ui->RepairIndex->setFixedWidth(30);
+}
+
+void NewRepairItem::ChangeTaxesCheckBox(bool GlobalTaxesChecked)
+{
+    m_bGlobalTaxes = GlobalTaxesChecked;
+    m_bInitializeCheckboxes = true;
+    QString CheckBoxText = GlobalTaxesChecked?"Извади ДДС":"Начисли ДДС";
+    ui->m_CheckDDS->setText(CheckBoxText);
+    if(ui->m_CheckDDS->isChecked()){
+        qDebug()<<"\n  IsChecked "<<ui->m_CheckDDS->isChecked();
+
+        ui->m_CheckDDS->setChecked(false);
+    }
+    on_m_CheckDDS_clicked(GlobalTaxesChecked);
+    m_bInitializeCheckboxes = false;
 }
 
 void NewRepairItem::ClearFields()
 {
-    DescrText->setText("");
-    QuantityText->setText("");
-    SinglePriceText->setText("");
-    ValueText->setText("");
+    ui->DescrText->setText("");
+    ui->QuantityText->setText("");
+    ui->SinglePriceText->setText("");
+    ui->ValueText->setText("");
 }
 
 QString NewRepairItem::GetRepairDescrText()
 {
-    return DescrText->text();
+    return ui->DescrText->text();
 }
 
 QString NewRepairItem::GetRepairQuantityText()
 {
-    return QuantityText->text();
+    return ui->QuantityText->text();
 }
 
 void NewRepairItem::SetRepairIndex(unsigned int Idx,unsigned int SubMenuIdx)
 {
     if(SubMenuIdx != 0){
         m_bSubMenuField = true;
-        RepairIndex->setText(QString::number(Idx)+"." + QString::number(SubMenuIdx));
+        ui->RepairIndex->setText(QString::number(Idx)+"." + QString::number(SubMenuIdx));
     }else {
-        RepairIndex->setText(QString::number(Idx));
+        ui->RepairIndex->setText(QString::number(Idx));
     }
 }
 
 QString NewRepairItem::GetRepairSinglePriceText()
 {
-    return SinglePriceText->text();
+    return ui->SinglePriceText->text();
 }
 
 QString NewRepairItem::GetRepairValueText()
 {
-    return ValueText->text();
+    return ui->ValueText->text();
 }
 
 void NewRepairItem::SetRepairValueText(const QString &StrValue)
 {
-    ValueText->setText(StrValue);
+    ui->ValueText->setText(StrValue);
+}
+
+double NewRepairItem::GetValueMaths()
+{
+    return GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble();
 }
 
 QString NewRepairItem::GetRepairIndexText()
 {
-    return RepairIndex->text();
+    return ui->RepairIndex->text();
 }
 
 
@@ -103,17 +109,42 @@ void NewRepairItem::on_ButtonClear_clicked()
 
 void NewRepairItem::on_QuantityText_editingFinished()
 {
-     qDebug()<<" on_m_CheckDDon_QuantityText_editingFinishedS_clicked ";
-    ValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()) );
+    ui->ValueText->setText( QString::number(GetValueMaths()) );
 }
 
 void NewRepairItem::on_m_CheckDDS_clicked(bool checked)
 {
-    qDebug()<<" on_m_CheckDDS_clicked "<<checked;
-    if(checked){
-        ValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()+(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()/5)));
+    if(m_bInitializeCheckboxes){
+        if(m_bGlobalTaxes){
+            ui->ValueText->setText( QString::number(GetValueMaths()+(GetValueMaths()/5)));
+        }else {
+            ui->ValueText->setText( QString::number(GetValueMaths()) );
+        }
+        return;
     }else {
-        ValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()) );
+
+        if(checked){
+            if(m_bGlobalTaxes){
+                // Wadim DDS
+                ui->ValueText->setText( QString::number(GetValueMaths())); // Set original value
+            }else {
+                // Nachislqwame DDS
+                ui->ValueText->setText( QString::number(GetValueMaths()+(GetValueMaths()/5))); // Set value with taxes
+            }
+        }else {
+             if(m_bGlobalTaxes){
+                // Dobavqme DDS
+                ui->ValueText->setText( QString::number(GetValueMaths()+(GetValueMaths()/5)) );// Set value with taxes
+             }else {
+                 // Nachislqwame DDS
+                ui->ValueText->setText( QString::number(GetValueMaths()));// Set original value
+             }
+        }
     }
 
+}
+
+void NewRepairItem::on_SinglePriceText_editingFinished()
+{
+     ui->ValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()) );
 }

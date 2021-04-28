@@ -70,7 +70,7 @@ private slots:
     void on_Button_NewClientRepair_clicked();
 
     void RestoreAutoRepairForm();
-    void on_CheckBox_DDS_stateChanged(int arg1);
+    void on_CheckBox_DDS_clicked(bool checked);
 };
 
 #endif // ADDREPAIR_H

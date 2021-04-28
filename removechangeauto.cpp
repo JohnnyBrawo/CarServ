@@ -117,7 +117,6 @@ void RemoveChangeAuto::AddAutoToClient(QString ClientName, QString ClientEditID)
     m_bInitialize = true;
     ClearAllFields();
 
-    qDebug() << " AddAutoToClient  ClientName   " << ClientName << "   ClientEditID    " << ClientEditID;
     m_SentClientName = ClientName;
     m_SentClientID = ClientEditID;
     ui->Combo_DelChangeClientName->setVisible(false);
@@ -388,6 +387,47 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
 }
 
 
+void RemoveChangeAuto::FillComboModeli(int MarkaIdx)
+{
+    MyData.OpenConnection("All_Models.sqlite");
+    QSqlQueryModel *MyModel = new QSqlQueryModel();
+    QSqlQuery ShowModelQry(MyData.CarsDB);
+
+    ShowModelQry.prepare("SELECT Model_Name FROM All_Models_Table WHERE Model_ID='"+QString::number(MarkaIdx)+"' ");
+
+    if(! ShowModelQry.exec()){
+        qDebug() << "ShowModelQry.Exec() SELECT Model_Name FROM All_Models_Table fail "<< ShowModelQry.lastError().text();
+    }
+
+    MyModel->setQuery(ShowModelQry);
+    ui->m_ComboModel->setModel(MyModel);
+
+    MyData.CloseConnection();
+
+}
+
+
+void RemoveChangeAuto::FillComboMarki()
+{
+
+    MyData.OpenConnection("Marki.sqlite");
+
+    QSqlQueryModel * MyModel = new QSqlQueryModel();
+
+    QSqlQuery ShowMakriQry(MyData.CarsDB);
+    ShowMakriQry.prepare("SELECT Marki FROM AutoMarki_Table");
+
+    if(! ShowMakriQry.exec()){
+        qDebug() << "ShowMakriQry.Exec() SELECT Model_Name FROM AutoMarki_Table fail "<< ShowMakriQry.lastError().text();
+    }
+
+    MyModel->setQuery(ShowMakriQry);
+    ui->m_ComboMarka->setModel(MyModel);
+    MyData.CloseConnection();
+
+}
+
+
 void RemoveChangeAuto::UpdateFlags()
 {
     m_bComboClientsHit = false;
@@ -403,4 +443,9 @@ bool RemoveChangeAuto::CheckField(QString SelectedString)
         return false;
     }
     return true;
+}
+
+void RemoveChangeAuto::on_m_ComboMarka_currentIndexChanged(int index)
+{
+    FillComboModeli(index);
 }

@@ -27,6 +27,8 @@ private:
     void UpdateFlags();
     bool CheckField(QString SelectedString);
     void CenterForm();
+    void FillComboMarki();
+    void FillComboModeli(int MarkaIdx);
 
     QString m_SelectedRegNumber;
     QString m_SelectedClientID;
@@ -59,6 +61,7 @@ private slots:
     void on_Button_DeleteAuto_clicked();
     void on_Button_Add_clicked();
     void on_Combo_DelChangeClientName_currentIndexChanged(QString);
+    void on_m_ComboMarka_currentIndexChanged(int index);
 };
 
 #endif // REMOVECHANGEAUTO_H

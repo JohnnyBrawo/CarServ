@@ -312,7 +312,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Стойност          </string>
+       <string>Стойност                 </string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

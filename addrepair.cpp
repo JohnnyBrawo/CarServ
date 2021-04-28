@@ -454,8 +454,7 @@ void AddRepair::RestoreAutoRepairForm()
     SetInitialDesign();
 }
 
-
-void AddRepair::on_CheckBox_DDS_stateChanged(int arg1)
+void AddRepair::on_CheckBox_DDS_clicked(bool checked)
 {
     QListWidgetItem *  listItemData;
     NewRepairItem * m_CurrentRepair;
@@ -464,14 +463,6 @@ void AddRepair::on_CheckBox_DDS_stateChanged(int arg1)
     {
         listItemData = ui->RepairList->item(i);
         m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
-
+        m_CurrentRepair->ChangeTaxesCheckBox(checked);
     }
-//   if(!ui->LText_TotalPrice->text().isEmpty() && ui->LText_TotalPrice->text().toDouble()!=0.0)
-//   {
-//       double TotalPrice = m_dTotalCost;
-//           if(arg1==2) {
-//               TotalPrice = TotalPrice + (TotalPrice/5);
-//           }
-//           ui->LText_TotalPrice->setText(QString::number(TotalPrice, 'f',2));
-//    }
 }
