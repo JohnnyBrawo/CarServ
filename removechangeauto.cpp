@@ -22,8 +22,8 @@ RemoveChangeAuto::RemoveChangeAuto(QWidget *parent) :
     ui->Combo_DelChangeAutoRegs->setMaxVisibleItems(10);
     ui->Combo_DelChangeAutoRegs->setStyleSheet("combobox-popup: 0;");
 
-    ui->Combo_DelChangeClientName->setMaxVisibleItems(10);
-    ui->Combo_DelChangeClientName->setStyleSheet("combobox-popup: 0;");
+    ui->Combo_ClientName->setMaxVisibleItems(10);
+    ui->Combo_ClientName->setStyleSheet("combobox-popup: 0;");
 
     ui->m_ComboFuel->setMaxVisibleItems(10);
     ui->m_ComboFuel->setStyleSheet("combobox-popup: 0;");
@@ -58,6 +58,7 @@ RemoveChangeAuto::~RemoveChangeAuto()
 
 void RemoveChangeAuto::SetUnactiveFields()
 {
+        qDebug() << "RemoveChangeAuto::SetUnactiveFields()   ";
     //  Enable fields one after other
     ui->LText_DelChangeRegNumber->setEnabled(false);
     ui->LText_DelChangeVIN->setEnabled(false);
@@ -65,10 +66,27 @@ void RemoveChangeAuto::SetUnactiveFields()
     ui->Button_Record->setVisible(false);
     ui->Button_DeleteAuto->setVisible(false);
     ui->L_ChangeClientName->setVisible(false);
-    ui->Combo_DelChangeClientName->setVisible(false);
+    ui->Combo_ClientName->setVisible(false);
 
     ui->L_ChangeAutoMain->setText("Добавяне на автомобил");
 }
+
+void RemoveChangeAuto::ActivateAutoCombos()
+{
+    qDebug() << "RemoveChangeAuto::ActivateAutoCombos()";
+    ui->m_ComboFuel->setEnabled(true);
+    ui->m_ComboMarka->setEnabled(true);
+    ui->m_ComboModel->setEnabled(true);
+    ui->m_ComboType->setEnabled(true);
+    ui->m_ComboYear->setEnabled(true);
+
+    m_SelectedRegNumber.clear();
+    m_SelectedClientID.clear();
+
+    m_strAutoMarka.clear();
+    m_strAutoModel.clear();
+}
+
 
 
 void RemoveChangeAuto::ClearAllFields()
@@ -105,6 +123,9 @@ void RemoveChangeAuto::ClearAllFields()
     m_SentClientName.clear();
     m_SentClientID.clear();
 
+    m_strAutoMarka.clear();
+    m_strAutoModel.clear();
+
     m_bComboClientsHit = false;
     m_bComboRegsHit = false;
     m_bEditFromClients = false;
@@ -113,13 +134,21 @@ void RemoveChangeAuto::ClearAllFields()
 
 void RemoveChangeAuto::AddAutoToClient(QString ClientName, QString ClientEditID)
 {
-    qDebug() << "RemoveChangeAuto::AddAutoToClient()   ";
+    qDebug() << "RemoveChangeAuto::AddAutoToClient()   ClientName   "<<ClientName<<"   ClientEditID "<<ClientEditID;
     m_bInitialize = true;
     ClearAllFields();
 
+    FillComboMarki();
+    FillComboModeli(0);
+
     m_SentClientName = ClientName;
     m_SentClientID = ClientEditID;
-    ui->Combo_DelChangeClientName->setVisible(false);
+    // Edit Mode !! Enable all auto combos !
+    if(!ClientName.isEmpty() && !ClientEditID.isEmpty()){
+        ActivateAutoCombos();
+    }
+
+    ui->Combo_ClientName->setVisible(false);
     ui->L_ChangeClientName->setVisible(false);
     ui->LText_ClientName->setVisible(true);
     ui->L_UnkownClients->setVisible(false);
@@ -128,6 +157,7 @@ void RemoveChangeAuto::AddAutoToClient(QString ClientName, QString ClientEditID)
     ui->Button_Add->setVisible(false);
     //    FillPage();
     FillRegCombo();
+    FillAutoData();
 
     m_bInitialize = false;
     ui->LText_ClientName->setText(ClientName);
@@ -137,6 +167,8 @@ void RemoveChangeAuto::AddAutoToClient(QString ClientName, QString ClientEditID)
 
 void RemoveChangeAuto::OpenClearEditWindow()
 {
+
+    qDebug() << "RemoveChangeAuto::OpenClearEditWindow()   ";
     m_bInitialize = true;
     ClearAllFields();
     show();
@@ -147,6 +179,7 @@ void RemoveChangeAuto::OpenClearEditWindow()
 
 void RemoveChangeAuto::OpenClearWindow()
 {
+        qDebug() << "RemoveChangeAuto::OpenClearWindow()   ";
     m_bInitialize = true;
     show();
     ClearAllFields();
@@ -162,8 +195,74 @@ void RemoveChangeAuto::FillPage()
     FillRegCombo();
 }
 
+void RemoveChangeAuto::FillAutoData()
+{
+    qDebug() << "RemoveChangeAuto::FillAutoData()   m_SentClientID  "<<m_SentClientID<<"   m_SentClientName     "<<m_SentClientName;
+    MyData.OpenConnection("Automobiles.sqlite");
+    QSqlQuery RegComboQry(MyData.CarsDB);
+
+
+    RegComboQry.prepare("SELECT * FROM Automobiles_Table WHERE Auto_RegNumber='"+m_SelectedRegNumber+"'");
+    if(! RegComboQry.exec()){
+        qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail ";
+        return;
+    }else {
+
+        if(!RegComboQry.next())
+        {
+            // Тука зареждаме празните атомобили.
+            RegComboQry.prepare("SELECT * FROM Automobiles_Table WHERE CLIENT_ID='""'");
+            if(! RegComboQry.exec()){
+                return;
+            }
+            if(!RegComboQry.next())
+            {
+                qDebug() << "Nqma neregistrirani awtomobili !!!  ";
+            }
+        }else {
+            qDebug() << " RegComboQry   Value(0) "<<RegComboQry.value(0).toString();
+            int index = -1;
+             qDebug() << " Value(1) "<<RegComboQry.value(1).toString();
+             qDebug() << " Value(2) "<<RegComboQry.value(2).toString();
+             qDebug() << " Value(3) "<<RegComboQry.value(3).toString();
+             qDebug() << " Value(4) "<<RegComboQry.value(4).toString();
+             qDebug() << " Value(5) "<<RegComboQry.value(5).toString();
+             qDebug() << " Value(6) "<<RegComboQry.value(6).toString();
+             qDebug() << " Value(7) "<<RegComboQry.value(7).toString();
+             qDebug() << " Value(8) "<<RegComboQry.value(8).toString();
+             qDebug() << " Value(9) "<<RegComboQry.value(9).toString();
+             // Save Marka
+             m_strAutoMarka = RegComboQry.value(3).toString();
+
+             //Set Fuel
+             index = ui->m_ComboFuel->findText(RegComboQry.value(6).toString()) ;
+             if(index!=-1) ui->m_ComboFuel->setCurrentIndex(index);
+
+             // Set year
+             index = ui->m_ComboYear->findText(RegComboQry.value(5).toString()) ;
+             if(index!=-1) ui->m_ComboYear->setCurrentIndex(index);
+
+             //Set Type
+             index = ui->m_ComboType->findText(RegComboQry.value(8).toString()) ;
+             if(index!=-1) ui->m_ComboType->setCurrentIndex(index);
+
+             // Set VIN
+             ui->LText_DelChangeVIN->setText(RegComboQry.value(7).toString());
+             // Set Millage
+             ui->LText_AutoMillage->setText(RegComboQry.value(9).toString());
+             //Set RegNumber
+             ui->LText_DelChangeRegNumber->setText(RegComboQry.value(2).toString());
+        }
+    }
+
+    MyData.CloseConnection();
+
+    on_m_ComboMarka_currentTextChanged(m_strAutoMarka);
+}
+
 void RemoveChangeAuto::FillRegCombo()
 {
+    qDebug() << "RemoveChangeAuto::FillRegCombo()   m_SentClientID  "<<m_SentClientID<<"   m_SentClientName     "<<m_SentClientName;
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
     QSqlQuery RegComboQry(MyData.CarsDB);
@@ -176,34 +275,19 @@ void RemoveChangeAuto::FillRegCombo()
     }
 
     if(! RegComboQry.exec()){
-        qDebug() << "EditAutoQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail ";
+        qDebug() << "RegComboQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail ";
         return;
-    }
-
-    if(!RegComboQry.next())
-    {
-        // Тука зареждаме празните атомобили.
-        RegComboQry.prepare("SELECT Auto_RegNumber FROM Automobiles_Table WHERE CLIENT_ID='""'");
-        if(! RegComboQry.exec()){
-            return;
-        }
-        if(!RegComboQry.next())
-        {
-            qDebug() << "Nqma neregistrirani awtomobili !!!  ";
-        }
-    }else {
-        qDebug() << "  FillRegCombo Sent Client ID  ->  "<< RegComboQry.value(0).toString();
     }
 
     MyModel->setQuery(RegComboQry);
     ui->Combo_DelChangeAutoRegs->setModel(MyModel);
-
 
     MyData.CloseConnection();
 }
 
 void RemoveChangeAuto::FillClientNameCombo()
 {
+            qDebug() << "RemoveChangeAuto::FillClientNameCombo()   ";
     MyData.OpenConnection("Clients.sqlite");
     QSqlQueryModel * MyModel = new QSqlQueryModel();
     QSqlQuery ClientComboQry(MyData.CarsDB);
@@ -219,7 +303,7 @@ void RemoveChangeAuto::FillClientNameCombo()
     }
 
     MyModel->setQuery(ClientComboQry);
-    ui->Combo_DelChangeClientName->setModel(MyModel);
+    ui->Combo_ClientName->setModel(MyModel);
     MyData.CloseConnection();
 }
 
@@ -232,28 +316,31 @@ void RemoveChangeAuto::ShowAllFieldsText()
 
 void RemoveChangeAuto::on_Button_Record_clicked()
 {
-//    MyData.OpenConnection("Automobiles.sqlite");
+        qDebug() << "RemoveChangeAuto::on_Button_Record_clicked()   ";
+    MyData.OpenConnection("Automobiles.sqlite");
 
     /** Towa e qko typo , obache trqbwa da ima kontrol na dannite predi da se zapishat. Inache nqma hwashtane */
 //    QString RegNumber = CheckField(ui->LText_DelChangeRegNumber->text())?ui->LText_DelChangeRegNumber->text():"None";
 //    QString Vin = CheckField(ui->LText_DelChangeVIN->text())?ui->LText_DelChangeVIN->text():"None";
    //@ TODO - make this from combo boxes selection
-//    QSqlQuery AddNewAuto(MyData.CarsDB);
-   // AddNewAuto.prepare("UPDATE Automobiles_Table set Auto_RegNumber='"+RegNumber+"',Auto_Marka='"+Marka+"', Auto_Model='"+Model+"', Auto_Year='"+Year+"', Auto_Fuel='"+Fuel+"',  Auto_VIN='"+Vin+"', Auto_Type='"+Type+"' WHERE Auto_RegNumber='"+m_SelectedRegNumber+"' ");
+    QSqlQuery AddNewAuto(MyData.CarsDB);
+    AddNewAuto.prepare("UPDATE Automobiles_Table set Auto_RegNumber='"+ui->LText_DelChangeRegNumber->text()+"',Auto_Marka='"+ui->m_ComboMarka->currentText()+"', Auto_Model='"+ui->m_ComboModel->currentText()+"', Auto_Year='"+ui->m_ComboYear->currentText()+"', Auto_Fuel='"+ui->m_ComboFuel->currentText()+"',  Auto_VIN='"+ui->LText_DelChangeVIN->text()+"', Auto_Type='"+ui->m_ComboType->currentText()+"', Auto_Millage='"+ui->LText_AutoMillage->text()+"' WHERE Auto_RegNumber='"+m_SelectedRegNumber+"' ");
 
-//    if(!AddNewAuto.exec()){
-//        qDebug() << "UPDATE Automobiles_Table fail ";
-//    }
+    if(!AddNewAuto.exec()){
+        qDebug() << "UPDATE Automobiles_Table fail ";
+    }
 
     // Update Current Changes
 //    m_SelectedRegNumber = ui->LText_DelChangeRegNumber->text();
-//    MyData.CloseConnection();
+    MyData.CloseConnection();
     ClearAllFields();
-    FillPage();
+    on_Button_Back_clicked();
 }
 
 void RemoveChangeAuto::on_Button_DeleteAuto_clicked()
 {
+
+    qDebug() << "RemoveChangeAuto::on_Button_DeleteAuto_clicked()   ";
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQuery AddNewAuto(MyData.CarsDB);
@@ -290,18 +377,25 @@ void RemoveChangeAuto::on_Button_Back_clicked()
     emit CloseDeletePage();
 }
 
-void RemoveChangeAuto::on_Combo_DelChangeClientName_currentIndexChanged(QString)
+void RemoveChangeAuto::on_Combo_ClientName_currentIndexChanged(QString)
 {
+
+    qDebug() << "RemoveChangeAuto::on_Combo_ClientName_currentIndexChanged()   ";
+    qDebug() << "m_bInitialize  "<<m_bInitialize<<" m_SentClientName    "<<m_SentClientName<<"  m_bComboRegsHit "<<m_bComboRegsHit;
     if((!m_bInitialize || m_SentClientName.isEmpty()) && !m_bComboRegsHit)
     {
         m_bComboClientsHit = true;
-        on_Combo_DelChangeAutoRegs_currentIndexChanged(QString::number(ui->Combo_DelChangeClientName->currentIndex()+1));
+        on_Combo_DelChangeAutoRegs_currentIndexChanged(QString::number(ui->Combo_ClientName->currentIndex()+1));
     }
 }
 
 
 void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QString &arg1)
 {
+    qDebug() << "RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged()  arg1    "<<arg1;
+    m_SelectedRegNumber = arg1;
+    FillAutoData();
+
     if(m_bInitialize){
         return;
     }
@@ -309,14 +403,14 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQuery EditAutoQry(MyData.CarsDB);
 
-    m_SelectedRegNumber = arg1;
+
 
     if(m_bComboRegsHit)
     {
         MyData.CloseConnection();
         return;
     }
-
+qDebug() << "RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged()   ";
 //    if( m_bComboClientsHit)
 //    {
 //        EditAutoQry.prepare("SELECT * FROM Automobiles_Table WHERE CLIENT_ID='""' ");
@@ -335,6 +429,11 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
              qDebug() << " Value(2) "<<EditAutoQry.value(2).toString();
              qDebug() << " Value(3) "<<EditAutoQry.value(3).toString();
              qDebug() << " Value(4) "<<EditAutoQry.value(4).toString();
+             qDebug() << " Value(5) "<<EditAutoQry.value(5).toString();
+             qDebug() << " Value(6) "<<EditAutoQry.value(6).toString();
+             qDebug() << " Value(7) "<<EditAutoQry.value(7).toString();
+             qDebug() << " Value(8) "<<EditAutoQry.value(8).toString();
+             qDebug() << " Value(9) "<<EditAutoQry.value(9).toString();
 
             if(m_SelectedClientID.isEmpty() ){
                 ui->L_UnkownClients->setVisible(false);
@@ -380,7 +479,7 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
 
     if(!m_SelectedClientID.isEmpty() && !m_bComboClientsHit)
     {
-        ui->Combo_DelChangeClientName->setCurrentIndex(m_SelectedClientID.toInt()-1);
+        ui->Combo_ClientName->setCurrentIndex(m_SelectedClientID.toInt()-1);
     }
 
     UpdateFlags();
@@ -389,6 +488,7 @@ void RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged(const QStr
 
 void RemoveChangeAuto::FillComboModeli(int MarkaIdx)
 {
+     qDebug() << "RemoveChangeAuto::FillComboModeli()   ";
     MyData.OpenConnection("All_Models.sqlite");
     QSqlQueryModel *MyModel = new QSqlQueryModel();
     QSqlQuery ShowModelQry(MyData.CarsDB);
@@ -410,6 +510,7 @@ void RemoveChangeAuto::FillComboModeli(int MarkaIdx)
 void RemoveChangeAuto::FillComboMarki()
 {
 
+     qDebug() << "RemoveChangeAuto::FillComboMarki()   ";
     MyData.OpenConnection("Marki.sqlite");
 
     QSqlQueryModel * MyModel = new QSqlQueryModel();
@@ -447,5 +548,15 @@ bool RemoveChangeAuto::CheckField(QString SelectedString)
 
 void RemoveChangeAuto::on_m_ComboMarka_currentIndexChanged(int index)
 {
+            qDebug() << "RemoveChangeAuto::on_m_ComboMarka_currentIndexChanged()   index    "<<index;
     FillComboModeli(index);
+}
+
+void RemoveChangeAuto::on_m_ComboMarka_currentTextChanged(const QString &arg1)
+{
+    qDebug() << "RemoveChangeAuto::on_m_ComboMarka_currentTextChanged()   arg1    "<<arg1;
+    int Idx = -1;
+    Idx = ui->m_ComboMarka->findText(arg1) ;
+    if(Idx!=-1) ui->m_ComboMarka->setCurrentIndex(Idx);
+    FillComboModeli(Idx);
 }

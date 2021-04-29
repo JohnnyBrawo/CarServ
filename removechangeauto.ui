@@ -90,7 +90,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QComboBox" name="Combo_DelChangeClientName">
+  <widget class="QComboBox" name="Combo_ClientName">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -168,8 +168,47 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="L_Change_Model">
+    <item row="5" column="1" colspan="2">
+     <widget class="QComboBox" name="m_ComboFuel">
+      <item>
+       <property name="text">
+        <string>Select</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Бензин</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Дизел</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Газ/Бензин</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Метан/Бензин</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Хибрид</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Електрически</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="L_Change_RegNumber">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -178,41 +217,8 @@
        </font>
       </property>
       <property name="text">
-       <string>Модел</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="0">
-     <widget class="QLabel" name="L_Change_VIN">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>РАМА / VIN /</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0" colspan="3">
-     <widget class="QLabel" name="L_ChangeAutoInfo">
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Данни за автомобила </string>
+       <string>Регистрационен 
+ номер</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -236,6 +242,26 @@
       </property>
      </widget>
     </item>
+    <item row="2" column="1" colspan="2">
+     <widget class="QComboBox" name="m_ComboModel"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="L_Change_Model">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Модел</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
     <item row="4" column="0">
      <widget class="QLabel" name="L_Change_Year">
       <property name="font">
@@ -252,6 +278,280 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="L_Change_VIN">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>РАМА / VIN /</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1" colspan="2">
+     <widget class="QComboBox" name="m_ComboType">
+      <item>
+       <property name="text">
+        <string>Select</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Седан</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Хечбек</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Комби</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Купе</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Кабрио</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Джип</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Пикап</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Ван</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="4" column="1" colspan="2">
+     <widget class="QComboBox" name="m_ComboYear">
+      <property name="currentText">
+       <string>Select</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Select</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2018</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2017</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2016</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2015</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2014</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2013</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2012</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2011</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2010</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2009</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2008</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2007</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2006</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2005</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2004</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2003</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2002</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2001</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2000</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1999</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1998</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1997</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1996</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1995</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1994</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1993</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1992</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1991</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1990</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1989</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1988</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1987</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1986</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1985</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="7" column="1" colspan="2">
+     <widget class="QLineEdit" name="LText_DelChangeVIN"/>
+    </item>
+    <item row="0" column="0" colspan="3">
+     <widget class="QLabel" name="L_ChangeAutoInfo">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Данни за автомобила </string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1" colspan="2">
+     <widget class="QComboBox" name="m_ComboMarka"/>
+    </item>
+    <item row="6" column="1" colspan="2">
+     <widget class="QLineEdit" name="LText_DelChangeRegNumber"/>
     </item>
     <item row="5" column="0">
      <widget class="QLabel" name="L_Change_Fuel">
@@ -270,26 +570,8 @@
       </property>
      </widget>
     </item>
-    <item row="7" column="1" colspan="2">
-     <widget class="QLineEdit" name="LText_DelChangeVIN"/>
-    </item>
-    <item row="1" column="1" colspan="2">
-     <widget class="QComboBox" name="m_ComboMarka"/>
-    </item>
-    <item row="2" column="1" colspan="2">
-     <widget class="QComboBox" name="m_ComboModel"/>
-    </item>
-    <item row="5" column="1" colspan="2">
-     <widget class="QComboBox" name="m_ComboFuel"/>
-    </item>
-    <item row="4" column="1" colspan="2">
-     <widget class="QComboBox" name="m_ComboYear"/>
-    </item>
-    <item row="3" column="1" colspan="2">
-     <widget class="QComboBox" name="m_ComboType"/>
-    </item>
-    <item row="6" column="0">
-     <widget class="QLabel" name="L_Change_RegNumber">
+    <item row="8" column="0">
+     <widget class="QLabel" name="L_Change_Millage">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -298,16 +580,15 @@
        </font>
       </property>
       <property name="text">
-       <string>Регистрационен 
- номер</string>
+       <string>Пробег ( км )</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="6" column="1" colspan="2">
-     <widget class="QLineEdit" name="LText_DelChangeRegNumber"/>
+    <item row="8" column="1" colspan="2">
+     <widget class="QLineEdit" name="LText_AutoMillage"/>
     </item>
    </layout>
   </widget>

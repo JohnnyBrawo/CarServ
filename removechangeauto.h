@@ -18,6 +18,7 @@ private:
     CarsDatabase MyData;
 
     void FillPage();
+    void FillAutoData();
     void FillRegCombo();
     void FillClientNameCombo();
 
@@ -29,12 +30,17 @@ private:
     void CenterForm();
     void FillComboMarki();
     void FillComboModeli(int MarkaIdx);
+    void ActivateAutoCombos();
 
     QString m_SelectedRegNumber;
     QString m_SelectedClientID;
     QString m_SentClientName;
     QString m_SentClientID;
     QString m_strAutoReg;
+
+    QString m_strAutoMarka;
+    QString m_strAutoModel;
+
 
     bool m_bInitialize;
     bool m_bComboClientsHit;
@@ -60,8 +66,9 @@ private slots:
 
     void on_Button_DeleteAuto_clicked();
     void on_Button_Add_clicked();
-    void on_Combo_DelChangeClientName_currentIndexChanged(QString);
+    void on_Combo_ClientName_currentIndexChanged(QString);
     void on_m_ComboMarka_currentIndexChanged(int index);
+    void on_m_ComboMarka_currentTextChanged(const QString &arg1);
 };
 
 #endif // REMOVECHANGEAUTO_H
