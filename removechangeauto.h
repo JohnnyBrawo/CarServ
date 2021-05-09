@@ -14,7 +14,14 @@ class RemoveChangeAuto : public QDialog
 
 private:
     Ui::RemoveChangeAuto *ui;
+    enum States{
+        eNormalMode,
+        eEditMode,
+        eAddExistingAutoMode,
+        eEditDelAuto
+    };
 
+    States m_State;
     CarsDatabase MyData;
 
     void FillPage();

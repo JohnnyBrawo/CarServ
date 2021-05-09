@@ -39,7 +39,7 @@ RemoveChangeAuto::RemoveChangeAuto(QWidget *parent) :
 
     ui->m_ComboYear->setMaxVisibleItems(10);
     ui->m_ComboYear->setStyleSheet("combobox-popup: 0;");
-
+    m_State = eNormalMode;
 }
 
 
@@ -103,6 +103,10 @@ void RemoveChangeAuto::ClearAllFields()
     ui->L_UnkownClients->setVisible(false);
 
 
+    ui->Button_Add->setVisible(false);
+    ui->Button_Record->setVisible(false);
+
+
     ui->m_ComboFuel->setCurrentIndex(0);
     ui->m_ComboFuel->setEnabled(false);
 
@@ -126,6 +130,43 @@ void RemoveChangeAuto::ClearAllFields()
     m_strAutoMarka.clear();
     m_strAutoModel.clear();
 
+     qDebug() << "RemoveChangeAuto::ClearAllFields()  m_State   "<<m_State;
+    switch (m_State) {
+    case eNormalMode :
+
+        ui->L_ChangeAutoMain->setText("Добавяне на автомобил");
+        break;
+    case eEditMode :
+
+        ui->L_ChangeAutoMain->setText("Корекция на автомобил");
+        ui->Combo_ClientName->setVisible(false);
+        ui->L_ChangeClientName->setVisible(false);
+        ui->LText_ClientName->setVisible(true);
+        ui->LText_ClientName->setEnabled(false);
+        ui->L_UnkownClients->setVisible(false);
+
+        break;
+    case eAddExistingAutoMode :
+
+        ui->L_ChangeAutoMain->setText("Добавяне на съществуващ автомобил");
+        ui->L_ChangeClientName->setVisible(false);
+        ui->Combo_ClientName->setVisible(false);
+        ui->L_LineClientName->setVisible(true);
+
+        ui->LText_ClientName->setVisible(true);
+        ui->LText_ClientName->setEnabled(false);
+
+         ui->Button_Record->setVisible(true);
+        break;
+    case eEditDelAuto :
+
+        ui->L_ChangeAutoMain->setText("Корекция / изтриване на автомобил");
+        break;
+    default :
+        qDebug() << "  ClearAllFields - UnKnown Mode";
+        break;
+    }
+
     m_bComboClientsHit = false;
     m_bComboRegsHit = false;
     m_bEditFromClients = false;
@@ -135,6 +176,7 @@ void RemoveChangeAuto::ClearAllFields()
 void RemoveChangeAuto::EditClientAuto(QString ClientName,QString ClientEditID)
 {
     qDebug() << "RemoveChangeAuto::EditClientAuto()   ClientName   "<<ClientName<<"   ClientEditID "<<ClientEditID;
+    m_State = eEditMode;
     m_bInitialize = true;
     ClearAllFields();
 
@@ -148,20 +190,11 @@ void RemoveChangeAuto::EditClientAuto(QString ClientName,QString ClientEditID)
         ActivateAutoCombos();
     }
 
-    ui->Combo_ClientName->setVisible(false);
-    ui->L_ChangeClientName->setVisible(false);
-    ui->LText_ClientName->setVisible(true);
-    ui->L_UnkownClients->setVisible(false);
-
     m_bEditFromClients = true;
-    ui->Button_Add->setVisible(false);
-    //    FillPage();
     FillRegCombo();
     FillAutoData();
-
     m_bInitialize = false;
-    ui->LText_ClientName->setText(ClientName);
-    ui->LText_ClientName->setEnabled(false);
+    ui->LText_ClientName->setText(m_SentClientName);
     show();
 }
 
@@ -169,51 +202,45 @@ void RemoveChangeAuto::OpenClearEditWindow()
 {
 
     qDebug() << "RemoveChangeAuto::OpenClearEditWindow()   ";
+    m_State = eEditDelAuto;
     m_bInitialize = true;
     ClearAllFields();
-    ui->Button_Add->setVisible(false);
     FillPage();
 
-    ui->L_ChangeAutoMain->setText("Корекция на автомобил");
     m_bInitialize = false;
     show();
 }
 
 void RemoveChangeAuto::OpenClearWindow()
 {
-        qDebug() << "RemoveChangeAuto::OpenClearWindow()   ";
+    qDebug() << "RemoveChangeAuto::OpenClearWindow()   ";
+    m_State = eNormalMode;
     m_bInitialize = true;
-    show();
     ClearAllFields();
     FillPage();
-    SetUnactiveFields();
+//    SetUnactiveFields();
     m_bInitialize = false;
+    show();
 }
 
 
 void RemoveChangeAuto::OpenExistingAutosWindow(QString ClientName)
 {
+    m_State = eAddExistingAutoMode;
         qDebug() << "RemoveChangeAuto::OpenExistingAutosWindow()   "<<ClientName;
     m_bInitialize = true;
 
     ClearAllFields();
-    ui->L_ChangeClientName->setVisible(false);
-    ui->Combo_ClientName->setVisible(false);
-    ui->L_LineClientName->setVisible(true);
-    ui->LText_ClientName->setVisible(true);
-    ui->LText_ClientName->setText(ClientName);
-    ui->LText_ClientName->setText(ClientName);
-    ui->LText_ClientName->setEnabled(false);
+
     m_SentClientName = ClientName;
+    ui->LText_ClientName->setText(m_SentClientName);
     FillComboMarki();
     FillComboModeli(0);
 
-//    FillPage();
     FillRegCombo();
     FillAutoData();
-    SetUnactiveFields();
+//    SetUnactiveFields();
     m_bInitialize = false;
-    ui->L_ChangeAutoMain->setText("Добавяне на съществуващ автомобил");
 
     show();
 
@@ -367,10 +394,10 @@ void RemoveChangeAuto::on_Button_Record_clicked()
     }
 
     // Update Current Changes
-//    m_SelectedRegNumber = ui->LText_DelChangeRegNumber->text();
+    m_strAutoReg = ui->LText_DelChangeRegNumber->text();
     MyData.CloseConnection();
     ClearAllFields();
-    on_Button_Back_clicked();
+    on_Button_Add_clicked();
 }
 
 void RemoveChangeAuto::on_Button_DeleteAuto_clicked()

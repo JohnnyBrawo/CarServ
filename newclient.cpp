@@ -104,7 +104,7 @@ void NewClient::RestoreFormAttachAuto()
 {
     this->show();
     CenterForm();
-
+ qDebug() << "RestoreFormAttachAuto "<<m_AttachAuto->GetSelectedCarReg();
     if(m_AttachAuto->GetSelectedCarReg() != "None")
     {
         m_strClientCarReg = m_AttachAuto->GetSelectedCarReg();
@@ -122,6 +122,7 @@ void NewClient::RestoreFormNewAuto()
 {
     this->show();
     CenterForm();
+     qDebug() << "RestoreFormAttachAuto "<<m_NewAuto->GetNewCarReg();
     if(m_NewAuto->GetNewCarReg() != "None")
     {
         m_strClientCarReg = m_NewAuto->GetNewCarReg();
@@ -181,15 +182,17 @@ bool NewClient::CheckRecordObligatory(){
 void NewClient::on_Button_Add_Client_clicked()
 {
     if (CheckRecordObligatory()){
-        if(!AddClentInfo( ui->LText_ClientName->text(),
+//        if(!
+                AddClentInfo( ui->LText_ClientName->text(),
                      ui->LText_ClientPhone->text(),
                      ui->LText_ClientFirm->text(),
                      ui->LText_ClientCity->text(),
-                     ui->Text_ClientAddress->toPlainText())){
-            return;
-        }else {
+                     ui->Text_ClientAddress->toPlainText());
+//                ){
+//            return;
+//        }else {
             RecordCarToClient();
-        }
+//        }
     }
 
     ClearAllFields();
