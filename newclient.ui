@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="L_MainFormLabel_Add">
+  <widget class="QLabel" name="L_MainFormLabel">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -76,7 +76,7 @@
      </widget>
     </item>
     <item row="0" column="2">
-     <widget class="QPushButton" name="Button_AddClientAuto">
+     <widget class="QPushButton" name="Button_AddExistAuto">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -284,29 +284,6 @@
    </property>
    <property name="text">
     <string>Изберете клиент</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="L_MainFormLabel_Edit">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>801</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>16</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Редактиране на клиент</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

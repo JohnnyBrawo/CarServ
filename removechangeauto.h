@@ -57,7 +57,8 @@ signals:
 
 private slots:
     void OpenClearEditWindow();
-    void AddAutoToClient(QString ClientName, QString ClientEditID);
+    void EditClientAuto(QString ClientName,QString ClientEditID);
+    void OpenExistingAutosWindow(QString ClientName);
     void OpenClearWindow();
     void on_Button_Back_clicked();
 

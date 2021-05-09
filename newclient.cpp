@@ -27,11 +27,11 @@ NewClient::NewClient(QWidget *parent) :
     QObject::connect(m_AttachAuto, SIGNAL(CloseDeletePage()), this, SLOT(RestoreFormAttachAuto()));
     QObject::connect(m_NewAuto, SIGNAL(CloseNewAutoForm()), this, SLOT(RestoreFormNewAuto()));
 
-    QObject::connect(ui->Button_AddClientAuto, SIGNAL(clicked()), m_AttachAuto, SLOT(OpenClearWindow()));
-    QObject::connect(this, SIGNAL(ButtonEditHit(QString, QString)), m_AttachAuto, SLOT(AddAutoToClient(QString, QString)));
+    QObject::connect(this, SIGNAL(AddExistingAutoHit(QString)), m_AttachAuto, SLOT(OpenExistingAutosWindow(QString)) );
+    QObject::connect(this, SIGNAL(ButtonEditHit(QString,QString)), m_AttachAuto, SLOT(EditClientAuto(QString,QString)));
     QObject::connect(ui->Button_AddClientAutoNew, SIGNAL(clicked()), m_NewAuto, SLOT(OpenClearWindow()));
 
-    ui->Button_AddClientAuto->setEnabled(false);
+    ui->Button_AddExistAuto->setEnabled(false);
     ui->Button_AddClientAutoNew->setEnabled(false);
 
     ui->Combo_Clients->setMaxVisibleItems(10);
@@ -50,9 +50,8 @@ void NewClient::SetEditDesignMode()
     ui->L_Klient_Name_Edit->setVisible(true);
     ui->Combo_Clients->setVisible(true);
     ui->Button_AddClientAutoEdit->setVisible(true);
-    ui->L_MainFormLabel_Edit->setVisible(true);
-    ui->L_MainFormLabel_Add->setVisible(false);
-    ui->Button_AddClientAuto->setVisible(false);
+    ui->L_MainFormLabel->setText("Корекция на клиент");
+    ui->Button_AddExistAuto->setVisible(true);
     ui->Button_AddClientAutoNew->setVisible(false);
     ui->Button_Add_Client->setEnabled(true);
     ui->L_MustAddCar->setVisible(false);
@@ -65,9 +64,8 @@ void NewClient::SetNewClientDesignMode()
     ui->L_Klient_Name_Edit->setVisible(false);
     ui->Combo_Clients->setVisible(false);
     ui->Button_AddClientAutoEdit->setVisible(false);
-    ui->L_MainFormLabel_Edit->setVisible(false);
-    ui->L_MainFormLabel_Add->setVisible(true);
-    ui->Button_AddClientAuto->setVisible(true);
+    ui->L_MainFormLabel->setText("Добавяне на клиент");
+    ui->Button_AddExistAuto->setVisible(true);
     ui->Button_AddClientAutoNew->setVisible(true);
     ui->Button_Add_Client->setEnabled(false);
     ui->L_MustAddCar->setVisible(true);
@@ -114,7 +112,7 @@ void NewClient::RestoreFormAttachAuto()
         ui->Button_Add_Client->setEnabled(true);
     }else {
         m_bRecordPermission = false;
-        QMessageBox::information(this,"Attention!","No Auto selected !");
+        //QMessageBox::information(this,"Attention!","No Auto selected !");
     }
 
 }
@@ -131,7 +129,7 @@ void NewClient::RestoreFormNewAuto()
         ui->Button_Add_Client->setEnabled(true);
     }else {
         m_bRecordPermission = false;
-        QMessageBox::information(this,"Attention!","No Auto selected !");
+     //   QMessageBox::information(this,"Attention!","No Auto selected !");
     }
 
 }
@@ -202,12 +200,12 @@ void NewClient::on_Button_Add_Client_clicked()
 
 void NewClient::on_LText_ClientName_textChanged(const QString &arg1)
 {
-    if(!arg1.isEmpty() && (!ui->Button_AddClientAuto->isEnabled() || !ui->Button_AddClientAutoNew->isEnabled() ) )
+    if(!arg1.isEmpty() && (!ui->Button_AddExistAuto->isEnabled() || !ui->Button_AddClientAutoNew->isEnabled() ) )
     {
-        ui->Button_AddClientAuto->setEnabled(true);
+        ui->Button_AddExistAuto->setEnabled(true);
         ui->Button_AddClientAutoNew->setEnabled(true);
     }else if(arg1.isEmpty()){
-        ui->Button_AddClientAuto->setEnabled(false);
+        ui->Button_AddExistAuto->setEnabled(false);
         ui->Button_AddClientAutoNew->setEnabled(false);
     }
 }
@@ -260,7 +258,7 @@ void NewClient::on_Combo_Clients_currentIndexChanged(const QString &arg1)
 
 void NewClient::on_Button_AddClientAutoEdit_clicked()
 {
-    emit ButtonEditHit( GetClientName(), GetClientID());
+    emit ButtonEditHit(GetClientName(),GetClientID());
     hide();
 }
 
@@ -270,8 +268,9 @@ void NewClient::on_Button_CancelAdd_clicked()
     hide();
 }
 
-void NewClient::on_Button_AddClientAuto_clicked()
+void NewClient::on_Button_AddExistAuto_clicked()
 {
+    emit AddExistingAutoHit(GetClientName());
     hide();
 }
 

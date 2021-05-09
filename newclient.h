@@ -49,6 +49,7 @@ public:
 signals:
     void CloseNewClientForm();
     void ButtonEditHit(QString CLientName,QString ClientID);
+    void AddExistingAutoHit(QString CLientName);
 
 private slots:
     void OpenNewClientForm();
@@ -57,7 +58,7 @@ private slots:
     void on_Button_CancelAdd_clicked();
     void RestoreFormAttachAuto();
     void RestoreFormNewAuto();
-    void on_Button_AddClientAuto_clicked();
+    void on_Button_AddExistAuto_clicked();
     void on_Button_AddClientAutoNew_clicked();
 
     void on_Button_Add_Client_clicked();
