@@ -71,14 +71,14 @@ void RemoveChangeAuto::SetUnactiveFields()
 
 }
 
-void RemoveChangeAuto::ActivateAutoCombos()
+void RemoveChangeAuto::ActivateAutoCombos(bool DeactiavateAll)
 {
     qDebug() << "RemoveChangeAuto::ActivateAutoCombos()";
-    ui->m_ComboFuel->setEnabled(true);
-    ui->m_ComboMarka->setEnabled(true);
-    ui->m_ComboModel->setEnabled(true);
-    ui->m_ComboType->setEnabled(true);
-    ui->m_ComboYear->setEnabled(true);
+    ui->m_ComboFuel->setEnabled(DeactiavateAll);
+    ui->m_ComboMarka->setEnabled(DeactiavateAll);
+    ui->m_ComboModel->setEnabled(DeactiavateAll);
+    ui->m_ComboType->setEnabled(DeactiavateAll);
+    ui->m_ComboYear->setEnabled(DeactiavateAll);
 
     m_SelectedRegNumber.clear();
     m_SelectedClientID.clear();
@@ -144,14 +144,20 @@ void RemoveChangeAuto::ClearAllFields()
         ui->LText_ClientName->setVisible(true);
         ui->LText_ClientName->setEnabled(false);
         ui->L_UnkownClients->setVisible(false);
+        ui->Button_Record->setVisible(true);
 
         break;
     case eAddExistingAutoMode :
 
         ui->L_ChangeAutoMain->setText("Добавяне на съществуващ автомобил");
+
         ui->L_ChangeClientName->setVisible(false);
         ui->Combo_ClientName->setVisible(false);
         ui->L_LineClientName->setVisible(true);
+
+        ui->LText_DelChangeRegNumber->setEnabled(false);
+        ui->LText_DelChangeVIN->setEnabled(false);
+        ui->LText_AutoMillage->setEnabled(false);
 
         ui->LText_ClientName->setVisible(true);
         ui->LText_ClientName->setEnabled(false);
@@ -295,6 +301,7 @@ void RemoveChangeAuto::FillAutoData()
              qDebug() << " Value(9) "<<RegComboQry.value(9).toString();
              // Save Marka
              m_strAutoMarka = RegComboQry.value(3).toString();
+             m_strAutoModel =  RegComboQry.value(4).toString();
 
              //Set Fuel
              index = ui->m_ComboFuel->findText(RegComboQry.value(6).toString()) ;
@@ -551,7 +558,7 @@ qDebug() << "RemoveChangeAuto::on_Combo_DelChangeAutoRegs_currentIndexChanged() 
 
 void RemoveChangeAuto::FillComboModeli(int MarkaIdx)
 {
-     qDebug() << "RemoveChangeAuto::FillComboModeli()   ";
+     qDebug() << "RemoveChangeAuto::FillComboModeli()   MarkaIdx    "<<MarkaIdx << "    m_strAutoModel  "<<m_strAutoModel;
     MyData.OpenConnection("All_Models.sqlite");
     QSqlQueryModel *MyModel = new QSqlQueryModel();
     QSqlQuery ShowModelQry(MyData.CarsDB);
@@ -566,6 +573,12 @@ void RemoveChangeAuto::FillComboModeli(int MarkaIdx)
     ui->m_ComboModel->setModel(MyModel);
 
     MyData.CloseConnection();
+
+    if(!m_strAutoModel.isEmpty()){
+        int Idx = -1;
+        Idx = ui->m_ComboModel->findText(m_strAutoModel) ;
+        if(Idx!=-1) ui->m_ComboModel->setCurrentIndex(Idx);
+    }
 
 }
 

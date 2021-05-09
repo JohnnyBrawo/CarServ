@@ -102,8 +102,7 @@ void NewClient::OpenEditClientForm()
 
 void NewClient::RestoreFormAttachAuto()
 {
-    this->show();
-    CenterForm();
+
  qDebug() << "RestoreFormAttachAuto "<<m_AttachAuto->GetSelectedCarReg();
     if(m_AttachAuto->GetSelectedCarReg() != "None")
     {
@@ -115,6 +114,8 @@ void NewClient::RestoreFormAttachAuto()
         //QMessageBox::information(this,"Attention!","No Auto selected !");
     }
 
+    this->show();
+    CenterForm();
 }
 
 
@@ -181,24 +182,23 @@ bool NewClient::CheckRecordObligatory(){
 
 void NewClient::on_Button_Add_Client_clicked()
 {
+    qDebug() << " on_Button_Add_Client_clicked"<<m_bRecordPermission;
+
+
     if (CheckRecordObligatory()){
-//        if(!
-                AddClentInfo( ui->LText_ClientName->text(),
+       if(!AddClentInfo( ui->LText_ClientName->text(),
                      ui->LText_ClientPhone->text(),
                      ui->LText_ClientFirm->text(),
                      ui->LText_ClientCity->text(),
-                     ui->Text_ClientAddress->toPlainText());
-//                ){
-//            return;
-//        }else {
-            RecordCarToClient();
-//        }
+                     ui->Text_ClientAddress->toPlainText())){
+            return;
+        }else if(m_bRecordPermission){
+           RecordCarToClient();
+           m_bRecordPermission = false;
+       }
     }
-
     ClearAllFields();
     on_Button_CancelAdd_clicked();
-
-
 }
 
 void NewClient::on_LText_ClientName_textChanged(const QString &arg1)

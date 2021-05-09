@@ -37,7 +37,7 @@ private:
     void CenterForm();
     void FillComboMarki();
     void FillComboModeli(int MarkaIdx);
-    void ActivateAutoCombos();
+    void ActivateAutoCombos(bool DeactiavateAll = false);
 
     QString m_SelectedRegNumber;
     QString m_SelectedClientID;
