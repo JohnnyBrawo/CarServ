@@ -77,6 +77,7 @@ private slots:
     void on_Combo_ClientName_currentIndexChanged(QString);
     void on_m_ComboMarka_currentIndexChanged(int index);
     void on_m_ComboMarka_currentTextChanged(const QString &arg1);
+    void on_Combo_ClientName_currentIndexChanged(int index);
 };
 
 #endif // REMOVECHANGEAUTO_H
