@@ -46,6 +46,7 @@ private:
     double m_dTotalPrice = 0.0;
     bool   m_bTaxesIncluded = false;
     CarsDatabase MyData;
+    void keyPressEvent(QKeyEvent *event);
 public:
     explicit ShowAllcars(QWidget *parent = nullptr);
     ~ShowAllcars();

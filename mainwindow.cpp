@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "qapplication.h"
 #include "qdesktopwidget.h"
+#include <QKeyEvent>
 #include <QDir>
 
 
@@ -76,6 +77,17 @@ void MainWindow::LoadDesignView()
 
 
 
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+        QCoreApplication::quit();
+    }
+    else{
+            QMainWindow::keyPressEvent(event);
+    }
 }
 
 void MainWindow::on_Button_Search_clicked()

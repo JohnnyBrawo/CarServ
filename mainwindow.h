@@ -59,6 +59,8 @@ private slots:
     void on_DeleteClient_triggered();
     void on_AddNewClient_triggered();
     void on_EditClient_triggered();
+protected :
+    void keyPressEvent(QKeyEvent *event);
 };
 
 #endif // MAINWINDOW_H

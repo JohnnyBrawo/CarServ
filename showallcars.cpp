@@ -1,5 +1,6 @@
 ﻿#include "showallcars.h"
 #include "ui_showallcars.h"
+#include <QKeyEvent>
 #include "QDate"
 #include "QDateTime"
 #include <qdebug.h>
@@ -23,6 +24,19 @@ ShowAllcars::~ShowAllcars()
 {
     delete ui;
 }
+
+
+void ShowAllcars::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+            on_Button_Back_clicked();
+    }
+    else{
+            QDialog::keyPressEvent(event);
+    }
+}
+
 
 void ShowAllcars::CenterForm()
 {
