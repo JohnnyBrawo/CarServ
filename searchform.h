@@ -21,6 +21,7 @@ private:
     void FillRegNumbersCombo();
     void FillAutosCombo();
     void DeactivateAllFields();
+    void keyPressEvent(QKeyEvent *event);
 public:
     explicit SearchForm(QWidget *parent = nullptr);
     ~SearchForm();

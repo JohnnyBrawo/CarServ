@@ -4,8 +4,7 @@
 #include "qdesktopwidget.h"
 #include "newauto.h"
 #include <QtWidgets>
-//#include <QPrintDialog>
-//#include <QPrinter>
+#include <QKeyEvent>
 
 NewClient::NewClient(QWidget *parent) :
     QDialog(parent),
@@ -43,6 +42,17 @@ NewClient::~NewClient()
     delete ui;
     delete m_AttachAuto;
     delete m_NewAuto;
+}
+
+void NewClient::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+            on_Button_CancelAdd_clicked();
+    }
+    else{
+            QDialog::keyPressEvent(event);
+    }
 }
 
 void NewClient::SetEditDesignMode()

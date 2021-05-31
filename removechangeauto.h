@@ -53,6 +53,7 @@ private:
     bool m_bComboClientsHit;
     bool m_bComboRegsHit;
     bool m_bEditFromClients;
+    void   keyPressEvent(QKeyEvent *event);
 
 public:
     explicit RemoveChangeAuto(QWidget *parent = 0);

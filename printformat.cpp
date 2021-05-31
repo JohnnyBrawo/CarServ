@@ -10,6 +10,7 @@
 #include <QSysInfo>
 #include <QFileInfo>
 #include <QtWidgets>
+#include <QKeyEvent>
 
 PrintFormat::PrintFormat(QWidget *parent) :
     QDialog(parent),
@@ -38,6 +39,17 @@ void PrintFormat::on_B_PrintCancel_clicked()
 {
     emit ClosePrintForm();
     hide();
+}
+
+void PrintFormat::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+            on_B_PrintCancel_clicked();
+    }
+    else{
+            QDialog::keyPressEvent(event);
+    }
 }
 
 void PrintFormat::FillAutoData()

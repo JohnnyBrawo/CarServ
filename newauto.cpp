@@ -4,6 +4,7 @@
 #include "qdesktopwidget.h"
 #include <qdebug.h>
 #include <QtWidgets>
+#include <QKeyEvent>
 
 // Must have Automobile database here
 
@@ -48,6 +49,17 @@ void NewAuto::on_Button_CancelNewAuto_clicked()
     this->hide();
 }
 
+
+void NewAuto::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+            on_Button_CancelNewAuto_clicked();
+    }
+    else{
+            QDialog::keyPressEvent(event);
+    }
+}
 
 void NewAuto::OpenClearWindow()
 {

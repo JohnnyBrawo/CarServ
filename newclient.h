@@ -35,6 +35,7 @@ private:
     void SetNewClientDesignMode();
     void SetEditDesignMode();
     void FillClientsNameCombo();
+    void keyPressEvent(QKeyEvent *event);
 
 public:
     explicit NewClient(QWidget *parent = 0);

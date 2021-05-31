@@ -24,6 +24,8 @@ public:
                                                                m_bTaxesIncluded = TaxesIncluded; }
     bool GetPrintStatus() { return m_bPrintingDone; }
     void ResetPrintStatus() { m_bPrintingDone = false; }
+
+    void   keyPressEvent(QKeyEvent *event);
 private slots:
     void on_B_PrintCancel_clicked();
 

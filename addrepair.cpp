@@ -6,6 +6,7 @@
 #include "QDate"
 #include "QDateTime"
 #include <QtWidgets>
+#include <QKeyEvent>
 
 AddRepair::AddRepair(QWidget *parent) :
     QWidget(parent),
@@ -35,6 +36,17 @@ AddRepair::~AddRepair()
     delete ui;
 }
 
+
+void AddRepair::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+            on_Button_ExitRepair_clicked();
+    }
+    else{
+            QWidget::keyPressEvent(event);
+    }
+}
 
 void AddRepair::FillPage()
 {

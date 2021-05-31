@@ -4,6 +4,7 @@
 #include "qdesktopwidget.h"
 #include <qdebug.h>
 #include <QtWidgets>
+#include <QKeyEvent>
 
 NewRepair::NewRepair(QWidget *parent) :
     QDialog(parent),
@@ -28,6 +29,17 @@ void NewRepair::CenterForm()
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
     move(center.x()-static_cast<int>(width()*0.5), center.y()-static_cast<int>(height()*0.5) );
+}
+
+void NewRepair::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+            on_Button_CancelNewRepair_clicked();
+    }
+    else{
+            QDialog::keyPressEvent(event);
+    }
 }
 
 void NewRepair::OpenNewRepairWindow()

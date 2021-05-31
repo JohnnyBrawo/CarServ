@@ -5,6 +5,7 @@
 #include "QDate"
 #include "QDateTime"
 #include <qdebug.h>
+#include <QKeyEvent>
 
 SearchForm::SearchForm(QWidget *parent) :
     QDialog(parent),
@@ -48,6 +49,17 @@ void SearchForm::OpenClearWindow()
     this->show();
 }
 
+
+void SearchForm::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+            on_Button_Search_Back_clicked();
+    }
+    else{
+            QDialog::keyPressEvent(event);
+    }
+}
 
 void SearchForm::FillClientsNameCombo()
 {

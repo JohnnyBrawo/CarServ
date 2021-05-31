@@ -33,6 +33,7 @@ private:
     void SetFieldWithSubMenus();
     void RecordRepair();
     void SetKlientName(QString CarNumber);
+    void keyPressEvent(QKeyEvent *event);
 
     QString m_strSelCarNumber;
     unsigned int m_uiRepairsNumber;

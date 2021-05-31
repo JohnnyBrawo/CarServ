@@ -1,6 +1,7 @@
 ﻿#include "removechangeauto.h"
 #include "ui_removechangeauto.h"
 #include <QtWidgets>
+#include <QKeyEvent>
 
 RemoveChangeAuto::RemoveChangeAuto(QWidget *parent) :
     QDialog(parent),
@@ -54,6 +55,18 @@ void RemoveChangeAuto::CenterForm()
 RemoveChangeAuto::~RemoveChangeAuto()
 {
     delete ui;
+}
+
+
+void RemoveChangeAuto::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+            on_Button_Back_clicked();
+    }
+    else{
+            QDialog::keyPressEvent(event);
+    }
 }
 
 void RemoveChangeAuto::SetUnactiveFields()

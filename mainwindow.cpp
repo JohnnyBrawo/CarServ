@@ -3,6 +3,7 @@
 #include "qapplication.h"
 #include "qdesktopwidget.h"
 #include <QKeyEvent>
+#include <QMessageBox>
 #include <QDir>
 
 
@@ -83,7 +84,14 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     if(event->key() == Qt::Key_Escape)
     {
-        QCoreApplication::quit();
+        QMessageBox::StandardButton UserReply;
+        UserReply= QMessageBox::question(this,"Exit","Exit Application ?",QMessageBox::Yes|QMessageBox::Cancel);
+        if(UserReply == QMessageBox::Cancel){
+            return;
+        }else {
+            QCoreApplication::quit();
+        }
+
     }
     else{
             QMainWindow::keyPressEvent(event);

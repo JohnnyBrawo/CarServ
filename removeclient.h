@@ -17,6 +17,7 @@ private:
     void FillClientsNameCombo();
     void CenterForm();
     CarsDatabase MyData;
+    void keyPressEvent(QKeyEvent *event);
 
 public:
     explicit RemoveClient(QWidget *parent = nullptr);

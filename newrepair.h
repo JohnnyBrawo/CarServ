@@ -48,6 +48,8 @@ private:
     QString m_strSelectedCarReg;
     bool ClientInfoDone = false;
     bool AutoInfoDone = false;
+
+    void    keyPressEvent(QKeyEvent *event);
 private slots:
     void CenterForm();
     void OpenNewRepairWindow();

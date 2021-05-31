@@ -1,6 +1,7 @@
 #include "removeclient.h"
 #include "ui_removeclient.h"
 #include <QtWidgets>
+#include <QKeyEvent>
 
 RemoveClient::RemoveClient(QWidget *parent) :
     QDialog(parent),
@@ -15,6 +16,17 @@ RemoveClient::RemoveClient(QWidget *parent) :
 RemoveClient::~RemoveClient()
 {
     delete ui;
+}
+
+void RemoveClient::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+            on_Button_Back_clicked();
+    }
+    else{
+            QDialog::keyPressEvent(event);
+    }
 }
 
 void RemoveClient::CenterForm()

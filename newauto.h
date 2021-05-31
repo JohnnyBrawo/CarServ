@@ -34,6 +34,8 @@ private:
     bool CheckRecordInformation();
     bool CheckRecordObligatory();
     QString m_strSelectedCarReg;
+
+    void keyPressEvent(QKeyEvent *event);
 public:
     explicit NewAuto(QWidget *parent = 0);
     ~NewAuto();
