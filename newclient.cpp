@@ -94,6 +94,7 @@ void NewClient::ClearAllFields()
 
 void NewClient::OpenNewClientForm()
 {
+     qDebug() << " NewClient::OpenNewClientForm() ";
     m_bClientFormEditMode = false;
     ClearAllFields();
     SetNewClientDesignMode();
@@ -103,6 +104,7 @@ void NewClient::OpenNewClientForm()
 
 void NewClient::OpenEditClientForm()
 {
+      qDebug() << " NewClient::OpenEditClientForm() ";
     m_bClientFormEditMode = true;
     ClearAllFields();
     SetEditDesignMode();

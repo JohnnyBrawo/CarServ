@@ -20,7 +20,6 @@ AddRepair::AddRepair(QWidget *parent) :
     setWindowTitle("Repair Dictionary");
     CenterForm();
     m_strSelCarNumber.clear();
-    m_vRepairItem.clear();
     m_vMenusAndSubmebus.clear();
 
 
@@ -89,6 +88,7 @@ void AddRepair::SetInitialDesign()
     ui->LText_TotalPrice->setText("");
     ui->L_KlientName->setText("");
 
+    ui->RepairList->clear();
     FillPage();
 }
 
@@ -259,6 +259,10 @@ bool AddRepair::CheckRecordInformation()
     {
         listItemData = ui->RepairList->item(i);
         m_newRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
+        if(m_newRepair->IsSomeFieldChanged()){
+            QMessageBox::information(this,"Attention!","Calculate Total sum first  !");
+            return false;
+        }
 
         if( (m_newRepair->GetRepairDescrText().isEmpty() || m_newRepair->GetRepairDescrText() == "0") ||
             ( m_newRepair->GetRepairQuantityText().isEmpty() || m_newRepair->GetRepairQuantityText() == "0") ||
@@ -321,7 +325,7 @@ void AddRepair::RecordRepair()
         AddNewAuto.bindValue(":RepairTotal",ui->LText_TotalPrice->text());
         AddNewAuto.bindValue(":RepairDate",ui->LText_RepairDate->text());
         AddNewAuto.bindValue(":RepairCarRegNumber",m_strSelCarNumber);
-        AddNewAuto.bindValue(":DDS", ui->CheckBox_DDS->isChecked());
+        AddNewAuto.bindValue(":DDS", m_newRepair->GetTaxesIncluded());
 
         if(!AddNewAuto.exec()){
             qDebug() << "INSERT INTO Repair_Table fail "<< AddNewAuto.lastError().text();
@@ -336,6 +340,7 @@ void AddRepair::RecordRepair()
 
 void AddRepair::OpenClearWindow()
 {
+    qDebug() << "  AddRepair::OpenClearWindow()";
     SetInitialDesign();
     this->show();
 }
@@ -346,7 +351,7 @@ void AddRepair::on_Button_Search_clicked()
 
     ui->Button_DeleteRepair->setEnabled(false);
     ui->Button_InsertRepair->setEnabled(true);
-    ui->Button_RecordRepairs->setEnabled(true);
+    ui->Button_RecordRepairs->setEnabled(false);
     ui->Button_InsertSubMenu->setEnabled(true);
 
     ui->Button_TotalCostCalc->setEnabled(true);
@@ -411,6 +416,7 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
         m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
         if( /*m_CurrentRepair->GetRepairValueText()=="0" && */ !m_CurrentRepair->GetRepairDescrText().isEmpty() ){
             double CalcValue = 0.0;
+
             if(m_CurrentRepair->GetRepairValueText()=="0"){
                 CalcValue = m_CurrentRepair->GetRepairQuantityText().toDouble() * m_CurrentRepair->GetRepairSinglePriceText().toDouble();
             }
@@ -439,6 +445,8 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
         else{
             qDebug() << " Skip total price ";
         }
+
+        m_CurrentRepair->ReSetSomeFieldChanged();
     }
 
     m_dTotalCost = totalCost;
@@ -452,6 +460,8 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
     else {
         ui->LText_TotalPrice->setText(QString::number(totalCost, 'f',2));
     }
+
+    ui->Button_RecordRepairs->setEnabled(true);
 }
 
 void AddRepair::on_Button_NewClientRepair_clicked()
@@ -477,4 +487,10 @@ void AddRepair::on_CheckBox_DDS_clicked(bool checked)
         m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
         m_CurrentRepair->ChangeTaxesCheckBox(checked);
     }
+}
+
+
+void AddRepair::on_RepairList_itemSelectionChanged()
+{
+      qDebug() << "on_RepairList_itemSelectionChanged ";
 }

@@ -138,11 +138,14 @@ void ShowAllcars::ClearAllFields()
 
 void ShowAllcars::OpenClearWindow()
 {
+     qDebug() << "  ShowAllcars::OpenClearWindow()";
     if(m_Print->GetPrintStatus()){
         m_Print->ResetPrintStatus();
         on_Button_Back_clicked();
+         qDebug() << "  ShowAllcars::OpenClearWindow() return ";
         return;
     }
+
 
     QDate CurrentDate= QDate::currentDate();
     ui->LText_SearchFROMdate->setText(CurrentDate.toString("dd.MM.yyyy"));
@@ -325,6 +328,7 @@ void ShowAllcars::FillRepairsList()
         qDebug() << "SELECT RepairName FROM Repair_Table WHERE RepairCarRegNumber== "<< EditClientsQry.lastError().text();
     }
     else {
+         qDebug() << " EditClientsQry  "<< EditClientsQry.size();
         while (EditClientsQry.next()) {
             bool ChangeDate = RepairData != EditClientsQry.value(6).toString();
 
@@ -343,8 +347,7 @@ void ShowAllcars::FillRepairsList()
             RepairText += "   Single Price : " + EditClientsQry.value(3).toString();
             RepairText += "   Final Price : " + EditClientsQry.value(4).toString();
 //            RepairText += "   Total Price : " + EditClientsQry.value(5).toString();
-            m_dTotalPrice = EditClientsQry.value(5).toDouble();
-
+            m_dTotalPrice += EditClientsQry.value(4).toDouble();
 
             if(EditClientsQry.value(8).toString()=="1"){
                 RepairText += "\t Taxes included! ";

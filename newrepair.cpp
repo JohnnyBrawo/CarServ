@@ -44,6 +44,7 @@ void NewRepair::keyPressEvent(QKeyEvent *event)
 
 void NewRepair::OpenNewRepairWindow()
 {
+    qDebug() << " NewRepair::OpenNewRepairWindow() ";
      FillComboMarki();
      ClearAllFields();
      this->show();
@@ -70,6 +71,7 @@ void NewRepair::ClearAllFields()
 
     ui->Button_AddNewRepair->setEnabled(false);
 
+    ui->LText_NewRepairAutoMillage->clear();
     ui->LText_NewRepairKlientName->clear();
     ui->LText_NewRepairKlientPhone->clear();
     AutoInfoDone = false;

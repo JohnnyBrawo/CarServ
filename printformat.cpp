@@ -80,7 +80,7 @@ void PrintFormat::FillAutoData()
 
 }
 
-void PrintFormat::FillRepairData(int RepairNum)
+void PrintFormat::FillRepairData(int RepairNum, bool IncludeTaxes)
 {
     QLineEdit * CurrField;
     m_strRepairNumber.clear();
@@ -100,7 +100,11 @@ void PrintFormat::FillRepairData(int RepairNum)
     CurrField =  this->findChild<QLineEdit *>(m_strRepairSPrice);
     if(CurrField)CurrField->setText(QString::number(m_list.at(1)));
 
-    m_strRepairTotal  = "lineEdit_" + QString::number(RepairNum) + "_Total";
+    if(IncludeTaxes){
+        m_strRepairTotal  = "lineEdit_" + QString::number(RepairNum) + "_Total_DDS";
+    }else {
+        m_strRepairTotal  = "lineEdit_" + QString::number(RepairNum) + "_Total_No_DDS";
+    }
     CurrField =  this->findChild<QLineEdit *>(m_strRepairTotal);
     if(CurrField)CurrField->setText(QString::number(m_list.at(2)));
 }
@@ -116,7 +120,7 @@ void PrintFormat::ReadRepairs()
     int pos = 0;
     int repair_num = 1;
     for(int i=0;i<RepairsList.length();i++){
-
+        bool bTaxes = false;
         // Get Repair date and go on
         if(RepairsList.at(i) == "Date : "){
             ui->T_DateRepair->setText(RepairsList.at(i+1));
@@ -126,7 +130,7 @@ void PrintFormat::ReadRepairs()
 
         //Meet repairs devider - increase count and go on
         if(RepairsList.at(i) == "==================="){
-            FillRepairData(repair_num);
+            FillRepairData(repair_num, false);
             repair_num ++;
             continue;
         }
@@ -149,13 +153,18 @@ void PrintFormat::ReadRepairs()
 
         pos = 0;
         qDebug()<<"RepairsList.at(i) " <<RepairsList.at(i);
+        if((RepairsList.at(i).indexOf("Taxes included", 0)) != -1){
+            bTaxes = true;
+        }
+
         while ((pos = rx.indexIn(RepairsList.at(i), pos)) != -1) {
             m_list << rx.cap(1).toDouble();
             pos += rx.matchedLength();
         }
         qDebug() << " m_list "<<m_list;
+        qDebug() << " Taxes "<<bTaxes;
         if(!m_list.isEmpty()){
-            FillRepairData(repair_num);
+            FillRepairData(repair_num, bTaxes);
         }
     }
 }
@@ -184,6 +193,8 @@ void PrintFormat::FillClientData()
 
 void PrintFormat::OpenPrintForm()
 {
+     qDebug() << " PrintFormat::OpenPrintForm() ";
+
     ui->L_TotalWorkCost->setVisible(false);
     ui->L_TotalWorkCostValue->setVisible(false);
 

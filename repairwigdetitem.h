@@ -26,7 +26,8 @@ private:
     bool       m_bSubMenuField;
     bool       m_bInitializeCheckboxes;
     bool       m_bGlobalTaxes=false;
-
+    bool       m_bNeedUpdate=false;
+    bool       m_bTaxesIncluded = false;
 
 public:
     explicit NewRepairItem(QWidget *parent = nullptr);
@@ -41,12 +42,20 @@ public:
     void SetRepairIndex(unsigned int Idx, unsigned int SubMenuIdx=0);
 
     bool        IsFieldSubmenu() { return m_bSubMenuField;}
+    bool        IsSomeFieldChanged();
+    void        ReSetSomeFieldChanged();
+    bool        GetTaxesIncluded(){ return m_bTaxesIncluded;}
 
 private slots:
     void on_ButtonClear_clicked();
     void on_m_CheckDDS_clicked(bool checked);
     void on_QuantityText_editingFinished();
+    void on_ValueText_textChanged();
+    void on_SinglePriceText_textChanged();
+    void on_QuantityText_textChanged();
+    void on_DescrText_textChanged();
     void on_SinglePriceText_editingFinished();
+    void on_TotalValueText_textChanged();
 };
 
 #endif // REPAIRWIDGETITEM_h

@@ -52,7 +52,7 @@ private:
     void FillClientData();
     void FillAutoData();
     void ReadRepairs();
-    void FillRepairData(int RepairNum);
+    void FillRepairData(int RepairNum, bool IncludeTaxes);
     QString GetWorkingPath();
 
 signals:

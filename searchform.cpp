@@ -23,6 +23,7 @@ SearchForm::~SearchForm()
 
 void SearchForm::OpenClearWindow()
 {
+    qDebug() << " SearchForm::OpenClearWindow() ";
     ui->Combo_SearchAuto->setCurrentIndex(0);
     ui->Combo_Search_Klient->setCurrentIndex(0);
     ui->Combo_Search_RegNumber->setCurrentIndex(0);

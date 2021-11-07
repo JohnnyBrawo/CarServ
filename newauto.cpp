@@ -63,6 +63,7 @@ void NewAuto::keyPressEvent(QKeyEvent *event)
 
 void NewAuto::OpenClearWindow()
 {
+    qDebug() << "  NewAuto::OpenClearWindow()";
      FillComboMarki();
      ClearAllFields();
      this->show();

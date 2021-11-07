@@ -10,6 +10,7 @@ NewRepairItem::NewRepairItem(QWidget *parent) :
     m_bSubMenuField(false),
     m_bInitializeCheckboxes(false)
 {
+    qDebug() << "  NewRepairItem::NewRepairItem";
     ui->setupUi(this);
     ResetAllFields();
 }
@@ -26,8 +27,8 @@ void NewRepairItem::ResetAllFields()
     ui->QuantityText->setValidator(new QDoubleValidator(0, 100, 2, this) );
     ui->SinglePriceText->setText("0");
     ui->SinglePriceText->setValidator(new QDoubleValidator(0, 100, 2, this) );
-    ui->ValueText->setText("0");
-    ui->ValueText->setValidator(new QDoubleValidator(0, 100, 2, this) );
+    ui->TotalValueText->setText("0");
+    ui->TotalValueText->setValidator(new QDoubleValidator(0, 100, 2, this) );
 
     ui->RepairIndex->setText(QString::number(m_uiRepairIndex));
     ui->RepairIndex->setFixedWidth(30);
@@ -53,7 +54,7 @@ void NewRepairItem::ClearFields()
     ui->DescrText->setText("");
     ui->QuantityText->setText("");
     ui->SinglePriceText->setText("");
-    ui->ValueText->setText("");
+    ui->TotalValueText->setText("");
 }
 
 QString NewRepairItem::GetRepairDescrText()
@@ -83,12 +84,12 @@ QString NewRepairItem::GetRepairSinglePriceText()
 
 QString NewRepairItem::GetRepairValueText()
 {
-    return ui->ValueText->text();
+    return ui->TotalValueText->text();
 }
 
 void NewRepairItem::SetRepairValueText(const QString &StrValue)
 {
-    ui->ValueText->setText(StrValue);
+    ui->TotalValueText->setText(StrValue);
 }
 
 double NewRepairItem::GetValueMaths()
@@ -107,18 +108,27 @@ void NewRepairItem::on_ButtonClear_clicked()
     ClearFields();
 }
 
-void NewRepairItem::on_QuantityText_editingFinished()
+bool    NewRepairItem::IsSomeFieldChanged()
 {
-    ui->ValueText->setText( QString::number(GetValueMaths()) );
+     qDebug()<<"\n  IsSomeFieldChanged "<<m_bNeedUpdate;
+    return m_bNeedUpdate;
+}
+
+void NewRepairItem::ReSetSomeFieldChanged()
+{
+   m_bNeedUpdate = false;
+   qDebug()<<"\n  ReSetSomeFieldChanged "<<m_bNeedUpdate;
 }
 
 void NewRepairItem::on_m_CheckDDS_clicked(bool checked)
 {
+    m_bTaxesIncluded = checked;
+
     if(m_bInitializeCheckboxes){
         if(m_bGlobalTaxes){
-            ui->ValueText->setText( QString::number(GetValueMaths()+(GetValueMaths()/5)));
+            ui->TotalValueText->setText( QString::number(GetValueMaths()+(GetValueMaths()/5)));
         }else {
-            ui->ValueText->setText( QString::number(GetValueMaths()) );
+            ui->TotalValueText->setText( QString::number(GetValueMaths()) );
         }
         return;
     }else {
@@ -126,25 +136,60 @@ void NewRepairItem::on_m_CheckDDS_clicked(bool checked)
         if(checked){
             if(m_bGlobalTaxes){
                 // Wadim DDS
-                ui->ValueText->setText( QString::number(GetValueMaths())); // Set original value
+                ui->TotalValueText->setText( QString::number(GetValueMaths())); // Set original value
             }else {
                 // Nachislqwame DDS
-                ui->ValueText->setText( QString::number(GetValueMaths()+(GetValueMaths()/5))); // Set value with taxes
+                ui->TotalValueText->setText( QString::number(GetValueMaths()+(GetValueMaths()/5))); // Set value with taxes
             }
         }else {
              if(m_bGlobalTaxes){
                 // Dobavqme DDS
-                ui->ValueText->setText( QString::number(GetValueMaths()+(GetValueMaths()/5)) );// Set value with taxes
+                ui->TotalValueText->setText( QString::number(GetValueMaths()+(GetValueMaths()/5)) );// Set value with taxes
              }else {
                  // Nachislqwame DDS
-                ui->ValueText->setText( QString::number(GetValueMaths()));// Set original value
+                ui->TotalValueText->setText( QString::number(GetValueMaths()));// Set original value
              }
         }
     }
+}
 
+void NewRepairItem::on_ValueText_textChanged()
+{
+    qDebug()<<"\n  on_ValueText_textChanged ";
+    m_bNeedUpdate = true;
+    ui->TotalValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()) );
 }
 
 void NewRepairItem::on_SinglePriceText_editingFinished()
 {
-     ui->ValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()) );
+    ui->TotalValueText->setText( QString::number(GetValueMaths()) );
+}
+
+void NewRepairItem::on_SinglePriceText_textChanged()
+{
+    qDebug()<<"\n  on_SinglePriceText_textChanged ";
+    m_bNeedUpdate = true;
+}
+
+void NewRepairItem::on_QuantityText_editingFinished()
+{
+    ui->TotalValueText->setText( QString::number(GetValueMaths()) );
+}
+
+void NewRepairItem::on_QuantityText_textChanged()
+{
+     qDebug()<<"\n  on_QuantityText_textChanged ";
+    m_bNeedUpdate = true;
+}
+
+void NewRepairItem::on_DescrText_textChanged()
+{
+     qDebug()<<"\n  on_DescrText_textChanged ";
+    m_bNeedUpdate = true;
+}
+
+void NewRepairItem::on_TotalValueText_textChanged()
+{
+     qDebug()<<"\n  on_TotalValueText_textChanged ";
+    m_bNeedUpdate = true;
 }

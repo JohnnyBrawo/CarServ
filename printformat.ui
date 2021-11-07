@@ -839,7 +839,7 @@
     <rect>
      <x>810</x>
      <y>280</y>
-     <width>151</width>
+     <width>81</width>
      <height>41</height>
     </rect>
    </property>
@@ -852,7 +852,8 @@
     <string notr="true">background-color: rgb(0, 170, 255);</string>
    </property>
    <property name="text">
-    <string>Общо</string>
+    <string>Общо 
+ ДДС</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -879,12 +880,12 @@
     <string>Марка</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_1_Total">
+  <widget class="QLineEdit" name="lineEdit_1_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>320</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1151,12 +1152,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2_Total">
+  <widget class="QLineEdit" name="lineEdit_2_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>350</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1226,12 +1227,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3_Total">
+  <widget class="QLineEdit" name="lineEdit_3_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>380</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1256,12 +1257,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4_Total">
+  <widget class="QLineEdit" name="lineEdit_4_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>410</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1331,12 +1332,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5_Total">
+  <widget class="QLineEdit" name="lineEdit_5_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>440</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1436,12 +1437,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_6_Total">
+  <widget class="QLineEdit" name="lineEdit_6_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>470</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1466,12 +1467,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_7_Total">
+  <widget class="QLineEdit" name="lineEdit_7_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>500</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1541,12 +1542,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_8_Total">
+  <widget class="QLineEdit" name="lineEdit_8_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>530</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1631,12 +1632,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_9_Total">
+  <widget class="QLineEdit" name="lineEdit_9_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>560</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1706,12 +1707,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_10_Total">
+  <widget class="QLineEdit" name="lineEdit_10_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>590</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1781,12 +1782,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_11_Total">
+  <widget class="QLineEdit" name="lineEdit_11_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>620</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1886,12 +1887,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_12_Total">
+  <widget class="QLineEdit" name="lineEdit_12_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>650</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -1931,12 +1932,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_13_Total">
+  <widget class="QLineEdit" name="lineEdit_13_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>680</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -2006,12 +2007,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_14_Total">
+  <widget class="QLineEdit" name="lineEdit_14_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>710</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -2066,12 +2067,12 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_15_Total">
+  <widget class="QLineEdit" name="lineEdit_15_Total_DDS">
    <property name="geometry">
     <rect>
      <x>810</x>
      <y>740</y>
-     <width>151</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -2148,6 +2149,256 @@
      <y>811</y>
      <width>121</width>
      <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="L_RepairTotalCost_2">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>280</y>
+     <width>71</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>Общо 
+ без ДДС</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_1_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>320</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_2_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>350</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>380</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_4_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>410</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_5_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>440</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_6_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>470</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_7_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>500</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_8_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>530</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_9_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>560</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_10_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>590</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_11_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>620</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_12_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>650</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_13_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>680</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_14_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>710</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_15_Total_No_DDS">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>740</y>
+     <width>70</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
