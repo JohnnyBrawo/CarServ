@@ -26,6 +26,8 @@ public:
     void ResetPrintStatus() { m_bPrintingDone = false; }
 
     void   keyPressEvent(QKeyEvent *event);
+
+    void SetWaitingPages(){ m_bMorePagesWaiting = true;}
 private slots:
     void on_B_PrintCancel_clicked();
 
@@ -46,6 +48,7 @@ private:
     QString m_strRepairTotal="";
     double m_TotalRepairCost = 0.0;
     bool   m_bTaxesIncluded = false;
+    bool   m_bMorePagesWaiting = false;
     QList<double> m_list;
 
     void CenterForm();
@@ -53,6 +56,8 @@ private:
     void FillAutoData();
     void ReadRepairs();
     void FillRepairData(int RepairNum, bool IncludeTaxes);
+    void HideAllDDSChecks();
+    void EnableDDSCheck(unsigned short CheckIndex);
     QString GetWorkingPath();
 
 signals:

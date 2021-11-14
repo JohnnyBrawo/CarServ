@@ -306,6 +306,7 @@ void AddRepair::RecordRepair()
     }
 
     MyData.OpenConnection("Repairs.sqlite");
+    qDebug() << "  RecordRepair ui->RepairList->count() "<<  ui->RepairList->count();
 
     for(int i=0; i< ui->RepairList->count(); i++)
     {
@@ -330,6 +331,8 @@ void AddRepair::RecordRepair()
         if(!AddNewAuto.exec()){
             qDebug() << "INSERT INTO Repair_Table fail "<< AddNewAuto.lastError().text();
         }
+
+
     }
 
     m_bRecordSuccess = true;

@@ -45,6 +45,7 @@ void RemoveClient::on_Button_Back_clicked()
 
 void RemoveClient::OpenRemoveClientPage()
 {
+    qDebug() << "RemoveClient::OpenRemoveClientPage() ";
     FillClientsNameCombo();
     show();
 }

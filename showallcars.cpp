@@ -320,6 +320,8 @@ void ShowAllcars::FillRepairsList()
     QString RepairText = "";
     QString RepairData = "";
 
+    unsigned short RepairsCount = 0;
+
     MyData.OpenConnection("Repairs.sqlite");
     QSqlQuery EditClientsQry(MyData.CarsDB);
 
@@ -328,7 +330,6 @@ void ShowAllcars::FillRepairsList()
         qDebug() << "SELECT RepairName FROM Repair_Table WHERE RepairCarRegNumber== "<< EditClientsQry.lastError().text();
     }
     else {
-         qDebug() << " EditClientsQry  "<< EditClientsQry.size();
         while (EditClientsQry.next()) {
             bool ChangeDate = RepairData != EditClientsQry.value(6).toString();
 
@@ -353,19 +354,30 @@ void ShowAllcars::FillRepairsList()
                 RepairText += "\t Taxes included! ";
                 m_bTaxesIncluded = true;
             }
-        RepairText += "\n===================";
+
+            RepairsCount++;
+            if((RepairsCount+1) % 15 == 0){
+                strRepairVectorPages.push_back(RepairText);
+                RepairText="";
+                qDebug() << " Show this page ... more waiting .. ";
+            }
+            RepairText += "\n===================";
 
         }
+
         if(RepairText.isEmpty()){
             qDebug() <<"\n  Nothing to show \n";
         }
         else {
             RepairText +="\n   Total Price : " +  QString::number(m_dTotalPrice);
             RepairText += "\n--------------------------------------------------------------";
+            if(RepairsCount > 15)
+            {
+                 strRepairVectorPages.push_back(RepairText);
+            }
             strRepairVector.push_back(RepairText);
         }
     }
-
     MyData.CloseConnection();
     ShowRepairData();
 }
@@ -377,6 +389,7 @@ void ShowAllcars::on_Button_Search_clicked()
         return;
     }
 
+    RepairPages = 0;
     m_ComboClientName = ui->Combo_Search_Klient->currentText();
     /* Erase all data if search button clicked ! Need this is search method is changed */
     ui->RepairsList->clear();
@@ -446,7 +459,16 @@ void ShowAllcars::ShowRepairData(bool NextRepair )
 
     QStringList items;
     ui->RepairsList->clear();
-    items += strRepairVector.at(m_uiRepairIndex);
+     qDebug() << "ShowRepairData "<<strRepairVector.size();
+     qDebug() << "ShowRepairData "<<strRepairVectorPages.size();
+    if(!strRepairVectorPages.isEmpty()){
+       for(int i=0;i<strRepairVectorPages.size(); i++){
+           items += strRepairVectorPages.at(i);
+       }
+    }
+    else {
+        items += strRepairVector.at(m_uiRepairIndex);
+    }
     ui->RepairsList->addItems(items);
 }
 
@@ -470,6 +492,9 @@ void ShowAllcars::on_Button_PRINT_clicked()
 {
     MyData.CloseConnection();
     m_Print->SetRepairsText(strRepairVector.at(m_uiRepairIndex));
+    if(RepairPages !=0){
+        m_Print->SetWaitingPages();
+    }
     m_Print->SetRegNum(m_ComboRegNumber);
     m_Print->SetClientID(m_ClientDB_ID);
     m_Print->SetClientName(m_ComboClientName);

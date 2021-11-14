@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowTitle("Euro Kriss Service");
     CenterForm();
-    LoadDesignView();
+//    LoadDesignView();
 
     /** Main form buttons */
     QObject::connect(ui->Button_OpenRepairs, SIGNAL(clicked()), m_Repairs, SLOT(OpenClearWindow()));
@@ -73,12 +73,6 @@ MainWindow::~MainWindow()
     delete m_RemoveClient;
 }
 
-void MainWindow::LoadDesignView()
-{
-
-
-
-}
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
@@ -110,7 +104,16 @@ void MainWindow::on_Button_OpenRepairs_clicked()
 
 void MainWindow::RestoreMainForm()
 {
-    this->show();
+     qDebug() << " RestoreMainForm  "<<m_bNewAutoMenuEnter;
+     qDebug() << " RestoreMainForm IsNewAutoRecordCanceled   "<<m_NewAuto->IsNewAutoRecordCanceled();
+    if( m_bNewAutoMenuEnter && !m_NewAuto->IsNewAutoRecordCanceled()){
+        m_bNewAutoMenuEnter = false;
+        m_NewClient->SetClientToLastAuto();
+        ui->AddNewClient->trigger();
+
+    }else {
+        this->show();
+    }
 }
 
 void MainWindow::on_Exit_clicked()
@@ -126,6 +129,7 @@ void MainWindow::on_ShowAllAutos_triggered()
 
 void MainWindow::on_AddNewAuto_triggered()
 {
+    m_bNewAutoMenuEnter = true;
     hide();
 }
 

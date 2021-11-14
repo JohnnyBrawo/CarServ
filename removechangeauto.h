@@ -31,13 +31,14 @@ private:
 
     void SetUnactiveFields();
     void ClearAllFields();
-    void ShowAllFieldsText();
+    void ReActivateAllFields();
     void UpdateFlags();
     bool CheckField(QString SelectedString);
     void CenterForm();
     void FillComboMarki();
     void FillComboModeli(int MarkaIdx);
     void ActivateAutoCombos(bool DeactiavateAll = false);
+    void SetFieldsClientWithNoAuto();
 
     QString m_SelectedRegNumber;
     QString m_SelectedClientID;
@@ -53,12 +54,15 @@ private:
     bool m_bComboClientsHit;
     bool m_bComboRegsHit;
     bool m_bEditFromClients;
+//    bool m_bCancelAllActions = false;
     void   keyPressEvent(QKeyEvent *event);
 
 public:
     explicit RemoveChangeAuto(QWidget *parent = 0);
     ~RemoveChangeAuto();
     QString GetSelectedCarReg() { return m_strAutoReg;}
+
+//    bool IsActionsCanceled() { return m_bCancelAllActions; }
 
 signals:
     void CloseDeletePage();

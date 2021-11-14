@@ -30,6 +30,7 @@ private:
     void CenterForm();
 
     QVector<QString> strRepairVector;
+    QVector<QString> strRepairVectorPages;
     enum SearchChoise {
         eNone,
         eAutos,
@@ -46,6 +47,8 @@ private:
     double m_dTotalPrice = 0.0;
     bool   m_bTaxesIncluded = false;
     CarsDatabase MyData;
+
+    unsigned short RepairPages = 0;
     void keyPressEvent(QKeyEvent *event);
 public:
     explicit ShowAllcars(QWidget *parent = nullptr);

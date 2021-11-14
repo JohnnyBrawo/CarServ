@@ -34,6 +34,7 @@ private:
     bool CheckRecordInformation();
     bool CheckRecordObligatory();
     QString m_strSelectedCarReg;
+    bool m_bInsertNewAutoCanceled = false;
 
     void keyPressEvent(QKeyEvent *event);
 public:
@@ -41,11 +42,13 @@ public:
     ~NewAuto();
     void ClearAllFields();
     QString GetNewCarReg(){ return m_strSelectedCarReg;}
+    QString GetLastCarReg();
 
     bool AddCarInfo(QString RegNumber, QString AutoMarka = "None", QString AutoModel = "None", QString AutoYear = "None"
             , QString AutoFuel = "None", QString AutoVIN = "None", QString AutoType = "None", QString AutoMillage = "None");
 
     bool AutoExsist(QString RegNum);
+    bool IsNewAutoRecordCanceled(){return m_bInsertNewAutoCanceled;}
 
 signals:
     void CloseNewAutoForm();

@@ -38,8 +38,8 @@ private:
     NewClient           *m_NewClient;
     RemoveClient        *m_RemoveClient;
 
-
-    void LoadDesignView();
+    bool                m_bNewAutoMenuEnter = false;
+//    void TestSignalNewClient();
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);

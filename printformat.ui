@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>980</width>
-    <height>945</height>
+    <width>1094</width>
+    <height>959</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
   <widget class="QLineEdit" name="lineEdit_TotalRepairCost">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>560</x>
      <y>820</y>
      <width>221</width>
      <height>21</height>
@@ -37,7 +37,7 @@
   <widget class="QLineEdit" name="lineEdit_TotalRepairCost_Value">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>820</y>
      <width>221</width>
      <height>21</height>
@@ -55,7 +55,7 @@
   <widget class="QLabel" name="L_Date">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>810</y>
      <width>81</width>
      <height>21</height>
@@ -83,7 +83,7 @@
   <widget class="QLabel" name="L_RepairNumber">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>280</y>
      <width>41</width>
      <height>41</height>
@@ -107,7 +107,7 @@
   <widget class="QLineEdit" name="T_AutoModel">
    <property name="geometry">
     <rect>
-     <x>780</x>
+     <x>820</x>
      <y>160</y>
      <width>181</width>
      <height>21</height>
@@ -128,7 +128,7 @@
   <widget class="QLabel" name="L_RepairDescription">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>280</y>
      <width>611</width>
      <height>41</height>
@@ -152,7 +152,7 @@
   <widget class="QLineEdit" name="lineEdit_DDS_CostValue">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>840</y>
      <width>221</width>
      <height>21</height>
@@ -170,7 +170,7 @@
   <widget class="QLabel" name="L_KlientName">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>90</x>
      <y>150</y>
      <width>91</width>
      <height>21</height>
@@ -191,7 +191,7 @@
   <widget class="QLabel" name="L_AutoMilage">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>660</x>
      <y>180</y>
      <width>111</width>
      <height>21</height>
@@ -212,7 +212,7 @@
   <widget class="QLineEdit" name="lineEdit_1_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>320</y>
      <width>41</width>
      <height>31</height>
@@ -227,7 +227,7 @@
   <widget class="QLabel" name="L_AutoVIN">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>660</x>
      <y>220</y>
      <width>111</width>
      <height>21</height>
@@ -248,7 +248,7 @@
   <widget class="QLineEdit" name="T_KlientFirm">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>180</x>
      <y>210</y>
      <width>401</width>
      <height>21</height>
@@ -269,7 +269,7 @@
   <widget class="QLabel" name="L_FirmName">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>10</y>
      <width>151</width>
      <height>21</height>
@@ -288,7 +288,7 @@
   <widget class="QLineEdit" name="T_WorkCard_Nubmer">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>450</x>
      <y>60</y>
      <width>181</width>
      <height>41</height>
@@ -309,7 +309,7 @@
   <widget class="QLabel" name="L_KlientAdress">
    <property name="geometry">
     <rect>
-     <x>49</x>
+     <x>89</x>
      <y>190</y>
      <width>91</width>
      <height>21</height>
@@ -330,7 +330,7 @@
   <widget class="QLabel" name="L_AutoinfoLabel">
    <property name="geometry">
     <rect>
-     <x>730</x>
+     <x>770</x>
      <y>110</y>
      <width>151</width>
      <height>31</height>
@@ -349,7 +349,7 @@
   <widget class="QLabel" name="L_RepairPartsCount">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>280</y>
      <width>71</width>
      <height>41</height>
@@ -382,7 +382,7 @@
   <widget class="QLineEdit" name="T_AutoRegNumber">
    <property name="geometry">
     <rect>
-     <x>780</x>
+     <x>820</x>
      <y>200</y>
      <width>181</width>
      <height>21</height>
@@ -403,7 +403,7 @@
   <widget class="QLabel" name="L_ClientLabel">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>130</x>
      <y>110</y>
      <width>151</width>
      <height>31</height>
@@ -434,7 +434,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>780</y>
      <width>141</width>
      <height>31</height>
@@ -455,7 +455,7 @@
   <widget class="QLabel" name="L_KlientPhone">
    <property name="geometry">
     <rect>
-     <x>49</x>
+     <x>89</x>
      <y>170</y>
      <width>91</width>
      <height>21</height>
@@ -476,7 +476,7 @@
   <widget class="QLineEdit" name="T_KlientAdress">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>180</x>
      <y>190</y>
      <width>401</width>
      <height>21</height>
@@ -497,7 +497,7 @@
   <widget class="QLineEdit" name="T_AutoMarka">
    <property name="geometry">
     <rect>
-     <x>780</x>
+     <x>820</x>
      <y>140</y>
      <width>181</width>
      <height>21</height>
@@ -515,7 +515,7 @@
   <widget class="QLabel" name="L_RepairsSinglePrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>280</y>
      <width>71</width>
      <height>41</height>
@@ -543,7 +543,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>780</y>
      <width>151</width>
      <height>31</height>
@@ -564,7 +564,7 @@
   <widget class="QLabel" name="L_FirmAdress">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>660</x>
      <y>30</y>
      <width>321</width>
      <height>41</height>
@@ -585,7 +585,7 @@
   <widget class="QLineEdit" name="lineEdit_1_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>320</y>
      <width>71</width>
      <height>31</height>
@@ -600,7 +600,7 @@
   <widget class="QLineEdit" name="lineEdit_TotalPay_Value">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>860</y>
      <width>221</width>
      <height>21</height>
@@ -618,7 +618,7 @@
   <widget class="QLineEdit" name="T_KlientCity">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>180</x>
      <y>230</y>
      <width>401</width>
      <height>21</height>
@@ -639,7 +639,7 @@
   <widget class="QLabel" name="L_AutoRepairDate">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>660</x>
      <y>240</y>
      <width>160</width>
      <height>21</height>
@@ -660,7 +660,7 @@
   <widget class="QLineEdit" name="T_KlientName">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>180</x>
      <y>150</y>
      <width>401</width>
      <height>21</height>
@@ -678,7 +678,7 @@
   <widget class="QLabel" name="L_AutoRegNubmer">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>660</x>
      <y>200</y>
      <width>111</width>
      <height>21</height>
@@ -699,7 +699,7 @@
   <widget class="QLineEdit" name="T_AutoMilage">
    <property name="geometry">
     <rect>
-     <x>780</x>
+     <x>820</x>
      <y>180</y>
      <width>181</width>
      <height>21</height>
@@ -720,7 +720,7 @@
   <widget class="QLineEdit" name="lineEdit_TotalToPay">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>560</x>
      <y>860</y>
      <width>221</width>
      <height>21</height>
@@ -738,7 +738,7 @@
   <widget class="QLabel" name="L_AutoModel">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>660</x>
      <y>160</y>
      <width>111</width>
      <height>21</height>
@@ -759,7 +759,7 @@
   <widget class="QLineEdit" name="T_AutoVIN">
    <property name="geometry">
     <rect>
-     <x>780</x>
+     <x>820</x>
      <y>220</y>
      <width>181</width>
      <height>21</height>
@@ -780,7 +780,7 @@
   <widget class="QLabel" name="L_WorkCard">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>370</x>
      <y>10</y>
      <width>261</width>
      <height>41</height>
@@ -801,7 +801,7 @@
   <widget class="QLineEdit" name="lineEdit_1_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>320</y>
      <width>71</width>
      <height>31</height>
@@ -816,7 +816,7 @@
   <widget class="QLabel" name="L_KlientCity">
    <property name="geometry">
     <rect>
-     <x>49</x>
+     <x>89</x>
      <y>230</y>
      <width>91</width>
      <height>21</height>
@@ -837,7 +837,7 @@
   <widget class="QLabel" name="L_RepairTotalCost">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>280</y>
      <width>81</width>
      <height>41</height>
@@ -862,7 +862,7 @@
   <widget class="QLabel" name="L_AutoMarka">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>660</x>
      <y>140</y>
      <width>111</width>
      <height>21</height>
@@ -883,7 +883,7 @@
   <widget class="QLineEdit" name="lineEdit_1_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>320</y>
      <width>81</width>
      <height>31</height>
@@ -898,7 +898,7 @@
   <widget class="QPushButton" name="B_PrintCancel">
    <property name="geometry">
     <rect>
-     <x>860</x>
+     <x>900</x>
      <y>890</y>
      <width>101</width>
      <height>51</height>
@@ -916,7 +916,7 @@
   <widget class="QLabel" name="L_KlientFirm">
    <property name="geometry">
     <rect>
-     <x>49</x>
+     <x>89</x>
      <y>210</y>
      <width>91</width>
      <height>21</height>
@@ -937,7 +937,7 @@
   <widget class="QLineEdit" name="lineEdit_DDS_Cost">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>560</x>
      <y>840</y>
      <width>221</width>
      <height>21</height>
@@ -955,7 +955,7 @@
   <widget class="QLabel" name="L_WorkKardNumber">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>390</x>
      <y>50</y>
      <width>51</width>
      <height>61</height>
@@ -976,7 +976,7 @@
   <widget class="QLabel" name="L_FirmEIK">
    <property name="geometry">
     <rect>
-     <x>770</x>
+     <x>810</x>
      <y>60</y>
      <width>151</width>
      <height>21</height>
@@ -995,7 +995,7 @@
   <widget class="QLineEdit" name="T_DateRepair">
    <property name="geometry">
     <rect>
-     <x>780</x>
+     <x>820</x>
      <y>240</y>
      <width>181</width>
      <height>21</height>
@@ -1016,7 +1016,7 @@
   <widget class="QLineEdit" name="T_KlientPhone">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>180</x>
      <y>170</y>
      <width>401</width>
      <height>21</height>
@@ -1037,7 +1037,7 @@
   <widget class="QLabel" name="L_FirmPhone">
    <property name="geometry">
     <rect>
-     <x>770</x>
+     <x>810</x>
      <y>80</y>
      <width>151</width>
      <height>21</height>
@@ -1056,7 +1056,7 @@
   <widget class="QLineEdit" name="lineEdit_1_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>320</y>
      <width>611</width>
      <height>31</height>
@@ -1074,7 +1074,7 @@
   <widget class="QPushButton" name="B_PrintDocument">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>890</y>
      <width>101</width>
      <height>51</height>
@@ -1092,7 +1092,7 @@
   <widget class="QLineEdit" name="lineEdit_2_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>350</y>
      <width>71</width>
      <height>31</height>
@@ -1107,7 +1107,7 @@
   <widget class="QLineEdit" name="lineEdit_2_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>350</y>
      <width>71</width>
      <height>31</height>
@@ -1122,7 +1122,7 @@
   <widget class="QLineEdit" name="lineEdit_2_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>350</y>
      <width>611</width>
      <height>31</height>
@@ -1140,7 +1140,7 @@
   <widget class="QLineEdit" name="lineEdit_2_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>350</y>
      <width>41</width>
      <height>31</height>
@@ -1155,7 +1155,7 @@
   <widget class="QLineEdit" name="lineEdit_2_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>350</y>
      <width>81</width>
      <height>31</height>
@@ -1170,7 +1170,7 @@
   <widget class="QLineEdit" name="lineEdit_3_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>380</y>
      <width>71</width>
      <height>31</height>
@@ -1185,7 +1185,7 @@
   <widget class="QLineEdit" name="lineEdit_3_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>380</y>
      <width>71</width>
      <height>31</height>
@@ -1200,7 +1200,7 @@
   <widget class="QLineEdit" name="lineEdit_3_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>380</y>
      <width>41</width>
      <height>31</height>
@@ -1215,7 +1215,7 @@
   <widget class="QLineEdit" name="lineEdit_3_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>380</y>
      <width>611</width>
      <height>31</height>
@@ -1230,7 +1230,7 @@
   <widget class="QLineEdit" name="lineEdit_3_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>380</y>
      <width>81</width>
      <height>31</height>
@@ -1245,7 +1245,7 @@
   <widget class="QLineEdit" name="lineEdit_4_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>410</y>
      <width>71</width>
      <height>31</height>
@@ -1260,7 +1260,7 @@
   <widget class="QLineEdit" name="lineEdit_4_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>410</y>
      <width>81</width>
      <height>31</height>
@@ -1275,7 +1275,7 @@
   <widget class="QLineEdit" name="lineEdit_4_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>410</y>
      <width>71</width>
      <height>31</height>
@@ -1290,7 +1290,7 @@
   <widget class="QLineEdit" name="lineEdit_4_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>410</y>
      <width>41</width>
      <height>31</height>
@@ -1305,7 +1305,7 @@
   <widget class="QLineEdit" name="lineEdit_4_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>410</y>
      <width>611</width>
      <height>31</height>
@@ -1320,7 +1320,7 @@
   <widget class="QLineEdit" name="lineEdit_5_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>440</y>
      <width>71</width>
      <height>31</height>
@@ -1335,7 +1335,7 @@
   <widget class="QLineEdit" name="lineEdit_5_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>440</y>
      <width>81</width>
      <height>31</height>
@@ -1350,7 +1350,7 @@
   <widget class="QLineEdit" name="lineEdit_5_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>440</y>
      <width>41</width>
      <height>31</height>
@@ -1365,7 +1365,7 @@
   <widget class="QLineEdit" name="lineEdit_5_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>440</y>
      <width>71</width>
      <height>31</height>
@@ -1380,7 +1380,7 @@
   <widget class="QLineEdit" name="lineEdit_5_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>440</y>
      <width>611</width>
      <height>31</height>
@@ -1395,7 +1395,7 @@
   <widget class="QLineEdit" name="lineEdit_6_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>470</y>
      <width>41</width>
      <height>31</height>
@@ -1410,7 +1410,7 @@
   <widget class="QLineEdit" name="lineEdit_6_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>470</y>
      <width>71</width>
      <height>31</height>
@@ -1425,7 +1425,7 @@
   <widget class="QLineEdit" name="lineEdit_6_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>470</y>
      <width>71</width>
      <height>31</height>
@@ -1440,7 +1440,7 @@
   <widget class="QLineEdit" name="lineEdit_6_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>470</y>
      <width>81</width>
      <height>31</height>
@@ -1455,7 +1455,7 @@
   <widget class="QLineEdit" name="lineEdit_6_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>470</y>
      <width>611</width>
      <height>31</height>
@@ -1470,7 +1470,7 @@
   <widget class="QLineEdit" name="lineEdit_7_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>500</y>
      <width>81</width>
      <height>31</height>
@@ -1485,7 +1485,7 @@
   <widget class="QLineEdit" name="lineEdit_7_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>500</y>
      <width>71</width>
      <height>31</height>
@@ -1500,7 +1500,7 @@
   <widget class="QLineEdit" name="lineEdit_7_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>500</y>
      <width>71</width>
      <height>31</height>
@@ -1515,7 +1515,7 @@
   <widget class="QLineEdit" name="lineEdit_7_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>500</y>
      <width>611</width>
      <height>31</height>
@@ -1530,7 +1530,7 @@
   <widget class="QLineEdit" name="lineEdit_7_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>500</y>
      <width>41</width>
      <height>31</height>
@@ -1545,7 +1545,7 @@
   <widget class="QLineEdit" name="lineEdit_8_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>530</y>
      <width>81</width>
      <height>31</height>
@@ -1560,7 +1560,7 @@
   <widget class="QLineEdit" name="lineEdit_8_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>530</y>
      <width>611</width>
      <height>31</height>
@@ -1575,7 +1575,7 @@
   <widget class="QLineEdit" name="lineEdit_8_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>530</y>
      <width>71</width>
      <height>31</height>
@@ -1590,7 +1590,7 @@
   <widget class="QLineEdit" name="lineEdit_8_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>530</y>
      <width>71</width>
      <height>31</height>
@@ -1605,7 +1605,7 @@
   <widget class="QLineEdit" name="lineEdit_8_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>530</y>
      <width>41</width>
      <height>31</height>
@@ -1620,7 +1620,7 @@
   <widget class="QLineEdit" name="lineEdit_9_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>560</y>
      <width>71</width>
      <height>31</height>
@@ -1635,7 +1635,7 @@
   <widget class="QLineEdit" name="lineEdit_9_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>560</y>
      <width>81</width>
      <height>31</height>
@@ -1650,7 +1650,7 @@
   <widget class="QLineEdit" name="lineEdit_9_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>560</y>
      <width>611</width>
      <height>31</height>
@@ -1665,7 +1665,7 @@
   <widget class="QLineEdit" name="lineEdit_9_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>560</y>
      <width>41</width>
      <height>31</height>
@@ -1680,7 +1680,7 @@
   <widget class="QLineEdit" name="lineEdit_9_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>560</y>
      <width>71</width>
      <height>31</height>
@@ -1695,7 +1695,7 @@
   <widget class="QLineEdit" name="lineEdit_10_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>590</y>
      <width>71</width>
      <height>31</height>
@@ -1710,7 +1710,7 @@
   <widget class="QLineEdit" name="lineEdit_10_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>590</y>
      <width>81</width>
      <height>31</height>
@@ -1725,7 +1725,7 @@
   <widget class="QLineEdit" name="lineEdit_10_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>590</y>
      <width>41</width>
      <height>31</height>
@@ -1740,7 +1740,7 @@
   <widget class="QLineEdit" name="lineEdit_10_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>590</y>
      <width>71</width>
      <height>31</height>
@@ -1755,7 +1755,7 @@
   <widget class="QLineEdit" name="lineEdit_10_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>590</y>
      <width>611</width>
      <height>31</height>
@@ -1770,7 +1770,7 @@
   <widget class="QLineEdit" name="lineEdit_11_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>620</y>
      <width>71</width>
      <height>31</height>
@@ -1785,7 +1785,7 @@
   <widget class="QLineEdit" name="lineEdit_11_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>620</y>
      <width>81</width>
      <height>31</height>
@@ -1800,7 +1800,7 @@
   <widget class="QLineEdit" name="lineEdit_11_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>620</y>
      <width>41</width>
      <height>31</height>
@@ -1815,7 +1815,7 @@
   <widget class="QLineEdit" name="lineEdit_11_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>620</y>
      <width>611</width>
      <height>31</height>
@@ -1830,7 +1830,7 @@
   <widget class="QLineEdit" name="lineEdit_11_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>620</y>
      <width>71</width>
      <height>31</height>
@@ -1845,7 +1845,7 @@
   <widget class="QLineEdit" name="lineEdit_12_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>650</y>
      <width>611</width>
      <height>31</height>
@@ -1860,7 +1860,7 @@
   <widget class="QLineEdit" name="lineEdit_12_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>650</y>
      <width>41</width>
      <height>31</height>
@@ -1875,7 +1875,7 @@
   <widget class="QLineEdit" name="lineEdit_12_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>650</y>
      <width>71</width>
      <height>31</height>
@@ -1890,7 +1890,7 @@
   <widget class="QLineEdit" name="lineEdit_12_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>650</y>
      <width>81</width>
      <height>31</height>
@@ -1905,7 +1905,7 @@
   <widget class="QLineEdit" name="lineEdit_12_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>650</y>
      <width>71</width>
      <height>31</height>
@@ -1920,7 +1920,7 @@
   <widget class="QLineEdit" name="lineEdit_13_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>680</y>
      <width>611</width>
      <height>31</height>
@@ -1935,7 +1935,7 @@
   <widget class="QLineEdit" name="lineEdit_13_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>680</y>
      <width>81</width>
      <height>31</height>
@@ -1950,7 +1950,7 @@
   <widget class="QLineEdit" name="lineEdit_13_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>680</y>
      <width>71</width>
      <height>31</height>
@@ -1965,7 +1965,7 @@
   <widget class="QLineEdit" name="lineEdit_13_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>680</y>
      <width>41</width>
      <height>31</height>
@@ -1980,7 +1980,7 @@
   <widget class="QLineEdit" name="lineEdit_13_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>680</y>
      <width>71</width>
      <height>31</height>
@@ -1995,7 +1995,7 @@
   <widget class="QLineEdit" name="lineEdit_14_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>710</y>
      <width>71</width>
      <height>31</height>
@@ -2010,7 +2010,7 @@
   <widget class="QLineEdit" name="lineEdit_14_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>710</y>
      <width>81</width>
      <height>31</height>
@@ -2025,7 +2025,7 @@
   <widget class="QLineEdit" name="lineEdit_14_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>710</y>
      <width>611</width>
      <height>31</height>
@@ -2040,7 +2040,7 @@
   <widget class="QLineEdit" name="lineEdit_14_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>710</y>
      <width>71</width>
      <height>31</height>
@@ -2055,7 +2055,7 @@
   <widget class="QLineEdit" name="lineEdit_14_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>710</y>
      <width>41</width>
      <height>31</height>
@@ -2070,7 +2070,7 @@
   <widget class="QLineEdit" name="lineEdit_15_Total_DDS">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>850</x>
      <y>740</y>
      <width>81</width>
      <height>31</height>
@@ -2085,7 +2085,7 @@
   <widget class="QLineEdit" name="lineEdit_15_Descr">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>100</x>
      <y>740</y>
      <width>611</width>
      <height>31</height>
@@ -2100,7 +2100,7 @@
   <widget class="QLineEdit" name="lineEdit_15_NUM">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>740</y>
      <width>41</width>
      <height>31</height>
@@ -2115,7 +2115,7 @@
   <widget class="QLineEdit" name="lineEdit_15_CNT">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>710</x>
      <y>740</y>
      <width>71</width>
      <height>31</height>
@@ -2130,7 +2130,7 @@
   <widget class="QLineEdit" name="lineEdit_15_SPrice">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>780</x>
      <y>740</y>
      <width>71</width>
      <height>31</height>
@@ -2145,7 +2145,7 @@
   <widget class="QLineEdit" name="T_Data">
    <property name="geometry">
     <rect>
-     <x>88</x>
+     <x>128</x>
      <y>811</y>
      <width>121</width>
      <height>21</height>
@@ -2160,7 +2160,7 @@
   <widget class="QLabel" name="L_RepairTotalCost_2">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>280</y>
      <width>71</width>
      <height>41</height>
@@ -2185,7 +2185,7 @@
   <widget class="QLineEdit" name="lineEdit_1_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>320</y>
      <width>71</width>
      <height>31</height>
@@ -2200,7 +2200,7 @@
   <widget class="QLineEdit" name="lineEdit_2_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>350</y>
      <width>71</width>
      <height>31</height>
@@ -2215,7 +2215,7 @@
   <widget class="QLineEdit" name="lineEdit_3_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>380</y>
      <width>71</width>
      <height>31</height>
@@ -2230,7 +2230,7 @@
   <widget class="QLineEdit" name="lineEdit_4_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>410</y>
      <width>71</width>
      <height>31</height>
@@ -2245,7 +2245,7 @@
   <widget class="QLineEdit" name="lineEdit_5_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>440</y>
      <width>71</width>
      <height>31</height>
@@ -2260,7 +2260,7 @@
   <widget class="QLineEdit" name="lineEdit_6_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>470</y>
      <width>71</width>
      <height>31</height>
@@ -2275,7 +2275,7 @@
   <widget class="QLineEdit" name="lineEdit_7_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>500</y>
      <width>71</width>
      <height>31</height>
@@ -2290,9 +2290,9 @@
   <widget class="QLineEdit" name="lineEdit_8_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>530</y>
-     <width>70</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -2305,9 +2305,9 @@
   <widget class="QLineEdit" name="lineEdit_9_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>560</y>
-     <width>70</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -2320,9 +2320,9 @@
   <widget class="QLineEdit" name="lineEdit_10_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>590</y>
-     <width>70</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -2335,9 +2335,9 @@
   <widget class="QLineEdit" name="lineEdit_11_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>620</y>
-     <width>70</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -2350,9 +2350,9 @@
   <widget class="QLineEdit" name="lineEdit_12_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>650</y>
-     <width>70</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -2365,9 +2365,9 @@
   <widget class="QLineEdit" name="lineEdit_13_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>680</y>
-     <width>70</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -2380,9 +2380,9 @@
   <widget class="QLineEdit" name="lineEdit_14_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>710</y>
-     <width>70</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -2395,9 +2395,9 @@
   <widget class="QLineEdit" name="lineEdit_15_Total_No_DDS">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>930</x>
      <y>740</y>
-     <width>70</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -2405,6 +2405,342 @@
     <font>
      <pointsize>10</pointsize>
     </font>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_1">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>320</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_2">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>350</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_3">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>380</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_4">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>410</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_5">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>440</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_6">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>470</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_7">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>500</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_8">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>530</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_9">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>560</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_10">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>740</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_11">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>710</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_12">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>680</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_13">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>650</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_14">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>590</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="Check_DDS_15">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>620</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ДДС</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="B_NextPage">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>890</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>NEXT PAGE</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="B_NextPage_2">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>890</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>PREV PAGE</string>
    </property>
   </widget>
  </widget>

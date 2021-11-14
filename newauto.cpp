@@ -44,9 +44,9 @@ void NewAuto::CenterForm()
 
 void NewAuto::on_Button_CancelNewAuto_clicked()
 {
-    emit CloseNewAutoForm();
-    ClearAllFields();
     this->hide();
+    ClearAllFields();
+    emit CloseNewAutoForm();
 }
 
 
@@ -54,16 +54,18 @@ void NewAuto::keyPressEvent(QKeyEvent *event)
 {
     if(event->key() == Qt::Key_Escape)
     {
-            on_Button_CancelNewAuto_clicked();
+        m_bInsertNewAutoCanceled = true;
+        on_Button_CancelNewAuto_clicked();
     }
     else{
-            QDialog::keyPressEvent(event);
+        QDialog::keyPressEvent(event);
     }
 }
 
 void NewAuto::OpenClearWindow()
 {
     qDebug() << "  NewAuto::OpenClearWindow()";
+    m_bInsertNewAutoCanceled = false;
      FillComboMarki();
      ClearAllFields();
      this->show();
@@ -151,7 +153,9 @@ void NewAuto::on_Button_AddNewAuto_clicked()
                   ui->Combo_NewAuto_Year->currentText(), ui->Combo_NewAuto_Fuel->currentText(), ui->LText_NewAutoVIN->text(), ui->Combo_NewAuto_Type->currentText(), ui->LText_NewAutoMillage->text()))
     {
          ClearAllFields();
+         qDebug() << "INSERT New auto Failed. Restart procedure ";
     }else {
+        qDebug() << "INSERT New auto Done !! Yeah ! ";
         on_Button_CancelNewAuto_clicked();
     }
 }
@@ -363,4 +367,42 @@ void NewAuto::on_LText_NewAutoVIN_editingFinished()
 void NewAuto::on_LText_NewAutoMillage_editingFinished()
 {
     ui->LText_NewAutoMillage->setText(ui->LText_NewAutoMillage->text().replace(" ",""));
+}
+
+QString NewAuto::GetLastCarReg()
+{
+    MyData.OpenConnection("Automobiles.sqlite");
+    QSqlQuery   AutoQuery(MyData.CarsDB);
+    QString     strLastAutoID = "";
+    QString     strLastAutoRegNumber = "";
+
+    // Get Last RowID
+    QSqlQuery LastRowQry(MyData.CarsDB);
+    LastRowQry.prepare("SELECT * FROM Automobiles_Table WHERE ROWID IN ( SELECT max( ROWID ) FROM Automobiles_Table );");
+    if(!LastRowQry.exec())
+    {
+        qDebug() << "SELECT LastRowQry last_insert_rowid() "<< LastRowQry.lastError().text();
+    }
+    else {
+        if(LastRowQry.next()){
+            strLastAutoID = LastRowQry.value(0).toString();
+             qDebug() << " strLastAutoID "<< LastRowQry.value(0).toString();
+             qDebug() << " strLastAutoID "<< LastRowQry.value(1).toString();
+        }else {
+            qDebug() << "SELECT No RegNum found !! Sorry ";
+        }
+    }
+
+    AutoQuery.prepare("SELECT Auto_RegNumber FROM Automobiles_Table WHERE PR_ID='"+strLastAutoID+"' ");
+    if(!AutoQuery.exec())
+    {
+        qDebug() << "SELECT AutoQuery Last Auto_RegNumber failed "<< AutoQuery.lastError().text()<<" For ID " <<strLastAutoID;
+    }
+    else {
+        AutoQuery.next();
+        strLastAutoRegNumber = AutoQuery.value(0).toString();
+        qDebug() << " Last auto RN :  "<< strLastAutoRegNumber;
+    }
+
+    return strLastAutoRegNumber;
 }

@@ -116,7 +116,7 @@ void PrintFormat::ReadRepairs()
     ui->T_DateRepair->setText(RepairsList.at(1));
     QRegExp rx("(-?\\d+(?:[\\.,]\\d+(?:e\\d+)?)?)");
 
-
+    qDebug() << "<ReadRepairs RepairsList.length()"<<RepairsList.length();
     int pos = 0;
     int repair_num = 1;
     for(int i=0;i<RepairsList.length();i++){
@@ -161,11 +161,16 @@ void PrintFormat::ReadRepairs()
             m_list << rx.cap(1).toDouble();
             pos += rx.matchedLength();
         }
-        qDebug() << " m_list "<<m_list;
-        qDebug() << " Taxes "<<bTaxes;
+        qDebug() << " m_list "<<m_list<< " Taxes "<<bTaxes;
         if(!m_list.isEmpty()){
             FillRepairData(repair_num, bTaxes);
+            EnableDDSCheck(repair_num);
         }
+
+//        if(repair_num == 15 ){
+//            m_bWaitForNextPage = true;
+//        }
+        qDebug() << "<ReadRepairs repair_num"<<repair_num;
     }
 }
 
@@ -193,13 +198,15 @@ void PrintFormat::FillClientData()
 
 void PrintFormat::OpenPrintForm()
 {
-     qDebug() << " PrintFormat::OpenPrintForm() ";
+     qDebug() << " PrintFormat::OpenPrintForm() MorePagesWaiting "<<m_bMorePagesWaiting;
 
     ui->L_TotalWorkCost->setVisible(false);
     ui->L_TotalWorkCostValue->setVisible(false);
+    ui->B_NextPage->setVisible(false);
 
     FillAutoData();
     FillClientData();
+    HideAllDDSChecks();
     ReadRepairs();
     QDate CurrentDate= QDate::currentDate();
     ui->T_Data->setText(CurrentDate.toString("dd.MM.yyyy"));
@@ -234,12 +241,38 @@ QString PrintFormat::GetWorkingPath()
     return ScreenShotPath;
 }
 
+void PrintFormat::HideAllDDSChecks()
+{
+    /** Hide All chackBoxes for Print View */
+    QString strCheckBox_Name = "";
+    QCheckBox * CurrField;
+    for(int CheckBoxNum = 0; CheckBoxNum < 16; CheckBoxNum ++){
+        strCheckBox_Name = "Check_DDS_" + QString::number(CheckBoxNum);
+        CurrField =  this->findChild<QCheckBox *>(strCheckBox_Name);
+        if(CurrField)CurrField->setVisible(false);
+    }
+    /*********************************************/
+}
+
+
+void PrintFormat::EnableDDSCheck(unsigned short CheckIndex)
+{
+    /** Hide All chackBoxes for Print View */
+    QString strCheckBox_Name = "Check_DDS_" + QString::number(CheckIndex);;
+    QCheckBox * CurrField;
+    CurrField =  this->findChild<QCheckBox *>(strCheckBox_Name);
+    if(CurrField)CurrField->setVisible(true);
+    /*********************************************/
+}
+
 
 void PrintFormat::on_B_PrintDocument_clicked()
 {
     m_bPrintingDone = false;
     ui->B_PrintCancel->setVisible(false);
     ui->B_PrintDocument->setVisible(false);
+
+    HideAllDDSChecks();
 
     ui->L_AutoMarka->setFocus();
 

@@ -26,6 +26,7 @@ private:
 
     bool m_bRecordPermission;
     bool m_bClientFormEditMode;
+    bool m_bAttachClientToLastAddedAuto = false;
 
     bool CheckRecordObligatory();
     bool CheckField(QString SelectedString);
@@ -45,6 +46,7 @@ public:
     void SetNewRepairRegNumber(QString RegNum){m_strClientCarReg = RegNum;}
 
     void RecordCarToClient();
+    void SetClientToLastAuto(){m_bAttachClientToLastAddedAuto = true;}
     bool ClientExsist(QString ClientName, QString ClientPhone);
     bool AddClentInfo(QString ClientName ,QString ClientPhone , QString ClientFirm = "None", QString ClientCity  = "None",  QString ClientAddress = "None");
 signals:
@@ -67,6 +69,8 @@ private slots:
     void on_Combo_Clients_currentIndexChanged(const QString &arg1);
     void on_Button_AddClientAutoEdit_clicked();
     void on_LText_ClientPhone_editingFinished();
+    void on_Check_SelectExistingKlient_clicked(bool checked);
+    void on_LText_ClientPhone_textChanged();
 };
 
 #endif // NEWCLIENT_H

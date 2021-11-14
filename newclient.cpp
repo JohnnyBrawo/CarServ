@@ -62,23 +62,36 @@ void NewClient::SetEditDesignMode()
     ui->Button_AddClientAutoEdit->setVisible(true);
     ui->L_MainFormLabel->setText("Корекция на клиент");
     ui->Button_AddExistAuto->setVisible(true);
-    ui->Button_AddClientAutoNew->setVisible(false);
+    ui->Button_AddClientAutoNew->setVisible(true);
     ui->Button_Add_Client->setEnabled(true);
     ui->L_MustAddCar->setVisible(false);
+    ui->Check_SelectExistingKlient->setVisible(false);
 
     FillClientsNameCombo();
 }
 
 void NewClient::SetNewClientDesignMode()
 {
-    ui->L_Klient_Name_Edit->setVisible(false);
-    ui->Combo_Clients->setVisible(false);
-    ui->Button_AddClientAutoEdit->setVisible(false);
     ui->L_MainFormLabel->setText("Добавяне на клиент");
-    ui->Button_AddExistAuto->setVisible(true);
-    ui->Button_AddClientAutoNew->setVisible(true);
-    ui->Button_Add_Client->setEnabled(false);
+    if(!m_bAttachClientToLastAddedAuto){
+        ui->L_MustAddCar->setText("Всеки клиент е нужно\n да се свърже с автомобил !\n Моля изберете автомобил");
+        ui->Combo_Clients->setVisible(true);
+    }else {
+        ui->L_MustAddCar->setText("Към избрания клиент ще се добави \n послено въведения автомобил ! ");
+        FillClientsNameCombo();
+        ui->Combo_Clients->setVisible(true);
+        ui->Combo_Clients->setEnabled(false);
+        ui->L_Klient_Name_Edit->setVisible(true);
+    }
     ui->L_MustAddCar->setVisible(true);
+
+
+
+    /** Record the last added auto for this client. No other buttons needed, but OK/Cancel */
+    ui->Button_AddClientAutoEdit->setVisible(!m_bAttachClientToLastAddedAuto);
+    ui->Button_AddExistAuto->setVisible(!m_bAttachClientToLastAddedAuto);
+    ui->Button_AddClientAutoNew->setVisible(!m_bAttachClientToLastAddedAuto);
+    ui->Button_Add_Client->setEnabled(false);
 }
 
 void NewClient::ClearAllFields()
@@ -89,22 +102,19 @@ void NewClient::ClearAllFields()
     ui->LText_ClientName->clear();
     ui->Text_ClientAddress->document()->setPlainText("");
     m_strClientCarReg.clear();
-
 }
 
 void NewClient::OpenNewClientForm()
 {
-     qDebug() << " NewClient::OpenNewClientForm() ";
     m_bClientFormEditMode = false;
     ClearAllFields();
     SetNewClientDesignMode();
     this->show();
-
 }
 
 void NewClient::OpenEditClientForm()
 {
-      qDebug() << " NewClient::OpenEditClientForm() ";
+    qDebug() << " NewClient::OpenEditClientForm() ";
     m_bClientFormEditMode = true;
     ClearAllFields();
     SetEditDesignMode();
@@ -114,7 +124,6 @@ void NewClient::OpenEditClientForm()
 
 void NewClient::RestoreFormAttachAuto()
 {
-
  qDebug() << "RestoreFormAttachAuto "<<m_AttachAuto->GetSelectedCarReg();
     if(m_AttachAuto->GetSelectedCarReg() != "None")
     {
@@ -145,7 +154,6 @@ void NewClient::RestoreFormNewAuto()
         m_bRecordPermission = false;
      //   QMessageBox::information(this,"Attention!","No Auto selected !");
     }
-
 }
 
 
@@ -160,6 +168,11 @@ void NewClient::CenterForm()
 
 void NewClient::RecordCarToClient()
 {
+    if(m_bAttachClientToLastAddedAuto){
+        m_strClientCarReg = m_NewAuto->GetLastCarReg();
+    }
+
+     qDebug() << " NewClient::RecordCarToClient()   "<<m_strClientCarReg;
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQuery ClientQry(MyData.CarsDB);
@@ -194,35 +207,35 @@ bool NewClient::CheckRecordObligatory(){
 
 void NewClient::on_Button_Add_Client_clicked()
 {
-    qDebug() << " on_Button_Add_Client_clicked"<<m_bRecordPermission;
-
+    qDebug() << " on_Button_Add_Client_clicked  m_bRecordPermission "<<m_bRecordPermission;
+    qDebug() << " on_Button_Add_Client_clicked  m_bAttachClientToLastAddedAuto  "<<m_bAttachClientToLastAddedAuto;
 
     if (CheckRecordObligatory()){
-       if(!AddClentInfo( ui->LText_ClientName->text(),
+        if(ui->Check_SelectExistingKlient->isChecked() &&  m_bAttachClientToLastAddedAuto ){
+            RecordCarToClient();
+            m_bRecordPermission = false;
+            m_bAttachClientToLastAddedAuto = false;
+        }
+        else
+        {
+            if(!AddClentInfo( ui->LText_ClientName->text(),
                      ui->LText_ClientPhone->text(),
                      ui->LText_ClientFirm->text(),
                      ui->LText_ClientCity->text(),
-                     ui->Text_ClientAddress->toPlainText())){
-            return;
-        }else if(m_bRecordPermission){
-           RecordCarToClient();
-           m_bRecordPermission = false;
-       }
+                     ui->Text_ClientAddress->toPlainText()))
+            {
+                return;
+            }
+            else if(m_bRecordPermission || m_bAttachClientToLastAddedAuto)
+            {
+                RecordCarToClient();
+                m_bRecordPermission = false;
+                m_bAttachClientToLastAddedAuto = false;
+            }
+        }
     }
     ClearAllFields();
     on_Button_CancelAdd_clicked();
-}
-
-void NewClient::on_LText_ClientName_textChanged(const QString &arg1)
-{
-    if(!arg1.isEmpty() && (!ui->Button_AddExistAuto->isEnabled() || !ui->Button_AddClientAutoNew->isEnabled() ) )
-    {
-        ui->Button_AddExistAuto->setEnabled(true);
-        ui->Button_AddClientAutoNew->setEnabled(true);
-    }else if(arg1.isEmpty()){
-        ui->Button_AddExistAuto->setEnabled(false);
-        ui->Button_AddClientAutoNew->setEnabled(false);
-    }
 }
 
 void NewClient::FillClientsNameCombo()
@@ -247,6 +260,11 @@ void NewClient::FillClientsNameCombo()
 
 void NewClient::on_Combo_Clients_currentIndexChanged(const QString &arg1)
 {
+    if(m_bAttachClientToLastAddedAuto && !ui->Check_SelectExistingKlient->isChecked()){
+         qDebug() << " Do not fill autodata now ! ";
+        return;
+    }
+
     MyData.OpenConnection("Clients.sqlite");
     QSqlQuery SelectClientQry(MyData.CarsDB);
 
@@ -406,7 +424,35 @@ bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString C
     return true;
 }
 
+void NewClient::on_LText_ClientName_textChanged(const QString &arg1)
+{
+    if(!arg1.isEmpty() && (!ui->Button_AddExistAuto->isEnabled() || !ui->Button_AddClientAutoNew->isEnabled() ) )
+    {
+        ui->Button_AddExistAuto->setEnabled(true);
+        ui->Button_AddClientAutoNew->setEnabled(true);
+    }else if(arg1.isEmpty()){
+        ui->Button_AddExistAuto->setEnabled(false);
+        ui->Button_AddClientAutoNew->setEnabled(false);
+    }
+    ui->Button_Add_Client->setEnabled((!ui->LText_ClientName->text().isEmpty() && !ui->LText_ClientPhone->text().isEmpty()));
+}
+
+
 void NewClient::on_LText_ClientPhone_editingFinished()
 {
     ui->LText_ClientPhone->setText(ui->LText_ClientPhone->text().replace(" ",""));
+}
+void NewClient::on_Check_SelectExistingKlient_clicked(bool checked)
+{
+    ClearAllFields();
+    if(checked){
+        ui->Combo_Clients->setEnabled(true);
+    }else {
+        ui->Combo_Clients->setEnabled(false);
+    }
+}
+
+void NewClient::on_LText_ClientPhone_textChanged()
+{
+    ui->Button_Add_Client->setEnabled((!ui->LText_ClientName->text().isEmpty() && !ui->LText_ClientPhone->text().isEmpty()));
 }
