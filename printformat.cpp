@@ -88,6 +88,7 @@ void PrintFormat::FillRepairData(int RepairNum, bool IncludeTaxes)
     m_strRepairSPrice="";
     m_strRepairTotal="";
 
+    qDebug() << " RepairNum "<<RepairNum;
     m_strRepairNumber = "lineEdit_" + QString::number(RepairNum) + "_NUM";
     CurrField =  this->findChild<QLineEdit *>(m_strRepairNumber);
     if(CurrField)CurrField->setText(QString::number(RepairNum));
@@ -130,6 +131,8 @@ void PrintFormat::ReadRepairs()
 
         //Meet repairs devider - increase count and go on
         if(RepairsList.at(i) == "==================="){
+
+             qDebug() << " 111 ReadRepairs repair_num  "<<repair_num;
             FillRepairData(repair_num, false);
             repair_num ++;
             continue;
@@ -160,8 +163,10 @@ void PrintFormat::ReadRepairs()
             m_list << rx.cap(1).toDouble();
             pos += rx.matchedLength();
         }
-//        qDebug() << " m_list "<<m_list<< " Taxes "<<bTaxes;
+
+        qDebug() << " m_list "<<m_list<< " Taxes "<<bTaxes;
         if(!m_list.isEmpty()){
+            qDebug() << " 2222 ReadRepairs repair_num  "<<repair_num;
             FillRepairData(repair_num, bTaxes);
             EnableDDSCheck(repair_num);
         }
@@ -192,10 +197,12 @@ void PrintFormat::FillClientData()
 
 void PrintFormat::SetPagesPrintView()
 {
-    ui->B_NextPage->setVisible(true);
-    ui->B_PreviousPage->setVisible(true);
+    ui->B_NextPage->setVisible(CurrentPageToShow<=strRepairTextOnPage.size()-1?true:false);
+    ui->B_PreviousPage->setVisible(CurrentPageToShow>=0?true:false);
     ui->L_PageNumber->setVisible(true);
-    ui->L_PageNumber->setText(QString::number(CurrentPageToShow));
+    ui->L_PageNumber->setText(QString::number(CurrentPageToShow+1));
+    m_strRepairs = strRepairTextOnPage.at(CurrentPageToShow);
+    ReadRepairs();
 }
 
 void PrintFormat::SetStandardPrintView()
@@ -226,10 +233,9 @@ void PrintFormat::OpenPrintForm()
     else  /** Set Standard Print View */
     {
         SetStandardPrintView();
+        ReadRepairs();
     }
 
-
-    ReadRepairs();
     QDate CurrentDate= QDate::currentDate();
     ui->T_Data->setText(CurrentDate.toString("dd.MM.yyyy"));
     ui->lineEdit_TotalPay_Value->setText(QString::number(m_TotalRepairCost));
@@ -302,7 +308,6 @@ void PrintFormat::on_B_PrintDocument_clicked()
         QString CurrentTime = testLocale.toString(QDateTime::currentDateTime(), "dddd_dd_MMMM_yyyy_hh_mm_ss");
         ui->B_PrintCancel->setVisible(true);
         ui->B_PrintDocument->setVisible(true);
-        qDebug() << " GetWorkingPath()   "<<GetWorkingPath();
         if(pixmap.save(GetWorkingPath() + m_strClientRegNumber + "_" + CurrentTime + ".png"))
         {
             QMessageBox::information(this,"Success!","Print Page is saved for printing!");
@@ -315,4 +320,20 @@ void PrintFormat::on_B_PrintDocument_clicked()
             qDebug() << " Something Wrong with SnapShot ! ";
         }
     }
+}
+
+void PrintFormat::on_B_NextPage_clicked()
+{
+     qDebug() << " NextPage_clicked ";
+    if((CurrentPageToShow + 1) == strRepairTextOnPage.size() ) return;
+    CurrentPageToShow++;
+    SetPagesPrintView();
+}
+
+void PrintFormat::on_B_PreviousPage_clicked()
+{
+    qDebug() << " PreviousPage_clicked ";
+    if(CurrentPageToShow == 0) return;
+    CurrentPageToShow--;
+    SetPagesPrintView();
 }

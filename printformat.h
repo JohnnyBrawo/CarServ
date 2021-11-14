@@ -53,7 +53,7 @@ private:
     bool   m_bTaxesIncluded = false;
     bool   m_bMorePagesWaiting = false;
     unsigned short PagesToShow = 0;
-    unsigned short CurrentPageToShow = 0;
+    short CurrentPageToShow = 0;
     QList<double> m_list;
     QVector<QString> strRepairTextOnPage;
     void CenterForm();
@@ -67,6 +67,7 @@ private:
 
     void SetPagesPrintView();
     void SetStandardPrintView();
+    void UpdateRepairPage();
 
 signals:
     void ClosePrintForm();
@@ -74,6 +75,8 @@ signals:
 private slots:
     void OpenPrintForm();
     void on_B_PrintDocument_clicked();
+    void on_B_NextPage_clicked();
+    void on_B_PreviousPage_clicked();
 };
 
 #endif // PRINTFORMAT_H

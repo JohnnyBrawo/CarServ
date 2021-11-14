@@ -142,10 +142,9 @@ void ShowAllcars::OpenClearWindow()
     if(m_Print->GetPrintStatus()){
         m_Print->ResetPrintStatus();
         on_Button_Back_clicked();
-         qDebug() << "  ShowAllcars::OpenClearWindow() return ";
+        qDebug() << "  ShowAllcars::OpenClearWindow() return ";
         return;
     }
-
 
     QDate CurrentDate= QDate::currentDate();
     ui->LText_SearchFROMdate->setText(CurrentDate.toString("dd.MM.yyyy"));
@@ -394,6 +393,7 @@ void ShowAllcars::on_Button_Search_clicked()
     /* Erase all data if search button clicked ! Need this is search method is changed */
     ui->RepairsList->clear();
     strRepairVector.clear();
+    strRepairVectorPages.clear();
 
     m_ClientDB_ID.clear();
     m_uiRepairIndex = 0;
