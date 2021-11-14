@@ -17,6 +17,11 @@ public:
     explicit PrintFormat(QWidget *parent = nullptr);
     ~PrintFormat();
     void SetRepairsText (QString AllRepairs){ m_strRepairs = AllRepairs;}
+    void SetRepairsPagesText(QVector<QString> AllPagesTexts){
+        strRepairTextOnPage = AllPagesTexts;
+        PagesToShow = AllPagesTexts.size();
+    }
+
     void SetRegNum (QString RegNumber){ m_strClientRegNumber = RegNumber;}
     void SetClientID (QString ClientBD_ID){ m_strClient_ID = ClientBD_ID;}
     void SetClientName(QString  ClientName){ m_strClient_Name = ClientName;}
@@ -26,8 +31,6 @@ public:
     void ResetPrintStatus() { m_bPrintingDone = false; }
 
     void   keyPressEvent(QKeyEvent *event);
-
-    void SetWaitingPages(){ m_bMorePagesWaiting = true;}
 private slots:
     void on_B_PrintCancel_clicked();
 
@@ -49,8 +52,10 @@ private:
     double m_TotalRepairCost = 0.0;
     bool   m_bTaxesIncluded = false;
     bool   m_bMorePagesWaiting = false;
+    unsigned short PagesToShow = 0;
+    unsigned short CurrentPageToShow = 0;
     QList<double> m_list;
-
+    QVector<QString> strRepairTextOnPage;
     void CenterForm();
     void FillClientData();
     void FillAutoData();
@@ -59,6 +64,9 @@ private:
     void HideAllDDSChecks();
     void EnableDDSCheck(unsigned short CheckIndex);
     QString GetWorkingPath();
+
+    void SetPagesPrintView();
+    void SetStandardPrintView();
 
 signals:
     void ClosePrintForm();

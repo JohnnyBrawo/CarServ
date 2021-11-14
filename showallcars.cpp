@@ -491,9 +491,13 @@ void ShowAllcars::on_Button_PrevRepair_clicked()
 void ShowAllcars::on_Button_PRINT_clicked()
 {
     MyData.CloseConnection();
-    m_Print->SetRepairsText(strRepairVector.at(m_uiRepairIndex));
-    if(RepairPages !=0){
-        m_Print->SetWaitingPages();
+
+    if(!strRepairVectorPages.isEmpty()){
+         m_Print->SetRepairsPagesText(strRepairVectorPages);
+    }
+    else
+    {
+         m_Print->SetRepairsText(strRepairVector.at(m_uiRepairIndex));
     }
     m_Print->SetRegNum(m_ComboRegNumber);
     m_Print->SetClientID(m_ClientDB_ID);

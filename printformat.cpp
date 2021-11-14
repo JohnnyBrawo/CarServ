@@ -152,7 +152,6 @@ void PrintFormat::ReadRepairs()
         }
 
         pos = 0;
-        qDebug()<<"RepairsList.at(i) " <<RepairsList.at(i);
         if((RepairsList.at(i).indexOf("Taxes included", 0)) != -1){
             bTaxes = true;
         }
@@ -161,16 +160,11 @@ void PrintFormat::ReadRepairs()
             m_list << rx.cap(1).toDouble();
             pos += rx.matchedLength();
         }
-        qDebug() << " m_list "<<m_list<< " Taxes "<<bTaxes;
+//        qDebug() << " m_list "<<m_list<< " Taxes "<<bTaxes;
         if(!m_list.isEmpty()){
             FillRepairData(repair_num, bTaxes);
             EnableDDSCheck(repair_num);
         }
-
-//        if(repair_num == 15 ){
-//            m_bWaitForNextPage = true;
-//        }
-        qDebug() << "<ReadRepairs repair_num"<<repair_num;
     }
 }
 
@@ -196,9 +190,26 @@ void PrintFormat::FillClientData()
     MyData.CloseConnection();
 }
 
+void PrintFormat::SetPagesPrintView()
+{
+    ui->B_NextPage->setVisible(true);
+    ui->B_PreviousPage->setVisible(true);
+    ui->L_PageNumber->setVisible(true);
+    ui->L_PageNumber->setText(QString::number(CurrentPageToShow));
+}
+
+void PrintFormat::SetStandardPrintView()
+{
+    ui->B_NextPage->setVisible(false);
+    ui->B_PreviousPage->setVisible(false);
+    ui->L_PageNumber->setVisible(false);
+}
+
+
 void PrintFormat::OpenPrintForm()
 {
-     qDebug() << " PrintFormat::OpenPrintForm() MorePagesWaiting "<<m_bMorePagesWaiting;
+     qDebug() << " PrintFormat::OpenPrintForm() strRepairTextOnPage "<<strRepairTextOnPage.size();
+     qDebug() << " PrintFormat::OpenPrintForm() m_strRepairs "<<m_strRepairs;
 
     ui->L_TotalWorkCost->setVisible(false);
     ui->L_TotalWorkCostValue->setVisible(false);
@@ -207,6 +218,17 @@ void PrintFormat::OpenPrintForm()
     FillAutoData();
     FillClientData();
     HideAllDDSChecks();
+
+    /** Set print Pages View */
+    if(PagesToShow > 0){
+        SetPagesPrintView();
+    }
+    else  /** Set Standard Print View */
+    {
+        SetStandardPrintView();
+    }
+
+
     ReadRepairs();
     QDate CurrentDate= QDate::currentDate();
     ui->T_Data->setText(CurrentDate.toString("dd.MM.yyyy"));
@@ -225,18 +247,11 @@ void PrintFormat::OpenPrintForm()
 
 QString PrintFormat::GetWorkingPath()
 {
+    // Format Output filename - date and time in case of multiple repairs in one day fo same car
+    QLocale testLocale = QLocale(QLocale::English, QLocale::UnitedStates);
+    QString CurrentDate = testLocale.toString(QDate::currentDate(),"dd.MM.yyyy");
     QString ScreenShotPath = QApplication::applicationDirPath();
-    ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
-//    if(QSysInfo::productType() == "debian"){
-//        int position = ScreenShotPath.indexOf("/build");
-//        ScreenShotPath.truncate(position);
-//        ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
-//    }else if(QSysInfo::productType() == "windows"){
-//        int position = ScreenShotPath.indexOf("/build");
-//        ScreenShotPath.truncate(position);
-//        ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/");
-//    }
-
+    ScreenShotPath.append("/Repairs/" + m_strClient_Name + "/" + CurrentDate + "/");
     QDir::root().mkpath(ScreenShotPath);
     return ScreenShotPath;
 }
@@ -258,7 +273,7 @@ void PrintFormat::HideAllDDSChecks()
 void PrintFormat::EnableDDSCheck(unsigned short CheckIndex)
 {
     /** Hide All chackBoxes for Print View */
-    QString strCheckBox_Name = "Check_DDS_" + QString::number(CheckIndex);;
+    QString strCheckBox_Name = "Check_DDS_" + QString::number(CheckIndex);
     QCheckBox * CurrField;
     CurrField =  this->findChild<QCheckBox *>(strCheckBox_Name);
     if(CurrField)CurrField->setVisible(true);
@@ -287,6 +302,7 @@ void PrintFormat::on_B_PrintDocument_clicked()
         QString CurrentTime = testLocale.toString(QDateTime::currentDateTime(), "dddd_dd_MMMM_yyyy_hh_mm_ss");
         ui->B_PrintCancel->setVisible(true);
         ui->B_PrintDocument->setVisible(true);
+        qDebug() << " GetWorkingPath()   "<<GetWorkingPath();
         if(pixmap.save(GetWorkingPath() + m_strClientRegNumber + "_" + CurrentTime + ".png"))
         {
             QMessageBox::information(this,"Success!","Print Page is saved for printing!");
