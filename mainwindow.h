@@ -50,6 +50,7 @@ private slots:
     void on_Button_OpenRepairs_clicked();
 
     void RestoreMainForm();
+    void ReturnFromShowAllCars();
     void CenterForm();
 
     void on_Exit_clicked();

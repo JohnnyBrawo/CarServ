@@ -48,11 +48,15 @@ private:
     bool   m_bTaxesIncluded = false;
     CarsDatabase MyData;
 
+    bool m_bEditRepair = false;
+
     unsigned short RepairPages = 0;
     void keyPressEvent(QKeyEvent *event);
 public:
     explicit ShowAllcars(QWidget *parent = nullptr);
     ~ShowAllcars();
+
+    bool GetRepairEdit(){ return m_bEditRepair;}
 
 signals:
     void CloseShowAllAutoForm();
@@ -71,6 +75,7 @@ private slots:
     void on_Button_PrevRepair_clicked();
     void on_Button_PRINT_clicked();
     QString RepairText();
+    void on_Button_EditRepair_clicked();
 };
 
 #endif // SHOWALLCARS_H

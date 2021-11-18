@@ -129,6 +129,8 @@ void ShowAllcars::ClearAllFields()
     ui->LText_RepairVIN->setText("");
     ui->LText_RepairYear->setText("");
     ui->RepairsList->clear();
+    ui->Button_EditRepair->setVisible(false);
+
     m_ComboClientName = "";
     m_ComboRegNumber = "";
     m_uiRepairIndex = -1;
@@ -159,6 +161,7 @@ void ShowAllcars::OpenClearWindow()
 
 void ShowAllcars::on_Button_Back_clicked()
 {
+    m_bEditRepair = false;
     ClearAllFields();
     DeactivateAllFields();
     MyData.CloseConnection();
@@ -453,10 +456,13 @@ void ShowAllcars::on_Button_Search_clicked()
 void ShowAllcars::ShowRepairData(bool NextRepair )
 {
     if(!CalculateRepairIndex(NextRepair)){
+
+        ui->Button_EditRepair->setVisible(false);
          QMessageBox::information(this,"Attention!","No Repairs!");
          return;
     }
 
+    ui->Button_EditRepair->setVisible(true);
     QStringList items;
     ui->RepairsList->clear();
      qDebug() << "ShowRepairData "<<strRepairVector.size();
@@ -476,6 +482,7 @@ void ShowAllcars::on_Combo_Search_Klient_currentTextChanged(const QString &arg1)
 {
     m_ComboClientName = arg1;
     m_uiRepairIndex = 0;
+    ui->Button_EditRepair->setVisible(false);
 }
 
 void ShowAllcars::on_Button_NextRepair_clicked()
@@ -509,4 +516,14 @@ void ShowAllcars::on_Button_PRINT_clicked()
 
 QString ShowAllcars::RepairText(){
     return strRepairVector.at(m_uiRepairIndex);
+}
+
+void ShowAllcars::on_Button_EditRepair_clicked()
+{
+    m_bEditRepair = true;
+    ClearAllFields();
+    DeactivateAllFields();
+    MyData.CloseConnection();
+    this->hide();
+    emit CloseShowAllAutoForm();
 }

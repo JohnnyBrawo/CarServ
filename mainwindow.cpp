@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->Button_Search, SIGNAL(clicked()), m_ShowAllAutos, SLOT(OpenClearWindow()));
 
     QObject::connect(m_Repairs, SIGNAL(CloseNewRepairForm()), this, SLOT(RestoreMainForm()));
-    QObject::connect(m_ShowAllAutos, SIGNAL(CloseShowAllAutoForm()), this, SLOT(RestoreMainForm()));
+    QObject::connect(m_ShowAllAutos, SIGNAL(CloseShowAllAutoForm()), this, SLOT(ReturnFromShowAllCars()));
 
 
     /**Autos Menu - Close */
@@ -99,7 +99,31 @@ void MainWindow::on_Button_Search_clicked()
 
 void MainWindow::on_Button_OpenRepairs_clicked()
 {
-    hide();
+    QMessageBox msgBox;
+    msgBox.setText("The document has been modified.");
+    msgBox.setInformativeText("Do you want to save your changes?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Save);
+    int ret = msgBox.exec();
+    switch (ret) {
+    case QMessageBox::Yes : {
+        hide();
+    break;
+    }
+    case QMessageBox::No : {
+        hide();
+    break;
+    }
+    case QMessageBox::Cancel : {
+         qDebug() << " on_Button_OpenRepairs_clicked Goind back  ";
+    break;
+    }
+    default :{
+
+    }
+
+    }
+
 }
 
 void MainWindow::RestoreMainForm()
@@ -114,6 +138,12 @@ void MainWindow::RestoreMainForm()
     }else {
         this->show();
     }
+}
+
+void MainWindow::ReturnFromShowAllCars()
+{
+     qDebug() << " ReturnFromShowAllCars  "<<m_ShowAllAutos->GetRepairEdit();
+    this->show();
 }
 
 void MainWindow::on_Exit_clicked()
