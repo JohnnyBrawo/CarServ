@@ -28,3 +28,15 @@ TODO - за какво е това съобщение в Main формата ??
 
 Работната карта - разбивка на множество ремонти и описание на работата с нея. 
 TODO - Да се попълни полето "Информация за продукта".
+
+
+RemoveChangeAuto::on_Button_Record_clicked() : 
+ if(!AddNewAuto.exec()){
+        qDebug() << "UPDATE Automobiles_Table fail ";
+    }else {
+        if(!AddNewAuto.next()){
+
+            qDebug() << "UPDATE AddNewAuto.next(); fail "<<AddNewAuto.lastError().text();
+        }
+    }
+    Това какво е ?
