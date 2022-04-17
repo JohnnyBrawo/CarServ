@@ -106,6 +106,7 @@ void NewClient::ClearAllFields()
 
 void NewClient::OpenNewClientForm()
 {
+    qDebug() << " NewClient::OpenNewClientForm() ENTER  ";
     m_bClientFormEditMode = false;
     ClearAllFields();
     SetNewClientDesignMode();
@@ -114,7 +115,7 @@ void NewClient::OpenNewClientForm()
 
 void NewClient::OpenEditClientForm()
 {
-    qDebug() << " NewClient::OpenEditClientForm() ";
+    qDebug() << " NewClient::OpenEditClientForm() ENTER  ";
     m_bClientFormEditMode = true;
     ClearAllFields();
     SetEditDesignMode();
@@ -124,7 +125,7 @@ void NewClient::OpenEditClientForm()
 
 void NewClient::RestoreFormAttachAuto()
 {
- qDebug() << "RestoreFormAttachAuto "<<m_AttachAuto->GetSelectedCarReg();
+ qDebug() << "RestoreFormAttachAuto ENTER "<<m_AttachAuto->GetSelectedCarReg();
     if(m_AttachAuto->GetSelectedCarReg() != "None")
     {
         m_strClientCarReg = m_AttachAuto->GetSelectedCarReg();
@@ -142,6 +143,7 @@ void NewClient::RestoreFormAttachAuto()
 
 void NewClient::RestoreFormNewAuto()
 {
+     qDebug() << " NewClient::RestoreFormNewAuto() ENTER  ";
     this->show();
     CenterForm();
      qDebug() << "RestoreFormAttachAuto "<<m_NewAuto->GetNewCarReg();

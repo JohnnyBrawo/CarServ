@@ -140,7 +140,7 @@ void ShowAllcars::ClearAllFields()
 
 void ShowAllcars::OpenClearWindow()
 {
-     qDebug() << "  ShowAllcars::OpenClearWindow()";
+     qDebug() << "  ShowAllcars::OpenClearWindow() ENTER";
     if(m_Print->GetPrintStatus()){
         m_Print->ResetPrintStatus();
         on_Button_Back_clicked();

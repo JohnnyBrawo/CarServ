@@ -64,7 +64,7 @@ void NewAuto::keyPressEvent(QKeyEvent *event)
 
 void NewAuto::OpenClearWindow()
 {
-    qDebug() << "  NewAuto::OpenClearWindow()";
+    qDebug() << "  NewAuto::OpenClearWindow() ENTER ";
     m_bInsertNewAutoCanceled = false;
      FillComboMarki();
      ClearAllFields();

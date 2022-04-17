@@ -44,7 +44,7 @@ void NewRepair::keyPressEvent(QKeyEvent *event)
 
 void NewRepair::OpenNewRepairWindow()
 {
-    qDebug() << " NewRepair::OpenNewRepairWindow() ";
+    qDebug() << " NewRepair::OpenNewRepairWindow() ENTER ";
      FillComboMarki();
      ClearAllFields();
      this->show();

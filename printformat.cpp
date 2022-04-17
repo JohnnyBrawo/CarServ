@@ -215,6 +215,7 @@ void PrintFormat::SetStandardPrintView()
 
 void PrintFormat::OpenPrintForm()
 {
+    qDebug() << " PrintFormat::OpenPrintForm() ENTER  ";
      qDebug() << " PrintFormat::OpenPrintForm() strRepairTextOnPage "<<strRepairTextOnPage.size();
      qDebug() << " PrintFormat::OpenPrintForm() m_strRepairs "<<m_strRepairs;
 

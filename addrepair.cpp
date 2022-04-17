@@ -343,7 +343,7 @@ void AddRepair::RecordRepair()
 
 void AddRepair::OpenClearWindow()
 {
-    qDebug() << "  AddRepair::OpenClearWindow()";
+    qDebug() << "  AddRepair::OpenClearWindow() ENTER ";
     SetInitialDesign();
     this->show();
 }
