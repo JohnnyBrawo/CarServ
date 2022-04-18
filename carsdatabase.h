@@ -24,6 +24,7 @@ public:
     void CloseConnection();
     void SetProjectWotkPath(QString Path){m_WorkPath = Path;}
     void SetOSType(QString OSType) {m_osType=OSType;}
+    void RemoveConnection();
 
 };
 

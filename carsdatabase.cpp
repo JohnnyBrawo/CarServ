@@ -61,8 +61,13 @@ bool CarsDatabase::OpenConnection(QString DataBaseName)
     }
 }
 
+void CarsDatabase::RemoveConnection()
+{
+    CarsDB.removeDatabase(QSqlDatabase::defaultConnection);
+}
+
 void CarsDatabase::CloseConnection()
 {
     CarsDB.close();
-    CarsDB.removeDatabase(QSqlDatabase::defaultConnection);
+//
 }

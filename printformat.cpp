@@ -163,6 +163,9 @@ void PrintFormat::ReadRepairs()
             m_list << rx.cap(1).toDouble();
             pos += rx.matchedLength();
         }
+        double TotalValueDDS = m_list.at(2) + m_list.at(2)/5;
+
+        m_list << TotalValueDDS;
 
         qDebug() << " m_list "<<m_list<< " Taxes "<<bTaxes;
         if(!m_list.isEmpty()){
@@ -216,8 +219,6 @@ void PrintFormat::SetStandardPrintView()
 void PrintFormat::OpenPrintForm()
 {
     qDebug() << " PrintFormat::OpenPrintForm() ENTER  ";
-     qDebug() << " PrintFormat::OpenPrintForm() strRepairTextOnPage "<<strRepairTextOnPage.size();
-     qDebug() << " PrintFormat::OpenPrintForm() m_strRepairs "<<m_strRepairs;
 
     ui->L_TotalWorkCost->setVisible(false);
     ui->L_TotalWorkCostValue->setVisible(false);

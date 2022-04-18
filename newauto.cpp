@@ -44,6 +44,7 @@ void NewAuto::CenterForm()
 
 void NewAuto::on_Button_CancelNewAuto_clicked()
 {
+    m_bInsertNewAutoCanceled = true;
     this->hide();
     ClearAllFields();
     emit CloseNewAutoForm();
@@ -92,6 +93,7 @@ void NewAuto::ClearAllFields()
 
     ui->LText_NewAutoRegNumber->clear();
     ui->LText_NewAutoRegNumber->setEnabled(false);
+    ui->LText_NewAutoRegNumber->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0-9_]+"), this ));
 
     ui->LText_NewAutoVIN->clear();
     ui->LText_NewAutoVIN->setEnabled(false);

@@ -35,6 +35,8 @@ NewClient::NewClient(QWidget *parent) :
 
     ui->Combo_Clients->setMaxVisibleItems(10);
     ui->Combo_Clients->setStyleSheet("combobox-popup: 0;");
+
+    ui->LText_ClientPhone->setValidator( new QRegExpValidator(QRegExp("[0-9]*")) );
 }
 
 NewClient::~NewClient()
@@ -68,6 +70,8 @@ void NewClient::SetEditDesignMode()
     ui->Check_SelectExistingKlient->setVisible(false);
 
     FillClientsNameCombo();
+    ui->Combo_Clients->setVisible(true);
+    ui->Combo_Clients->setEnabled(true);
 }
 
 void NewClient::SetNewClientDesignMode()
@@ -75,7 +79,10 @@ void NewClient::SetNewClientDesignMode()
     ui->L_MainFormLabel->setText("Добавяне на клиент");
     if(!m_bAttachClientToLastAddedAuto){
         ui->L_MustAddCar->setText("Всеки клиент е нужно\n да се свърже с автомобил !\n Моля изберете автомобил");
-        ui->Combo_Clients->setVisible(true);
+        ui->Combo_Clients->setVisible(false);
+        ui->Check_SelectExistingKlient->setVisible(false);
+        ui->L_Klient_Name_Edit->setVisible(false);
+        ui->Button_AddClientAutoEdit->setEnabled(false); // We do not have a client - how to edit its car ?!
     }else {
         ui->L_MustAddCar->setText("Към избрания клиент ще се добави \n послено въведения автомобил ! ");
         FillClientsNameCombo();
@@ -125,19 +132,22 @@ void NewClient::OpenEditClientForm()
 
 void NewClient::RestoreFormAttachAuto()
 {
+    this->show();
+    CenterForm();
+
  qDebug() << "RestoreFormAttachAuto ENTER "<<m_AttachAuto->GetSelectedCarReg();
     if(m_AttachAuto->GetSelectedCarReg() != "None")
     {
         m_strClientCarReg = m_AttachAuto->GetSelectedCarReg();
         m_bRecordPermission = true;
         ui->Button_Add_Client->setEnabled(true);
+
     }else {
         m_bRecordPermission = false;
         //QMessageBox::information(this,"Attention!","No Auto selected !");
     }
 
-    this->show();
-    CenterForm();
+
 }
 
 
@@ -146,12 +156,14 @@ void NewClient::RestoreFormNewAuto()
      qDebug() << " NewClient::RestoreFormNewAuto() ENTER  ";
     this->show();
     CenterForm();
-     qDebug() << "RestoreFormAttachAuto "<<m_NewAuto->GetNewCarReg();
+     qDebug() << "RestoreFormNewAuto "<<m_NewAuto->GetNewCarReg();
     if(m_NewAuto->GetNewCarReg() != "None")
     {
         m_strClientCarReg = m_NewAuto->GetNewCarReg();
         m_bRecordPermission = true;
         ui->Button_Add_Client->setEnabled(true);
+        ui->L_MustAddCar->setText("Избран е автомобил \n Записа не може да се прекъсва !\n Моля завършете записа .");
+        ui->Button_CancelAdd->setEnabled(false);
     }else {
         m_bRecordPermission = false;
      //   QMessageBox::information(this,"Attention!","No Auto selected !");
