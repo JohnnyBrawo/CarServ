@@ -126,7 +126,7 @@ void NewClient::ClearAllFields()
 
 void NewClient::OpenNewClientForm()
 {
-    qDebug() << " NewClient::OpenNewClientForm() ENTER  ";
+//    qDebug() << " NewClient::OpenNewClientForm() ENTER  ";
     m_bClientFormEditMode = false;
     ClearAllFields();
     SetNewClientDesignMode();
@@ -135,7 +135,7 @@ void NewClient::OpenNewClientForm()
 
 void NewClient::OpenEditClientForm()
 {
-    qDebug() << " NewClient::OpenEditClientForm() ENTER  ";
+//    qDebug() << " NewClient::OpenEditClientForm() ENTER  ";
     m_bClientFormEditMode = true;
     ClearAllFields();
     bool bAnythingToEdit = SetEditDesignMode();
@@ -155,7 +155,7 @@ void NewClient::RestoreFormAttachAuto()
     this->show();
     CenterForm();
 
- qDebug() << "RestoreFormAttachAuto ENTER "<<m_AttachAuto->GetSelectedCarReg();
+// qDebug() << "RestoreFormAttachAuto ENTER "<<m_AttachAuto->GetSelectedCarReg();
     if(m_AttachAuto->GetSelectedCarReg() != "None")
     {
         m_strClientCarReg = m_AttachAuto->GetSelectedCarReg();
@@ -173,10 +173,10 @@ void NewClient::RestoreFormAttachAuto()
 
 void NewClient::RestoreFormNewAuto()
 {
-     qDebug() << " NewClient::RestoreFormNewAuto() ENTER  ";
+//     qDebug() << " NewClient::RestoreFormNewAuto() ENTER  ";
     this->show();
     CenterForm();
-     qDebug() << "RestoreFormNewAuto "<<m_NewAuto->GetNewCarReg();
+//     qDebug() << "RestoreFormNewAuto "<<m_NewAuto->GetNewCarReg();
     if(!m_NewAuto->GetNewCarReg().isEmpty())
     {
         m_strClientCarReg = m_NewAuto->GetNewCarReg();
@@ -207,7 +207,7 @@ void NewClient::RecordCarToClient()
         m_strClientCarReg = m_NewAuto->GetLastCarReg();
     }
 
-     qDebug() << " NewClient::RecordCarToClient()   "<<m_strClientCarReg;
+//     qDebug() << " NewClient::RecordCarToClient()   "<<m_strClientCarReg;
     MyData.OpenConnection("Automobiles.sqlite");
 
     QSqlQuery ClientQry(MyData.CarsDB);
@@ -243,8 +243,8 @@ bool NewClient::CheckRecordObligatory(){
 
 void NewClient::on_Button_Add_Client_clicked()
 {
-    qDebug() << " on_Button_Add_Client_clicked  m_bRecordPermission "<<m_bRecordPermission;
-    qDebug() << " on_Button_Add_Client_clicked  m_bAttachClientToLastAddedAuto  "<<m_bAttachClientToLastAddedAuto;
+//    qDebug() << " on_Button_Add_Client_clicked  m_bRecordPermission "<<m_bRecordPermission;
+//    qDebug() << " on_Button_Add_Client_clicked  m_bAttachClientToLastAddedAuto  "<<m_bAttachClientToLastAddedAuto;
 
     if (CheckRecordObligatory()){
         if(ui->Check_SelectExistingKlient->isChecked() &&  m_bAttachClientToLastAddedAuto ){
@@ -293,7 +293,7 @@ bool NewClient::FillClientsNameCombo()
     ui->Combo_Clients->setModel(ClientsNameComboModel);
 
     if(ui->Combo_Clients->count() == 0){
-        qDebug() << " FillClientsNameCombo - no records found ";
+//        qDebug() << " FillClientsNameCombo - no records found ";
         delete ClientsNameComboModel;
         MyData.CloseConnection();
         return false;
@@ -312,7 +312,7 @@ void NewClient::on_Combo_Clients_currentIndexChanged(const QString &arg1)
         return;
     }
 
-    qDebug() << "on_Combo_Clients_currentIndexChanged";
+//    qDebug() << "on_Combo_Clients_currentIndexChanged";
     MyData.OpenConnection("Clients.sqlite");
     QSqlQuery SelectClientQry(MyData.CarsDB);
 
@@ -329,7 +329,7 @@ void NewClient::on_Combo_Clients_currentIndexChanged(const QString &arg1)
             ui->LText_ClientPhone->setText(SelectClientQry.value(4).toString());
             ui->Text_ClientAddress->document()->setPlainText(SelectClientQry.value(5).toString());
         }else {
-            qDebug() << "SelectClientQry.Exec() Invalid query record ! ";
+//            qDebug() << "SelectClientQry.Exec() Invalid query record ! ";
             ClearAllFields();
         }
     }
@@ -349,8 +349,8 @@ void NewClient::on_Combo_Clients_currentIndexChanged(const QString &arg1)
             }
 
             m_strLastClientPhone  = ui->LText_ClientPhone->text();
- qDebug() << " m_strClientID "<<m_strClientID;
-  qDebug() << " m_strClientCarReg "<<m_strClientCarReg;
+// qDebug() << " m_strClientID "<<m_strClientID;
+//  qDebug() << " m_strClientCarReg "<<m_strClientCarReg;
     MyData.CloseConnection();
     m_strLastClientName =ui->LText_ClientName->text();
 }
@@ -431,9 +431,9 @@ bool NewClient::ClientExsist(QString ClientName, QString ClientPhone){
 bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString ClientFirm, QString ClientCity,  QString ClientAddress)
 {
 
-    qDebug() << "AddClentInfo m_bClientFormEditMode "<<m_bClientFormEditMode;
-    qDebug() << "AddClentInfo m_strLastClientName "<<m_strLastClientName;
-    qDebug() << "AddClentInfo ClientName "<<ClientName<< " ClientPhone"<<ClientPhone<<" ClientFirm "<<ClientFirm<<" ClientCity-"<<ClientCity<<" ClientAddress - "<<ClientAddress;
+//    qDebug() << "AddClentInfo m_bClientFormEditMode "<<m_bClientFormEditMode;
+//    qDebug() << "AddClentInfo m_strLastClientName "<<m_strLastClientName;
+//    qDebug() << "AddClentInfo ClientName "<<ClientName<< " ClientPhone"<<ClientPhone<<" ClientFirm "<<ClientFirm<<" ClientCity-"<<ClientCity<<" ClientAddress - "<<ClientAddress;
 
     if( !m_bClientFormEditMode ){
 
@@ -469,7 +469,7 @@ bool NewClient::AddClentInfo(QString ClientName ,QString ClientPhone , QString C
         }
         else {
             m_strClientID = LastRowQry.lastInsertId().toString();
-            qDebug() << "NewClient::AddClentInfo m_strClientID  "<< m_strClientID;
+//            qDebug() << "NewClient::AddClentInfo m_strClientID  "<< m_strClientID;
         }
     }
     else {

@@ -140,7 +140,6 @@ void AddRepair::InsertRepair(bool SubMenu)
     m_newRepair->SetRepairIndex(m_uiRepairsNumber,m_uiSubMenuNumber);
     //Finally adding the itemWidget to the list
     ui->RepairList->setItemWidget (listInsertItem, m_newRepair);
-
 }
 
 void AddRepair::on_Button_InsertRepair_clicked()
@@ -162,11 +161,9 @@ void AddRepair::on_Button_DeleteRepair_clicked()
     }
 
     ui->RepairList->selectedItems();
-
     m_currentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listDeleteItem));
 
     //Delete selected item from the listWidget
-    qDebug() << " GetRepairIndexText   " << m_currentRepair->GetRepairIndexText();
     QString str = m_currentRepair->GetRepairIndexText();
     QStringList list1 = str.split('.');
     int SubmenuStartIndex = QString(list1.first()).toInt();
@@ -221,15 +218,6 @@ void AddRepair::ReFillRepairIndexes()
         ui->Button_InsertSubMenu->setEnabled(false);
         ui->Button_DeleteRepair->setEnabled(false);
         m_uiRepairsNumber =0;
-    }
-}
-
-void AddRepair::ListAllMenus()
-{
-     qDebug() << "\n\n ListAllMenus";
-    for(int i=0; i< m_vMenusAndSubmebus.size(); i++)
-    {
-         qDebug() << " Field :  " << i << " have    :   " << m_vMenusAndSubmebus.at(i) << " submebus. ";
     }
 }
 
@@ -342,7 +330,7 @@ void AddRepair::RecordRepair()
 
 void AddRepair::OpenClearWindow()
 {
-    qDebug() << "  AddRepair::OpenClearWindow() ENTER ";
+//    qDebug() << "  AddRepair::OpenClearWindow() ENTER ";
     SetInitialDesign();
     this->show();
 }
@@ -365,14 +353,13 @@ void AddRepair::on_Button_Search_clicked()
 
 void AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1)
 {
-     qDebug() << "  AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged() arg1 "<<arg1;
     m_strSelCarNumber = arg1;
     SetKlientName(m_strSelCarNumber);
 }
 
-void AddRepair::SetKlientName(QString CarNumber){
+void AddRepair::SetKlientName(QString CarNumber)
+{
 
-    qDebug() << "  AddRepair::SetKlientName() CarNumber "<<CarNumber;
     int ClientID = 0;
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQuery ShowModelQry(MyData.CarsDB);
@@ -418,7 +405,7 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
     {
         listItemData = ui->RepairList->item(i);
         m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
-        if( /*m_CurrentRepair->GetRepairValueText()=="0" && */ !m_CurrentRepair->GetRepairDescrText().isEmpty() ){
+        if( m_CurrentRepair->GetRepairValueText()!="0" &&  !m_CurrentRepair->GetRepairDescrText().isEmpty() ){
             double CalcValue = 0.0;
 
             if(m_CurrentRepair->GetRepairValueText()=="0"){
@@ -444,9 +431,6 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
 
         if(!m_CurrentRepair->GetRepairDescrText().isEmpty()){
             totalCost += m_CurrentRepair->GetRepairValueText().toDouble();
-        }
-        else{
-            qDebug() << " Skip total price ";
         }
 
         m_CurrentRepair->ReSetSomeFieldChanged();

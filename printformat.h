@@ -68,7 +68,7 @@ private:
     void SetPagesPrintView();
     void SetStandardPrintView();
     void UpdateRepairPage();
-
+    void ClearAllFields();
 signals:
     void ClosePrintForm();
 

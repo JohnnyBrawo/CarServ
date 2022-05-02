@@ -49,12 +49,10 @@ public:
 private slots:
     void on_ButtonClear_clicked();
     void on_m_CheckDDS_clicked(bool checked);
-    void on_ValueText_textChanged();
     void on_SinglePriceText_textChanged();
     void on_QuantityText_textChanged();
     void on_DescrText_textChanged();
     void on_TotalValueText_textChanged();
-    void on_QuantityText_textChanged(const QString &arg1);
 };
 
 #endif // REPAIRWIDGETITEM_h

@@ -118,12 +118,12 @@ void NewRepair::on_Button_AddNewRepair_clicked()
 {
 
     if(!CheckRecordObligatory()){
-        qDebug() << " MUST fields empty ";
+//        qDebug() << " MUST fields empty ";
         return;
     }
     if(!CheckRecordInformation())
     {
-         qDebug() << "INSERT Rejected because of empty fields ";
+//         qDebug() << "INSERT Rejected because of empty fields ";
         return;
     }
 
@@ -185,7 +185,7 @@ bool NewRepair::CheckSelected(QString SelectedString)
 {
     if((static_cast<int>(SelectedString.size()) < 2 ) || (SelectedString == "Select") || SelectedString == "")
     {
-        qDebug() << "CheckSelected  FAIL SelectedString " << SelectedString;
+//        qDebug() << "CheckSelected  FAIL SelectedString " << SelectedString;
         return false;
     }
     return true;

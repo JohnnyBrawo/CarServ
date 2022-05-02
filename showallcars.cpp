@@ -141,11 +141,11 @@ void ShowAllcars::ClearAllFields()
 
 void ShowAllcars::OpenClearWindow()
 {
-     qDebug() << "  ShowAllcars::OpenClearWindow() ENTER";
+//     qDebug() << "  ShowAllcars::OpenClearWindow() ENTER";
     if(m_Print->GetPrintStatus()){
         m_Print->ResetPrintStatus();
         on_Button_Back_clicked();
-        qDebug() << "  ShowAllcars::OpenClearWindow() return ";
+//        qDebug() << "  ShowAllcars::OpenClearWindow() return ";
         return;
     }
 
@@ -304,7 +304,7 @@ void ShowAllcars::FillAutoData()
                 ui->Button_PRINT->setEnabled(true);
             }else {
                 /// Fill all automobiles with No cliet assigned
-                qDebug() << " Autos Not Found !  ";
+//                qDebug() << " Autos Not Found !  ";
                 QMessageBox::information(this, "Ops","No records found",QMessageBox::Ok);
             }
         }
@@ -362,10 +362,10 @@ void ShowAllcars::FillRepairsList()
             }
 
             RepairsCount++;
-            if((RepairsCount+1) % 15 == 0){
+            if((RepairsCount+1) % 16 == 0){
                 strRepairVectorPages.push_back(RepairText);
                 RepairText="";
-                qDebug() << " Show this page ... more waiting .. ";
+//                qDebug() << " Show this page ... more waiting .. ";
             }
             RepairText += "\n===================";
 
@@ -377,7 +377,7 @@ void ShowAllcars::FillRepairsList()
         else {
             RepairText +="\n   Total Price : " +  QString::number(m_dTotalPrice);
             RepairText += "\n--------------------------------------------------------------";
-            if(RepairsCount > 15)
+            if(RepairsCount > 16)
             {
                  strRepairVectorPages.push_back(RepairText);
             }
@@ -470,8 +470,8 @@ void ShowAllcars::ShowRepairData(bool NextRepair )
     ui->Button_EditRepair->setVisible(true);
     QStringList items;
     ui->RepairsList->clear();
-     qDebug() << "ShowRepairData "<<strRepairVector.size();
-     qDebug() << "ShowRepairData "<<strRepairVectorPages.size();
+//     qDebug() << "ShowRepairData strRepairVector    "<<strRepairVector.size();
+//     qDebug() << "ShowRepairData strRepairVectorPages "<<strRepairVectorPages.size();
     if(!strRepairVectorPages.isEmpty()){
        for(int i=0;i<strRepairVectorPages.size(); i++){
            items += strRepairVectorPages.at(i);

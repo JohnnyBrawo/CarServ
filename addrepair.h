@@ -29,7 +29,6 @@ private:
     void FillPage();
     bool CheckRecordInformation();
     void ReFillRepairIndexes();
-    void ListAllMenus();
     void SetFieldWithSubMenus();
     void RecordRepair();
     void SetKlientName(QString CarNumber);

@@ -23,7 +23,7 @@ SearchForm::~SearchForm()
 
 void SearchForm::OpenClearWindow()
 {
-    qDebug() << " SearchForm::OpenClearWindow() ENTER  ";
+//    qDebug() << " SearchForm::OpenClearWindow() ENTER  ";
     ui->Combo_SearchAuto->setCurrentIndex(0);
     ui->Combo_Search_Klient->setCurrentIndex(0);
     ui->Combo_Search_RegNumber->setCurrentIndex(0);
@@ -64,7 +64,7 @@ void SearchForm::keyPressEvent(QKeyEvent *event)
 
 void SearchForm::FillClientsNameCombo()
 {
-    qDebug() << "SearchForm::FillClientsNameCombo()   ";
+//    qDebug() << "SearchForm::FillClientsNameCombo()   ";
     MyData.OpenConnection("Clients.sqlite");
 
     QSqlQueryModel * ClientsNameComboModel = new QSqlQueryModel();
@@ -144,11 +144,6 @@ void SearchForm::on_Button_Search_Back_clicked()
 {
     emit CloseSearchForm();
     hide();
-}
-
-void SearchForm::on_Combo_Search_Klient_currentTextChanged(const QString &arg1)
-{
-    qDebug() << " SearchForm::on_Combo_Search_Klient_currentTextChanged  "<<arg1;
 }
 
 void SearchForm::on_RButton_SearchAutos_clicked()

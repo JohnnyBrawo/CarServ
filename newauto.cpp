@@ -73,7 +73,7 @@ void NewAuto::keyPressEvent(QKeyEvent *event)
 
 void NewAuto::OpenClearWindow()
 {
-    qDebug() << "  NewAuto::OpenClearWindow() ENTER ";
+//    qDebug() << "  NewAuto::OpenClearWindow() ENTER ";
      m_strSelectedCarReg = "";
     m_bInsertNewAutoCanceled = false;
      FillComboMarki();
@@ -339,7 +339,7 @@ bool NewAuto::AddCarInfo(QString RegNumber, QString AutoMarka, QString AutoModel
                 " AutoMillage " << AutoMillage ;
 
     MyData.OpenConnection("Automobiles.sqlite");
-    qDebug() << " zapchwame INSERT INTO Automobiles_Table ";
+//    qDebug() << " zapchwame INSERT INTO Automobiles_Table ";
     QSqlQuery AddNewAuto(MyData.CarsDB);
     AddNewAuto.prepare("INSERT INTO Automobiles_Table(Auto_RegNumber, Auto_Marka, Auto_Model, Auto_Year, Auto_Fuel, Auto_VIN, Auto_Type, Auto_Millage) "
                        "VALUES(:Auto_RegNumber, :Auto_Marka, :Auto_Model, :Auto_Year, :Auto_Fuel, :Auto_VIN, :Auto_Type, :Auto_Millage)");
@@ -392,13 +392,13 @@ QString NewAuto::GetLastCarReg()
     LastRowQry.prepare("SELECT * FROM Automobiles_Table WHERE ROWID IN ( SELECT max( ROWID ) FROM Automobiles_Table );");
     if(!LastRowQry.exec())
     {
-        qDebug() << "SELECT LastRowQry last_insert_rowid() "<< LastRowQry.lastError().text();
+        qDebug() << "NewAuto::GetLastCarReg() LastRowQry last_insert_rowid() "<< LastRowQry.lastError().text();
     }
     else {
         if(LastRowQry.next()){
             strLastAutoID = LastRowQry.value(0).toString();
-             qDebug() << " strLastAutoID "<< LastRowQry.value(0).toString();
-             qDebug() << " strLastAutoID "<< LastRowQry.value(1).toString();
+//             qDebug() << " strLastAutoID "<< LastRowQry.value(0).toString();
+//             qDebug() << " strLastAutoID "<< LastRowQry.value(1).toString();
         }else {
             qDebug() << "SELECT No RegNum found !! Sorry ";
         }
@@ -412,7 +412,7 @@ QString NewAuto::GetLastCarReg()
     else {
         AutoQuery.next();
         strLastAutoRegNumber = AutoQuery.value(0).toString();
-        qDebug() << " Last auto RN :  "<< strLastAutoRegNumber;
+//        qDebug() << " Last auto RN :  "<< strLastAutoRegNumber;
     }
 
     return strLastAutoRegNumber;

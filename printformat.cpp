@@ -37,6 +37,8 @@ PrintFormat::~PrintFormat()
 
 void PrintFormat::on_B_PrintCancel_clicked()
 {
+    CurrentPageToShow = 0;
+    PagesToShow = 0;
     emit ClosePrintForm();
     hide();
 }
@@ -88,10 +90,13 @@ void PrintFormat::FillRepairData(int RepairNum, bool IncludeTaxes)
     m_strRepairSPrice="";
     m_strRepairTotal="";
 
-    qDebug() << " RepairNum "<<RepairNum;
+//    qDebug() << " RepairNum "<<RepairNum;
+//    qDebug() << " CurrentPageToShow "<<CurrentPageToShow;
+//        qDebug() << " CurrentPageToShow "<<CurrentPageToShow*15 + RepairNum;
+
     m_strRepairNumber = "lineEdit_" + QString::number(RepairNum) + "_NUM";
     CurrField =  this->findChild<QLineEdit *>(m_strRepairNumber);
-    if(CurrField)CurrField->setText(QString::number(RepairNum));
+    if(CurrField)CurrField->setText(QString::number(RepairNum + CurrentPageToShow*15));
 
     m_strRepairCnt  = "lineEdit_" + QString::number(RepairNum) + "_CNT";
     CurrField =  this->findChild<QLineEdit *>(m_strRepairCnt);
@@ -114,10 +119,10 @@ void PrintFormat::ReadRepairs()
 {
     QRegExp tagExp("\n");
     QStringList RepairsList = m_strRepairs.split(tagExp);
-    ui->T_DateRepair->setText(RepairsList.at(1));
+//    ui->T_DateRepair->setText(RepairsList.at(1));
     QRegExp rx("(-?\\d+(?:[\\.,]\\d+(?:e\\d+)?)?)");
 
-    qDebug() << "<ReadRepairs RepairsList.length()"<<RepairsList.length();
+//    qDebug() << "<ReadRepairs RepairsList.length()"<<RepairsList.length();
     int pos = 0;
     int repair_num = 1;
     for(int i=0;i<RepairsList.length();i++){
@@ -132,7 +137,7 @@ void PrintFormat::ReadRepairs()
         //Meet repairs devider - increase count and go on
         if(RepairsList.at(i) == "==================="){
 
-             qDebug() << " 111 ReadRepairs repair_num  "<<repair_num;
+//             qDebug() << " 111 ReadRepairs repair_num  "<<repair_num;
             FillRepairData(repair_num, false);
             repair_num ++;
             continue;
@@ -140,7 +145,7 @@ void PrintFormat::ReadRepairs()
 
          //Meet repairs end. Next is Total payment only
         if((RepairsList.at(i).indexOf("Total Price", 0)) != -1){
-              qDebug()<<" Exit repairs " ;
+//              qDebug()<<" Exit repairs " ;
                break;
           }
 
@@ -163,13 +168,21 @@ void PrintFormat::ReadRepairs()
             m_list << rx.cap(1).toDouble();
             pos += rx.matchedLength();
         }
+
+//        qDebug() << " m_list "<<m_list.isEmpty();
+        /** Nothing to record - go to next line */
+        if(m_list.isEmpty()){
+            i++;
+            continue;
+        }
+
         double TotalValueDDS = m_list.at(2) + m_list.at(2)/5;
 
         m_list << TotalValueDDS;
 
-        qDebug() << " m_list "<<m_list<< " Taxes "<<bTaxes;
+//        qDebug() << " m_list "<<m_list<< " Taxes "<<bTaxes;
         if(!m_list.isEmpty()){
-            qDebug() << " 2222 ReadRepairs repair_num  "<<repair_num;
+//            qDebug() << " 2222 ReadRepairs repair_num  "<<repair_num;
             FillRepairData(repair_num, bTaxes);
             EnableDDSCheck(repair_num);
         }
@@ -200,6 +213,7 @@ void PrintFormat::FillClientData()
 
 void PrintFormat::SetPagesPrintView()
 {
+    ClearAllFields();
     ui->B_NextPage->setVisible(CurrentPageToShow<=strRepairTextOnPage.size()-1?true:false);
     ui->B_PreviousPage->setVisible(CurrentPageToShow>=0?true:false);
     ui->L_PageNumber->setVisible(true);
@@ -218,7 +232,7 @@ void PrintFormat::SetStandardPrintView()
 
 void PrintFormat::OpenPrintForm()
 {
-    qDebug() << " PrintFormat::OpenPrintForm() ENTER  ";
+//    qDebug() << " PrintFormat::OpenPrintForm() ENTER  ";
 
     ui->L_TotalWorkCost->setVisible(false);
     ui->L_TotalWorkCostValue->setVisible(false);
@@ -291,42 +305,50 @@ void PrintFormat::EnableDDSCheck(unsigned short CheckIndex)
 
 void PrintFormat::on_B_PrintDocument_clicked()
 {
-    m_bPrintingDone = false;
-    ui->B_PrintCancel->setVisible(false);
-    ui->B_PrintDocument->setVisible(false);
-
-    HideAllDDSChecks();
-
-    ui->L_AutoMarka->setFocus();
-
-    auto active_window = qApp->activeWindow();
-    if (active_window) //could be null if your app doesn't have focus
-    {
-        QPixmap pixmap(active_window->size());
-        active_window->render(&pixmap);
-
-        // Format Output filename - date and time in case of multiple repairs in one day fo same car
-        QLocale testLocale = QLocale(QLocale::English, QLocale::UnitedStates);
-        QString CurrentTime = testLocale.toString(QDateTime::currentDateTime(), "dddd_dd_MMMM_yyyy_hh_mm_ss");
-        ui->B_PrintCancel->setVisible(true);
-        ui->B_PrintDocument->setVisible(true);
-        if(pixmap.save(GetWorkingPath() + m_strClientRegNumber + "_" + CurrentTime + ".png"))
-        {
-            QMessageBox::information(this,"Success!","Print Page is saved for printing!");
-            m_bPrintingDone = true;
-            on_B_PrintCancel_clicked();
-        }
-        else
-        {
-            m_bPrintingDone = false;
-            qDebug() << " Something Wrong with SnapShot ! ";
-        }
+    for(int i=0; i <PagesToShow;i++){
+        on_B_PreviousPage_clicked();
     }
+
+    m_bPrintingDone = true;
+    for(int Page=0; Page <PagesToShow; Page++){
+
+        ui->B_PrintCancel->setVisible(false);
+        ui->B_PrintDocument->setVisible(false);
+        ui->B_NextPage->setVisible(false);
+        ui->B_PreviousPage->setVisible(false);
+        ui->L_PageNumber->setVisible(false);
+
+        HideAllDDSChecks();
+
+        ui->L_AutoMarka->setFocus();
+
+        auto active_window = qApp->activeWindow();
+        if (active_window) //could be null if your app doesn't have focus
+        {
+            QPixmap pixmap(active_window->size());
+            active_window->render(&pixmap);
+
+            // Format Output filename - date and time in case of multiple repairs in one day fo same car
+            QLocale testLocale = QLocale(QLocale::English, QLocale::UnitedStates);
+            QString CurrentTime = testLocale.toString(QDateTime::currentDateTime(), "dddd_dd_MMMM_yyyy_hh_mm_ss");
+            ui->B_PrintCancel->setVisible(true);
+            ui->B_PrintDocument->setVisible(true);
+            if(!pixmap.save(GetWorkingPath() + m_strClientRegNumber + "_" + CurrentTime + "_PAGE_" + QString::number(Page) + ".png"))
+            {
+                m_bPrintingDone = false;
+//                qDebug() << " Something Wrong with SnapShot ! ";
+            }
+        }
+        on_B_NextPage_clicked();
+    }
+    QMessageBox::information(this,"Success!","Print Page is saved for printing!");
+    m_bPrintingDone = true;
+    on_B_PrintCancel_clicked();
 }
 
 void PrintFormat::on_B_NextPage_clicked()
 {
-     qDebug() << " NextPage_clicked ";
+//     qDebug() << " NextPage_clicked ";
     if((CurrentPageToShow + 1) == strRepairTextOnPage.size() ) return;
     CurrentPageToShow++;
     SetPagesPrintView();
@@ -334,8 +356,38 @@ void PrintFormat::on_B_NextPage_clicked()
 
 void PrintFormat::on_B_PreviousPage_clicked()
 {
-    qDebug() << " PreviousPage_clicked ";
+//    qDebug() << " PreviousPage_clicked ";
     if(CurrentPageToShow == 0) return;
     CurrentPageToShow--;
     SetPagesPrintView();
+}
+
+void PrintFormat::ClearAllFields()
+{
+    HideAllDDSChecks();
+    QLineEdit * CurrField;
+    QString m_strItemName("");
+
+    for(int CheckBoxNum = 1; CheckBoxNum < 16; CheckBoxNum ++){
+//      qDebug() << " RepairNum "<<CheckBoxNum;
+      m_strItemName = "lineEdit_" + QString::number(CheckBoxNum) + "_Descr";
+      CurrField =  this->findChild<QLineEdit *>(m_strItemName);
+      if(CurrField)CurrField->setText("");
+
+      m_strItemName = "lineEdit_" + QString::number(CheckBoxNum) + "_NUM";
+      CurrField =  this->findChild<QLineEdit *>(m_strItemName);
+      if(CurrField)CurrField->setText("");
+
+      m_strItemName  = "lineEdit_" + QString::number(CheckBoxNum) + "_CNT";
+      CurrField =  this->findChild<QLineEdit *>(m_strItemName);
+      if(CurrField)CurrField->setText("");
+
+      m_strItemName  = "lineEdit_" + QString::number(CheckBoxNum) + "_SPrice";
+      CurrField =  this->findChild<QLineEdit *>(m_strItemName);
+      if(CurrField)CurrField->setText("");
+
+      m_strItemName  = "lineEdit_" + QString::number(CheckBoxNum) + "_Total_No_DDS";
+      CurrField =  this->findChild<QLineEdit *>(m_strItemName);
+      if(CurrField)CurrField->setText("");
+    }
 }

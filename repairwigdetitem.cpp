@@ -10,7 +10,6 @@ NewRepairItem::NewRepairItem(QWidget *parent) :
     m_bSubMenuField(false),
     m_bInitializeCheckboxes(false)
 {
-    qDebug() << "  NewRepairItem::NewRepairItem";
     ui->setupUi(this);
     ResetAllFields();
 }
@@ -23,11 +22,11 @@ NewRepairItem::~NewRepairItem()
 void NewRepairItem::ResetAllFields()
 {
     ui->DescrText->setText("");
-    ui->QuantityText->setText("0");
+    ui->QuantityText->setText("");
     ui->QuantityText->setValidator(new QDoubleValidator(0, 100, 2, this) );
-    ui->SinglePriceText->setText("0");
+    ui->SinglePriceText->setText("");
     ui->SinglePriceText->setValidator(new QDoubleValidator(0, 100, 2, this) );
-    ui->TotalValueText->setText("0");
+    ui->TotalValueText->setText("");
     ui->TotalValueText->setValidator(new QDoubleValidator(0, 100, 2, this) );
 
     ui->RepairIndex->setText(QString::number(m_uiRepairIndex));
@@ -41,8 +40,7 @@ void NewRepairItem::ChangeTaxesCheckBox(bool GlobalTaxesChecked)
     QString CheckBoxText = GlobalTaxesChecked?"Извади ДДС":"Начисли ДДС";
     ui->m_CheckDDS->setText(CheckBoxText);
     if(ui->m_CheckDDS->isChecked()){
-        qDebug()<<"\n  IsChecked "<<ui->m_CheckDDS->isChecked();
-
+//        qDebug()<<"\n  IsChecked "<<ui->m_CheckDDS->isChecked();
         ui->m_CheckDDS->setChecked(false);
     }
     on_m_CheckDDS_clicked(GlobalTaxesChecked);
@@ -110,14 +108,12 @@ void NewRepairItem::on_ButtonClear_clicked()
 
 bool    NewRepairItem::IsSomeFieldChanged()
 {
-     qDebug()<<"\n  IsSomeFieldChanged "<<m_bNeedUpdate;
     return m_bNeedUpdate;
 }
 
 void NewRepairItem::ReSetSomeFieldChanged()
 {
    m_bNeedUpdate = false;
-   qDebug()<<"\n  ReSetSomeFieldChanged "<<m_bNeedUpdate;
 }
 
 void NewRepairItem::on_m_CheckDDS_clicked(bool checked)
@@ -153,42 +149,25 @@ void NewRepairItem::on_m_CheckDDS_clicked(bool checked)
     }
 }
 
-void NewRepairItem::on_ValueText_textChanged()
-{
-    qDebug()<<"\n  on_ValueText_textChanged ";
-    m_bNeedUpdate = true;
-//    ui->TotalValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()) );
-    ui->TotalValueText->setText( QString::number(GetValueMaths()) );
-}
-
 void NewRepairItem::on_SinglePriceText_textChanged()
 {
-    qDebug()<<"\n  on_SinglePriceText_textChanged ";
     m_bNeedUpdate = true;
-     ui->TotalValueText->setText( QString::number(GetValueMaths()) );
+    ui->TotalValueText->setText( QString::number(GetValueMaths()) );
 }
 
 void NewRepairItem::on_QuantityText_textChanged()
 {
-    qDebug()<<"\n  on_QuantityText_textChanged ";
     m_bNeedUpdate = true;
     ui->TotalValueText->setText( QString::number(GetValueMaths()) );
 }
 
 void NewRepairItem::on_DescrText_textChanged()
 {
-    qDebug()<<"\n  on_DescrText_textChanged ";
     m_bNeedUpdate = true;
 }
 
 void NewRepairItem::on_TotalValueText_textChanged()
 {
-    qDebug()<<"\n  on_TotalValueText_textChanged ";
     m_bNeedUpdate = true;
 }
 
-void NewRepairItem::on_QuantityText_textChanged(const QString &arg1)
-{
-    qDebug()<<"\n  on_QuantityText_textChanged "<<arg1;
-    ui->TotalValueText->setText( QString::number(GetValueMaths()) );
-}

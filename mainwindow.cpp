@@ -128,9 +128,9 @@ void MainWindow::on_Button_OpenRepairs_clicked()
 
 void MainWindow::RestoreMainForm()
 {
-     qDebug() << " RestoreMainForm m_bNewAutoMenuEnter "<<m_bNewAutoMenuEnter;
-     qDebug() << " RestoreMainForm IsNewAutoRecordCanceled   "<<m_NewAuto->IsNewAutoRecordCanceled();
-     qDebug() << " RestoreMainForm GetNewCarReg   "<<m_NewAuto->GetNewCarReg();
+//     qDebug() << " RestoreMainForm m_bNewAutoMenuEnter "<<m_bNewAutoMenuEnter;
+//     qDebug() << " RestoreMainForm IsNewAutoRecordCanceled   "<<m_NewAuto->IsNewAutoRecordCanceled();
+//     qDebug() << " RestoreMainForm GetNewCarReg   "<<m_NewAuto->GetNewCarReg();
 
     if( m_bNewAutoMenuEnter && !m_NewAuto->IsNewAutoRecordCanceled()){
         m_bNewAutoMenuEnter = false;
@@ -145,7 +145,7 @@ void MainWindow::RestoreMainForm()
 
 void MainWindow::ReturnFromShowAllCars()
 {
-     qDebug() << " ReturnFromShowAllCars  "<<m_ShowAllAutos->GetRepairEdit();
+//     qDebug() << " ReturnFromShowAllCars  "<<m_ShowAllAutos->GetRepairEdit();
     this->show();
 }
 
