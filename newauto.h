@@ -35,7 +35,7 @@ private:
     bool CheckRecordObligatory();
     QString m_strSelectedCarReg;
     bool m_bInsertNewAutoCanceled = false;
-
+    void ExitNewAuto();
     void keyPressEvent(QKeyEvent *event);
 public:
     explicit NewAuto(QWidget *parent = 0);

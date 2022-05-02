@@ -22,6 +22,7 @@ private:
 
     QString            m_strClientID;
     QString             m_strLastClientName;
+    QString             m_strLastClientPhone;
     QString             m_strClientCarReg;
 
     bool m_bRecordPermission;
@@ -34,10 +35,10 @@ private:
     void CenterForm();
     void ClearAllFields();
     void SetNewClientDesignMode();
-    void SetEditDesignMode();
-    void FillClientsNameCombo();
+    bool SetEditDesignMode();
+    bool FillClientsNameCombo();
     void keyPressEvent(QKeyEvent *event);
-
+    bool CheckMustFieds();
 public:
     explicit NewClient(QWidget *parent = 0);
     ~NewClient();
@@ -46,7 +47,7 @@ public:
     void SetNewRepairRegNumber(QString RegNum){m_strClientCarReg = RegNum;}
 
     void RecordCarToClient();
-    void SetClientToLastAuto(){m_bAttachClientToLastAddedAuto = true;}
+    void SetClientToLastAuto(QString RegNum){m_bAttachClientToLastAddedAuto = true; m_strClientCarReg = RegNum;}
     bool ClientExsist(QString ClientName, QString ClientPhone);
     bool AddClentInfo(QString ClientName ,QString ClientPhone , QString ClientFirm = "None", QString ClientCity  = "None",  QString ClientAddress = "None");
 signals:

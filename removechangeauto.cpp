@@ -98,7 +98,7 @@ void RemoveChangeAuto::SetUnactiveFields()
 
 void RemoveChangeAuto::ActivateAutoCombos(bool DeactiavateAll)
 {
-//    qDebug() << "RemoveChangeAuto::ActivateAutoCombos() "<<DeactiavateAll;
+    qDebug() << "RemoveChangeAuto::ActivateAutoCombos() "<<DeactiavateAll;
     ui->m_ComboFuel->setEnabled(DeactiavateAll);
     ui->m_ComboMarka->setEnabled(DeactiavateAll);
     ui->m_ComboModel->setEnabled(DeactiavateAll);
@@ -107,11 +107,15 @@ void RemoveChangeAuto::ActivateAutoCombos(bool DeactiavateAll)
     ui->LText_DelChangeRegNumber->setEnabled(DeactiavateAll);
     ui->LText_AutoMillage->setEnabled(DeactiavateAll);
     ui->LText_DelChangeVIN->setEnabled(DeactiavateAll);
+
+    ui->Button_Add->setVisible(DeactiavateAll);
+    ui->Button_Record->setVisible(DeactiavateAll);
+    ui->Button_DeleteAuto->setVisible(DeactiavateAll);
 }
 
 void RemoveChangeAuto::ReActivateAllFields()
 {
-//    qDebug() << "RemoveChangeAuto::ReActivateAllFields()   ";
+    qDebug() << "RemoveChangeAuto::ReActivateAllFields()   ";
     //  Enable fields one after other
     ui->LText_DelChangeRegNumber->setEnabled(true);
     ui->LText_AutoMillage->setEnabled(true);
@@ -126,7 +130,7 @@ void RemoveChangeAuto::ReActivateAllFields()
 }
 void RemoveChangeAuto::ClearAllFields()
 {
-//    qDebug() << "RemoveChangeAuto::ClearAllFields()";
+    qDebug() << "RemoveChangeAuto::ClearAllFields()";
 
 //    m_bCancelAllActions = false;
     //  Enable fields one after other
@@ -253,7 +257,6 @@ void RemoveChangeAuto::EditClientAuto(QString ClientName,QString ClientEditID)
 
 void RemoveChangeAuto::OpenClearEditWindow()
 {
-
     qDebug() << "RemoveChangeAuto::OpenClearEditWindow() ENTER   ";
 
     m_State = eEditDelAuto;
@@ -261,10 +264,15 @@ void RemoveChangeAuto::OpenClearEditWindow()
     ClearAllFields();
     FillComboMarki();
     FillComboModeli(0);
-    FillPage();
-    ActivateAutoCombos(true);
+    bool AnythingtoEdit = FillPage();
+    ActivateAutoCombos(AnythingtoEdit);
     m_bInitialize = false;
     show();
+
+    if(!AnythingtoEdit){
+        QMessageBox::information(this, "Ops","No records found",QMessageBox::Ok);
+        on_Button_Back_clicked();
+    }
 }
 
 void RemoveChangeAuto::OpenClearWindow()
@@ -302,10 +310,11 @@ void RemoveChangeAuto::OpenExistingAutosWindow(QString ClientName)
 
 }
 
-void RemoveChangeAuto::FillPage()
+bool RemoveChangeAuto::FillPage()
 {
     FillClientNameCombo();
-    FillRegCombo();
+    if(!FillRegCombo()) return false;
+    return true;
 }
 
 void RemoveChangeAuto::FillAutoData()
@@ -374,7 +383,7 @@ void RemoveChangeAuto::FillAutoData()
     on_m_ComboMarka_currentTextChanged(m_strAutoMarka);
 }
 
-void RemoveChangeAuto::FillRegCombo()
+bool RemoveChangeAuto::FillRegCombo()
 {
 //    qDebug() << "RemoveChangeAuto::FillRegCombo()   m_SentClientID  "<<m_SentClientID<<"   m_SentClientName     "<<m_SentClientName;
     MyData.OpenConnection("Automobiles.sqlite");
@@ -394,14 +403,25 @@ void RemoveChangeAuto::FillRegCombo()
 
     if(! RegComboQry.exec()){
         qDebug() << "RegComboQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail ";
+        MyData.CloseConnection();
         delete MyModel;
-        return;
+        return false;
     }
+
 
     MyModel->setQuery(RegComboQry);
     ui->Combo_DelChangeAutoRegs->setModel(MyModel);
 
+    qDebug() << "RegComboQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< ui->Combo_DelChangeAutoRegs->count();
+    if(ui->Combo_DelChangeAutoRegs->count() == 0){
+        qDebug() << "No records found ";
+        MyData.CloseConnection();
+        delete MyModel;
+        return false;
+    }
+
     MyData.CloseConnection();
+    return true;
 }
 
 void RemoveChangeAuto::FillClientNameCombo()

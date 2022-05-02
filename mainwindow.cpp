@@ -130,9 +130,11 @@ void MainWindow::RestoreMainForm()
 {
      qDebug() << " RestoreMainForm  "<<m_bNewAutoMenuEnter;
      qDebug() << " RestoreMainForm IsNewAutoRecordCanceled   "<<m_NewAuto->IsNewAutoRecordCanceled();
+     qDebug() << " RestoreMainForm GetNewCarReg   "<<m_NewAuto->GetNewCarReg();
+
     if( m_bNewAutoMenuEnter && !m_NewAuto->IsNewAutoRecordCanceled()){
         m_bNewAutoMenuEnter = false;
-        m_NewClient->SetClientToLastAuto();
+        m_NewClient->SetClientToLastAuto(m_NewAuto->GetNewCarReg());
         ui->AddNewClient->trigger();
 
     }else {

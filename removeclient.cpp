@@ -46,11 +46,15 @@ void RemoveClient::on_Button_Back_clicked()
 void RemoveClient::OpenRemoveClientPage()
 {
     qDebug() << "RemoveClient::OpenRemoveClientPage() ENTER  ";
-    FillClientsNameCombo();
+    bool AnyRecords = FillClientsNameCombo();
     show();
+    if(!AnyRecords){
+        QMessageBox::information(this, "Ops","No records found",QMessageBox::Ok);
+        emit on_Button_Back_clicked();
+    }
 }
 
-void RemoveClient::FillClientsNameCombo()
+bool RemoveClient::FillClientsNameCombo()
 {
     MyData.OpenConnection("Clients.sqlite");
 
@@ -63,11 +67,17 @@ void RemoveClient::FillClientsNameCombo()
         qDebug() << "ShowClientsQry.Exec() SELECT ClientName FROM Clients_Table fail "<< ShowClientsQry.lastError().text();
     }
 
+    if(ShowClientsQry.size() == (-1)){
+        delete  ClientsNameComboModel;
+        MyData.CloseConnection();
+        return false;
+    }
+
     ClientsNameComboModel->setQuery(ShowClientsQry);
     ui->m_ComboBoxClients->setModel(ClientsNameComboModel);
 
-
     MyData.CloseConnection();
+    return true;
 }
 
 

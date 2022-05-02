@@ -14,7 +14,7 @@ class RemoveClient : public QDialog
 
 private:
     Ui::RemoveClient *ui;
-    void FillClientsNameCombo();
+    bool FillClientsNameCombo();
     void CenterForm();
     CarsDatabase MyData;
     void keyPressEvent(QKeyEvent *event);

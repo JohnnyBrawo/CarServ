@@ -60,6 +60,13 @@ void AddRepair::FillPage()
         qDebug() << "ShowModelQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< ShowModelQry.lastError().text();
     }
 
+    /**DataBase is Empty or no records found ! */
+    if(ShowModelQry.size() == -1)
+    {
+        qDebug() << "ShowModelQry.Exec() size "<< ShowModelQry.size();
+        ui->Button_Search->setEnabled(false);
+    }
+
     MyModel->setQuery(ShowModelQry);
 
     ui->Combo_RepairAutoRegNumber->setModel(MyModel);
@@ -366,12 +373,14 @@ void AddRepair::on_Button_Search_clicked()
 
 void AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged(const QString &arg1)
 {
+     qDebug() << "  AddRepair::on_Combo_RepairAutoRegNumber_currentIndexChanged() arg1 "<<arg1;
     m_strSelCarNumber = arg1;
     SetKlientName(m_strSelCarNumber);
 }
 
 void AddRepair::SetKlientName(QString CarNumber){
 
+    qDebug() << "  AddRepair::SetKlientName() CarNumber "<<CarNumber;
     int ClientID = 0;
     MyData.OpenConnection("Automobiles.sqlite");
     QSqlQuery ShowModelQry(MyData.CarsDB);

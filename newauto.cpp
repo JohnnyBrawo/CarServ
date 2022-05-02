@@ -13,7 +13,7 @@ NewAuto::NewAuto(QWidget *parent) :
     ui(new Ui::NewAuto)
 {
     ui->setupUi(this);
-    m_strSelectedCarReg = "None";
+    m_strSelectedCarReg = "";
     CenterForm();
     setWindowTitle("New Auto");
 
@@ -42,6 +42,14 @@ void NewAuto::CenterForm()
 }
 
 
+void NewAuto::ExitNewAuto()
+{
+    m_bInsertNewAutoCanceled = false;
+    this->hide();
+    ClearAllFields();
+    emit CloseNewAutoForm();
+}
+
 void NewAuto::on_Button_CancelNewAuto_clicked()
 {
     m_bInsertNewAutoCanceled = true;
@@ -66,6 +74,7 @@ void NewAuto::keyPressEvent(QKeyEvent *event)
 void NewAuto::OpenClearWindow()
 {
     qDebug() << "  NewAuto::OpenClearWindow() ENTER ";
+     m_strSelectedCarReg = "";
     m_bInsertNewAutoCanceled = false;
      FillComboMarki();
      ClearAllFields();
@@ -158,7 +167,7 @@ void NewAuto::on_Button_AddNewAuto_clicked()
          qDebug() << "INSERT New auto Failed. Restart procedure ";
     }else {
         qDebug() << "INSERT New auto Done !! Yeah ! ";
-        on_Button_CancelNewAuto_clicked();
+        ExitNewAuto();
     }
 }
 

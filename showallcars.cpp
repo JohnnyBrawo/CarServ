@@ -63,6 +63,7 @@ void ShowAllcars::DeactivateAllFields()
     ui->Button_NextRepair->setEnabled(false);
 
     ui->Button_PrevRepair->setEnabled(false);
+    ui->Button_PRINT->setEnabled(false);
 
     m_uiRepairIndex = -1;
 }
@@ -299,9 +300,12 @@ void ShowAllcars::FillAutoData()
 
                 /// Record selected AutoID - attach it to the New client
                 m_strAutoReg = EditAutoQry.value(2).toString();
+                /* If something foud - enable print button */
+                ui->Button_PRINT->setEnabled(true);
             }else {
                 /// Fill all automobiles with No cliet assigned
                 qDebug() << " Autos Not Found !  ";
+                QMessageBox::information(this, "Ops","No records found",QMessageBox::Ok);
             }
         }
 

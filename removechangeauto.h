@@ -24,9 +24,9 @@ private:
     States m_State;
     CarsDatabase MyData;
 
-    void FillPage();
+    bool FillPage();
     void FillAutoData();
-    void FillRegCombo();
+    bool FillRegCombo();
     void FillClientNameCombo();
 
     void SetUnactiveFields();
