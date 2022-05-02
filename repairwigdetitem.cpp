@@ -157,11 +157,7 @@ void NewRepairItem::on_ValueText_textChanged()
 {
     qDebug()<<"\n  on_ValueText_textChanged ";
     m_bNeedUpdate = true;
-    ui->TotalValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()) );
-}
-
-void NewRepairItem::on_SinglePriceText_editingFinished()
-{
+//    ui->TotalValueText->setText( QString::number(GetRepairQuantityText().toDouble()*GetRepairSinglePriceText().toDouble()) );
     ui->TotalValueText->setText( QString::number(GetValueMaths()) );
 }
 
@@ -169,27 +165,30 @@ void NewRepairItem::on_SinglePriceText_textChanged()
 {
     qDebug()<<"\n  on_SinglePriceText_textChanged ";
     m_bNeedUpdate = true;
-}
-
-void NewRepairItem::on_QuantityText_editingFinished()
-{
-    ui->TotalValueText->setText( QString::number(GetValueMaths()) );
+     ui->TotalValueText->setText( QString::number(GetValueMaths()) );
 }
 
 void NewRepairItem::on_QuantityText_textChanged()
 {
-     qDebug()<<"\n  on_QuantityText_textChanged ";
+    qDebug()<<"\n  on_QuantityText_textChanged ";
     m_bNeedUpdate = true;
+    ui->TotalValueText->setText( QString::number(GetValueMaths()) );
 }
 
 void NewRepairItem::on_DescrText_textChanged()
 {
-     qDebug()<<"\n  on_DescrText_textChanged ";
+    qDebug()<<"\n  on_DescrText_textChanged ";
     m_bNeedUpdate = true;
 }
 
 void NewRepairItem::on_TotalValueText_textChanged()
 {
-     qDebug()<<"\n  on_TotalValueText_textChanged ";
+    qDebug()<<"\n  on_TotalValueText_textChanged ";
     m_bNeedUpdate = true;
+}
+
+void NewRepairItem::on_QuantityText_textChanged(const QString &arg1)
+{
+    qDebug()<<"\n  on_QuantityText_textChanged "<<arg1;
+    ui->TotalValueText->setText( QString::number(GetValueMaths()) );
 }

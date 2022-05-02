@@ -462,6 +462,7 @@ void ShowAllcars::ShowRepairData(bool NextRepair )
     if(!CalculateRepairIndex(NextRepair)){
 
         ui->Button_EditRepair->setVisible(false);
+        ui->Button_PRINT->setEnabled(false);
          QMessageBox::information(this,"Attention!","No Repairs!");
          return;
     }

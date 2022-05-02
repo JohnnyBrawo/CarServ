@@ -22,7 +22,6 @@ AddRepair::AddRepair(QWidget *parent) :
     m_strSelCarNumber.clear();
     m_vMenusAndSubmebus.clear();
 
-
     ui->Combo_RepairAutoRegNumber->setMaxVisibleItems(10);
     ui->Combo_RepairAutoRegNumber->setStyleSheet("combobox-popup: 0;");
 
@@ -55,21 +54,19 @@ void AddRepair::FillPage()
 
     ShowModelQry.prepare("SELECT Auto_RegNumber FROM Automobiles_Table ");
 
-
     if(! ShowModelQry.exec()){
         qDebug() << "ShowModelQry.Exec() SELECT Auto_RegNumber FROM Automobiles_Table Fail "<< ShowModelQry.lastError().text();
-    }
-
-    /**DataBase is Empty or no records found ! */
-    if(ShowModelQry.size() == -1)
-    {
-        qDebug() << "ShowModelQry.Exec() size "<< ShowModelQry.size();
-        ui->Button_Search->setEnabled(false);
     }
 
     MyModel->setQuery(ShowModelQry);
 
     ui->Combo_RepairAutoRegNumber->setModel(MyModel);
+    /**DataBase is Empty or no records found ! */
+    if( ui->Combo_RepairAutoRegNumber->count() == 0)
+    {
+        ui->Button_Search->setEnabled(false);
+    }
+
     MyData.CloseConnection();
 }
 
@@ -194,7 +191,6 @@ void AddRepair::on_Button_DeleteRepair_clicked()
     m_vMenusAndSubmebus.removeAt(SubmenuStartIndex-1);
      m_uiRepairsNumber--;
      ReFillRepairIndexes();
-
 }
 
 
@@ -208,7 +204,6 @@ void AddRepair::ReFillRepairIndexes()
     // Then clear all fields
     for(unsigned int i=0; i< count; i++)
     {
-
          listItem = ui->RepairList->item(i);
          m_currentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItem));
 
@@ -261,7 +256,6 @@ bool AddRepair::CheckRecordInformation()
     NewRepairItem * m_newRepair;
     bool CheckResults = true;
 
-
     for(int i=0; i< ui->RepairList->count(); i++)
     {
         listItemData = ui->RepairList->item(i);
@@ -313,7 +307,7 @@ void AddRepair::RecordRepair()
     }
 
     MyData.OpenConnection("Repairs.sqlite");
-    qDebug() << "  RecordRepair ui->RepairList->count() "<<  ui->RepairList->count();
+//    qDebug() << "  RecordRepair ui->RepairList->count() "<<  ui->RepairList->count();
 
     for(int i=0; i< ui->RepairList->count(); i++)
     {
@@ -338,8 +332,6 @@ void AddRepair::RecordRepair()
         if(!AddNewAuto.exec()){
             qDebug() << "INSERT INTO Repair_Table fail "<< AddNewAuto.lastError().text();
         }
-
-
     }
 
     m_bRecordSuccess = true;
@@ -436,7 +428,6 @@ void AddRepair::on_Button_TotalCostCalc_clicked()
                 CalcValue = m_CurrentRepair->GetRepairValueText().toDouble();
             }
 
-
             if(CalcValue == 0.0){
                 m_CurrentRepair->SetRepairValueText(QString::number(0));
             }else {
@@ -499,10 +490,4 @@ void AddRepair::on_CheckBox_DDS_clicked(bool checked)
         m_CurrentRepair = static_cast<NewRepairItem*>(ui->RepairList->itemWidget(listItemData));
         m_CurrentRepair->ChangeTaxesCheckBox(checked);
     }
-}
-
-
-void AddRepair::on_RepairList_itemSelectionChanged()
-{
-      qDebug() << "on_RepairList_itemSelectionChanged ";
 }

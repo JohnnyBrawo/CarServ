@@ -99,36 +99,36 @@ void MainWindow::on_Button_Search_clicked()
 
 void MainWindow::on_Button_OpenRepairs_clicked()
 {
-    QMessageBox msgBox;
-    msgBox.setText("The document has been modified.");
-    msgBox.setInformativeText("Do you want to save your changes?");
-    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-    msgBox.setDefaultButton(QMessageBox::Save);
-    int ret = msgBox.exec();
-    switch (ret) {
-    case QMessageBox::Yes : {
-        hide();
-    break;
-    }
-    case QMessageBox::No : {
-        hide();
-    break;
-    }
-    case QMessageBox::Cancel : {
-         qDebug() << " on_Button_OpenRepairs_clicked Goind back  ";
-    break;
-    }
-    default :{
+//    QMessageBox msgBox;
+//    msgBox.setText("The document has been modified.");
+//    msgBox.setInformativeText("Do you want to save your changes?");
+//    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+//    msgBox.setDefaultButton(QMessageBox::Save);
+//    int ret = msgBox.exec();
+//    switch (ret) {
+//    case QMessageBox::Yes : {
+//        hide();
+//    break;
+//    }
+//    case QMessageBox::No : {
+//        hide();
+//    break;
+//    }
+//    case QMessageBox::Cancel : {
+//         qDebug() << " on_Button_OpenRepairs_clicked Goind back  ";
+//    break;
+//    }
+//    default :{
 
-    }
-
-    }
+//    }
+ hide();
+//    }
 
 }
 
 void MainWindow::RestoreMainForm()
 {
-     qDebug() << " RestoreMainForm  "<<m_bNewAutoMenuEnter;
+     qDebug() << " RestoreMainForm m_bNewAutoMenuEnter "<<m_bNewAutoMenuEnter;
      qDebug() << " RestoreMainForm IsNewAutoRecordCanceled   "<<m_NewAuto->IsNewAutoRecordCanceled();
      qDebug() << " RestoreMainForm GetNewCarReg   "<<m_NewAuto->GetNewCarReg();
 
@@ -139,6 +139,7 @@ void MainWindow::RestoreMainForm()
 
     }else {
         this->show();
+        m_NewAuto->ClearLastCarReg();
     }
 }
 

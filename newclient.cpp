@@ -103,6 +103,7 @@ void NewClient::SetNewClientDesignMode()
 
     /** Record the last added auto for this client. No other buttons needed, but OK/Cancel */
     ui->Button_AddClientAutoEdit->setVisible(!m_bAttachClientToLastAddedAuto);
+    ui->Button_CancelAdd->setVisible(!m_bAttachClientToLastAddedAuto);
     ui->Button_AddExistAuto->setVisible(!m_bAttachClientToLastAddedAuto);
     ui->Button_AddClientAutoNew->setVisible(!m_bAttachClientToLastAddedAuto);
     ui->Button_Add_Client->setEnabled(false);
@@ -216,6 +217,7 @@ void NewClient::RecordCarToClient()
         qDebug() << "UPDATE Automobiles_Table set CLIENT_ID faile with "<< ClientQry.lastError().text();
     }
 
+
     // Update Current Changes
     MyData.CloseConnection();
 }
@@ -249,6 +251,7 @@ void NewClient::on_Button_Add_Client_clicked()
             RecordCarToClient();
             m_bRecordPermission = false;
             m_bAttachClientToLastAddedAuto = false;
+            m_NewAuto->ClearLastCarReg();
         }
         else
         {

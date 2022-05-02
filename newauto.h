@@ -41,6 +41,7 @@ public:
     explicit NewAuto(QWidget *parent = 0);
     ~NewAuto();
     void ClearAllFields();
+    void ClearLastCarReg(){m_strSelectedCarReg ="";}
     QString GetNewCarReg(){ return m_strSelectedCarReg;}
     QString GetLastCarReg();
 

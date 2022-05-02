@@ -24,6 +24,7 @@
    </property>
    <property name="font">
     <font>
+     <pointsize>12</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -43,6 +44,7 @@
    </property>
    <property name="font">
     <font>
+     <pointsize>12</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -92,6 +94,11 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
@@ -121,7 +128,13 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QComboBox" name="Combo_NewAuto_Model"/>
+     <widget class="QComboBox" name="Combo_NewAuto_Model">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="L_NewAuto_Type">
@@ -142,6 +155,11 @@
     </item>
     <item row="2" column="1">
      <widget class="QComboBox" name="Combo_NewAuto_Type">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <item>
        <property name="text">
         <string>Select</string>
@@ -245,7 +263,13 @@
      </widget>
     </item>
     <item row="7" column="1">
-     <widget class="QLineEdit" name="LText_NewAutoRegNumber"/>
+     <widget class="QLineEdit" name="LText_NewAutoRegNumber">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="8" column="0">
      <widget class="QLabel" name="L_NewAuto_VIN">
@@ -265,10 +289,21 @@
      </widget>
     </item>
     <item row="8" column="1">
-     <widget class="QLineEdit" name="LText_NewAutoVIN"/>
+     <widget class="QLineEdit" name="LText_NewAutoVIN">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="3" column="1">
      <widget class="QComboBox" name="Combo_NewAuto_Year">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="currentText">
        <string>Select</string>
       </property>
@@ -451,6 +486,11 @@
     </item>
     <item row="5" column="1">
      <widget class="QComboBox" name="Combo_NewAuto_Fuel">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <item>
        <property name="text">
         <string>Select</string>
@@ -509,7 +549,13 @@
      </widget>
     </item>
     <item row="6" column="1">
-     <widget class="QLineEdit" name="LText_NewAutoMillage"/>
+     <widget class="QLineEdit" name="LText_NewAutoMillage">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="6" column="0">
      <widget class="QLabel" name="L_NewAuto_Fuel_2">
